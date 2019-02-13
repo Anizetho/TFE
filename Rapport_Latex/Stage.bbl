@@ -1,0 +1,122 @@
+\begin{thebibliography}{10}
+
+\bibitem{Complete}
+Thomas~Popp Stefan~Mangard, Elisabeth~Oswald.
+\newblock {\em Power Analysis Attacks}.
+\newblock Springer, 2007.
+
+\bibitem{SCA}
+Sri~Parameswaran Jude~Ambrose, Alexandar~Ignjatovic.
+\newblock {\em Power Analysis Side Channel Attacks}.
+\newblock VDM Verlag Dr. M{\"u}ller, 2010.
+
+\bibitem{advanced}
+Eric Peeters.
+\newblock {\em Advanced DPA Theory and Practise}.
+\newblock Springer, Septembre 2012.
+
+\bibitem{Horowitz:2015aa}
+J.M. Dutertre.
+\newblock {\em Synth{\`e}se AES 128}.
+\newblock \url{https://www.emse.fr/~dutertre/documents/synth_AES128.pdf}, 2011.
+
+\bibitem{gray1998quantization}
+Lilian BOSSUET.
+\newblock {\em Approche didactique pour l'enseignement de l'attaque DPA ciblant
+  l'algorithme de chiffrement AES}.
+\newblock \url{https://hal.archives-ouvertes.fr/hal-00753215/document}, 25
+  Octobre 2012.
+
+\bibitem{irf2017mosfet}
+Stephane~Fernandes Medeiros.
+\newblock {\em Attaques par canaux auxiliaires : nouvelles attaques,
+  contre-mesures et mises en oeuvre}.
+\newblock
+  \url{https://dipot.ulb.ac.be/dspace/bitstream/.../12a25345-b54f-4169-9c32-e7d2cce5af65.txt},
+  2017.
+
+\bibitem{cryptoeprint:2015:536}
+Fran{\c c}ois Durvaux and Fran{\c c}ois-Xavier Standaert.
+\newblock From improved leakage detection to the detection of points of
+  interests in leakage traces.
+\newblock Cryptology ePrint Archive, Report 2015/536, 2015.
+\newblock \url{https://eprint.iacr.org/2015/536}.
+
+\bibitem{cryptoeprint}
+Francois Durvaux Francois-Xavier~Standaert A.~Adam~Ding, Liwei~Zhang and Yunsi
+  Fei.
+\newblock Towards sound and optimal leakage detection procedure.
+\newblock In the proceedings of CARDIS 2017, Lecture Notes in Computer Science,
+  November 2017.
+\newblock \url{https://perso.uclouvain.be/fstandae/PUBLIS/196.pdf}.
+
+\bibitem{PowerModel}
+MICHAL~VARCHOLA MAREK~REPKA, JOZEF~TOMECEK.
+\newblock Correlation hamming distance power analysis of 16-bit integer
+  multiplier in fpga.
+\newblock {\em
+  \url{http://www.wseas.us/e-library/conferences/2014/Istanbul/TELEDU/TELEDU-06.pdf}},
+  2014.
+
+\bibitem{Faking}
+Mariano López-García Rubén Lumbiarres-López and Enrique
+  Cantó-Navarro.
+\newblock Faking countermeasure against side-channel attacks.
+\newblock {\em
+  \url{https://upcommons.upc.edu/bitstream/handle/2117/112973/Advances_in_Microelectronics_V_1_chapter19.pdf;jsessionid=62B833C8C8C140B9EE46F0279D3E0B61?sequence=1}},
+  Décembre 2017.
+
+\bibitem{owen}
+Douglas~Carson Owen~Lo, William J.~Buchanan.
+\newblock Power analysis attacks on the aes-128 s-box using differential power
+  analysis (dpa) and correlation power analysis (cpa).
+\newblock {\em
+  \url{https://www.tandfonline.com/doi/pdf/10.1080/23742917.2016.1231523}},
+  Septembre 2016.
+
+\bibitem{Power}
+Mohsen Machhou Rached~Tourki Hassen~Mestiri, Noura~Benhadjyoussef.
+\newblock A comparative study of power consumption models for cpa attack.
+\newblock {\em
+  \url{http://www.mecs-press.net/ijcnis/ijcnis-v5-n3/IJCNIS-V5-N3-3.pdf}},
+  2013.
+
+\bibitem{CPAWiki}
+Correlation power analysis.
+\newblock {\em \url{https://wiki.newae.com/Correlation_Power_Analysis}}.
+
+\bibitem{tel}
+Abdelaziz Elaabid.
+\newblock {\em Attaques par canaux cach{\'e}s: exp{\'e}rimentations
+  avanc{\'e}es sur les attaques template}.
+\newblock \url{https://tel.archives-ouvertes.fr/tel-00937136/document}, 2014.
+
+\bibitem{hamming}
+{\em 6.1.2 Distance de Hamming et poids d'un mot de code}.
+\newblock \url{https://icwww.epfl.ch/~chappeli/it/courseFR/I2subsec_Hdist.php}.
+
+\bibitem{bruit}
+Jean-Philippe Muller.
+\newblock {\em Le bruit dans les syst{\`e}mes {\'e}lectroniques}.
+\newblock \url{http://www.ta-formation.com/acrobat-cours/bruit.pdf}, Juillet
+  2002.
+
+\bibitem{crypto}
+Renaud Dumont.
+\newblock {\em Cryptographie et S{\'e}curit{\'e} informatique INFO0045-2}.
+\newblock \url{http://www.montefiore.ulg.ac.be/~dumont/pdf/crypto09-10.pdf},
+  2010.
+
+\bibitem{test}
+Thales Group.
+\newblock {\em Historique}.
+\newblock \url{https://www.thalesgroup.com/fr/global/groupe/historique}, 2018.
+
+\bibitem{wiki}
+Thales.
+\newblock {\em Wikipedia}.
+\newblock
+  \url{http://fr.wikipedia.org/w/index.php?title=Thales&action=history},
+  Octobre 2018.
+
+\end{thebibliography}
