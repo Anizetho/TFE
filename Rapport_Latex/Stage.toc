@@ -3,48 +3,48 @@
 \contentsline {chapter}{Remerciements}{IV}{section*.3}
 \contentsline {chapter}{Cahier des charges}{V}{section*.4}
 \contentsline {chapter}{\numberline {1}Introduction générale}{1}{chapter.1}
-\contentsline {part}{I\hspace {1em}Contexte théorique}{2}{part.1}
-\contentsline {chapter}{\numberline {2}Cryptographie}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Concepts et définitions}{3}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Chiffrement symmétrique}{3}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Chiffrement asymmétrique}{3}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}Algorithme de chiffrement}{4}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Principe}{4}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}\textit {Device} cryptographique}{5}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Algorithme \textit {AES} (\textit {Advanced Encryption Standard})}{5}{subsection.2.2.3}
-\contentsline {chapter}{\numberline {3}Consommation de puissance}{11}{chapter.3}
-\contentsline {section}{\numberline {3.1}Technologie CMOS}{11}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Consommation de puissance des circuits en technologie CMOS}{11}{subsection.3.1.1}
-\contentsline {section}{\numberline {3.2}Modèles de puissance}{11}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Modèle de poids de Hamming}{11}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Modèle de distance de Hamming}{11}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Autres modèles}{11}{subsection.3.2.3}
-\contentsline {chapter}{\numberline {4}Attaques par canaux auxiliaires}{12}{chapter.4}
-\contentsline {section}{\numberline {4.1}Analyse simple de la consommation}{12}{section.4.1}
-\contentsline {section}{\numberline {4.2}Analyse différentielle de la consommation}{12}{section.4.2}
-\contentsline {section}{\numberline {4.3}Analyse de la consommation par corrélation}{12}{section.4.3}
-\contentsline {chapter}{\numberline {5}Contre-mesures}{13}{chapter.5}
-\contentsline {section}{\numberline {5.1}Contre-mesures Hiding}{13}{section.5.1}
-\contentsline {section}{\numberline {5.2}Contre-mesures Masking}{13}{section.5.2}
-\contentsline {section}{\numberline {5.3}Contre-mesures Faking}{13}{section.5.3}
-\contentsline {part}{II\hspace {1em}Acquis pratiques}{14}{part.2}
-\contentsline {subsection}{\numberline {5.3.1}Introduction aux \textit {attaques par canal auxiliaire}}{15}{subsection.5.3.1}
-\contentsline {subsubsection}{Types d'attaques}{15}{section*.16}
-\contentsline {subsubsection}{Introduction aux attaques par analyse de la consommation de puissance}{16}{section*.19}
-\contentsline {subsection}{\numberline {5.3.2}Attaque CPA (\textit {Correlation Power Analysis})}{18}{subsection.5.3.2}
-\contentsline {subsubsection}{Technologie CMOS}{18}{section*.22}
-\contentsline {subsubsection}{Puissances statique et dynamique}{19}{section*.25}
-\contentsline {subsubsection}{Composition des traces de puissance}{21}{section*.27}
-\contentsline {subsubsection}{Modèles de puissance}{22}{section*.28}
-\contentsline {subsubsection}{Fonctions linéaires et non-linéaires}{22}{section*.29}
-\contentsline {subsubsection}{Coefficient de corrélation}{23}{section*.30}
-\contentsline {subsubsection}{L'attaque CPA en concret}{23}{section*.31}
-\contentsline {subsection}{\numberline {5.3.3}Simulations sur MATLAB}{25}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}Contre-mesures}{32}{subsection.5.3.4}
-\contentsline {subsubsection}{Contre-mesures \textit {Hiding}}{34}{section*.41}
-\contentsline {subsubsection}{Contre-mesures \textit {Masking}}{35}{section*.43}
-\contentsline {subsubsection}{Contre-mesures \textit {Faking}}{37}{section*.44}
-\contentsline {section}{\numberline {5.4}Conclusion}{38}{section.5.4}
-\contentsline {section}{Crédits}{39}{section*.47}
-\contentsline {section}{Références}{39}{section*.48}
-\contentsline {section}{Annexes}{42}{section*.50}
+\contentsline {part}{I\hspace {1em}Contexte théorique}{3}{part.1}
+\contentsline {chapter}{\numberline {2}Cryptographie}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Concepts et définitions}{4}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Chiffrement symmétrique}{4}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Chiffrement asymmétrique}{4}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Algorithme de chiffrement}{5}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Principe}{5}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}\textit {Device} cryptographique}{6}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Algorithme \textit {AES} (\textit {Advanced Encryption Standard})}{6}{subsection.2.2.3}
+\contentsline {chapter}{\numberline {3}Consommation de puissance}{12}{chapter.3}
+\contentsline {section}{\numberline {3.1}Technologie CMOS}{12}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Consommation de puissance des circuits en technologie CMOS}{12}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Modèles de puissance}{12}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Modèle de poids de Hamming}{12}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Modèle de distance de Hamming}{12}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Autres modèles}{12}{subsection.3.2.3}
+\contentsline {chapter}{\numberline {4}Attaques par canaux auxiliaires}{13}{chapter.4}
+\contentsline {section}{\numberline {4.1}Analyse simple de la consommation}{13}{section.4.1}
+\contentsline {section}{\numberline {4.2}Analyse différentielle de la consommation}{13}{section.4.2}
+\contentsline {section}{\numberline {4.3}Analyse de la consommation par corrélation}{13}{section.4.3}
+\contentsline {chapter}{\numberline {5}Contre-mesures}{14}{chapter.5}
+\contentsline {section}{\numberline {5.1}Contre-mesures Hiding}{14}{section.5.1}
+\contentsline {section}{\numberline {5.2}Contre-mesures Masking}{14}{section.5.2}
+\contentsline {section}{\numberline {5.3}Contre-mesures Faking}{14}{section.5.3}
+\contentsline {part}{II\hspace {1em}Acquis pratiques}{15}{part.2}
+\contentsline {subsection}{\numberline {5.3.1}Introduction aux \textit {attaques par canal auxiliaire}}{16}{subsection.5.3.1}
+\contentsline {subsubsection}{Types d'attaques}{16}{section*.16}
+\contentsline {subsubsection}{Introduction aux attaques par analyse de la consommation de puissance}{17}{section*.19}
+\contentsline {subsection}{\numberline {5.3.2}Attaque CPA (\textit {Correlation Power Analysis})}{19}{subsection.5.3.2}
+\contentsline {subsubsection}{Technologie CMOS}{19}{section*.22}
+\contentsline {subsubsection}{Puissances statique et dynamique}{20}{section*.25}
+\contentsline {subsubsection}{Composition des traces de puissance}{22}{section*.27}
+\contentsline {subsubsection}{Modèles de puissance}{23}{section*.28}
+\contentsline {subsubsection}{Fonctions linéaires et non-linéaires}{23}{section*.29}
+\contentsline {subsubsection}{Coefficient de corrélation}{24}{section*.30}
+\contentsline {subsubsection}{L'attaque CPA en concret}{24}{section*.31}
+\contentsline {subsection}{\numberline {5.3.3}Simulations sur MATLAB}{26}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.4}Contre-mesures}{33}{subsection.5.3.4}
+\contentsline {subsubsection}{Contre-mesures \textit {Hiding}}{35}{section*.41}
+\contentsline {subsubsection}{Contre-mesures \textit {Masking}}{36}{section*.43}
+\contentsline {subsubsection}{Contre-mesures \textit {Faking}}{38}{section*.44}
+\contentsline {section}{\numberline {5.4}Conclusion}{39}{section.5.4}
+\contentsline {section}{Crédits}{40}{section*.47}
+\contentsline {section}{Références}{40}{section*.48}
+\contentsline {section}{Annexes}{43}{section*.50}
