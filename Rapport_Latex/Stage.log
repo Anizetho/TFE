@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.3.15)  18 FEB 2019 16:20
+This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.3.15)  19 FEB 2019 08:57
  restricted system commands enabled.
  file:line:error style messages enabled.
 **Stage.tex
@@ -36,7 +36,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.233 seconds
+luaotfload | main : initialization completed in 0.232 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
@@ -2535,11 +2535,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1187.
 
 Here is how much of LuaTeX's memory you used:
  40444 strings out of 494480
- 596159,1144653 words of node,token memory allocated
- 562749 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 471 glue, 1 kern, 1 penalty, 90091 glyph, 7826 attr
+ 596158,1144653 words of node,token memory allocated
+ 562713 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 471 glue, 1 kern, 1 penalty, 90085 glyph, 7826 attr
 ibute, 70 glue_spec, 1306 attribute_list, 1 write, 20 pdf_action nodes
-   avail lists: 1:1,2:1470,3:315,4:123,5:374,6:377,7:1017,8:175,9:520,10:29,11:4
+   avail lists: 1:3,2:1470,3:315,4:123,5:374,6:377,7:1017,8:175,9:520,10:29,11:4
 96
  42186 multiletter control sequences out of 65536+600000
  77 fonts using 12585247 bytes
@@ -2566,7 +2566,7 @@ pe1/public/lm/lmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm
 /lmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
 </usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/lo
 cal/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Stage.pdf (73 pages, 20998554 bytes).
+Output written on Stage.pdf (73 pages, 20998550 bytes).
 
 PDF statistics: 1237 PDF objects out of 1440 (max. 8388607)
  984 compressed objects within 10 object streams
