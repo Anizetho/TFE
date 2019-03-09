@@ -30,23 +30,41 @@
 \contentsline {section}{\numberline {5.2}Contre-mesures Masking}{15}{section.5.2}
 \contentsline {section}{\numberline {5.3}Contre-mesures Faking}{15}{section.5.3}
 \contentsline {part}{II\hspace {1em}Acquis pratiques}{16}{part.2}
-\contentsline {subsection}{\numberline {5.3.1}Introduction aux \textit {attaques par canal auxiliaire}}{17}{subsection.5.3.1}
-\contentsline {subsubsection}{Types d'attaques}{17}{section*.18}
-\contentsline {subsubsection}{Introduction aux attaques par analyse de la consommation de puissance}{18}{section*.21}
-\contentsline {subsection}{\numberline {5.3.2}Attaque CPA (\textit {Correlation Power Analysis})}{20}{subsection.5.3.2}
-\contentsline {subsubsection}{Technologie CMOS}{20}{section*.24}
-\contentsline {subsubsection}{Puissances statique et dynamique}{21}{section*.27}
-\contentsline {subsubsection}{Composition des traces de puissance}{23}{section*.29}
-\contentsline {subsubsection}{Modèles de puissance}{24}{section*.30}
-\contentsline {subsubsection}{Fonctions linéaires et non-linéaires}{24}{section*.31}
-\contentsline {subsubsection}{Coefficient de corrélation}{25}{section*.32}
-\contentsline {subsubsection}{L'attaque CPA en concret}{25}{section*.33}
-\contentsline {subsection}{\numberline {5.3.3}Simulations sur MATLAB}{27}{subsection.5.3.3}
-\contentsline {subsection}{\numberline {5.3.4}Contre-mesures}{34}{subsection.5.3.4}
-\contentsline {subsubsection}{Contre-mesures \textit {Hiding}}{36}{section*.43}
-\contentsline {subsubsection}{Contre-mesures \textit {Masking}}{37}{section*.45}
-\contentsline {subsubsection}{Contre-mesures \textit {Faking}}{39}{section*.46}
-\contentsline {section}{\numberline {5.4}Conclusion}{40}{section.5.4}
-\contentsline {section}{Crédits}{41}{section*.49}
-\contentsline {section}{Références}{41}{section*.50}
-\contentsline {section}{Annexes}{44}{section*.52}
+\contentsline {chapter}{\numberline {6}Configuration de l'attaque}{17}{chapter.6}
+\contentsline {section}{\numberline {6.1}Méthodologie}{17}{section.6.1}
+\contentsline {section}{\numberline {6.2}Configuration du FPGA}{17}{section.6.2}
+\contentsline {section}{\numberline {6.3}Configuration de l'oscilloscope}{17}{section.6.3}
+\contentsline {section}{\numberline {6.4}Configuration de l'attaque CPA}{17}{section.6.4}
+\contentsline {chapter}{\numberline {7}Mise en application d'une attaque CPA (\textit {Correlation Power Analysis})}{18}{chapter.7}
+\contentsline {section}{\numberline {7.1}Résultats de simulations}{18}{section.7.1}
+\contentsline {section}{\numberline {7.2}Résultats expérimentaux}{18}{section.7.2}
+\contentsline {section}{\numberline {7.3}Conclusion}{18}{section.7.3}
+\contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit {faking}}{19}{chapter.8}
+\contentsline {section}{\numberline {8.1}Développement de la contre-mesure}{19}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Résultats expérimentaux}{19}{subsection.8.1.1}
+\contentsline {section}{\numberline {8.2}Conclusion}{19}{section.8.2}
+\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{20}{chapter.9}
+\contentsline {section}{\numberline {9.1}Évaluation par simulations}{20}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}Évaluation par critères}{20}{subsection.9.1.1}
+\contentsline {chapter}{\numberline {10}Conclusion}{21}{chapter.10}
+\contentsline {chapter}{\numberline {11}Consommation de puissance}{22}{chapter.11}
+\contentsline {subsection}{\numberline {11.0.1}Introduction aux \textit {attaques par canal auxiliaire}}{22}{subsection.11.0.1}
+\contentsline {subsubsection}{Types d'attaques}{22}{section*.18}
+\contentsline {subsubsection}{Introduction aux attaques par analyse de la consommation de puissance}{23}{section*.21}
+\contentsline {subsection}{\numberline {11.0.2}Attaque CPA (\textit {Correlation Power Analysis})}{26}{subsection.11.0.2}
+\contentsline {subsubsection}{Technologie CMOS}{26}{section*.24}
+\contentsline {subsubsection}{Puissances statique et dynamique}{27}{section*.27}
+\contentsline {subsubsection}{Composition des traces de puissance}{29}{section*.29}
+\contentsline {subsubsection}{Modèles de puissance}{29}{section*.30}
+\contentsline {subsubsection}{Fonctions linéaires et non-linéaires}{30}{section*.31}
+\contentsline {subsubsection}{Coefficient de corrélation}{30}{section*.32}
+\contentsline {subsubsection}{L'attaque CPA en concret}{30}{section*.33}
+\contentsline {subsection}{\numberline {11.0.3}Simulations sur MATLAB}{33}{subsection.11.0.3}
+\contentsline {subsection}{\numberline {11.0.4}Contre-mesures}{40}{subsection.11.0.4}
+\contentsline {subsubsection}{Contre-mesures \textit {Hiding}}{42}{section*.43}
+\contentsline {subsubsection}{Contre-mesures \textit {Masking}}{43}{section*.45}
+\contentsline {subsubsection}{Contre-mesures \textit {Faking}}{45}{section*.46}
+\contentsline {section}{\numberline {11.1}Conclusion}{46}{section.11.1}
+\contentsline {section}{Crédits}{48}{section*.49}
+\contentsline {section}{Références}{48}{section*.50}
+\contentsline {section}{Annexes}{51}{section*.52}

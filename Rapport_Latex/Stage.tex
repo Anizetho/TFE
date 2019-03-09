@@ -97,7 +97,7 @@
 \vspace{9mm}
 
 \vfill 
-\centerline{\textbf{Année académique 2018-2019.}}
+\centerline{\textbf{Année académique 2018-2019}}
 
 % Laisser une page vierge
 \newpage
@@ -189,45 +189,49 @@ Je remercie également mademoiselle Clémence Flémal, ma tutrice, qui m’a acc
 
 \section{Présentation du problème}
 
-Le monde dans lequel nous vivons aujourd’hui est un monde où tout doit être connecté. Notre smartphone, notre montre, notre TV, notre frigo, notre tondeuse, … Tout système d’électronique embarquée est potentiellement connectable ! Les transferts d’informations sont par conséquent de plus en plus gourmands. Les technologies ne cessent d’évoluer. Le meilleur exemple est le développement du réseau 5G, prévu entre-autre pour augmenter les débits de données. Cependant, une question a le droit d’être posée : est-ce que toutes ces données qui voyagent de système en systèmes sont protégées ? Est-ce que les données qui transitent entre les différents appareils connectés de ma maison peuvent être captées par des pirates informatiques ? La réponse à ces questions reste bien souvent assez vague. Tentons de cerner le sujet.
+Le monde dans lequel nous vivons aujourd’hui est un monde où tout doit être connecté. Notre smartphone, notre montre, notre TV, notre frigo, notre tondeuse, … Tout système d’électronique embarquée est potentiellement connectable ! Les transferts d’informations sont par conséquent de plus en plus gourmands. Les technologies ne cessent d’évoluer. Le meilleur exemple est le développement de l'IoT (\textit{Internet of Things}) ou encore le développement du réseau 5G, prévu entre-autre pour augmenter les débits de données. Cependant, une question a le droit d’être posée : est-ce que toutes ces données qui voyagent de système en systèmes sont protégées ? Est-ce que les données qui transitent entre les différents appareils connectés de ma maison peuvent être captées par des pirates informatiques ? La réponse à ces questions reste bien souvent assez vague. Tentons de cerner le sujet.
 
 Depuis toujours, l’homme cherche à dissimuler des informations à ses tiers mais depuis toujours, l’homme cherche également à accéder à des informations dont il n’a pas le droit. Cette lutte symbolise le combat entre la \textbf{cryptographie} et la \textbf{cryptanalyse}. Rappelons brièvement que la cryptographie a pour objectif de crypter de l’information, c’est-à-dire qu’elle vise à élaborer des procédés assurant la confidentialité de données sensibles. La cryptanalyse quant à elle vise à décrypter des informations sensibles auxquelles elle n'a normalement pas accès. Ainsi, lorsqu'il s'agit de manipuler des informations secrètes, la question d'intégrité et de confidentialité des informations manipulées se pose inévitablement. C'est pour cette raison que des \textbf{algorithmes de chiffrement} sont développés et par la suite, la cryptanalyse tente d'y déceler des failles. À ce jour, il existe une multitude d'algorithmes de chiffrement, chacun possédant ses avantages et ses inconvénients. Celui étudié dans ce travail est \textbf{l'algorithme \textit{AES}} (\textit{Advanced Ecryption Standard}).
 
 Initialement, la cryptanalyse se basait essentiellement sur la compréhension des procédés mathématiques utilisés dans les algorithmes en vue d'y déceler des failles. Devant ces attaques, les ingénieurs renforcèrent la complexité des algorithmes. Par ailleurs, fin du millénaire précédent, le \textit{NIST} (\textit{National Institute of Standards and Technology}) a encouragé le développement d’un nouveau standard d’algorithme de chiffrement difficilement envisageable à casser : l’algorithme \textit{AES}. Sa robustesse aux attaques classiques lui permet d'être considéré aujourd’hui comme l'algorithme le plus connu au monde et implémenté dans la majeure partie des systèmes embarqués comportant des applications en sécurité. Cependant, fin des années 1990, de nouvelles recherches dans le domaine de la cryptanalyse ont été réalisées. Ces recherches ont abouties sur un nouveau type d'attaque : les \textbf{attaques par canaux auxiliaires}. Une attaque par canal auxiliaire désigne une attaque informatique qui, sans remettre en cause la robustesse théorique des méthodes et procédures de sécurité, recherche et exploite des failles dans leur implémentation logicielle ou matérielle. 
 
+\newpage
 Il existe différents types d'attaques par canaux auxiliaires cependant ce travail se concentre sur un type d'attaque en particulier : les \textbf{attaques par analyse de la consommation de puissance}. Comme son nom l'indique, cette attaque analyse la consommation de puissance d'un \textbf{\textit{système cryptographique}} en cours de chiffrement. En effet, la puissance consommée par le circuit intégré reflète directement ses activités internes (instructions exécutées et données manipulées). Cette puissance consommée peut être capturée à l'aide d'un instrument de mesure tel que l'oscilloscope. Les mesures prélevées à l'oscilloscope portent le nom de \textit{traces de puissance}. Lorsque la clé d'un algorithme de chiffrement est révélée, le contenu censé rester confidentiel devient accessible à quiconque qui le souhaite. Ainsi, comme nous le verrons au chapitre X, dès que des traces de puissance sont acquises, il est possible pour un attaquant, via divers calculs, de retrouver la clé utilisée pour le chiffrement des données. Attirons l'attention sur le fait que l'attaque exploite les faiblesses du système cryptographique, c'est-à-dire du système implémentant l'algorithme de chiffrement (l'AES en l'occurence). En aucun cas, l'attaque exploite les failles des principes mathématiques mis en place.
 
 \begin{figure}[h]
-    \hspace{-1cm}
-    \includegraphics[scale=0.45]{image/intro.png}
+    \hspace{-1.55cm}
+    \includegraphics[scale=0.72]{image/intro.png}
     \caption{Matériel nécessaire pour réaliser une attaque par analyse de la consommation de puissance.}
     \label{fig:intro}
 \end{figure}
 
-\vspace{-0.2cm}
-Dès que ces attaques se sont manifestées, une série de contre-mesures a été développée. Pour obtenir une contre-mesure efficace contre ces attaques par analyse de la consommation de puissance, il est nécessaire de bien appréhender le fonctionnement de l'attaque. Ainsi, retenons que lors de l’exécution d’un algorithme de chiffrement, différentes opérations sont exécutées conduisant à différentes valeurs intermédiaires calculées. Si aucune protection n’est mise en place, la consommation de puissance du device cryptographique dépend des données intermédiaires qui sont manipulées par ce dernier (par l’algorithme précisément). L’attaquant peut donc potentiellement retrouver la clé secrète en analysant la consommation de puissance du système. Dès lors, l'objectif général d'une contre-mesure est de rendre la consommation de puissance du device cryptographique indépendante des valeurs intermédiaires calculées par l'algorithme de chiffrement. 
-\vspace{-0.2cm}
+Dès que ces attaques se sont manifestées, une série de contre-mesures a été développée. Pour obtenir une contre-mesure efficace contre ces attaques par analyse de la consommation de puissance, il est nécessaire de bien appréhender le fonctionnement de l'attaque. Ainsi, retenons que lors de l’exécution d’un algorithme de chiffrement, différentes opérations sont exécutées conduisant à différentes valeurs intermédiaires calculées. Si aucune protection n’est mise en place, la consommation de puissance du device cryptographique dépend des données intermédiaires manipulées par ce dernier (par l’algorithme précisément). Par conséquent, l’attaquant peut potentiellement retrouver la clé secrète en analysant la consommation de puissance du système. Dès lors, l'objectif général d'une contre-mesure est de rendre la consommation de puissance du device cryptographique indépendante des valeurs intermédiaires calculées par l'algorithme de chiffrement. 
 
-\begin{figure}[h]
-    \hspace{-1cm}
-    \includegraphics[width=1.05\textwidth]{image/intro2.png}
-    \caption{Conséquences de l'implémentation d'une contre-mesure.}
-    \label{fig:intro2}
-\end{figure}
+Deux grands types de contre-mesures sont à distinguer : les contre-mesures de type \textbf{\textit{Masking}} et les contre-mesures de type \textbf{\textit{Hiding}}. Brièvement, le principe d'une contre-mesure de type \textit{Masking} est de modifier les caractéristiques de l'algorithme de chiffrement alors que le principe d'une contre-mesure de type \textit{Hiding} est de modifier les caractéristiques physiques du système cryptographique. La contre-mesure développée dans ce travail est une contre-mesure apparue assez récemment : la contre-mesure de type \textit{Faking}. Le principe de fonctionnement de cette contre-mesure se rapproche de celui de contre-mesure de type \textit{Masking}. Cependant, comme nous le verrons au chapitre X, il existe quelques subtilités. Le tableau \ref{fig:intro2} résume les constats qui peuvent être tirés selon qu'une contre-mesure soit implémentée ou non. Ces contre-mesures seront détaillées plus en profondeur au chapitre y faisant référence (chapitre X).
+
+\begin{table}
+	\centering
+	\begin{tabular}{|l|m{9cm}|l|m{3cm}|}
+    		\hline
+   		 Avec/Sans contre-mesure & Conséquences \\ \hline
+    		Sans contre-mesure & La consommation de puissance dépend directement des valeurs intermédiaires calculées par l’algorithme de chiffrement. \\ \hline
+		Avec contre-mesure type Hiding & Modification des caractéristiques de consommation : La consommation de puissance du device cryptographique est identique (ou aléatoire) pour chaque instruction exécutée et chaque donnée manipulée. \\ \hline
+    		Avec contre-mesure type Masking & Modification de l’algorithme : Les valeurs intermédiaires calculées par l’algorithme de chiffrement sont masquées par des valeurs aléatoires. La consommation de puissance est alors modifiée (les traces capturées à l’oscilloscope sont insensées). \\ \hline
+		Avec contre-mesure type Faking & Modification de l’algorithme : La consommation de puissance du device cryptographique permet de trouver une valeur pour la clé secrète. Cependant, cette valeur est volontairement faussée. \\ \hline
+ 	\end{tabular}
+ 	\caption{Conséquences de l'implémentation d'une contre-mesure.}
+ 	\label{fig:intro2}
+\end{table}
 
 \newpage
-Deux grands types de contre-mesures sont à distinguer : les contre-mesures de type \textbf{\textit{Masking}} et les contre-mesures de type \textbf{\textit{Hiding}}. Brièvement, le principe des contre-mesures de type \textit{Masking} est de générer des valeurs intermédiaires aléatoires. Ainsi, on accepte que la consommation de puissance du device cryptographique dépende des instructions exécutées et des données manipulées. Cependant, on modifie (on \textit{masque}) ces valeurs intermédiaires afin de fausser les traces de puissance obtenues à l’oscilloscope. \textbf{L'objectif est donc de modifier l'algorithme}. Le principe des contre-mesures de type \textit{Hiding} est de rendre la consommation de puissance du device cryptographique indépendante des opérations exécutées et des données manipulées. Pour ce faire, il faut modifier les paramètres qui caractérisent la consommation de puissance. Par exemple, ajouter volontairement du bruit dans les traces de puissance mesurées à l'oscilloscope rend la tâche de l'attaquant plus difficile.
-
-La contre-mesure développée dans ce travail est une contre-mesure apparue assez récemment : la contre-mesure de type \textit{Faking}. Le principe de fonctionnement de cette contre-mesure se rapproche de celui de contre-mesure de type \textit{Masking}. L'objectif est effectivement de modifier les valeurs intermédiaires manipulées par l'algorithme de chiffrement cependant, comme nous le verrons au chapitre X, il existe quelques subtilités.
-
-Enfin, pour juger de l'efficacité de la contre-mesure implémentée, outre les tests permettant d'assurer que la confidentialité des données est bien garantie, une analyse des performances du système est établie. Les principales performances étudiées sont : le temps d'exécution de l'algorithme, la consommation de puissance du device cryptographique, la place mémoire de l'implémentation protégée de l'algorithme sur le device crytpographique, ...
+Enfin, pour juger de \textbf{l'efficacité de la contre-mesure implémentée}, outre les tests permettant d'assurer que la confidentialité des données est bien garantie, une analyse des performances du système est établie. Les principales performances étudiées sont : le temps d'exécution de l'algorithme, la consommation de puissance du device cryptographique, la place mémoire de l'implémentation protégée de l'algorithme sur le device crytpographique, ...
 
 \section{Structure du travail}
 
 \hspace{-0.5cm}Ce travail est scindé en deux parties : 
 \begin{enumerate}
 \item La première partie aborde tous les concepts théoriques nécessaires afin de comprendre le fondement des attaques par canaux auxiliaires. Un premier chapitre expose les concepts et définitions de la cryptographie et définit en particulier le fonctionnement de l'algorithme AES. Le second chapitre est consacré à la consommation de puissance des circuit en technologie CMOS. Cet analyse de la consommation de puissance pour ce type de circuit en particulier permet de comprendre le principe de fonctionnement des attaques par analyse de la consommation de puissance. Le troisième chapitre définit le sujet principal de ce travail, à savoir les attaques par canaux auxiliaires. Enfin, le dernier chapitre étudie les différentes contre-mesures existantes afin d'assurer une meilleure protection des données sensibles. 
-\item La seconde partie aborde les notions et compétences acquises durant la période de stage et de TFE. 
+\item La seconde partie aborde les notions et compétences acquises durant la période de TFE. Un premier chapitre définit la configuration du matériel nécessaire pour implémenter l'attaque par analyse de la consommation de puissance. Un descriptif succinct des langages et matériels utilisés est ainsi détaillé. Le second chapitre reprend les résultats obtenus et leurs conclusions pour la mise en application d'une attaque CPA (\textit{Correlation Power Analysis}). Le troisième chapitre détaille l'implémentation de la contre-mesure de type \textit{faking}. Le quatrième chapitre discute de l'efficacité de la contre-mesure implémentée. Enfin, le cinquième chapitre est consacré à la conclusion de ce rapport.
 \end{enumerate}
 
 
@@ -480,6 +484,92 @@ Une fois ces trois vecteurs colonnes obtenus, on réalise un XOR entre eux. Le r
 \part{Acquis pratiques}
 
 %%%%%%%%%%%%% Chapitre 6 %%%%%%%%%%%%%
+
+\chapter{Configuration de l'attaque}
+
+\section{Méthodologie}
+\label{sec:Introduction}
+
+\section{Configuration du FPGA}
+\label{sec:Introduction}
+
+\section{Configuration de l'oscilloscope}
+\label{sec:Introduction}
+
+\section{Configuration de l'attaque CPA}
+\label{sec:Introduction}
+
+\newpage
+
+%%%%%%%%%%%%% Chapitre 7 %%%%%%%%%%%%%
+
+\chapter{Mise en application d'une attaque CPA (\textit{Correlation Power Analysis})}
+
+\section{Résultats de simulations}
+\label{sec:Introduction}
+
+\section{Résultats expérimentaux}
+\label{sec:Introduction}
+
+\section{Conclusion}
+\label{sec:Introduction}
+
+\newpage
+
+%%%%%%%%%%%%% Chapitre 8 %%%%%%%%%%%%%
+
+\chapter{Implémentation de la contre-mesure de type \textit{faking}}
+
+\section{Développement de la contre-mesure}
+\label{sec:Introduction}
+
+\subsection{Résultats expérimentaux}
+\label{sec:Introduction}
+
+\section{Conclusion}
+\label{sec:Introduction}
+
+\newpage
+
+%%%%%%%%%%%%% Chapitre 9 %%%%%%%%%%%%%
+
+\chapter{Évaluation des performances de la contre-mesure}
+
+\section{Évaluation par simulations}
+\label{sec:Introduction}
+
+\subsection{Évaluation par critères}
+\label{sec:Introduction}
+
+\newpage
+
+%%%%%%%%%%%%% Chapitre 10 %%%%%%%%%%%%%
+
+\chapter{Conclusion}
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%% Chapitre 3 %%%%%%%%%%%%%
+
+\chapter{Consommation de puissance}
+
 
 \subsection{Introduction aux \textit{attaques par canal auxiliaire}}
 \label{sec:att}
