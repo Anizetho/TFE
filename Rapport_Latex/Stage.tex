@@ -44,6 +44,9 @@
 
 \usepackage{listings}             % Include the listings-package
 
+\usepackage{amsthm}
+\newtheorem{definition}{Définition}[section]
+
 % Keep lasts
 \usepackage[french]{babel}
     \frenchsetup{SmallCapsFigTabCaptions=false}
@@ -245,16 +248,44 @@ Enfin, pour juger de \textbf{l'efficacité de la contre-mesure implémentée}, o
 
 %%%%%%%%%%%%% Chapitre 2 %%%%%%%%%%%%%
 
-\chapter{Cryptographie}
+\chapter{Cryptologie}
+
+Il y a plus de 2000 ans naissait le concept de \textbf{cryptologie} avec la montée au pouvoir de Jules César. Général romain très puissant, César marqua le monde et l'histoire universelle au travers de ses nombreuses conquêtes. Tant adulé par son peuple, César s'était néanmoins fait plus d'un ennemis durant ses conquêtes. Le 15 mars 44 avant J-C, il fut tragiquement assassiné par une conspiration de sénateurs romains dont son fils, Marcus Junius Brutus. Jules César avait pris pour habitude de se méfier de ses ennemis. Arrivé à un stade de méfiance extrême, il n'avait plus confiance en ses propres messagers. C'est pour cette raison qu'il envoyait des messages chiffrés où il décalait chaque lettre d'un mot de 3 lettres dans l'alphabet. Seul le destinataire, au courant de la règle de chiffrement, pouvait alors déchiffrer ces messages. Ce fut le premier procédé de chiffrement de l'histoire, appelé \textit{Chiffre de César} (voir annexe X). \\
+C'est ainsi que tout commença...
 
 \section{Concepts et définitions}
 \label{sec:Concepts}
 
-Nous distinguons 2 types d'algorithmes de chiffrement : 
+Étymologiquement, le mot \textit{"cryptologie"} vient du grec et signifie littéralement la \textit{science du secret} (\textit{kryptos}  pour caché et \textit{logos} pour science). La cryptologie regroupe deux champs d'études diamétralement opposés : la cryptographie et la cryptanalyse.
+
+\theoremstyle{definition}
+\begin{definition}{\textbf{Cryptographie : }}
+La cryptographie est la science qui utilise les mathématiques en vue de chiffrer et déchiffrer de l'information secrète.
+\end{definition}
+
+\begin{definition}{\textbf{Cryptanalyse : }}
+La cryptanalyse est la science qui analyse les procédés mathématiques mis en place par la cryptographie en vue de retrouver de l'information secrète. 
+\end{definition}
+
+\hspace{-0.5cm}Quatre notions triviales en cryptologie, qui seront reprises de nombreuses fois au travers de ce travail, doivent également être définies : 
+\begin{description}
+\item[Texte clair :] Il s'agit de données brutes, considérées comme confidentielles, compréhensibles sans intervention spécifique.
+\item[Texte chiffré :] Il s'agit de données modifiées, considérées comme confidentielles et devant le rester. Ces données sont incompréhensibles, inintelligibles pour quiconque qui tenterait de les comprendre. 
+\item[Chiffrement (cryptage) :] Procédé utilisé pour dissimuler le texte clair. Le chiffrement transforme donc le texte clair en texte chiffré.
+\item[Déchiffrement (décryptage) :] Procédé inverse au chiffrement. Le déchiffrement transforme donc le texte chiffré en texte clair, c'est-à-dire en texte d'origine.
+\end{description}
+
+\hspace{-0.5cm}La figure \ref{} illustre ces quatre notions fondamentales en cryptographie.
+
+\newpage
+\hspace{-0.5cm}Revenons sur la notion de cryptographie. La cryptographie doit remplir trois conditions majeures :
 \begin{itemize}
-\item \textbf{\textit{Chiffrement symétrique}}
-\item \textbf{\textit{Chiffrement asymétrique}}
+\item Confidentialité : La confidentialité spécifie que seules les personnes autorisées à accéder à une certaine information ont la possibilité de l'atteindre.
+\item Intégrité : L'intégrité spécifie que l'information, lors de son traitement ou de sa transmission, ne subit aucun modification volontaire ou accidentelle. Autrement dit, il s'agit d'une garantie que l'information conserve son état d'origine.
+\item Disponibilité : La disponibilité spécifie que l'information est en tout temps disponible pour une personne autorisée à y accéder et en demandant l'accès. \\
 \end{itemize}
+
+Ainsi, la cryptographie a pour objectif de chiffrer des informations tout en assurant la confidentialité, l'intégrité et la disponibilité de ces informations. La cryptographie se divise en deux catégories distinctes : la cryptographie symétrique et la cryptographie asymétrique. 
 
 \subsection{Chiffrement symmétrique}
 \label{subsec:Chiffrement symmétrique}

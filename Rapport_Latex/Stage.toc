@@ -6,14 +6,14 @@
 \contentsline {section}{\numberline {1.1}Présentation du problème}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Structure du travail}{3}{section.1.2}
 \contentsline {part}{I\hspace {1em}Contexte théorique}{4}{part.1}
-\contentsline {chapter}{\numberline {2}Cryptographie}{5}{chapter.2}
+\contentsline {chapter}{\numberline {2}Cryptologie}{5}{chapter.2}
 \contentsline {section}{\numberline {2.1}Concepts et définitions}{5}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Chiffrement symmétrique}{5}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Chiffrement asymmétrique}{5}{subsection.2.1.2}
-\contentsline {section}{\numberline {2.2}Algorithme de chiffrement}{6}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Principe}{6}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Chiffrement symmétrique}{6}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Chiffrement asymmétrique}{6}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Algorithme de chiffrement}{7}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Principe}{7}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}\textit {Device} cryptographique}{7}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Algorithme \textit {AES} (\textit {Advanced Encryption Standard})}{7}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.3}Algorithme \textit {AES} (\textit {Advanced Encryption Standard})}{8}{subsection.2.2.3}
 \contentsline {chapter}{\numberline {3}Consommation de puissance}{13}{chapter.3}
 \contentsline {section}{\numberline {3.1}Technologie CMOS}{13}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Consommation de puissance des circuits en technologie CMOS}{13}{subsection.3.1.1}

@@ -2,14 +2,14 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Matériel nécessaire pour réaliser une attaque par analyse de la consommation de puissance.\relax }}{2}{figure.caption.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Chiffrement symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les messages.\relax }}{5}{figure.caption.8}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Chiffrement asymétrique : Un clé publique est utilisée pour chiffrer le message et une clé privée est utilisée pour le déchiffrer.\relax }}{6}{figure.caption.9}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces L'algorithme de chiffrement, caractérisé par diverses opérations mathématiques, utilise une clé de chiffrement en entrée pour chiffrer un message clair. Cela produit un message chiffré, non compréhensible pour une personne ne connaissant pas la clé de chiffrement.\relax }}{7}{figure.caption.10}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Les 3 matrices utilisées par l'algorithme AES.\relax }}{8}{figure.caption.11}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Principe de fonctionnement de l'algorithme AES-128.\relax }}{9}{figure.caption.12}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Chiffrement symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les messages.\relax }}{6}{figure.caption.8}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Chiffrement asymétrique : Un clé publique est utilisée pour chiffrer le message et une clé privée est utilisée pour le déchiffrer.\relax }}{7}{figure.caption.9}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces L'algorithme de chiffrement, caractérisé par diverses opérations mathématiques, utilise une clé de chiffrement en entrée pour chiffrer un message clair. Cela produit un message chiffré, non compréhensible pour une personne ne connaissant pas la clé de chiffrement.\relax }}{8}{figure.caption.10}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Les 3 matrices utilisées par l'algorithme AES.\relax }}{9}{figure.caption.11}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Principe de fonctionnement de l'algorithme AES-128.\relax }}{10}{figure.caption.12}
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Opération \textit {AddRoundKey} entre la matrice STATE et la matrice clé.\relax }}{10}{figure.caption.13}
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Opération \textit {SubBytes} exécutée sur la matrice STATE.\relax }}{10}{figure.caption.14}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Opération \textit {ShiftRows} exécutée sur la matrice STATE.\relax }}{10}{figure.caption.15}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Opération \textit {ShiftRows} exécutée sur la matrice STATE.\relax }}{11}{figure.caption.15}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Opération \textit {MixColumns} exécutée sur la matrice STATE.\relax }}{11}{figure.caption.16}
 \contentsline {figure}{\numberline {2.10}{\ignorespaces Exemple de l'opération \textit {MixColumns} exécutée sur la deuxième colonne (i.e colonne 1) de la matrice STATE.\relax }}{11}{figure.caption.17}
 \addvspace {10\p@ }
