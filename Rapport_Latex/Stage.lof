@@ -2,16 +2,17 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces Matériel nécessaire pour réaliser une attaque par analyse de la consommation de puissance.\relax }}{2}{figure.caption.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Chiffrement symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les messages.\relax }}{6}{figure.caption.8}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Chiffrement asymétrique : Un clé publique est utilisée pour chiffrer le message et une clé privée est utilisée pour le déchiffrer.\relax }}{7}{figure.caption.9}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces L'algorithme de chiffrement, caractérisé par diverses opérations mathématiques, utilise une clé de chiffrement en entrée pour chiffrer un message clair. Cela produit un message chiffré, non compréhensible pour une personne ne connaissant pas la clé de chiffrement.\relax }}{8}{figure.caption.10}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Les 3 matrices utilisées par l'algorithme AES.\relax }}{9}{figure.caption.11}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Principe de fonctionnement de l'algorithme AES-128.\relax }}{10}{figure.caption.12}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Opération \textit {AddRoundKey} entre la matrice STATE et la matrice clé.\relax }}{10}{figure.caption.13}
-\contentsline {figure}{\numberline {2.7}{\ignorespaces Opération \textit {SubBytes} exécutée sur la matrice STATE.\relax }}{10}{figure.caption.14}
-\contentsline {figure}{\numberline {2.8}{\ignorespaces Opération \textit {ShiftRows} exécutée sur la matrice STATE.\relax }}{11}{figure.caption.15}
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Opération \textit {MixColumns} exécutée sur la matrice STATE.\relax }}{11}{figure.caption.16}
-\contentsline {figure}{\numberline {2.10}{\ignorespaces Exemple de l'opération \textit {MixColumns} exécutée sur la deuxième colonne (i.e colonne 1) de la matrice STATE.\relax }}{11}{figure.caption.17}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Concepts de chiffrement et de déchiffrement.\relax }}{6}{figure.caption.8}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Chiffrement symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les messages.\relax }}{6}{figure.caption.9}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Chiffrement asymétrique : Un clé publique est utilisée pour chiffrer le message et une clé privée est utilisée pour le déchiffrer.\relax }}{7}{figure.caption.10}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Concept d'un algorithme de chiffrement.\relax }}{8}{figure.caption.11}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Les 3 matrices utilisées par l'algorithme AES.\relax }}{9}{figure.caption.12}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Principe de fonctionnement de l'algorithme AES-128.\relax }}{10}{figure.caption.13}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Opération \textit {AddRoundKey} entre la matrice STATE et la matrice clé.\relax }}{11}{figure.caption.14}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Opération \textit {SubBytes} exécutée sur la matrice STATE.\relax }}{11}{figure.caption.15}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Opération \textit {ShiftRows} exécutée sur la matrice STATE.\relax }}{11}{figure.caption.16}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Opération \textit {MixColumns} exécutée sur la matrice STATE.\relax }}{12}{figure.caption.17}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Exemple de l'opération \textit {MixColumns} exécutée sur la deuxième colonne (i.e colonne 1) de la matrice STATE.\relax }}{12}{figure.caption.18}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
@@ -21,21 +22,21 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {11.1}{\ignorespaces Les 2 grandes familles d'attaques physiques possibles. La suite de ce rapport se concentre essentiellement sur les attaques physiques dites passives.\relax }}{23}{figure.caption.19}
-\contentsline {figure}{\numberline {11.2}{\ignorespaces Les différentes façons d'attaquer passivement un device cryptographique en vue de casser l'algorithme de chiffrement qu'il exploite.\relax }}{23}{figure.caption.20}
-\contentsline {figure}{\numberline {11.3}{\ignorespaces Principe de mesure à l'oscilloscope.\relax }}{24}{figure.caption.22}
-\contentsline {figure}{\numberline {11.4}{\ignorespaces Principe général d'une attaque CPA.\relax }}{25}{figure.caption.23}
-\contentsline {figure}{\numberline {11.5}{\ignorespaces Table de vérité pour la fonction NON (inverseur CMOS).\relax }}{26}{figure.caption.25}
-\contentsline {figure}{\numberline {11.6}{\ignorespaces Schéma de l'inverseur CMOS.\relax }}{26}{figure.caption.26}
-\contentsline {figure}{\numberline {11.7}{\ignorespaces Type de puissance consommée par une cellule CMOS en fonction des 4 transitions d'état de sa sortie.\relax }}{28}{figure.caption.28}
-\contentsline {figure}{\numberline {11.8}{\ignorespaces Schéma-bloc permettant de comprendre la simulation d'un point d'une trace.\relax }}{33}{figure.caption.34}
-\contentsline {figure}{\numberline {11.9}{\ignorespaces Schéma-bloc permettant de comprendre la seconde phase de l'exercice 1.\relax }}{33}{figure.caption.35}
-\contentsline {figure}{\numberline {11.10}{\ignorespaces Schéma-bloc permettant de visualiser la taille des différentes matrices employées pour la simulation.\relax }}{34}{figure.caption.36}
-\contentsline {figure}{\numberline {11.11}{\ignorespaces Calcul du coefficient de corrélation entre un point d'une trace simulée et le poids de Hamming.\relax }}{35}{figure.caption.37}
-\contentsline {figure}{\numberline {11.12}{\ignorespaces Coefficient de corrélation en fonction de la valeur de la clé lorsqu'on analyse \textbf {10} traces.\relax }}{35}{figure.caption.38}
-\contentsline {figure}{\numberline {11.13}{\ignorespaces Coefficient de corrélation en fonction de la valeur de la clé lorsqu'on analyse \textbf {100} traces.\relax }}{36}{figure.caption.39}
-\contentsline {figure}{\numberline {11.14}{\ignorespaces Coefficient de corrélation en fonction de la valeur de la clé lorsqu'on analyse \textbf {1000} traces.\relax }}{36}{figure.caption.40}
-\contentsline {figure}{\numberline {11.15}{\ignorespaces Graphe présentant la valeur du coefficient de corrélation en fonction du nombre de traces. Plus le nombre de traces est élevé, plus la valeur de la clé secrète employée pour le chiffrement des données se distingue des autres clés. La vraie clé est 200.\relax }}{37}{figure.caption.41}
-\contentsline {figure}{\numberline {11.16}{\ignorespaces Schéma-bloc permettant de comprendre le principe de fonctionnement du deuxième exercice.\relax }}{38}{figure.caption.42}
-\contentsline {figure}{\numberline {11.17}{\ignorespaces Les contre-mesures de type hiding sont utilisées pour rendre aléatoire ou égale la consommation de puissance du device cryptographique.\relax }}{42}{figure.caption.44}
-\contentsline {figure}{\numberline {11.18}{\ignorespaces On voit qu'au plus le nombre de traces augmente au plus une clé se distingue des 255 autres. Il s'agit de la fausse clé (en rouge). La vraie clé (en vert) ne laisse fuiter aucune information.\relax }}{46}{figure.caption.47}
+\contentsline {figure}{\numberline {11.1}{\ignorespaces Les 2 grandes familles d'attaques physiques possibles. La suite de ce rapport se concentre essentiellement sur les attaques physiques dites passives.\relax }}{24}{figure.caption.20}
+\contentsline {figure}{\numberline {11.2}{\ignorespaces Les différentes façons d'attaquer passivement un device cryptographique en vue de casser l'algorithme de chiffrement qu'il exploite.\relax }}{24}{figure.caption.21}
+\contentsline {figure}{\numberline {11.3}{\ignorespaces Principe de mesure à l'oscilloscope.\relax }}{25}{figure.caption.23}
+\contentsline {figure}{\numberline {11.4}{\ignorespaces Principe général d'une attaque CPA.\relax }}{26}{figure.caption.24}
+\contentsline {figure}{\numberline {11.5}{\ignorespaces Table de vérité pour la fonction NON (inverseur CMOS).\relax }}{27}{figure.caption.26}
+\contentsline {figure}{\numberline {11.6}{\ignorespaces Schéma de l'inverseur CMOS.\relax }}{27}{figure.caption.27}
+\contentsline {figure}{\numberline {11.7}{\ignorespaces Type de puissance consommée par une cellule CMOS en fonction des 4 transitions d'état de sa sortie.\relax }}{29}{figure.caption.29}
+\contentsline {figure}{\numberline {11.8}{\ignorespaces Schéma-bloc permettant de comprendre la simulation d'un point d'une trace.\relax }}{34}{figure.caption.35}
+\contentsline {figure}{\numberline {11.9}{\ignorespaces Schéma-bloc permettant de comprendre la seconde phase de l'exercice 1.\relax }}{34}{figure.caption.36}
+\contentsline {figure}{\numberline {11.10}{\ignorespaces Schéma-bloc permettant de visualiser la taille des différentes matrices employées pour la simulation.\relax }}{35}{figure.caption.37}
+\contentsline {figure}{\numberline {11.11}{\ignorespaces Calcul du coefficient de corrélation entre un point d'une trace simulée et le poids de Hamming.\relax }}{36}{figure.caption.38}
+\contentsline {figure}{\numberline {11.12}{\ignorespaces Coefficient de corrélation en fonction de la valeur de la clé lorsqu'on analyse \textbf {10} traces.\relax }}{36}{figure.caption.39}
+\contentsline {figure}{\numberline {11.13}{\ignorespaces Coefficient de corrélation en fonction de la valeur de la clé lorsqu'on analyse \textbf {100} traces.\relax }}{37}{figure.caption.40}
+\contentsline {figure}{\numberline {11.14}{\ignorespaces Coefficient de corrélation en fonction de la valeur de la clé lorsqu'on analyse \textbf {1000} traces.\relax }}{37}{figure.caption.41}
+\contentsline {figure}{\numberline {11.15}{\ignorespaces Graphe présentant la valeur du coefficient de corrélation en fonction du nombre de traces. Plus le nombre de traces est élevé, plus la valeur de la clé secrète employée pour le chiffrement des données se distingue des autres clés. La vraie clé est 200.\relax }}{38}{figure.caption.42}
+\contentsline {figure}{\numberline {11.16}{\ignorespaces Schéma-bloc permettant de comprendre le principe de fonctionnement du deuxième exercice.\relax }}{39}{figure.caption.43}
+\contentsline {figure}{\numberline {11.17}{\ignorespaces Les contre-mesures de type hiding sont utilisées pour rendre aléatoire ou égale la consommation de puissance du device cryptographique.\relax }}{43}{figure.caption.45}
+\contentsline {figure}{\numberline {11.18}{\ignorespaces On voit qu'au plus le nombre de traces augmente au plus une clé se distingue des 255 autres. Il s'agit de la fausse clé (en rouge). La vraie clé (en vert) ne laisse fuiter aucune information.\relax }}{47}{figure.caption.48}

@@ -267,85 +267,119 @@ La cryptographie est la science qui utilise les mathématiques en vue de chiffre
 La cryptanalyse est la science qui analyse les procédés mathématiques mis en place par la cryptographie en vue de retrouver de l'information secrète. 
 \end{definition}
 
-\hspace{-0.5cm}Quatre notions triviales en cryptologie, qui seront reprises de nombreuses fois au travers de ce travail, doivent également être définies : 
+\hspace{-0.5cm}Six termes courant en cryptologie doivent également être définis : 
 \begin{description}
 \item[Texte clair :] Il s'agit de données brutes, considérées comme confidentielles, compréhensibles sans intervention spécifique.
 \item[Texte chiffré :] Il s'agit de données modifiées, considérées comme confidentielles et devant le rester. Ces données sont incompréhensibles, inintelligibles pour quiconque qui tenterait de les comprendre. 
 \item[Chiffrement (cryptage) :] Procédé utilisé pour dissimuler le texte clair. Le chiffrement transforme donc le texte clair en texte chiffré.
 \item[Déchiffrement (décryptage) :] Procédé inverse au chiffrement. Le déchiffrement transforme donc le texte chiffré en texte clair, c'est-à-dire en texte d'origine.
+\item[Algorithme de chiffrement :] Fonctions mathématiques utilisées lors du processus de chiffrement. Les fonctions mathématiques inverses sont également définies pour le processus de déchiffrement.
+\item[Clé de chiffrement :] Paramètre associé à l'algorithme de chiffrement pour le cryptage des textes clairs ou pour le décryptage des textes chiffrés.
 \end{description}
 
-\hspace{-0.5cm}La figure \ref{} illustre ces quatre notions fondamentales en cryptographie.
-
 \newpage
-\hspace{-0.5cm}Revenons sur la notion de cryptographie. La cryptographie doit remplir trois conditions majeures :
+\hspace{-0.5cm}La figure \ref{fig:fondamentaux_crypto} illustre cinq des six termes fondamentaux énoncés.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{image/fondamentaux_crypto}
+    \caption{Concepts de chiffrement et de déchiffrement.}
+    \label{fig:fondamentaux_crypto}
+\end{figure}
+
+
+\hspace{-0.5cm}Revenons sur la notion de cryptographie. La cryptographie doit remplir trois conditions majeures qui sont :
 \begin{itemize}
-\item Confidentialité : La confidentialité spécifie que seules les personnes autorisées à accéder à une certaine information ont la possibilité de l'atteindre.
-\item Intégrité : L'intégrité spécifie que l'information, lors de son traitement ou de sa transmission, ne subit aucun modification volontaire ou accidentelle. Autrement dit, il s'agit d'une garantie que l'information conserve son état d'origine.
-\item Disponibilité : La disponibilité spécifie que l'information est en tout temps disponible pour une personne autorisée à y accéder et en demandant l'accès. \\
+\item \textbf{Confidentialité} : La confidentialité spécifie que seules les personnes autorisées à accéder à une certaine information ont la possibilité de l'atteindre.
+\item \textbf{Intégrité} : L'intégrité spécifie que l'information, lors de son traitement ou de sa transmission, ne subit aucun modification volontaire ou accidentelle. Autrement dit, il s'agit d'une garantie que l'information conserve son état d'origine.
+\item \textbf{Disponibilité} : La disponibilité spécifie que l'information est en tout temps disponible pour une personne autorisée à y accéder et en demandant l'accès. \\
 \end{itemize}
 
 Ainsi, la cryptographie a pour objectif de chiffrer des informations tout en assurant la confidentialité, l'intégrité et la disponibilité de ces informations. La cryptographie se divise en deux catégories distinctes : la cryptographie symétrique et la cryptographie asymétrique. 
 
-\subsection{Chiffrement symmétrique}
-\label{subsec:Chiffrement symmétrique}
+\subsection{Chiffrement symétrique}
+\label{subsec:Chiffrement_symétrique}
 
-\textbf{\textit{Chiffrement symétrique}} : Le chiffrement est dit symétrique lorsque le procédé de chiffrement (algorithme) utilise une seule clé, appelée \textit{clé secrète}. Par convention, ce type de chiffrement permet à la fois de chiffrer et de déchiffrer des messages à partir d'une seule et unique clé. Le désavantage de ce type de chiffrement est que si une personne parvient à subtiliser la clé, elle sera en mesure de déchiffrer tout message qu'elle intercepte.  \\
-\textit{Exemple} : L'algorithme AES (\textit{Advanced Encryption Standard}). Une explication plus détaillée de cet algorithme est reprise à la section \ref{sec:AES}.
+\theoremstyle{definition}
+\begin{definition}{\textbf{Chiffrement symétrique :}}
+Le chiffrement est dit symétrique lorsque la clé utilisée pour le chiffrement et le déchiffrement des données est la même. La clé est alors appelée \textit{clé secrète}. 
+\end{definition}
 
-La figure \ref{fig:symétrique} ci-dessous présente le principe de fonctionnement du chiffrement symétrique.
+\hspace{-0.5cm}Par convention, ce type de chiffrement permet à la fois de chiffrer et de déchiffrer des messages à partir d'une seule et unique clé. Le désavantage de ce type de chiffrement est que si une personne parvient à subtiliser la clé, elle sera en mesure de déchiffrer tout message qu'elle intercepte.  \\
+\textit{Exemple} : L'algorithme AES. Une explication plus détaillée de cet algorithme est reprise à la section \ref{subsec:AES}.
+
+
+\hspace{-0.5cm}La figure \ref{fig:symétrique} ci-dessous présente le principe de fonctionnement du chiffrement symétrique.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.65\textwidth]{image/symetrique}
+    \includegraphics[width=0.7\textwidth]{image/symetrique}
     \caption{Chiffrement symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les messages.}
     \label{fig:symétrique}
 \end{figure}
 
 
-\subsection{Chiffrement asymmétrique}
-\label{subsec:Chiffrement asymmétrique}
+\subsection{Chiffrement asymétrique}
+\label{subsec:Chiffrement_asymétrique}
 
-\textbf{\textit{Chiffrement asymétrique}} : Le chiffrement est dit asymétrique lorsque le procédé de chiffrement (algorithme) utilise 2 clés : une \textit{clé publique} et une \textit{clé privée}. Par convention, la clé publique est la clé de chiffrement du message clair, elle peut être communiquée sans aucune restriction tandis que la clé privée est la clé de déchiffrement du message chiffré, elle ne doit être communiquée sous aucun prétexte. Le fonctionnement est le suivant : Avec une clé publique, l'expéditeur code, dans un algorithme de chiffrement donné, un message. Ce message, une fois transmis, ne pourra être déchiffré que par le destinataire, détenteur de la clé privée. \\
-\textit{Exemple} : L'algorithme RSA (\textit{Rivest Shamir Adleman}). \\
+\theoremstyle{definition}
+\begin{definition}{\textbf{Chiffrement asymétrique :}}
+Le chiffrement est dit asymétrique lorsqu'il existe une clé publique utilisée pour le chiffrement des textes clairs et une clé privée utilisée pour le déchiffrement des textes chiffrés. 
+\end{definition}
 
-La figure \ref{fig:asymétrique} ci-dessous présente le principe de fonctionnement du chiffrement symétrique.
+\hspace{-0.5cm}Par convention, la clé publique est la clé de chiffrement du message clair, elle peut être communiquée sans aucune restriction tandis que la clé privée est la clé de déchiffrement du message chiffré, elle ne doit être communiquée sous aucun prétexte. Le fonctionnement est le suivant : Avec une clé publique, l'expéditeur envoie un message chiffré selon un algorithme de chiffrement préalablement défini. Ce message, une fois transmis, ne pourra être déchiffré que par le destinataire, détenteur de la clé privée. \\
+\textit{Exemple} : L'algorithme RSA (\textit{Rivest Shamir Adleman}).
+
+\hspace{-0.5cm}La figure \ref{fig:asymétrique} ci-dessous présente le principe de fonctionnement du chiffrement asymétrique.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.38\textwidth]{image/cle_asymetrique}
-    \includegraphics[width=0.7\textwidth]{image/asymetrique}
+    \includegraphics[width=0.5\textwidth]{image/cle_asymetrique}
+    \includegraphics[width=0.8\textwidth]{image/asymetrique}
     \caption{Chiffrement asymétrique : Un clé publique est utilisée pour chiffrer le message et une clé privée est utilisée pour le déchiffrer.}
     \label{fig:asymétrique}
 \end{figure}
 
+\newpage
 \section{Algorithme de chiffrement}
 \label{sec:Introduction}
 
 \subsection{Principe}
 \label{sec:Introduction}
 
-Les systèmes de sécurité modernes utilisent des \textbf{algorithmes de chiffrement} pour assurer la confidentialité et l'intégrité de données. Ces algorithmes de chiffrement sont en réalité des fonctions mathématiques qui prennent typiquement : 
-\begin{itemize}
-\item  2 paramètres en entrée : un \textbf{\textit{message clair}} (nommé \textit{plaintext} en anglais) et une \textbf{\textit{clé de chiffrement}} (nommée \textit{key} en anglais).
-\item 1 paramètre en sortie : le \textbf{\textit{message chiffré}} (nommé \textit{ciphertext} en anglais). \\
-\end{itemize}
-Le procédé transformant les données claires en entrée en données chiffrées en sortie est appelé le \textbf{\textit{chiffrement}}.
-Ce procédé est réalisé grâce à un \textbf{\textit{algorithme de chiffrement}} utilisant une clé de chiffrement et diverses opérations mathématiques. Il est important de préciser que tous les détails décrivant le fonctionnement d'un algorithme sont disponibles publiquement, seule la clé de chiffrement doit rester secrète. En effet, la sécurité offerte par un algorithme de chiffrement ne doit pas dépendre du secret de son implémentation. Un bon algorithme est un algorithme dont on ne parviendra pas à déchiffrer les données chiffrées. Lorsque la clé d'un algorithme est trouvée, le déchiffrement des données confidentielles peut être réalisé. On dit que l'algorithme de chiffrement est \textbf{\textit{cassé}}.
+\theoremstyle{definition}
+\begin{definition}{\textbf{Algorithme de chiffrement :}}
+Un algorithme de chiffrement est un ensemble de fonctions mathématiques utilisé lors du processus de chiffrement et de déchiffrement de données sensibles. Une clé publique (ou privée) est associée à l'algorithme de chiffrement selon qu'il s'agisse d'un chiffrement symétrique (ou asymétrique).
+\end{definition}
 
-\hspace{-0.5 cm}La figure \ref{fig:chiffrement} ci-dessous présente le principe de fonctionnement d'un algorithme de chiffrement.
+\hspace{-0.5cm}Les systèmes de sécurité modernes utilisent des algorithmes de chiffrement pour assurer la confidentialité et l'intégrité de données. Ces algorithmes prennent typiquement : 
+\begin{itemize}
+\item  2 paramètres en entrée : un \textbf{\textit{message clair}} et une \textbf{\textit{clé de chiffrement}}.
+\item 1 paramètre en sortie : le \textbf{\textit{message chiffré}}. \\
+\end{itemize}
+Comme décrit précédemment, le procédé transformant les données claires en entrée en données chiffrées en sortie est appelé chiffrement. Ce procédé est réalisé grâce à un algorithme de chiffrement manipulant une clé de chiffrement et diverses opérations mathématiques. Avec des clés différentes, le résultat du cryptage variera également. La figure \ref{fig:chiffrement} ci-dessous présente le principe de fonctionnement d'un algorithme de chiffrement.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{image/chiffrement}
-    \caption{L'algorithme de chiffrement, caractérisé par diverses opérations mathématiques, utilise une clé de chiffrement en entrée pour chiffrer un message clair. Cela produit un message chiffré, non compréhensible pour une personne ne connaissant pas la clé de chiffrement.}
+    \includegraphics[width=0.8\textwidth]{image/chiffrement}
+    \caption{Concept d'un algorithme de chiffrement.}
     \label{fig:chiffrement}
 \end{figure}
+
+Il est important de préciser que tous les détails décrivant le fonctionnement d'un algorithme sont disponibles publiquement, seule la clé de chiffrement doit rester secrète. En effet, la sécurité offerte par un algorithme de chiffrement ne doit pas dépendre du secret de son implémentation. Un bon algorithme est un algorithme dont on ne parviendra pas à déchiffrer les données chiffrées. Lorsque la clé d'un algorithme est trouvée, le déchiffrement des données confidentielles peut être réalisé. On dit que l'algorithme de chiffrement est \textbf{\textit{cassé}}.
+
 
 \subsection{\textit{Device} cryptographique}
 \label{sec:Introduction}
 
-Que ce soit pour un algorithme de chiffrement symétrique ou asymétrique, la clé de chiffrement doit être stockée sur un support physique. Ce support, appelé \textit{device cryptographique}, doit être suffisamment sécurisé que pour contenir la clé de manière protégée. Ainsi, un \textbf{\textit{device cryptographique}} est un device qui implémente des algorithmes de chiffrement et qui stocke des clés de chiffrement (exemple : \textit{FPGA}).
+Que ce soit pour un algorithme de chiffrement symétrique ou asymétrique, la clé de chiffrement tout comme l'algorithme en lui-même doivent être stockés sur un support physique. Ce support, appelé \textit{device cryptographique}, doit être suffisamment sécurisé que pour contenir la clé de manière protégée. Par la suite, les messages clairs seront envoyés au device cryptographique qui se chargera de les chiffrer selon l'algorithme implémenté et la clé utilisée.
+
+\theoremstyle{definition}
+\begin{definition}{\textbf{Device cryptographique :}}
+Un device cryptographique est un device qui implémente des algorithmes de chiffrement et qui stocke des clés de chiffrement (exemple : FPGA).
+\end{definition}
+
+\newpage
 
 \subsection{Algorithme \textit{AES} (\textit{Advanced Encryption Standard})}
 \label{subsec:AES}
