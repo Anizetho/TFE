@@ -250,7 +250,7 @@ Enfin, pour juger de \textbf{l'efficacité de la contre-mesure implémentée}, o
 
 \chapter{Cryptologie}
 
-Ce chapitre introduit au lecteur les fondamentaux en matière de cryptologie. Les différents concepts et définitions abordés ont pour but d'apporter au lecteur les connaissances nécessaires et suffisantes pour la bonne compréhension des chapitres suivants. Ce chapitre est scindé en deux parties. Dans un premier temps, il abordera les définitions importantes en matière de cryptologie et plus spécifiquement en matière de cryptographie. La cryptographie symétrique sera ainsi distinguées de la cryptographie asymétrique. Dans un second temps, ce chapitre détaillera le principe de fonctionnement général d'un algorithme de chiffrement. Une attention, en particulier, sera consacrée à la compréhension de l'algorithme AES.
+Ce chapitre introduit au lecteur les fondamentaux en matière de cryptologie. Les différents concepts et définitions abordés ont pour but d'apporter au lecteur les connaissances nécessaires et suffisantes pour la bonne compréhension des chapitres suivants. Ce chapitre est scindé en deux parties. Dans un premier temps, il abordera les définitions importantes en matière de cryptologie et plus spécifiquement en matière de cryptographie. La cryptographie symétrique sera ainsi distinguée de la cryptographie asymétrique. Dans un second temps, ce chapitre détaillera le principe de fonctionnement général d'un algorithme de chiffrement. Une attention particulière sera finalement consacrée à la compréhension de l'algorithme AES.
 
 \section{Concepts et définitions}
 \label{sec:Concepts}
@@ -388,7 +388,7 @@ En 1997, le NIST (\textit{National Institute of Standards and Technology}) déci
 
 L'algorithme de Rijndael, désormais plus connu sous le nom d'algorithme AES, est un \textbf{algorithme de chiffrement symétrique par blocs}. Par \textit{blocs} signifie que les données sont traitées par blocs de 128 bits. La clé secrète peut posséder différentes tailles : 128 bits (AES-128), 192 bits (AES-192) ou encore 256 bits (AES-256). À noter qu'en théorie, plus la taille de la clé est élevée, moins il y a de chance de casser l'algorithme. Cela est dû au fait que, plus la taille de la clé est grande, plus il existe un nombre important de possibilités de clé à tester avant de retrouver celle qui correspond à la valeur exacte. L'algorithme AES n'a ainsi, à ce jour, jamais été cassé par des méthodes d'attaques classiques. Cependant, comme nous le verrons par la suite avec les attaques par canal auxiliaire (section \ref{sec:att}), le problème peut vite être contourné. Pour ce travail, il m'a été demandé d'attaquer une implémentation de l'algorithme AES-256. Cependant, pour bien comprendre son fonctionnement, la description qui suit est dans un premier temps basée sur l'algorithme AES-128. Dans un second temps, une adaptation sera insérée afin de comprendre le fonctionnement de l'algorithme AES-256.
 
-Avant de détailler le fonctionnement de l'algorithme AES-128, précisons quelques notions fondamentales. L'algorithme AES est caractérisé par une série de tours (\textit{rounds} en anglais) dépendant de la taille de la clé. Pour une clé dont la taille est 128 bits, on dénombre 10 tours. Pour une clé de taille 192 bits, on dénombre 12 tours et pour une clé de taille 256 bits, on dénombre 14 tours. Un \textit{round} est défini par 4 opérations appliquées succinctement sur une matrice de données. Ces 4 opérations sont : \textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}. Elles sont appliquées à divers instants dans l'exécution de l'algorithme AES. Le tableau \ref{tab:AES} présente un récapitulatif des principales caractéristiques des trois variantes de l'algorithme AES. La figure \ref{fig:AES_General} permet de visualiser l'ordre d'exécution chronologique des 4 opérations opérées par l'algorithme.
+Avant de détailler le fonctionnement de l'algorithme AES-128, précisons quelques caractéristiques principales. L'algorithme AES est caractérisé par une série de tours (\textit{rounds} en anglais) dépendant de la taille de la clé. Pour une clé dont la taille est 128 bits, on dénombre 10 tours. Pour une clé de taille 192 bits, on dénombre 12 tours et pour une clé de taille 256 bits, on dénombre 14 tours. Un \textit{round} est défini par 4 opérations appliquées succinctement sur une matrice de données. Ces 4 opérations sont : \textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}. Elles sont appliquées à divers instants dans l'exécution de l'algorithme AES. Le tableau \ref{tab:AES} présente un récapitulatif des principales caractéristiques des trois variantes de l'algorithme AES. La figure \ref{fig:AES_General} permet de visualiser l'ordre d'exécution chronologique des 4 opérations opérées par l'algorithme. L'annexe \ref{ann:AES} reprend quant à elle le code réalisé pour l'exécution de l'algorithme AES-128.
 
 \vspace{0.5cm}
 
@@ -410,15 +410,13 @@ Avant de détailler le fonctionnement de l'algorithme AES-128, précisons quelqu
 \begin{figure}[htbp]
     \hspace{-2.1cm}
     \includegraphics[scale=0.48]{image/AES_General}
-    \caption{Les 3 matrices utilisées par l'algorithme AES.}
+    \caption{Fonctionnement général de l'algorithme AES.}
     \label{fig:AES_General}
 \end{figure}
 
 \newpage
 
-L'AES-128 a donc pour rôle de chiffrer des blocs de données de 128 bits avec une clé de 128 bits. Les données et la clé sont représentées par une matrice où chaque élément de la matrice correspond à un byte (un octet, i.e 8 bits). Étant donné que 128 bits correspondent à 16 bytes, la matrice de données, au même titre que la matrice de clé, correspond à une matrice de 4 lignes et 4 colonnes (formant ainsi les 4x4 soit 16 bytes). Une matrice particulière (de taille 4x4 également) appelée STATE contient l'ensemble des résultats intermédiaires résultant des diverses opérations que subissent les données (depuis leur état initial). 
-
-La figure \ref{fig:matrix} présente les 3 matrices qui viennent d'être citées : la matrice de donnée (message clair initial de 128 bits), la matrice STATE (qui va contenir les résultats intermédiaires des données suite aux différentes opérations) et la matrice clé (clé de 128 bits).
+L'AES-128 a donc pour rôle de chiffrer des blocs de données de 128 bits avec une clé de 128 bits. Les données et la clé sont représentées par une matrice où chaque élément de la matrice correspond à un byte (un octet, i.e 8 bits). Étant donné que 128 bits correspondent à 16 bytes, la matrice de données, au même titre que la matrice de clé, correspond à une matrice de 4 lignes et 4 colonnes (formant ainsi les 4x4 soit 16 bytes). Une matrice particulière (de taille 4x4 également) appelée STATE contient l'ensemble des résultats intermédiaires résultant des diverses opérations que subissent les données (depuis leur état initial). La figure \ref{fig:matrix} présente les 3 matrices qui viennent d'être citées : la matrice de donnée (message clair initial de 128 bits), la matrice STATE (qui va contenir les résultats intermédiaires des données suite aux différentes opérations) et la matrice clé (clé de 128 bits).
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.6]{image/matrix}
@@ -426,11 +424,12 @@ La figure \ref{fig:matrix} présente les 3 matrices qui viennent d'être citées
     \label{fig:matrix}
 \end{figure}
 
-\textit{Remarque} : En pratique, la matrice de données est directement confondue avec la matrice STATE. Autrement dit, les premiers éléments à être placés dans la matrice STATE représentent les bytes de données. Ainsi, on n'utilise que deux matrices durant le fonctionnement de l'algorithme AES : la matrice STATE et la matrice clé. L'annexe \ref{ann:AES} reprend quant à elle le code réalisé pour l'exécution de l'algorithme AES-128.
+\hspace{-0.5cm}\textit{Remarque} : En pratique, la matrice de données est directement confondue avec la matrice STATE. Autrement dit, les premiers éléments à être placés dans la matrice STATE représentent les bytes de données. Ainsi, on n'utilise que deux matrices durant le fonctionnement de l'algorithme AES : la matrice STATE et la matrice clé.
 
-\underline{\textbf{Fonctionnement :}} 
+\vspace{0.5cm}
+\underline{\textbf{Fonctionnement AES-128 :}} 
 
-Initialement, deux matrices vont être utilisées : la matrice STATE, contenant les données claires, et la matrice clé, contenant la clé secrète initiale. La première opération à être appliquée sur ces deux matrices est l'opération \textit{AddRoundKey}. Cette opération réalise un XOR (symbole \oplus) entre chaque élément de la matrice STATE et chaque élément respectif de la matrice clé. Le résultat est ré-écrit dans la matrice STATE. La figure \ref{fig:XOR} ci-dessous présente le principe de fonctionnement de cette première opération :
+\hspace{-0.5cm}Initialement, deux matrices vont être utilisées : la matrice STATE, contenant les données claires, et la matrice clé, contenant la clé secrète initiale. Comme on peut le voir sur la figure \ref{fig:AES_General}, la première opération à être appliquée sur ces deux matrices est l'opération \textit{AddRoundKey}. Cette opération réalise un XOR (symbole \oplus) entre chaque élément de la matrice STATE et chaque élément respectif de la matrice clé. Le résultat est ré-écrit dans la matrice STATE. La figure \ref{fig:XOR} ci-dessous présente le principe de fonctionnement de cette première opération :
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.52]{image/XOR}
@@ -438,56 +437,62 @@ Initialement, deux matrices vont être utilisées : la matrice STATE, contenant 
     \label{fig:XOR}
 \end{figure}
 
-\hspace{-0.5 cm}Ensuite, une série de quatre opérations se répétant neuf fois (9 tours cycliques) est exécutée. Ces quatres opérations sont appliquées dans l'ordre suivant : \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns}, \textit{AddRoundKey}. \\
-Enfin, une fois les neufs tours exécutés, le neuvième et dernier \textit{round} se lance exécutant trois opérations : \textit{SubBytes}, \textit{ShiftRows} et \textit{AddRoundKey}. À la fin de ces trois dernières opérations, une matrice de taille 4x4 (la matrice STATE) présente le message chiffré de 128 bits.
+\hspace{-0.5 cm}Ensuite, toujours selon la figure \ref{fig:AES_General}, une série de quatre opérations se répétant neuf fois (car AES-128) est exécutée. Ces quatres opérations sont appliquées dans l'ordre suivant : \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns}, \textit{AddRoundKey}. \\
+Enfin, une fois les neufs rounds exécutés, trois opérations terminent le chiffrement : \textit{SubBytes}, \textit{ShiftRows} et \textit{AddRoundKey}. À la fin de ces trois dernières opérations, une matrice de taille 4x4 (la matrice STATE) présente le message chiffré de 128 bits.
 `
 
 \newpage
 \underline{\textbf{Description des 4 opérations :}} \\
 \begin{description}
-\item[1. SubBytes] : 
-La figure \ref{fig:SubBytes} ci-dessous présente le principe de fonctionnement de l'opération \textit{SubBytes}. Le principe de fonctionnement présenté dans ce cas-ci est simple : il repose sur une table de substitution, appelée Sbox et présentée en annexe \ref{ann:Sbox}. La matrice STATE avant l'exécution de l'opération contient 16 bytes. Chacun de ses 16 bytes (notés $S_{i,j}$) va fournir une nouvelle valeur de byte (noté $S'_{i,j}$) en fonction de la Sbox. Un exemple est donné afin de comprendre le principe : Si le byte $S_{1,2}$ vaut $53$ (hexa) alors, selon la Sbox, la valeur du byte résultant $S'_{1,2}$ vaut $ed$ (hexa).
+\item[1. SubBytes]: La figure \ref{fig:SubBytes} ci-dessous présente le principe de fonctionnement de l'opération \textit{SubBytes}. Le principe de fonctionnement présenté dans ce cas-ci est simple : il repose sur une table de substitution, appelée Sbox et présentée en annexe \ref{ann:Sbox}. La matrice STATE avant l'exécution de l'opération contient 16 bytes. Chacun de ses 16 bytes (notés $S_{i,j}$) va fournir une nouvelle valeur de byte (noté $S'_{i,j}$) en fonction de la table de substitution. Un exemple est donné afin de comprendre le principe : Si le byte $S_{1,2}$ vaut $53$ (hexa) alors, selon la table Sbox, la valeur du byte résultant $S'_{1,2}$ vaut $ed$ (hexa).
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.5]{image/SubBytes}
+    \includegraphics[scale=0.58]{image/SubBytes}
     \caption{Opération \textit{SubBytes} exécutée sur la matrice STATE.}
     \label{fig:SubBytes}
 \end{figure}
+\vspace{1cm}
 
-\item[2. ShiftRows] : Comme son nom l'indique, cette opération concerne les lignes de la matrice STATE. Cette opération réalise une permutation cyclique des octets sur les lignes de la matrice STATE. Plus précisément, \textbf{pour la \textit{i-ième} ligne, on décalera chaque élément de la matrice STATE de \textit{i} positions vers la gauche}, en considérant que la première ligne a pour indice 0.
+\item[2. ShiftRows]: Comme son nom l'indique, cette opération concerne les lignes de la matrice STATE. Cette opération réalise une permutation cyclique des octets sur les lignes de la matrice STATE. Plus précisément, \textbf{pour la \textit{i-ième} ligne, on décalera chaque élément de la matrice STATE de \textit{i} positions vers la gauche}, en considérant que la première ligne a pour indice 0.
 La figure \ref{fig:ligne} ci-dessous présente le principe de fonctionnement de l'opération \textit{ShiftRows} :
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.7]{image/ligne}
+    \includegraphics[scale=0.8]{image/ligne}
     \caption{Opération \textit{ShiftRows} exécutée sur la matrice STATE.}
     \label{fig:ligne}
 \end{figure}
 
-\item[3. MixColumns] : Comme son nom nom l'indique, cette opération concerne les colonnes de la matrice STATE. \textbf{Cette opération réalise un produit matriciel entre une matrice fixée (taille 4x4) définie ci-dessous} (figure \ref{fig:colonnebis}) \textbf{et un vecteur colonne (taille 4x1) de la matrice STATE}. Cela produit un nouveau vecteur colonne (taille 4x1) permettant de définir la nouvelle matrice STATE.
+\newpage
+\item[3. MixColumns] : Comme son nom nom l'indique, cette opération concerne les colonnes de la matrice STATE. \textbf{Cette opération réalise un produit matriciel entre une matrice fixée (taille 4x4) définie ci-dessous} (figure \ref{fig:colonnebis}) \textbf{et un vecteur colonne (taille 4x1) de la matrice STATE}. Il en résulte un nouveau vecteur colonne (taille 4x1) permettant de définir la nouvelle matrice STATE.
 La figure \ref{fig:colonne} ci-dessous présente le principe de fonctionnement de l'opération \textit{MixColumns}. Un exemple est ensuite donné à la figure \ref{fig:colonnebis}.
+
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.42]{image/colonne}
+    \includegraphics[scale=0.55]{image/colonne}
     \caption{Opération \textit{MixColumns} exécutée sur la matrice STATE.}
     \label{fig:colonne}
 \end{figure}
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.54]{image/colonnebis}
+    \includegraphics[scale=0.42]{image/colonnebis}
     \caption{Exemple de l'opération \textit{MixColumns} exécutée sur la deuxième colonne (i.e colonne 1) de la matrice STATE.}
     \label{fig:colonnebis}
 \end{figure}
+\vspace{1cm}
 
+\item[4. AddRoundKey] : Comme précisé précédemment dans le fonctionnement initial, l'opération \textit{AddRoundKey} réalise un XOR entre la matrice STATE et la matrice de clé. Le résultat de ce XOR est placé dans la nouvelle matrice STATE (voir figure \ref{fig:XOR}).\\ 
+\end{description}
 
 \newpage
-\item[4. AddRoundKey] : La gestion des clés se fait au travers des fonctions \textit{AddRoundKey} et \textit{KeySchedule}. Comme précisé précédemment dans le fonctionnement initial, l'opération \textit{AddRoundKey} réalise un XOR entre la matrice STATE et la matrice de clé. Le résultat de ce XOR est placé dans la nouvelle matrice STATE.\\ 
-On sait que la matrice STATE est modifiée après chaque opération exécutée. Ce qu'on ne sait pas encore, c'est que la matrice clé est également modifiée à chaque round afin d'éviter d'utiliser toujours la même valeur de clé. Cela permet ainsi de complexifier le chiffrement des données. L'opération qui modifie la matrice clé initiale en une nouvelle matrice clé est appelée \textbf{\textit{KeySchedule}}. Cette opération génère une nouvelle clé sur base de la clé précédemment employée. Ainsi, pour générer la première nouvelle clé, l'opération \textit{KeySchedule} emploiera la clé initialement donnée. Étant donné que pour l'AES-128, nous avons un total de dix rounds à exécuter, cela signifie que l'opération \textit{KeySchedule} s'exécute dix fois afin de générer dix nouvelles clés de 128 bits. En rajoutant la clé initiale, nous avons alors onze clés de chiffrement différentes permettant d'exécuter les onze opérations \textit{AddRoundKey} présentes dans l'algorithme AES-128. Ainsi, comme présenté à l'annexe \ref{ann:AES}, l'opération \textit{KeySchedule} s'exécute en premier lieu dans le code afin de générer dix nouvelles clés. En comptant la clé initialement donnée, il y a donc onze clés. Chacune de ces onze clés sera utilisée lors de l'appel de la fonction \textit{AddRoundKey}.\\ 
+\underline{\textbf{L'opération \textit{KeySchedule} :}}
 
-La figure \ref{fig:XOR} reste inchangée pour décrire le principe de fonctionnement de l'opération \textit{AddRoundKey}. Nous rappelons toutefois que la matrice clé est bien modifiée lors de chaque exécution de cette opération. \\
-L'annexe \ref{ann:KeySchedule} permet quant à elle de comprendre le principe de fonctionnement de l'opération \textit{KeySchedule}, utilisée afin de générer les nouvelles clés. Plus précisément, cette annexe présente un exemple pour générer la première nouvelle clé. \\ \\
-Le fonctionnement est le suivant : l'opération \textit{KeySchedule} s'exécute colonne par colonne (sur la matrice clé de taille 4x4). On va d'abord générer la première colonne de la nouvelle clé, ensuite on générera les colonnes 2, 3 et 4. C'est la première colonne qui est la plus compliquée à générer. Les 3 autres colonnes réalisent simplement un XOR pour générer la nouvelle colonne.
-Ainsi, pour obtenir la 1ère colonne de la nouvelle clé (soit les quatre 1ers bytes), on va prendre 3 vecteurs colonnes (taille 4x1), à savoir : 
+\vspace{0.25cm}Il persiste une opération qui n'a pas encore été expliquée : l'opération \textit{KeySchedule}. Cette opération s'exécute uniquement sur la matrice clé. Par conséquent, la gestion des clés se fait au travers des deux fonctions qui sont les fonctions \textit{AddRoundKey} et \textit{KeySchedule}. Nous connaissons le principe de fonctionnement de l'opération \textit{AddRoundKey}, reste à comprendre l'utilité de l'opération \textit{KeySchedule}.
+
+\hspace{-0.5cm}Jusqu'à présent, nous avons vu que la matrice STATE était modifiée après chaque opération exécutée. Ce qu'on ne sait pas encore, c'est que la matrice clé est également modifiée à chaque round afin d'éviter d'utiliser toujours la même valeur de clé. Cela permet ainsi de complexifier le chiffrement des données. On l'aura deviné, l'opération qui modifie la matrice clé initiale en une nouvelle matrice clé est appelée \textbf{\textit{KeySchedule}}. Cette opération génère une nouvelle clé sur base de la clé précédemment employée. Ainsi, pour générer la première nouvelle clé, l'opération \textit{KeySchedule} emploiera la clé initialement donnée. Étant donné que pour l'AES-128, nous avons un total de dix rounds à exécuter, cela signifie que l'opération \textit{KeySchedule} s'exécute dix fois afin de générer dix nouvelles clés de 128 bits. En rajoutant la clé initiale, nous avons alors onze clés de chiffrement différentes permettant d'exécuter les onze opérations \textit{AddRoundKey} présentes dans l'algorithme AES-128. Ainsi, comme présenté à l'annexe \ref{ann:AES}, l'opération \textit{KeySchedule} s'exécute en premier lieu dans le code afin de générer dix nouvelles clés. En comptant la clé initialement donnée, il y a donc onze clés. Chacune de ces onze clés sera utilisée lors de l'appel de la fonction \textit{AddRoundKey}. 
+
+\hspace{-0.5cm}L'annexe \ref{ann:KeySchedule} permet de comprendre le principe de fonctionnement de l'opération \textit{KeySchedule}, utilisée afin de générer les nouvelles clés. Plus précisément, cette annexe présente un exemple pour générer la première nouvelle clé. Le fonctionnement est le suivant : l'opération \textit{KeySchedule} s'exécute colonne par colonne (sur la matrice clé de taille 4x4). On va d'abord générer la première colonne de la nouvelle clé, ensuite on générera les colonnes 2, 3 et 4. C'est la première colonne qui est la plus compliquée à générer. Les 3 autres colonnes réalisent simplement un XOR pour générer la nouvelle colonne.
+Ainsi, pour obtenir la 1ère colonne de la nouvelle clé (soit les quatre premiers bytes), on va prendre trois vecteurs colonnes (taille 4x1), à savoir : 
 \begin{enumerate}
 \item Prendre la 4ème colonne de la clé initiale.
 \begin{enumerate}
@@ -497,9 +502,17 @@ Ainsi, pour obtenir la 1ère colonne de la nouvelle clé (soit les quatre 1ers b
 \item Prendre la 1ère colonne de la clé initiale.
 \item Prendre la 1ère colonne de la matrice RCON.
 \end{enumerate}
-Une fois ces trois vecteurs colonnes obtenus, on réalise un XOR entre eux. Le résultat de ce XOR représente la 1ère colonne de la nouvelle matrice clé. Pour les colonnes 2, 3 et 4, le principe est le suivant : la colonne \textit{i} de la nouvelle clé est obtenue en réalisant un XOR entre la colonne \textit{i} de l'ancienne clé et la colonne \textit{i-1} de la nouvelle clé (avec $i$ {\epsilon} \{2 ; 4\}). L'annexe \ref{ann:KeySchedule} donne un exemple concret et didactique de l'opération \textit{KeySchedule}.
+Une fois ces trois vecteurs colonnes obtenus, on réalise un XOR entre eux. Le résultat de ce XOR représente la 1ère colonne de la nouvelle matrice clé. Pour les colonnes 2, 3 et 4, le principe est le suivant : la colonne \textit{i} de la nouvelle clé est obtenue en réalisant un XOR entre la colonne \textit{i} de l'ancienne clé et la colonne \textit{i-1} de la nouvelle clé (avec $i$ {\epsilon} \{2 ; 4\}). L'annexe \ref{ann:KeySchedule} donne un exemple concret et didactique de l'opération \textit{KeySchedule}. \\
 
-\end{description}
+\underline{\textbf{Adaptation pour l'AES-256 :}} 
+
+\vspace{0.25cm}En se basant sur le tableau \ref{tab:AES} et la figure \ref{fig:AES_General}, nous constatons que les deux différences majeures entre l'algorithme AES-128 et l'algorithme AES-256 sont :
+\begin{itemize}
+\item La taille de la clé : on passe de 128 bits à 256 bits.
+\item Le nombre de rounds : on passe de 10 rounds à 14 rounds. \\
+\end{itemize}
+Ainsi, l'opération \textit{KeySchedule} s'exécute 14 fois. Cependant, cette opération ne génère pas 14 nouvelles clés de 256 bits mais seulement 7 nouvelles clés de 256 bits. La raison est la suivante : les 256 bits de la clé sont scindés en deux parties égales, c'est-à-dire en 128 bits, afin que les 4 autres opérations décrites précédemment (\textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns} et \textit{AddRoundKey}) puissent s'exécuter sans problème. En effet, la matrice STATE ayant toujours une taille de 128 bits, la matrice clé doit obligatoirement avoir une taille équivalente (128 bits) afin que les quatre opérations puissent être exécutées comme décrit pour l'algorithme AES-128. Le premier round utilisera donc les seize premiers bytes de la clé initiale ; La second round utilisera les seize derniers bytes de la clé initiale (les trente-deux bytes de la clé initiale ont ainsi été utilisés) ; Le troisième round utilisera les seize premiers bytes de la seconde clé, générée par l'opération \textit{KeySchedule} ; et ainsi de suite jusqu'au quatorzième et dernier round.
+
 
 
 \newpage
@@ -507,242 +520,25 @@ Une fois ces trois vecteurs colonnes obtenus, on réalise un XOR entre eux. Le r
 %%%%%%%%%%%%% Chapitre 3 %%%%%%%%%%%%%
 
 \chapter{Consommation de puissance}
+
+Ce chapitre introduit au lecteur une technologie bien répandue dans les systèmes informatiques modernes : la technologie CMOS. C'est en étudiant le fonctionnement de cette technologie que les attaques par analyse de la consommation de puissance sont rendues praticables. Le principe de fonctionnement de cette technologie constitue donc une étape nécessaire dans l'apprentissage du lecteur. En effet, ce dernier sera ainsi en mesure de comprendre pourquoi une analyse de la consommation de puissance d'un circuit en technologie CMOS permettra plus tard (chapitre \ref{chap:attaques}) de retrouver la clé d'un algorithme de chiffrement. De cette façon, ce chapitre se scinde en deux parties. Dans un premier temps, l'objectifs est de comprendre le fonctionnement de la technologie CMOS ainsi que ses répercussions sur les différentes puissances intervenant. Dans un second temps, l'objectif est d'assimiler le concept de \textit{modèle de puissance}. Pour ce faire, deux modèles seront judicieusement développés.
 
 \section{Technologie CMOS}
-\label{sec:Introduction}
-
-\subsection{Consommation de puissance des circuits en technologie CMOS}
-\label{sec:Introduction}
-
-\section{Modèles de puissance}
-\label{sec:Introduction}
-
-\subsection{Modèle de poids de Hamming}
-\label{sec:Introduction}
-
-\subsection{Modèle de distance de Hamming}
-\label{sec:Introduction}
-
-\subsection{Autres modèles}
-\label{sec:Introduction}
-
-\newpage
-
-%%%%%%%%%%%%% Chapitre 4 %%%%%%%%%%%%%
-
-\chapter{Attaques par canaux auxiliaires}
-
-\section{Analyse simple de la consommation}
-\label{sec:Introduction}
-
-\section{Analyse différentielle de la consommation}
-\label{sec:Introduction}
-
-\section{Analyse de la consommation par corrélation}
-\label{sec:Introduction}
-
-\newpage
-
-%%%%%%%%%%%%% Chapitre 5 %%%%%%%%%%%%%
-
-\chapter{Contre-mesures}
-
-\section{Contre-mesures Hiding}
-\label{sec:Introduction}
-
-\section{Contre-mesures Masking}
-\label{sec:Introduction}
-
-\section{Contre-mesures Faking}
-\label{sec:Introduction}
-
-\newpage
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                                            Partie 2 - Pratique                     								 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\part{Acquis pratiques}
-
-%%%%%%%%%%%%% Chapitre 6 %%%%%%%%%%%%%
-
-\chapter{Configuration de l'attaque}
-
-\section{Méthodologie}
-\label{sec:Introduction}
-
-\section{Configuration du FPGA}
-\label{sec:Introduction}
-
-\section{Configuration de l'oscilloscope}
-\label{sec:Introduction}
-
-\section{Configuration de l'attaque CPA}
-\label{sec:Introduction}
-
-\newpage
-
-%%%%%%%%%%%%% Chapitre 7 %%%%%%%%%%%%%
-
-\chapter{Mise en application d'une attaque CPA (\textit{Correlation Power Analysis})}
-
-\section{Résultats de simulations}
-\label{sec:Introduction}
-
-\section{Résultats expérimentaux}
-\label{sec:Introduction}
-
-\section{Conclusion}
-\label{sec:Introduction}
-
-\newpage
-
-%%%%%%%%%%%%% Chapitre 8 %%%%%%%%%%%%%
-
-\chapter{Implémentation de la contre-mesure de type \textit{faking}}
-
-\section{Développement de la contre-mesure}
-\label{sec:Introduction}
-
-\subsection{Résultats expérimentaux}
-\label{sec:Introduction}
-
-\section{Conclusion}
-\label{sec:Introduction}
-
-\newpage
-
-%%%%%%%%%%%%% Chapitre 9 %%%%%%%%%%%%%
-
-\chapter{Évaluation des performances de la contre-mesure}
-
-\section{Évaluation par simulations}
-\label{sec:Introduction}
-
-\subsection{Évaluation par critères}
-\label{sec:Introduction}
-
-\newpage
-
-%%%%%%%%%%%%% Chapitre 10 %%%%%%%%%%%%%
-
-\chapter{Conclusion}
-
-\newpage
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%% Chapitre 3 %%%%%%%%%%%%%
-
-\chapter{Consommation de puissance}
-
-
-\subsection{Introduction aux \textit{attaques par canal auxiliaire}}
-\label{sec:att}
-\subsubsection{Types d'attaques}
-
-\vspace{-0.1 cm}A la fin des années 1990, une nouvelle contrainte pour la conception de systèmes informatiques a vu le jour : la sécurité matérielle. Bien souvent, la sécurité d'un système informatique s'appuie plus sur les concepts software que hardware. Cependant, un nouveau mode d'attaque s'est développé. Il s'agit d'attaques physiques, c'est-à-dire d'attaques réalisées sur le circuit électronique lui-même. En général, le but d'une attaque est de retrouver la clé de chiffrement utilisée par l'algorithme afin de déchiffrer des données sensibles. Deux grandes familles d'attaques sont recensées : 
-\begin{itemize}
-\item \textbf{\textit{Attaques actives}} : Une attaque est dite active lorsque les entrées et/ou l'environnement du device cryptographique sont manipulés par l'attaquant en vue de produire un comportement anormal du device. La clé secrète est révélée en exploitant les données issues de ce comportement anormal. Cela peut être une variation de la tension du device, une injection de glitch d'horloge, etc... On distingue deux types d'attaques actives : 
-\begin{itemize}
-\item Les attaques actives \textbf{\textit{irréversibles}} qui conduisent à la destruction du device cryptographique. Ce type d'attaque est souvent réalisé pour connaître la conception physique d'un device. \textit{Exemple} : Découpage laser d’un circuit intégré.
-\item Les attaques actives \textbf{\textit{pseudo-réversibles}} qui n’entrainent pas forcément la destruction du device cryptographique, mais qui sont souvent tout de même invasives puisqu’elles nécessitent la préparation du circuit (découpe partielle du boitier du circuit intégré par exemple). Un exemple typique de ce type d'attaque est ce qu'on appelle les \textit{attaques en fautes}. Le principe est d'introduire volontairement des fautes dans le circuit (exemple : Injection de rayon laser, injection de glitch d’horloge, etc.). Les fautes ainsi créées peuvent entrainer le circuit dans des modes de fonctionnement conduisant à des erreurs. Ces erreurs peuvent ensuite être exploitées pour déterminer la clé.
-\end{itemize}
-\item \textbf{\textit{Attaques passives}} : Une attaque est dite passive lorsque l'attaquant exploite l'analyse, en fonctionnement normal, d'informations s'échappant d'un device cryptographique. Cela peut être l'analyse de la consommation de puissance, l'analyse temporelle, l'analyse par rayonnement électromagnétique, etc... C'est ce type d'attaque qui sera détaillé tout au long de ce stage et durant la réalisation du TFE. \\
-\end{itemize}
-
-\vspace{-0.3 cm}La figure \ref{fig:attaques} ci-dessous résume les différents types d'attaques physiques possibles.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.85\textwidth]{image/attaques}
-    \caption{Les 2 grandes familles d'attaques physiques possibles. La suite de ce rapport se concentre essentiellement sur les attaques physiques dites passives.}
-    \label{fig:attaques}
-\end{figure}
-
-\vspace{-0.25 cm}Les attaques passives sont globalement beaucoup plus simples à mettre en oeuvre que les attaques actives. Comme définit précédemment, ces attaques consistent à analyser des données issues de canaux auxiliaires au device cryptographique (lorsque ce dernier est en état de fonctionnement normal). Ces canaux auxiliaires sont des canaux présents physiquement sur le circuit attaqué et le long desquels de l’information s’échappe (sous différentes formes : rayonnement électromagnétique, rayonnement photonique, consommation de puissance, etc.). C'est là qu'intervient la notion de \textit{side-channel attacks} ou en français \textit{l'attaque par canal auxiliaire}. 
-En effet, les fonctions cryptographiques, bien que pouvant être extrêmement robustes théoriquement (c'est-à-dire mathématiquement) sont très sensibles aux fuites d’informations. C'est-à-dire qu'une quantité très faible d’informations peut être exploitée pour casser un algorithme cryptographique très fort. C’est ce que les attaques par canaux auxiliaires exploitent. 
-
-\hspace{-0.5 cm}La figure \ref{fig:attackpassive} ci-dessous présente les différentes façons possibles d'attaquer \textbf{passivement} un device.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.4]{image/attackpassive}
-    \caption{Les différentes façons d'attaquer passivement un device cryptographique en vue de casser l'algorithme de chiffrement qu'il exploite.}
-    \label{fig:attackpassive}
-\end{figure}
-
-Dans la suite de cet ouvrage, on se concentrera sur un type précis d'attaque passive : l'attaque sur \textbf{l'analyse de la consommation de puissance}. Les sections suivantes décrivent le principe de fonctionnement de ce type d'attaque. 
-
-\subsubsection{Introduction aux attaques par analyse de la consommation de puissance}
-\label{subsec:CPAIntroduc}
-
-Nous allons donc étudier un cas précis d'attaque passive : l'attaque par \textbf{l'analyse de la consommation de puissance}. Comme son nom l'indique, ce type d'attaque analyse la consommation de puissance du device cryptographique attaqué pour retrouver des informations sensibles. En effet, la consommation de courant d'un circuit électronique dépend de deux facteurs : 
-\begin{itemize}
-\item Les opérations qui sont exécutées.
-\item Les données qui sont manipulées.
-\end{itemize}
-Ainsi, en mesurant un certain nombre de fois la consommation de puissance d'un circuit, il est possible de retrouver certaines informations telles que les opérations exécutées (afin d'identifier un algorithme par exemple) ou les informations secrètes (clé de chiffrement). Pour ce faire, un oscilloscope est utilisé afin de capturer et d'enregistrer des données, appelées \textbf{\textit{traces}}, mesurées à partir des canaux auxiliaires du circuit électronique (dans notre cas, un FPGA). Pour réaliser la mesure, une résistance est placée en série avec le canal (la PIN) connecté à la tension d'alimentation du device cryptographique ($V_{DD}$). L'oscilloscope est alors en mesure d'enregistrer une différence de potentielle (notée $V(t)$) aux bornes de la résistance. Étant donné que les courants circulant dans le device cryptographique sont de valeurs très faibles (\si{\micro}A), la tension $V(t)$ est également très faible. Ainsi, un amplificateur est utilisé afin d'amplifier cette différence de potentielle. La figure \ref{fig:oscillo} ci-dessous présente le principe de mesure à l'oscilloscope.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.4]{image/oscillo}
-    \caption{Principe de mesure à l'oscilloscope.}
-    \label{fig:oscillo} 
-\end{figure}
-
-On parle d'attaque par analyse de la consommation de puissance or avec un oscilloscope, on mesure une tension et non une puissance. Cependant, comme le démontre l'équation \ref{eqn:oscillo}, la puissance consommée ($p(t)$) est proportionnelle à la tension consommée ($V(t)$). Il ne s'agit donc pas d'une erreur de parler de consommation de puissance. En effet, en supposant que la tension d'alimentation $V_{DD}$ est constante et par simple application de la loi d'Ohm, on a :
-\begin{gather}
-	\left\{\begin{matrix}
-	u(t) = V_{DD}\\ 
-	i(t) = \frac{V(t)}{R}
-	\end{matrix}\right.
-	\intertext{En reprenant la définition de la puissance consommée et en y remplaçant les termes $u(t)$ et $i(t)$, on a :}
-	p(t) = u(t).i(t) = V_{DD}.\frac{V(t)}{R} \label{eqn:oscillo}
-\end{gather}
-
-
-En pratique, il existe différents types d'attaques par analyse de la consommation de puissance : Les attaques SPA (\textit{Simple Power Analysis}), les attaques DPA (\textit{Differential Power Analysis}), les attaques CPA (\textit{Correlation Power Analysis}), les attaques par template, etc.
-
-\hspace{-0.5 cm}Nous allons en définir une plus précisément, l'attaque CPA. C'est ce type d'attaque qui a été mis en place durant le stage afin de tenter de casser l'algorithme AES. Ainsi, en considérant les attaques par analyse de la consommation de puissance et en prenant le cas particulier d'une attaque dite CPA, nous pouvons énoncer le problème étudié de la façon suivante : \\ En supposant connus les messages clairs envoyés au device cryptographique et en supposant que ce dernier implémente l'algorithme AES, nous simulerons sur ordinateur le poids de Hamming de chaque donnée binaire obtenue en sortie de l'opération \textit{SubBytes}. Ensuite, nous calculerons les différentes valeurs des coefficients de corrélation entre les traces de puissance capturées à l'oscilloscope et le poids de Hamming obtenu par simulation (sur ordinateur). Sur base de cette étude de la corrélation, nous serons (en principe) capable de déterminer la clé secrète, c'est-à-dire casser l'algorithme AES et ainsi exploiter les données confidentielles. La figure \ref{fig:CPA} présente de façon synthétique le principe général d'une attaque CPA.
-\begin{figure}[h]
-    \hspace{-1.5 cm}
-    \includegraphics[scale=0.34]{image/CPA}
-    \caption{Principe général d'une attaque CPA.}
-    \label{fig:CPA} 
-\end{figure}
-
-\vspace{-0.3 cm}Le principe d'une attaque par consommation de puissance et plus particulièrement d'une attaque CPA, ayant été introduit de manière générale, nous allons maintenant revenir sur différentes notions citées ci-dessus afin de mieux les définir et ainsi mieux comprendre le raisonnement qui se cache derrière une attaque par calcul de corrélation (CPA). La section \ref{sec:CPA} définit toutes les notions élémentaires pour réaliser une attaque CPA.
-
-\newpage
-
-\subsection{Attaque CPA (\textit{Correlation Power Analysis})}
-\label{sec:CPA}
-
-\subsubsection{Technologie CMOS}
 \label{sec:CMOS}
-La \textbf{\textit{technologie CMOS}} (pour \textit{Complementary MOS}) est la technologie la plus répandue parmi toutes les technologies de semi-conducteurs. En effet, on la retrouve dans la majorité des systèmes informatiques modernes. En 2001, elle englobait 86\% de la production mondiale des circuits intégrés. Pour cette raison, nous nous intéressons à leur conception afin de détecter des anomalies qui pourraient se révéler être utiles pour la cryptanalyse. Le nom de cette technologie vient du fait que toutes les fonctions logiques (portes OR, NAND, etc.) peuvent être réalisées moyennant l’utilisation d’une paire de transistors MOS complémentaires (N-MOS et P-MOS) associés symétriquement et fonctionnant en régime de commutation. Ainsi lorsqu'un des deux transistors MOS conduit, l’autre est par conséquent fermé. Grâce à ce principe, une porte logique CMOS ne consomme de l’énergie qu’au moment de la commutation. Cette caractéristique permet de distinguer le CMOS de toutes les autres technologies.
+La \textbf{\textit{technologie CMOS}} (pour \textit{Complementary MOS}) est la technologie la plus répandue parmi toutes les technologies de semi-conducteurs. En effet, on la retrouve dans la majorité des systèmes informatiques modernes. En 2001, elle couvrait 86\% de la production mondiale des circuits intégrés. Pour cette raison, nous nous intéressons à leur conception afin de détecter des anomalies qui pourraient se révéler être utiles pour la cryptanalyse. Le nom de cette technologie vient du fait que toutes les fonctions logiques (portes OR, NAND, etc.) peuvent être réalisées moyennant l’utilisation d’une paire de transistors MOS complémentaires (N-MOS et P-MOS) associés symétriquement et fonctionnant en régime de commutation. Ainsi lorsqu'un des deux transistors MOS conduit, l’autre est par conséquent fermé. Grâce à ce principe, une porte logique CMOS ne consomme de l’énergie qu’au moment de la commutation. Cette caractéristique permet de distinguer le CMOS de toutes les autres technologies.
 
-\hspace{-0.5 cm}Pour expliquer le fonctionnement de cette technologie, on peut prendre un exemple simple : \textbf{\textit{l'inverseur CMOS}}. Un inverseur CMOS est une fonction "\textit{NON}". Voici donc sa table de vérité :
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.5]{image/verite}
-    \caption{Table de vérité pour la fonction NON (inverseur CMOS).}
-    \label{fig:verite} 
-\end{figure}
+\hspace{-0.5 cm}Pour expliquer le fonctionnement de cette technologie, on peut prendre un exemple simple : \textbf{\textit{l'inverseur CMOS}}. Un inverseur CMOS est une fonction "\textit{NON}" dont voici la table de vérité (table \ref{tab:verite}):
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{|c|c|}
+    		\hline
+   		  \textit{Entrée} & \textit{Sortie} \\ \hline 
+   		  0 & 1 \\ 
+   		  1 & 0 \\ \hline
+	\end{tabular}
+    	\caption{Table de vérité pour la fonction NON (inverseur CMOS).}
+    	\label{tab:verite} 
+\end{table}
 
 \hspace{-0.5 cm}La figure \ref{fig:CMOS} ci-dessous (schéma a) présente le schéma de l'inverseur CMOS :
 \begin{figure}[htbp]
@@ -755,8 +551,9 @@ La \textbf{\textit{technologie CMOS}} (pour \textit{Complementary MOS}) est la t
 Si on applique à l'entrée (E) un état bas, le transistor N est bloqué et le P est passant (schéma b). On place ainsi la sortie au potentiel Vdd (la tension d'alimentation), c'est-à-dire à l'état haut. Inversement, quand on met l'entrée à l'état haut, le transistor P est bloqué et le N est passant (schéma c). La sortie est donc à l'état bas. On a donc bien réalisé une fonction inversion. Dans la suite de cet ouvrage, on considérera toujours que les circuits attaqués sont réalisés en technologie CMOS.
 
 
-\subsubsection{Puissances statique et dynamique}
+\subsection{Consommation de puissance des circuits en technologie CMOS}
 \label{sec:puissance}
+
 Il est évident que les circuits digitaux modernes consomment de la puissance lorsqu'ils exécutent des instructions (opérations) sur des données. Dans le domaine de la cryptanalyse, cette puissance va être mesurée et analysée afin de déterminer si le device cryptographique est attaquable ou non. Dans cette section, nous allons étudier plus particulièrement la consommation de puissance d'un type précis de circuit : les circuits utilisant la technologie CMOS (voir section \ref{sec:CMOS} pour plus de précision). Cette technologie est très répandue et couvre la plupart des circuit digitaux modernes. 
 
 La consommation totale de puissance d'un circuit CMOS peut être obtenue en sommant les consommations de puissance respectives de chaque cellule logique du circuit CMOS. De cette façon, la consommation de puissance totale dépend essentiellement du nombre de cellules logiques dans le circuit CMOS. \\
@@ -870,14 +667,24 @@ $P_{total} = P_{op} + P_{data} + P_{noise}$. De plus, en reprenant l'équation (
 \end{gather}
 
 
-\subsubsection{Modèles de puissance}
+
+\section{Modèles de puissance}
 \label{sec:modelpuissance}
 \vspace{-0.1 cm}Dans une attaque CPA, l'attaquant doit utiliser ce qu'on appelle un \textbf{\textit{modèle de puissance}} afin de prédire la consommation de puissance du device cryptographique attaqué. Une fois ces prédictions obtenues, celles-ci sont comparées aux mesures réelles de consommation de puissance du device (prises à l'oscilloscope). Plus précisément, comme nous le verrons à la section \ref{sec:CPAEntire}, on calcule la corrélation entre les prédictions et les mesures réelles afin de déterminer la valeur de la clé secrète. La qualité du modèle employé a un impact important sur l'efficacité de l'attaque. Deux modèles sont généralement définis et utilisés : Il s'agit des modèles de \textit{Poids de Hamming} (\textit{Hamming Weight} - HW) et de \textit{Distance de Hamming} (\textit{Hamming Distance} - HD).
 
+
+\subsection{Modèle de poids de Hamming}
+\label{sec:modelHW}
+
 \underline{\textbf{Poids de Hamming} (HW)} : Le poids de Hamming est le modèle de consommation de puissance le plus élémentaire. C'est celui le plus utilisé par un attaquant lorsqu'il s'agit d'estimer la consommation de puissance d'un circuit dont on ne connait pas certaines valeurs intermédiaires consécutives calculées durant l'exécution de l'algorithme. Ce modèle considère qu'un 0 ne mène à aucune quantité significative de consommation de puissance tandis qu'un 1 implique une quantité significative de puissance consommée. Ainsi, pour ce modèle, on assume que la consommation de puissance prédite est proportionnelle au nombre de bits à 1 d'une donnée traitée. Dit vulgairement, le HW calcule le nombre de bits à 1 présents dans un nombre binaire. Exemple : HW(100110) = 3.
+
+\subsection{Modèle de distance de Hamming}
+\label{sec:modelHD}
 
 \underline{\textbf{Distance de Hamming} (HD)}: La distance de Hamming est un modèle de consommation de puissance proposé par Brier et Al. Il est basé sur la relation entre la consommation de puissance et l'activité de commutation dans les circuits en technologie CMOS. En effet, comme indiqué en conclusion de la section \ref{sec:puissance}, la consommation de puissance d'un device en technologie CMOS est principalement d'ordre dynamique, c'est-à-dire due aux activités de commutation des cellules dans le circuit. Ainsi, ce modèle assume que la puissance totale consommée par un circuit CMOS (définie selon l'équation \ref{eqn:puissance}) est équivalente à la consommation de puissance lors de commutations (transitions 0-1 et 1-0). Ce modèle est donc proportionnel au nombre de transitions 0-1 et 1-0. La HD entre 2 nombres binaires se calcule en comptant le nombre de transitions (0-1 et 1-0) entre ces 2 nombres. Exemple : HD(110110 ; 100100) = 2.
 
+\subsection{Autres modèles}
+\label{sec:modelOther}
 
 \subsubsection{Fonctions linéaires et non-linéaires}
 \label{lineaire}
@@ -888,6 +695,62 @@ Les algorithmes de chiffrement utilisent des fonctions dites linéaires mais ég
 À l'inverse, une fonction est dite \textit{non-linéaire} si elle ne respecte pas cette propriété (équation (\ref{eqn:lineaire})). \vspace{0.2 cm} \\
 \hspace{-0.5 cm} \textbf{Exemple} : Dans l'algorithme AES, on retrouve l'opération \textit{AddRoundKey} qui correspond à un XOR. Cette opération est dite linéaire car la propriété $f(x\oplus m) = f(x) \oplus f(m)$ est respectée. On notera que les opérations \textit{ShiftRows} et \textit{MixColumns} sont également linéaires. \\
 \textbf{Contre-exemple} : L'opération \textit{SubBytes} dans l'algorithme AES. Il s'agit d'une opération non-linéaire car $Sbox(x\oplus m) \neq Sbox(x) \oplus Sbox(m)$. 
+
+\newpage
+
+%%%%%%%%%%%%% Chapitre 4 %%%%%%%%%%%%%
+
+\chapter{Attaques par canaux auxiliaires}
+\label{chap:attaques}
+
+Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. Il s'agit, par ailleurs, d'un chapitre important où le lecteur ne doit pas hésiter 
+\section{Introduction}
+\label{sec:att}
+
+\vspace{-0.1 cm}A la fin des années 1990, une nouvelle contrainte pour la conception de systèmes informatiques a vu le jour : la sécurité matérielle. Bien souvent, la sécurité d'un système informatique s'appuie plus sur les concepts software que hardware. Cependant, un nouveau mode d'attaque s'est développé. Il s'agit d'attaques physiques, c'est-à-dire d'attaques réalisées sur le circuit électronique lui-même. En général, le but d'une attaque est de retrouver la clé de chiffrement utilisée par l'algorithme afin de déchiffrer des données sensibles. Deux grandes familles d'attaques sont recensées : 
+\begin{itemize}
+\item \textbf{\textit{Attaques actives}} : Une attaque est dite active lorsque les entrées et/ou l'environnement du device cryptographique sont manipulés par l'attaquant en vue de produire un comportement anormal du device. La clé secrète est révélée en exploitant les données issues de ce comportement anormal. Cela peut être une variation de la tension du device, une injection de glitch d'horloge, etc... On distingue deux types d'attaques actives : 
+\begin{itemize}
+\item Les attaques actives \textbf{\textit{irréversibles}} qui conduisent à la destruction du device cryptographique. Ce type d'attaque est souvent réalisé pour connaître la conception physique d'un device. \textit{Exemple} : Découpage laser d’un circuit intégré.
+\item Les attaques actives \textbf{\textit{pseudo-réversibles}} qui n’entrainent pas forcément la destruction du device cryptographique, mais qui sont souvent tout de même invasives puisqu’elles nécessitent la préparation du circuit (découpe partielle du boitier du circuit intégré par exemple). Un exemple typique de ce type d'attaque est ce qu'on appelle les \textit{attaques en fautes}. Le principe est d'introduire volontairement des fautes dans le circuit (exemple : Injection de rayon laser, injection de glitch d’horloge, etc.). Les fautes ainsi créées peuvent entrainer le circuit dans des modes de fonctionnement conduisant à des erreurs. Ces erreurs peuvent ensuite être exploitées pour déterminer la clé.
+\end{itemize}
+\item \textbf{\textit{Attaques passives}} : Une attaque est dite passive lorsque l'attaquant exploite l'analyse, en fonctionnement normal, d'informations s'échappant d'un device cryptographique. Cela peut être l'analyse de la consommation de puissance, l'analyse temporelle, l'analyse par rayonnement électromagnétique, etc... C'est ce type d'attaque qui sera détaillé tout au long de ce stage et durant la réalisation du TFE. \\
+\end{itemize}
+
+\vspace{-0.3 cm}La figure \ref{fig:attaques} ci-dessous résume les différents types d'attaques physiques possibles.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{image/attaques}
+    \caption{Les 2 grandes familles d'attaques physiques possibles. La suite de ce rapport se concentre essentiellement sur les attaques physiques dites passives.}
+    \label{fig:attaques}
+\end{figure}
+
+\vspace{-0.25 cm}Les attaques passives sont globalement beaucoup plus simples à mettre en oeuvre que les attaques actives. Comme définit précédemment, ces attaques consistent à analyser des données issues de canaux auxiliaires au device cryptographique (lorsque ce dernier est en état de fonctionnement normal). Ces canaux auxiliaires sont des canaux présents physiquement sur le circuit attaqué et le long desquels de l’information s’échappe (sous différentes formes : rayonnement électromagnétique, rayonnement photonique, consommation de puissance, etc.). C'est là qu'intervient la notion de \textit{side-channel attacks} ou en français \textit{l'attaque par canal auxiliaire}. 
+En effet, les fonctions cryptographiques, bien que pouvant être extrêmement robustes théoriquement (c'est-à-dire mathématiquement) sont très sensibles aux fuites d’informations. C'est-à-dire qu'une quantité très faible d’informations peut être exploitée pour casser un algorithme cryptographique très fort. C’est ce que les attaques par canaux auxiliaires exploitent. 
+
+\hspace{-0.5 cm}La figure \ref{fig:attackpassive} ci-dessous présente les différentes façons possibles d'attaquer \textbf{passivement} un device.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.4]{image/attackpassive}
+    \caption{Les différentes façons d'attaquer passivement un device cryptographique en vue de casser l'algorithme de chiffrement qu'il exploite.}
+    \label{fig:attackpassive}
+\end{figure}
+
+Dans la suite de cet ouvrage, on se concentrera sur un type précis d'attaque passive : l'attaque sur \textbf{l'analyse de la consommation de puissance}. Les sections suivantes décrivent le principe de fonctionnement de ce type d'attaque. 
+
+
+\section{Analyse simple de la consommation}
+\label{sec:Introduction}
+
+\section{Analyse différentielle de la consommation}
+\label{sec:Introduction}
+
+\section{Analyse de la consommation par corrélation}
+\label{sec:Introduction}
+
+\subsection{Attaque CPA (\textit{Correlation Power Analysis})}
+\label{sec:CPA}
+
 
 \subsubsection{Coefficient de corrélation}
 \label{subsec:correlation}
@@ -933,6 +796,162 @@ Comme le montre l'annexe \ref{ann:CPAconcrete}, avant de pouvoir calculer la cor
 
 Une fois les traces de puissance sauvegardées et les calculs de simulation du bloc 2 obtenus, nous pouvons calculer la corrélation (bloc 3) entre les données résultantes du bloc 1 et les données résultantes du bloc 2. Plus précisément, ce calcul de coefficient de corrélation va permettre de mettre en évidence la liaison qui existe entre les traces de puissance et les poids de Hamming. \\ 
 Reprenons le cas simple où l'on cherche uniquement à retrouver le premier byte de la clé. Pour un plaintext donné, nous allons obtenir une trace de puissance d'une part et un calcul de poids de Hamming d'autre part. En pratique, la trace de puissance est présentée sous forme d'une matrice de taille NxS où N représente le nombre de plaintexts et S représente le nombre d'échantillons dans la trace (voir annexe \ref{ann:traceExplain} pour visualiser la situation). Parallèlement, le résultat du calcul du poids de Hamming est présenté sous forme d'une matrice de taille 1x256 où '1' représente le premier byte du 'premier' plaintext et '256' représente les '256' valeurs de clé possibles à tester. Ainsi, pour N plaintexts, le résultat HW sera une matrice de taille Nx256. Le calcul du coefficient de corrélation va alors être réalisé pour chaque résultat du poids de Hamming (256 résultats différents) avec chaque trace enregistrée. Le résultat de cette corrélation sera représenté sous forme d'une matrice de taille Sx256. En effet, Si on a 500 échantillons dans une trace alors le résultat de la corrélation sera de taille 500x256. On peut voir ce résultat comme la corrélation entre les 256 valeurs de clé testées pour chacune des traces caractérisées par 500 points (échantillons).
+
+\newpage
+
+%%%%%%%%%%%%% Chapitre 5 %%%%%%%%%%%%%
+
+\chapter{Contre-mesures}
+
+\section{Contre-mesures Hiding}
+\label{sec:Introduction}
+
+\section{Contre-mesures Masking}
+\label{sec:Introduction}
+
+\section{Contre-mesures Faking}
+\label{sec:Introduction}
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                            Partie 2 - Pratique                     								 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Acquis pratiques}
+
+%%%%%%%%%%%%% Chapitre 6 %%%%%%%%%%%%%
+
+\chapter{Configuration de l'attaque}
+
+\section{Méthodologie}
+\label{sec:Introduction}
+
+\section{Configuration du FPGA}
+\label{sec:Introduction}
+
+\section{Configuration de l'oscilloscope}
+\label{sec:Introduction}
+
+\section{Configuration de l'attaque CPA}
+\label{sec:Introduction}
+
+\newpage
+
+%%%%%%%%%%%%% Chapitre 7 %%%%%%%%%%%%%
+
+\chapter{Mise en application d'une attaque CPA (\textit{Correlation Power Analysis})}
+
+\section{Résultats de simulations}
+\label{sec:Introduction}
+
+\section{Résultats expérimentaux}
+\label{sec:Introduction}
+
+\section{Conclusion}
+\label{sec:Introduction}
+
+\newpage
+
+%%%%%%%%%%%%% Chapitre 8 %%%%%%%%%%%%%
+
+\chapter{Implémentation de la contre-mesure de type \textit{faking}}
+
+\section{Développement de la contre-mesure}
+\label{sec:Introduction}
+
+\subsection{Résultats expérimentaux}
+\label{sec:Introduction}
+
+\section{Conclusion}
+\label{sec:Introduction}
+
+\newpage
+
+%%%%%%%%%%%%% Chapitre 9 %%%%%%%%%%%%%
+
+\chapter{Évaluation des performances de la contre-mesure}
+
+\section{Évaluation par simulations}
+\label{sec:Introduction}
+
+\subsection{Évaluation par critères}
+\label{sec:Introduction}
+
+\newpage
+
+%%%%%%%%%%%%% Chapitre 10 %%%%%%%%%%%%%
+
+\chapter{Conclusion}
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%% Chapitre 3 %%%%%%%%%%%%%
+
+\chapter{Consommation de puissance}
+
+
+
+\subsubsection{Introduction aux attaques par analyse de la consommation de puissance}
+\label{subsec:CPAIntroduc}
+
+Nous allons donc étudier un cas précis d'attaque passive : l'attaque par \textbf{l'analyse de la consommation de puissance}. Comme son nom l'indique, ce type d'attaque analyse la consommation de puissance du device cryptographique attaqué pour retrouver des informations sensibles. En effet, la consommation de courant d'un circuit électronique dépend de deux facteurs : 
+\begin{itemize}
+\item Les opérations qui sont exécutées.
+\item Les données qui sont manipulées.
+\end{itemize}
+Ainsi, en mesurant un certain nombre de fois la consommation de puissance d'un circuit, il est possible de retrouver certaines informations telles que les opérations exécutées (afin d'identifier un algorithme par exemple) ou les informations secrètes (clé de chiffrement). Pour ce faire, un oscilloscope est utilisé afin de capturer et d'enregistrer des données, appelées \textbf{\textit{traces}}, mesurées à partir des canaux auxiliaires du circuit électronique (dans notre cas, un FPGA). Pour réaliser la mesure, une résistance est placée en série avec le canal (la PIN) connecté à la tension d'alimentation du device cryptographique ($V_{DD}$). L'oscilloscope est alors en mesure d'enregistrer une différence de potentielle (notée $V(t)$) aux bornes de la résistance. Étant donné que les courants circulant dans le device cryptographique sont de valeurs très faibles (\si{\micro}A), la tension $V(t)$ est également très faible. Ainsi, un amplificateur est utilisé afin d'amplifier cette différence de potentielle. La figure \ref{fig:oscillo} ci-dessous présente le principe de mesure à l'oscilloscope.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.4]{image/oscillo}
+    \caption{Principe de mesure à l'oscilloscope.}
+    \label{fig:oscillo} 
+\end{figure}
+
+On parle d'attaque par analyse de la consommation de puissance or avec un oscilloscope, on mesure une tension et non une puissance. Cependant, comme le démontre l'équation \ref{eqn:oscillo}, la puissance consommée ($p(t)$) est proportionnelle à la tension consommée ($V(t)$). Il ne s'agit donc pas d'une erreur de parler de consommation de puissance. En effet, en supposant que la tension d'alimentation $V_{DD}$ est constante et par simple application de la loi d'Ohm, on a :
+\begin{gather}
+	\left\{\begin{matrix}
+	u(t) = V_{DD}\\ 
+	i(t) = \frac{V(t)}{R}
+	\end{matrix}\right.
+	\intertext{En reprenant la définition de la puissance consommée et en y remplaçant les termes $u(t)$ et $i(t)$, on a :}
+	p(t) = u(t).i(t) = V_{DD}.\frac{V(t)}{R} \label{eqn:oscillo}
+\end{gather}
+
+
+En pratique, il existe différents types d'attaques par analyse de la consommation de puissance : Les attaques SPA (\textit{Simple Power Analysis}), les attaques DPA (\textit{Differential Power Analysis}), les attaques CPA (\textit{Correlation Power Analysis}), les attaques par template, etc.
+
+\hspace{-0.5 cm}Nous allons en définir une plus précisément, l'attaque CPA. C'est ce type d'attaque qui a été mis en place durant le stage afin de tenter de casser l'algorithme AES. Ainsi, en considérant les attaques par analyse de la consommation de puissance et en prenant le cas particulier d'une attaque dite CPA, nous pouvons énoncer le problème étudié de la façon suivante : \\ En supposant connus les messages clairs envoyés au device cryptographique et en supposant que ce dernier implémente l'algorithme AES, nous simulerons sur ordinateur le poids de Hamming de chaque donnée binaire obtenue en sortie de l'opération \textit{SubBytes}. Ensuite, nous calculerons les différentes valeurs des coefficients de corrélation entre les traces de puissance capturées à l'oscilloscope et le poids de Hamming obtenu par simulation (sur ordinateur). Sur base de cette étude de la corrélation, nous serons (en principe) capable de déterminer la clé secrète, c'est-à-dire casser l'algorithme AES et ainsi exploiter les données confidentielles. La figure \ref{fig:CPA} présente de façon synthétique le principe général d'une attaque CPA.
+\begin{figure}[h]
+    \hspace{-1.5 cm}
+    \includegraphics[scale=0.34]{image/CPA}
+    \caption{Principe général d'une attaque CPA.}
+    \label{fig:CPA} 
+\end{figure}
+
+\vspace{-0.3 cm}Le principe d'une attaque par consommation de puissance et plus particulièrement d'une attaque CPA, ayant été introduit de manière générale, nous allons maintenant revenir sur différentes notions citées ci-dessus afin de mieux les définir et ainsi mieux comprendre le raisonnement qui se cache derrière une attaque par calcul de corrélation (CPA). La section \ref{sec:CPA} définit toutes les notions élémentaires pour réaliser une attaque CPA.
+
+\newpage
+
+
 
 Afin de mieux appréhender le fonctionnement d'une attaque CPA, la section \ref{sec:simulCPA} présente deux exemples de simulation sur MATLAB.
 
