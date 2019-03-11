@@ -49,22 +49,22 @@
 \contentsline {chapter}{\numberline {10}Conclusion}{22}{chapter.10}
 \contentsline {chapter}{\numberline {11}Consommation de puissance}{23}{chapter.11}
 \contentsline {subsection}{\numberline {11.0.1}Introduction aux \textit {attaques par canal auxiliaire}}{23}{subsection.11.0.1}
-\contentsline {subsubsection}{Types d'attaques}{23}{section*.19}
-\contentsline {subsubsection}{Introduction aux attaques par analyse de la consommation de puissance}{24}{section*.22}
+\contentsline {subsubsection}{Types d'attaques}{23}{section*.20}
+\contentsline {subsubsection}{Introduction aux attaques par analyse de la consommation de puissance}{24}{section*.23}
 \contentsline {subsection}{\numberline {11.0.2}Attaque CPA (\textit {Correlation Power Analysis})}{27}{subsection.11.0.2}
-\contentsline {subsubsection}{Technologie CMOS}{27}{section*.25}
-\contentsline {subsubsection}{Puissances statique et dynamique}{28}{section*.28}
-\contentsline {subsubsection}{Composition des traces de puissance}{30}{section*.30}
-\contentsline {subsubsection}{Modèles de puissance}{30}{section*.31}
-\contentsline {subsubsection}{Fonctions linéaires et non-linéaires}{31}{section*.32}
-\contentsline {subsubsection}{Coefficient de corrélation}{31}{section*.33}
-\contentsline {subsubsection}{L'attaque CPA en concret}{31}{section*.34}
+\contentsline {subsubsection}{Technologie CMOS}{27}{section*.26}
+\contentsline {subsubsection}{Puissances statique et dynamique}{28}{section*.29}
+\contentsline {subsubsection}{Composition des traces de puissance}{30}{section*.31}
+\contentsline {subsubsection}{Modèles de puissance}{30}{section*.32}
+\contentsline {subsubsection}{Fonctions linéaires et non-linéaires}{31}{section*.33}
+\contentsline {subsubsection}{Coefficient de corrélation}{31}{section*.34}
+\contentsline {subsubsection}{L'attaque CPA en concret}{31}{section*.35}
 \contentsline {subsection}{\numberline {11.0.3}Simulations sur MATLAB}{34}{subsection.11.0.3}
 \contentsline {subsection}{\numberline {11.0.4}Contre-mesures}{41}{subsection.11.0.4}
-\contentsline {subsubsection}{Contre-mesures \textit {Hiding}}{43}{section*.44}
-\contentsline {subsubsection}{Contre-mesures \textit {Masking}}{44}{section*.46}
-\contentsline {subsubsection}{Contre-mesures \textit {Faking}}{46}{section*.47}
+\contentsline {subsubsection}{Contre-mesures \textit {Hiding}}{43}{section*.45}
+\contentsline {subsubsection}{Contre-mesures \textit {Masking}}{44}{section*.47}
+\contentsline {subsubsection}{Contre-mesures \textit {Faking}}{46}{section*.48}
 \contentsline {section}{\numberline {11.1}Conclusion}{47}{section.11.1}
-\contentsline {section}{Crédits}{49}{section*.50}
-\contentsline {section}{Références}{49}{section*.51}
-\contentsline {section}{Annexes}{52}{section*.53}
+\contentsline {section}{Crédits}{49}{section*.51}
+\contentsline {section}{Références}{49}{section*.52}
+\contentsline {section}{Annexes}{52}{section*.54}

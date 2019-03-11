@@ -250,11 +250,13 @@ Enfin, pour juger de \textbf{l'efficacité de la contre-mesure implémentée}, o
 
 \chapter{Cryptologie}
 
-Il y a plus de 2000 ans naissait le concept de \textbf{cryptologie} avec la montée au pouvoir de Jules César. Général romain très puissant, César marqua le monde et l'histoire universelle au travers de ses nombreuses conquêtes. Tant adulé par son peuple, César s'était néanmoins fait plus d'un ennemis durant ses conquêtes. Le 15 mars 44 avant J-C, il fut tragiquement assassiné par une conspiration de sénateurs romains dont son fils, Marcus Junius Brutus. Jules César avait pris pour habitude de se méfier de ses ennemis. Arrivé à un stade de méfiance extrême, il n'avait plus confiance en ses propres messagers. C'est pour cette raison qu'il envoyait des messages chiffrés où il décalait chaque lettre d'un mot de 3 lettres dans l'alphabet. Seul le destinataire, au courant de la règle de chiffrement, pouvait alors déchiffrer ces messages. Ce fut le premier procédé de chiffrement de l'histoire, appelé \textit{Chiffre de César} (voir annexe X). \\
-C'est ainsi que tout commença...
+Ce chapitre introduit au lecteur les fondamentaux en matière de cryptologie. Les différents concepts et définitions abordés ont pour but d'apporter au lecteur les connaissances nécessaires et suffisantes pour la bonne compréhension des chapitres suivants. Ce chapitre est scindé en deux parties. Dans un premier temps, il abordera les définitions importantes en matière de cryptologie et plus spécifiquement en matière de cryptographie. La cryptographie symétrique sera ainsi distinguées de la cryptographie asymétrique. Dans un second temps, ce chapitre détaillera le principe de fonctionnement général d'un algorithme de chiffrement. Une attention, en particulier, sera consacrée à la compréhension de l'algorithme AES.
 
 \section{Concepts et définitions}
 \label{sec:Concepts}
+
+Il y a plus de 2000 ans naissait le concept de \textbf{cryptologie} avec la montée au pouvoir de Jules César. Général romain très puissant, César marqua le monde et l'histoire universelle au travers de ses nombreuses conquêtes. Tant adulé par son peuple, César s'était néanmoins fait plus d'un ennemis durant ses conquêtes. Le 15 mars 44 avant J-C, il fut tragiquement assassiné par une conspiration de sénateurs romains dont son fils, Marcus Junius Brutus. Jules César avait pris pour habitude de se méfier de ses ennemis. Arrivé à un stade de méfiance extrême, il n'avait plus confiance en ses propres messagers. C'est pour cette raison qu'il envoyait des messages chiffrés où il décalait chaque lettre d'un mot de 3 lettres dans l'alphabet. Seul le destinataire, au courant de la règle de chiffrement, pouvait alors déchiffrer les messages. Ce fut le premier procédé de chiffrement de l'histoire, appelé \textit{Chiffre de César} (voir annexe X). \\
+C'est ainsi que tout commença...
 
 Étymologiquement, le mot \textit{"cryptologie"} vient du grec et signifie littéralement la \textit{science du secret} (\textit{kryptos}  pour caché et \textit{logos} pour science). La cryptologie regroupe deux champs d'études diamétralement opposés : la cryptographie et la cryptanalyse.
 
@@ -277,12 +279,11 @@ La cryptanalyse est la science qui analyse les procédés mathématiques mis en 
 \item[Clé de chiffrement :] Paramètre associé à l'algorithme de chiffrement pour le cryptage des textes clairs ou pour le décryptage des textes chiffrés.
 \end{description}
 
-\newpage
 \hspace{-0.5cm}La figure \ref{fig:fondamentaux_crypto} illustre cinq des six termes fondamentaux énoncés.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.75\textwidth]{image/fondamentaux_crypto}
+    \includegraphics[width=0.6\textwidth]{image/fondamentaux_crypto}
     \caption{Concepts de chiffrement et de déchiffrement.}
     \label{fig:fondamentaux_crypto}
 \end{figure}
@@ -313,7 +314,7 @@ Le chiffrement est dit symétrique lorsque la clé utilisée pour le chiffrement
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{image/symetrique}
+    \includegraphics[width=0.6\textwidth]{image/symetrique}
     \caption{Chiffrement symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les messages.}
     \label{fig:symétrique}
 \end{figure}
@@ -335,7 +336,7 @@ Le chiffrement est dit asymétrique lorsqu'il existe une clé publique utilisée
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.5\textwidth]{image/cle_asymetrique}
-    \includegraphics[width=0.8\textwidth]{image/asymetrique}
+    \includegraphics[width=0.6\textwidth]{image/asymetrique}
     \caption{Chiffrement asymétrique : Un clé publique est utilisée pour chiffrer le message et une clé privée est utilisée pour le déchiffrer.}
     \label{fig:asymétrique}
 \end{figure}
@@ -352,7 +353,7 @@ Le chiffrement est dit asymétrique lorsqu'il existe une clé publique utilisée
 Un algorithme de chiffrement est un ensemble de fonctions mathématiques utilisé lors du processus de chiffrement et de déchiffrement de données sensibles. Une clé publique (ou privée) est associée à l'algorithme de chiffrement selon qu'il s'agisse d'un chiffrement symétrique (ou asymétrique).
 \end{definition}
 
-\hspace{-0.5cm}Les systèmes de sécurité modernes utilisent des algorithmes de chiffrement pour assurer la confidentialité et l'intégrité de données. Ces algorithmes prennent typiquement : 
+\hspace{-0.5cm}Les systèmes de sécurité modernes utilisent des algorithmes de chiffrement pour assurer la confidentialité et l'intégrité de données sensibles. Ces algorithmes prennent typiquement : 
 \begin{itemize}
 \item  2 paramètres en entrée : un \textbf{\textit{message clair}} et une \textbf{\textit{clé de chiffrement}}.
 \item 1 paramètre en sortie : le \textbf{\textit{message chiffré}}. \\
@@ -366,8 +367,7 @@ Comme décrit précédemment, le procédé transformant les données claires en 
     \label{fig:chiffrement}
 \end{figure}
 
-Il est important de préciser que tous les détails décrivant le fonctionnement d'un algorithme sont disponibles publiquement, seule la clé de chiffrement doit rester secrète. En effet, la sécurité offerte par un algorithme de chiffrement ne doit pas dépendre du secret de son implémentation. Un bon algorithme est un algorithme dont on ne parviendra pas à déchiffrer les données chiffrées. Lorsque la clé d'un algorithme est trouvée, le déchiffrement des données confidentielles peut être réalisé. On dit que l'algorithme de chiffrement est \textbf{\textit{cassé}}.
-
+Il est important de préciser que tous les détails décrivant le fonctionnement d'un algorithme cryptographique sont disponibles publiquement, seule la clé de chiffrement doit rester secrète. En effet, un principe fondamental de la cryptographie est le principe de Kerckoffs. Ce principe stipule que la sécurité de tout algorithme de chiffrement ne doit pas reposer sur la connaissance du fonctionnement de ce dernier. Autrement dit, la sécurité offerte par un algorithme de chiffrement ne doit pas dépendre du secret de son implémentation mais doit uniquement reposer sur la protection de la clé, ou plus généralement d'un secret. Par conséquent, un bon algorithme est un algorithme dont on ne parviendra pas à déchiffrer les données chiffrées, même en connaissant son fonctionnement interne. Lorsque la clé d'un algorithme est trouvée, le déchiffrement des données confidentielles devient possible. On dit que l'algorithme de chiffrement est \textbf{\textit{cassé}}.
 
 \subsection{\textit{Device} cryptographique}
 \label{sec:Introduction}
@@ -384,50 +384,65 @@ Un device cryptographique est un device qui implémente des algorithmes de chiff
 \subsection{Algorithme \textit{AES} (\textit{Advanced Encryption Standard})}
 \label{subsec:AES}
 
-En 1997, le NIST (\textit{National Institute of Standards and Technology}) décida qu'il était temps de développer un nouveau standard d'algorithme de chiffrement. Ce nouveau standard, nommé \textbf{AES} (pour \textit{Advanced Encryption Standard}), était appelé à remplacer l'ancien standard de chiffrement, l'algorithme DES (pour \textit{Data Encryption Standard}). Pour ce faire, le NIST organisa un concours cryptographique, les chercheurs du monde entier furent invités à soumettre leurs propositions. En Octobre 2000, Le NIST annonça le vainqueur du concours : l'algorithme de Rijndael, du nom de ses concepteurs Joan Daemen et Vincent Rijmen, tous deux de nationalité belge.
+En 1997, le NIST (\textit{National Institute of Standards and Technology}) décida qu'il était temps de développer un nouveau standard d'algorithme de chiffrement. Ce nouveau standard, nommé \textbf{AES} (pour \textit{Advanced Encryption Standard}), était appelé à remplacer l'ancien standard de chiffrement, l'algorithme DES (pour \textit{Data Encryption Standard}). Pour ce faire, le NIST organisa un concours cryptographique. Les chercheurs du monde entier furent invités à soumettre leurs propositions. En Octobre 2000, Le NIST annonça le vainqueur du concours : l'algorithme de Rijndael, du nom de ses concepteurs Joan Daemen et Vincent Rijmen, tous deux de nationalité belge.
 
-L'algorithme de Rijndael, désormais plus connu sous le nom d'algorithme AES, est un \textbf{algorithme de chiffrement symétrique par blocs}. C'est-à-dire que les données sont traitées par blocs de 128 bits. La clé secrète peut posséder différentes tailles : 128 bits (AES-128), 192 bits (AES-192) ou encore 256 bits (AES-256). À noter qu'en théorie, plus la taille de la clé est élevée, moins il y a de chance de casser l'algorithme. Cependant, comme nous le verrons par la suite avec les attaques par canal auxiliaire (section \ref{sec:att}), le problème peut vite être contourné. La description qui suit est basée sur l'algorithme AES-128 bits, c'est-à-dire que la clé de chiffrement a une taille de 128 bits.
+L'algorithme de Rijndael, désormais plus connu sous le nom d'algorithme AES, est un \textbf{algorithme de chiffrement symétrique par blocs}. Par \textit{blocs} signifie que les données sont traitées par blocs de 128 bits. La clé secrète peut posséder différentes tailles : 128 bits (AES-128), 192 bits (AES-192) ou encore 256 bits (AES-256). À noter qu'en théorie, plus la taille de la clé est élevée, moins il y a de chance de casser l'algorithme. Cela est dû au fait que, plus la taille de la clé est grande, plus il existe un nombre important de possibilités de clé à tester avant de retrouver celle qui correspond à la valeur exacte. L'algorithme AES n'a ainsi, à ce jour, jamais été cassé par des méthodes d'attaques classiques. Cependant, comme nous le verrons par la suite avec les attaques par canal auxiliaire (section \ref{sec:att}), le problème peut vite être contourné. Pour ce travail, il m'a été demandé d'attaquer une implémentation de l'algorithme AES-256. Cependant, pour bien comprendre son fonctionnement, la description qui suit est dans un premier temps basée sur l'algorithme AES-128. Dans un second temps, une adaptation sera insérée afin de comprendre le fonctionnement de l'algorithme AES-256.
+
+Avant de détailler le fonctionnement de l'algorithme AES-128, précisons quelques notions fondamentales. L'algorithme AES est caractérisé par une série de tours (\textit{rounds} en anglais) dépendant de la taille de la clé. Pour une clé dont la taille est 128 bits, on dénombre 10 tours. Pour une clé de taille 192 bits, on dénombre 12 tours et pour une clé de taille 256 bits, on dénombre 14 tours. Un \textit{round} est défini par 4 opérations appliquées succinctement sur une matrice de données. Ces 4 opérations sont : \textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}. Elles sont appliquées à divers instants dans l'exécution de l'algorithme AES. Le tableau \ref{tab:AES} présente un récapitulatif des principales caractéristiques des trois variantes de l'algorithme AES. La figure \ref{fig:AES_General} permet de visualiser l'ordre d'exécution chronologique des 4 opérations opérées par l'algorithme.
+
+\vspace{0.5cm}
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+    		\hline
+   		  & Taille de la clé (bits) & Taille du bloc de données (bits) & Nombre de \textit{rounds} \\ \hline
+   		  AES-128 & 128 & 128 & 10 \\ \hline
+   		  AES-192 & 192 & 128 & 12 \\ \hline
+   		  AES-256 & 256 & 128 & 14 \\ \hline    		
+	\end{tabular}
+ 	\caption{Les trois variantes de l'algorithmes AES.}
+ 	\label{tab:AES}
+\end{table}
+
+\vspace{0.5cm}
+
+\begin{figure}[htbp]
+    \hspace{-2.1cm}
+    \includegraphics[scale=0.48]{image/AES_General}
+    \caption{Les 3 matrices utilisées par l'algorithme AES.}
+    \label{fig:AES_General}
+\end{figure}
+
+\newpage
 
 L'AES-128 a donc pour rôle de chiffrer des blocs de données de 128 bits avec une clé de 128 bits. Les données et la clé sont représentées par une matrice où chaque élément de la matrice correspond à un byte (un octet, i.e 8 bits). Étant donné que 128 bits correspondent à 16 bytes, la matrice de données, au même titre que la matrice de clé, correspond à une matrice de 4 lignes et 4 colonnes (formant ainsi les 4x4 soit 16 bytes). Une matrice particulière (de taille 4x4 également) appelée STATE contient l'ensemble des résultats intermédiaires résultant des diverses opérations que subissent les données (depuis leur état initial). 
 
 La figure \ref{fig:matrix} présente les 3 matrices qui viennent d'être citées : la matrice de donnée (message clair initial de 128 bits), la matrice STATE (qui va contenir les résultats intermédiaires des données suite aux différentes opérations) et la matrice clé (clé de 128 bits).
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.75]{image/matrix}
+    \includegraphics[scale=0.6]{image/matrix}
     \caption{Les 3 matrices utilisées par l'algorithme AES.}
     \label{fig:matrix}
 \end{figure}
 
-\textit{Remarque} : En pratique, la matrice de données est directement confondue avec la matrice STATE. Autrement dit, les premiers éléments à être placés dans la matrice STATE représentent les bytes de données. Ainsi, on n'utilise que deux matrices durant le fonctionnement de l'algorithme AES : la matrice STATE et la matrice clé.
-
-Par ailleurs, l'algorithme AES est caractérisé par une série de tours (\textit{rounds} en anglais) dépendant de la taille de la clé. Pour une clé dont la taille est 128 bits, on dénombre 10 tours (12 tours pour une clé de 192 bits et 14 tours pour une clé de 256 bits). Un tour est définit par 4 opérations appliquées succinctement sur la matrice STATE. Ces 4 opérations sont : \textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}. Elles sont appliquées à divers instants dans l'exécution de l'algorithme AES. La figure \ref{fig:AES} (page suivante) permet de visualiser l'ordre d'exécution chronologique de ces 4 opérations. L'annexe \ref{ann:AES} reprend quant à elle le code réalisé pour l'exécution de l'algorithme AES-128.
-
-\newpage
-
-La figure \ref{fig:AES} ci-dessous présente le principe de fonctionnement général de l'algorithme AES-128.
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.75]{image/AES}
-    \caption{Principe de fonctionnement de l'algorithme AES-128.} 
-    \label{fig:AES}
-\end{figure}
-
-
+\textit{Remarque} : En pratique, la matrice de données est directement confondue avec la matrice STATE. Autrement dit, les premiers éléments à être placés dans la matrice STATE représentent les bytes de données. Ainsi, on n'utilise que deux matrices durant le fonctionnement de l'algorithme AES : la matrice STATE et la matrice clé. L'annexe \ref{ann:AES} reprend quant à elle le code réalisé pour l'exécution de l'algorithme AES-128.
 
 \underline{\textbf{Fonctionnement :}} 
 
 Initialement, deux matrices vont être utilisées : la matrice STATE, contenant les données claires, et la matrice clé, contenant la clé secrète initiale. La première opération à être appliquée sur ces deux matrices est l'opération \textit{AddRoundKey}. Cette opération réalise un XOR (symbole \oplus) entre chaque élément de la matrice STATE et chaque élément respectif de la matrice clé. Le résultat est ré-écrit dans la matrice STATE. La figure \ref{fig:XOR} ci-dessous présente le principe de fonctionnement de cette première opération :
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.55]{image/XOR}
+    \includegraphics[scale=0.52]{image/XOR}
     \caption{Opération \textit{AddRoundKey} entre la matrice STATE et la matrice clé.}
     \label{fig:XOR}
 \end{figure}
 
 \hspace{-0.5 cm}Ensuite, une série de quatre opérations se répétant neuf fois (9 tours cycliques) est exécutée. Ces quatres opérations sont appliquées dans l'ordre suivant : \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns}, \textit{AddRoundKey}. \\
 Enfin, une fois les neufs tours exécutés, le neuvième et dernier \textit{round} se lance exécutant trois opérations : \textit{SubBytes}, \textit{ShiftRows} et \textit{AddRoundKey}. À la fin de ces trois dernières opérations, une matrice de taille 4x4 (la matrice STATE) présente le message chiffré de 128 bits.
+`
 
-
+\newpage
 \underline{\textbf{Description des 4 opérations :}} \\
 \begin{description}
 \item[1. SubBytes] : 
@@ -435,7 +450,7 @@ La figure \ref{fig:SubBytes} ci-dessous présente le principe de fonctionnement 
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.42]{image/SubBytes}
+    \includegraphics[scale=0.5]{image/SubBytes}
     \caption{Opération \textit{SubBytes} exécutée sur la matrice STATE.}
     \label{fig:SubBytes}
 \end{figure}
@@ -444,7 +459,7 @@ La figure \ref{fig:SubBytes} ci-dessous présente le principe de fonctionnement 
 La figure \ref{fig:ligne} ci-dessous présente le principe de fonctionnement de l'opération \textit{ShiftRows} :
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.55]{image/ligne}
+    \includegraphics[scale=0.7]{image/ligne}
     \caption{Opération \textit{ShiftRows} exécutée sur la matrice STATE.}
     \label{fig:ligne}
 \end{figure}
@@ -464,6 +479,8 @@ La figure \ref{fig:colonne} ci-dessous présente le principe de fonctionnement d
     \label{fig:colonnebis}
 \end{figure}
 
+
+\newpage
 \item[4. AddRoundKey] : La gestion des clés se fait au travers des fonctions \textit{AddRoundKey} et \textit{KeySchedule}. Comme précisé précédemment dans le fonctionnement initial, l'opération \textit{AddRoundKey} réalise un XOR entre la matrice STATE et la matrice de clé. Le résultat de ce XOR est placé dans la nouvelle matrice STATE.\\ 
 On sait que la matrice STATE est modifiée après chaque opération exécutée. Ce qu'on ne sait pas encore, c'est que la matrice clé est également modifiée à chaque round afin d'éviter d'utiliser toujours la même valeur de clé. Cela permet ainsi de complexifier le chiffrement des données. L'opération qui modifie la matrice clé initiale en une nouvelle matrice clé est appelée \textbf{\textit{KeySchedule}}. Cette opération génère une nouvelle clé sur base de la clé précédemment employée. Ainsi, pour générer la première nouvelle clé, l'opération \textit{KeySchedule} emploiera la clé initialement donnée. Étant donné que pour l'AES-128, nous avons un total de dix rounds à exécuter, cela signifie que l'opération \textit{KeySchedule} s'exécute dix fois afin de générer dix nouvelles clés de 128 bits. En rajoutant la clé initiale, nous avons alors onze clés de chiffrement différentes permettant d'exécuter les onze opérations \textit{AddRoundKey} présentes dans l'algorithme AES-128. Ainsi, comme présenté à l'annexe \ref{ann:AES}, l'opération \textit{KeySchedule} s'exécute en premier lieu dans le code afin de générer dix nouvelles clés. En comptant la clé initialement donnée, il y a donc onze clés. Chacune de ces onze clés sera utilisée lors de l'appel de la fonction \textit{AddRoundKey}.\\ 
 
