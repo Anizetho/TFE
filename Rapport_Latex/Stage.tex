@@ -21,6 +21,9 @@
     \captionsetup{labelfont={bf,sf,color=gray}}
 \usepackage{pdfpages}
 \usepackage{caption}
+\usepackage[titletoc]{appendix}
+\usepackage{appendix}
+\usepackage{chngcntr}
 
 \usepackage{mwe} % For dummy images
 \usepackage{subcaption}
@@ -208,7 +211,7 @@ Il existe différents types d'attaques par canaux auxiliaires cependant ce trava
     \label{fig:intro}
 \end{figure}
 
-Dès que ces attaques se sont manifestées, une série de contre-mesures a été développée. Pour obtenir une contre-mesure efficace contre ces attaques par analyse de la consommation de puissance, il est nécessaire de bien appréhender le fonctionnement de l'attaque. Ainsi, retenons que lors de l’exécution d’un algorithme de chiffrement, différentes opérations sont exécutées conduisant à différentes valeurs intermédiaires calculées. Si aucune protection n’est mise en place, la consommation de puissance du device cryptographique dépend des données intermédiaires manipulées par ce dernier (par l’algorithme précisément). Par conséquent, l’attaquant peut potentiellement retrouver la clé secrète en analysant la consommation de puissance du système. Dès lors, l'objectif général d'une contre-mesure est de rendre la consommation de puissance du device cryptographique indépendante des valeurs intermédiaires calculées par l'algorithme de chiffrement. 
+Dès que ces attaques se sont manifestées, une série de contre-mesures a été développée. Pour obtenir une contre-mesure efficace contre ces attaques par analyse de la consommation de puissance, il est nécessaire de bien appréhender le fonctionnement de l'attaque. Ainsi, retenons que lors de l’exécution d’un algorithme de chiffrement, différentes opérations sont exécutées conduisant à différentes \textbf{valeurs intermédiaires calculées}. Si aucune protection n’est mise en place, la consommation de puissance du device cryptographique dépend des données intermédiaires manipulées par ce dernier (par l’algorithme précisément). Par conséquent, l’attaquant peut potentiellement retrouver la clé secrète en analysant la consommation de puissance du système. Dès lors, l'objectif général d'une contre-mesure est de rendre la consommation de puissance du device cryptographique indépendante des valeurs intermédiaires calculées par l'algorithme de chiffrement. 
 
 Deux grands types de contre-mesures sont à distinguer : les contre-mesures de type \textbf{\textit{Masking}} et les contre-mesures de type \textbf{\textit{Hiding}}. Brièvement, le principe d'une contre-mesure de type \textit{Masking} est de modifier les caractéristiques de l'algorithme de chiffrement alors que le principe d'une contre-mesure de type \textit{Hiding} est de modifier les caractéristiques physiques du système cryptographique. La contre-mesure développée dans ce travail est une contre-mesure apparue assez récemment : la contre-mesure de type \textit{Faking}. Le principe de fonctionnement de cette contre-mesure se rapproche de celui de contre-mesure de type \textit{Masking}. Cependant, comme nous le verrons au chapitre X, il existe quelques subtilités. Le tableau \ref{fig:intro2} résume les constats qui peuvent être tirés selon qu'une contre-mesure soit implémentée ou non. Ces contre-mesures seront détaillées plus en profondeur au chapitre y faisant référence (chapitre X).
 
@@ -220,21 +223,21 @@ Deux grands types de contre-mesures sont à distinguer : les contre-mesures de t
     		Sans contre-mesure & La consommation de puissance dépend directement des valeurs intermédiaires calculées par l’algorithme de chiffrement. \\ \hline
 		Avec contre-mesure type Hiding & Modification des caractéristiques de consommation : La consommation de puissance du device cryptographique est identique (ou aléatoire) pour chaque instruction exécutée et chaque donnée manipulée. \\ \hline
     		Avec contre-mesure type Masking & Modification de l’algorithme : Les valeurs intermédiaires calculées par l’algorithme de chiffrement sont masquées par des valeurs aléatoires. La consommation de puissance est alors modifiée (les traces capturées à l’oscilloscope sont insensées). \\ \hline
-		Avec contre-mesure type Faking & Modification de l’algorithme : La consommation de puissance du device cryptographique permet de trouver une valeur pour la clé secrète. Cependant, cette valeur est volontairement faussée. \\ \hline
+		Avec contre-mesure type Faking & Modification de l’algorithme : La consommation de puissance du device cryptographique permet de trouver une valeur de clé secrète. Cependant, la clé obtenue est volontairement faussée en appliquant en masque sur la vraie clée. \\ \hline
  	\end{tabular}
  	\caption{Conséquences de l'implémentation d'une contre-mesure.}
  	\label{fig:intro2}
 \end{table}
 
 \newpage
-Enfin, pour juger de \textbf{l'efficacité de la contre-mesure implémentée}, outre les tests permettant d'assurer que la confidentialité des données est bien garantie, une analyse des performances du système est établie. Les principales performances étudiées sont : le temps d'exécution de l'algorithme, la consommation de puissance du device cryptographique, la place mémoire de l'implémentation protégée de l'algorithme sur le device crytpographique, ...
+Enfin, pour juger de \textbf{l'efficacité de la contre-mesure implémentée}, différentes analyses peuvent être réalisées. Ainsi, des métriques telles que le \textit{SNR} (\textit{Signal-Noise to Ratio}) peuvent être utilisées afin de savoir si les traces capturées à l'oscilloscope laissent fuiter de l'information ou non. Outre les métriques, une analyse des performances du système sera également établie. Les principales performances étudiées sont : le temps d'exécution de l'algorithme, la consommation de puissance du device cryptographique, la place mémoire de l'implémentation protégée de l'algorithme sur le device crytpographique, ...
 
 \section{Structure du travail}
 
 \hspace{-0.5cm}Ce travail est scindé en deux parties : 
 \begin{enumerate}
-\item La première partie aborde tous les concepts théoriques nécessaires afin de comprendre le fondement des attaques par canaux auxiliaires. Un premier chapitre expose les concepts et définitions de la cryptographie et définit en particulier le fonctionnement de l'algorithme AES. Le second chapitre est consacré à la consommation de puissance des circuit en technologie CMOS. Cet analyse de la consommation de puissance pour ce type de circuit en particulier permet de comprendre le principe de fonctionnement des attaques par analyse de la consommation de puissance. Le troisième chapitre définit le sujet principal de ce travail, à savoir les attaques par canaux auxiliaires. Enfin, le dernier chapitre étudie les différentes contre-mesures existantes afin d'assurer une meilleure protection des données sensibles. 
-\item La seconde partie aborde les notions et compétences acquises durant la période de TFE. Un premier chapitre définit la configuration du matériel nécessaire pour implémenter l'attaque par analyse de la consommation de puissance. Un descriptif succinct des langages et matériels utilisés est ainsi détaillé. Le second chapitre reprend les résultats obtenus et leurs conclusions pour la mise en application d'une attaque CPA (\textit{Correlation Power Analysis}). Le troisième chapitre détaille l'implémentation de la contre-mesure de type \textit{faking}. Le quatrième chapitre discute de l'efficacité de la contre-mesure implémentée. Enfin, le cinquième chapitre est consacré à la conclusion de ce rapport.
+\item La première partie aborde tous les concepts théoriques nécessaires afin de comprendre le fondement des attaques par canaux auxiliaires. Un premier chapitre expose les concepts et définitions de la cryptologie et définit en particulier le fonctionnement de l'algorithme AES. Le second chapitre est consacré à la consommation de puissance des circuit en technologie CMOS. Cet analyse de la consommation de puissance pour ce type de circuit en particulier permet de comprendre le principe de fonctionnement des attaques par analyse de la consommation de puissance. Le troisième chapitre définit le sujet principal de ce travail, à savoir les attaques par canaux auxiliaires. Enfin, le dernier chapitre étudie les différentes contre-mesures existantes afin d'assurer une meilleure protection des données sensibles. 
+\item La seconde partie aborde les notions et compétences acquises durant la période de TFE. Un premier chapitre définit la configuration du matériel nécessaire pour implémenter l'attaque par analyse de la consommation de puissance. Un descriptif succinct des langages et matériels utilisés est ainsi détaillé. Le second chapitre reprend les résultats obtenus et leurs conclusions pour la mise en application d'une attaque CPA (\textit{Correlation Power Analysis}). Le troisième chapitre détaille l'implémentation de la contre-mesure de type \textit{faking}. Le quatrième chapitre discute de l'efficacité de la contre-mesure implémentée. Enfin, un cinquième chapitre est consacré à la conclusion de ce rapport.
 \end{enumerate}
 
 
@@ -249,13 +252,14 @@ Enfin, pour juger de \textbf{l'efficacité de la contre-mesure implémentée}, o
 %%%%%%%%%%%%% Chapitre 2 %%%%%%%%%%%%%
 
 \chapter{Cryptologie}
+\label{chap:crypto}
 
 Ce chapitre introduit au lecteur les fondamentaux en matière de cryptologie. Les différents concepts et définitions abordés ont pour but d'apporter au lecteur les connaissances nécessaires et suffisantes pour la bonne compréhension des chapitres suivants. Ce chapitre est scindé en deux parties. Dans un premier temps, il abordera les définitions importantes en matière de cryptologie et plus spécifiquement en matière de cryptographie. La cryptographie symétrique sera ainsi distinguée de la cryptographie asymétrique. Dans un second temps, ce chapitre détaillera le principe de fonctionnement général d'un algorithme de chiffrement. Une attention particulière sera finalement consacrée à la compréhension de l'algorithme AES.
 
 \section{Concepts et définitions}
 \label{sec:Concepts}
 
-Il y a plus de 2000 ans naissait le concept de \textbf{cryptologie} avec la montée au pouvoir de Jules César. Général romain très puissant, César marqua le monde et l'histoire universelle au travers de ses nombreuses conquêtes. Tant adulé par son peuple, César s'était néanmoins fait plus d'un ennemis durant ses conquêtes. Le 15 mars 44 avant J-C, il fut tragiquement assassiné par une conspiration de sénateurs romains dont son fils, Marcus Junius Brutus. Jules César avait pris pour habitude de se méfier de ses ennemis. Arrivé à un stade de méfiance extrême, il n'avait plus confiance en ses propres messagers. C'est pour cette raison qu'il envoyait des messages chiffrés où il décalait chaque lettre d'un mot de 3 lettres dans l'alphabet. Seul le destinataire, au courant de la règle de chiffrement, pouvait alors déchiffrer les messages. Ce fut le premier procédé de chiffrement de l'histoire, appelé \textit{Chiffre de César} (voir annexe X). \\
+Il y a plus de 2000 ans naissait le concept de \textbf{cryptologie} avec la montée au pouvoir de Jules César. Général romain très puissant, César marqua le monde et l'histoire universelle au travers de ses nombreuses conquêtes. Tant adulé par son peuple, César s'était néanmoins fait plus d'un ennemis durant ses conquêtes. Le 15 mars 44 avant J-C, il fut tragiquement assassiné par une conspiration de sénateurs romains dont son fils, Marcus Junius Brutus. Jules César avait pris pour habitude de se méfier de ses ennemis. Arrivé à un stade de méfiance extrême, il n'avait plus confiance en ses propres messagers. C'est pour cette raison qu'il envoyait des messages chiffrés où il décalait chaque lettre d'un mot de 3 lettres dans l'alphabet. Seul le destinataire, au courant de la règle de chiffrement, pouvait alors déchiffrer les messages. Ce fut le premier procédé de chiffrement de l'histoire, appelé \textit{Chiffre de César} (voir annexe \ref{ann:CESAR}). \\
 C'est ainsi que tout commença...
 
 Étymologiquement, le mot \textit{"cryptologie"} vient du grec et signifie littéralement la \textit{science du secret} (\textit{kryptos}  pour caché et \textit{logos} pour science). La cryptologie regroupe deux champs d'études diamétralement opposés : la cryptographie et la cryptanalyse.
@@ -269,21 +273,21 @@ La cryptographie est la science qui utilise les mathématiques en vue de chiffre
 La cryptanalyse est la science qui analyse les procédés mathématiques mis en place par la cryptographie en vue de retrouver de l'information secrète. 
 \end{definition}
 
-\hspace{-0.5cm}Six termes courant en cryptologie doivent également être définis : 
+\hspace{-0.5cm}Six termes couramment employés en cryptologie doivent également être définis : 
 \begin{description}
 \item[Texte clair :] Il s'agit de données brutes, considérées comme confidentielles, compréhensibles sans intervention spécifique.
 \item[Texte chiffré :] Il s'agit de données modifiées, considérées comme confidentielles et devant le rester. Ces données sont incompréhensibles, inintelligibles pour quiconque qui tenterait de les comprendre. 
 \item[Chiffrement (cryptage) :] Procédé utilisé pour dissimuler le texte clair. Le chiffrement transforme donc le texte clair en texte chiffré.
 \item[Déchiffrement (décryptage) :] Procédé inverse au chiffrement. Le déchiffrement transforme donc le texte chiffré en texte clair, c'est-à-dire en texte d'origine.
 \item[Algorithme de chiffrement :] Fonctions mathématiques utilisées lors du processus de chiffrement. Les fonctions mathématiques inverses sont également définies pour le processus de déchiffrement.
-\item[Clé de chiffrement :] Paramètre associé à l'algorithme de chiffrement pour le cryptage des textes clairs ou pour le décryptage des textes chiffrés.
+\item[Clé de chiffrement :] Paramètre associé à l'algorithme de chiffrement pour le cryptage des textes clairs ou pour le décryptage des textes chiffrés. \\
 \end{description}
 
-\hspace{-0.5cm}La figure \ref{fig:fondamentaux_crypto} illustre cinq des six termes fondamentaux énoncés.
+\hspace{-0.5cm}La figure \ref{fig:fondamentaux_crypto} illustre cinq des six termes fondamentaux énoncés. Le sixième, l'algorithme de chiffrement, pourrait être confondu avec avec les étapes de \textit{chiffrement} et \textit{déchiffrement} cependant, une explication plus détaillée est donnée à la section \ref{sec:algo}.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.6\textwidth]{image/fondamentaux_crypto}
+    \includegraphics[width=0.85\textwidth]{image/fondamentaux_crypto}
     \caption{Concepts de chiffrement et de déchiffrement.}
     \label{fig:fondamentaux_crypto}
 \end{figure}
@@ -306,20 +310,22 @@ Ainsi, la cryptographie a pour objectif de chiffrer des informations tout en ass
 Le chiffrement est dit symétrique lorsque la clé utilisée pour le chiffrement et le déchiffrement des données est la même. La clé est alors appelée \textit{clé secrète}. 
 \end{definition}
 
-\hspace{-0.5cm}Par convention, ce type de chiffrement permet à la fois de chiffrer et de déchiffrer des messages à partir d'une seule et unique clé. Le désavantage de ce type de chiffrement est que si une personne parvient à subtiliser la clé, elle sera en mesure de déchiffrer tout message qu'elle intercepte.  \\
-\textit{Exemple} : L'algorithme AES. Une explication plus détaillée de cet algorithme est reprise à la section \ref{subsec:AES}.
+\hspace{-0.5cm}Par convention, ce type de chiffrement permet à la fois de chiffrer et de déchiffrer des messages à partir d'une seule et unique clé : la clé secrète. Le désavantage de ce type de chiffrement est que si une personne parvient à subtiliser la clé, elle sera en mesure de déchiffrer tout message qu'elle intercepte. 
+
+\hspace{-0.5cm}\textit{Exemple} : L'algorithme AES. Une explication plus détaillée de cet algorithme est reprise à la section \ref{subsec:AES}.
 
 
-\hspace{-0.5cm}La figure \ref{fig:symétrique} ci-dessous présente le principe de fonctionnement du chiffrement symétrique.
+\hspace{-0.5cm}La figure \ref{fig:symétrique} (page suivante) présente le principe de fonctionnement du chiffrement symétrique. Comme le présente la figure, si un attaquant intercepte un message, ce dernier sera chiffré. Il doit donc être en possession de la clé secrète s'il souhaite comprendre le message envoyé par l'expéditeur.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.6\textwidth]{image/symetrique}
+    \includegraphics[width=0.75\textwidth]{image/symetrique}
     \caption{Chiffrement symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les messages.}
     \label{fig:symétrique}
 \end{figure}
 
 
+\newpage
 \subsection{Chiffrement asymétrique}
 \label{subsec:Chiffrement_asymétrique}
 
@@ -336,21 +342,21 @@ Le chiffrement est dit asymétrique lorsqu'il existe une clé publique utilisée
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.5\textwidth]{image/cle_asymetrique}
-    \includegraphics[width=0.6\textwidth]{image/asymetrique}
+    \includegraphics[width=0.75\textwidth]{image/asymetrique}
     \caption{Chiffrement asymétrique : Un clé publique est utilisée pour chiffrer le message et une clé privée est utilisée pour le déchiffrer.}
     \label{fig:asymétrique}
 \end{figure}
 
 \newpage
 \section{Algorithme de chiffrement}
-\label{sec:Introduction}
+\label{sec:algo}
 
 \subsection{Principe}
 \label{sec:Introduction}
 
 \theoremstyle{definition}
 \begin{definition}{\textbf{Algorithme de chiffrement :}}
-Un algorithme de chiffrement est un ensemble de fonctions mathématiques utilisé lors du processus de chiffrement et de déchiffrement de données sensibles. Une clé publique (ou privée) est associée à l'algorithme de chiffrement selon qu'il s'agisse d'un chiffrement symétrique (ou asymétrique).
+Un algorithme de chiffrement est un ensemble de fonctions mathématiques utilisé lors du processus de chiffrement et de déchiffrement de données sensibles. Une clé publique ou privée est associée à l'algorithme de chiffrement selon qu'il s'agisse d'un chiffrement symétrique ou asymétrique.
 \end{definition}
 
 \hspace{-0.5cm}Les systèmes de sécurité modernes utilisent des algorithmes de chiffrement pour assurer la confidentialité et l'intégrité de données sensibles. Ces algorithmes prennent typiquement : 
@@ -358,7 +364,7 @@ Un algorithme de chiffrement est un ensemble de fonctions mathématiques utilis
 \item  2 paramètres en entrée : un \textbf{\textit{message clair}} et une \textbf{\textit{clé de chiffrement}}.
 \item 1 paramètre en sortie : le \textbf{\textit{message chiffré}}. \\
 \end{itemize}
-Comme décrit précédemment, le procédé transformant les données claires en entrée en données chiffrées en sortie est appelé chiffrement. Ce procédé est réalisé grâce à un algorithme de chiffrement manipulant une clé de chiffrement et diverses opérations mathématiques. Avec des clés différentes, le résultat du cryptage variera également. La figure \ref{fig:chiffrement} ci-dessous présente le principe de fonctionnement d'un algorithme de chiffrement.
+Comme décrit précédemment, le procédé transformant les données claires en entrée en données chiffrées en sortie est appelé chiffrement. Ce procédé est réalisé grâce à un algorithme de chiffrement manipulant une clé de chiffrement, un message clair et diverses opérations mathématiques. Avec des clés différentes, le résultat du cryptage variera également. La figure \ref{fig:chiffrement} ci-dessous présente le principe de fonctionnement d'un algorithme de chiffrement.
 
 \begin{figure}[htbp]
     \centering
@@ -367,16 +373,16 @@ Comme décrit précédemment, le procédé transformant les données claires en 
     \label{fig:chiffrement}
 \end{figure}
 
-Il est important de préciser que tous les détails décrivant le fonctionnement d'un algorithme cryptographique sont disponibles publiquement, seule la clé de chiffrement doit rester secrète. En effet, un principe fondamental de la cryptographie est le principe de Kerckoffs. Ce principe stipule que la sécurité de tout algorithme de chiffrement ne doit pas reposer sur la connaissance du fonctionnement de ce dernier. Autrement dit, la sécurité offerte par un algorithme de chiffrement ne doit pas dépendre du secret de son implémentation mais doit uniquement reposer sur la protection de la clé, ou plus généralement d'un secret. Par conséquent, un bon algorithme est un algorithme dont on ne parviendra pas à déchiffrer les données chiffrées, même en connaissant son fonctionnement interne. Lorsque la clé d'un algorithme est trouvée, le déchiffrement des données confidentielles devient possible. On dit que l'algorithme de chiffrement est \textbf{\textit{cassé}}.
+Il est important de préciser que tous les détails décrivant le fonctionnement d'un algorithme cryptographique sont disponibles publiquement, seule la clé de chiffrement doit rester secrète. En effet, un principe fondamental de la cryptographie est le principe de Kerckhoffs. Ce principe stipule que la sécurité de tout algorithme de chiffrement ne doit pas reposer sur la connaissance du fonctionnement de ce dernier. Autrement dit, la sécurité offerte par un algorithme de chiffrement ne doit pas dépendre du secret de son implémentation mais doit uniquement reposer sur la protection de la clé, ou plus généralement d'un secret. Par conséquent, un bon algorithme est un algorithme dont on ne parviendra pas à déchiffrer les données chiffrées, même en connaissant son fonctionnement interne. Lorsque la clé d'un algorithme est trouvée, le déchiffrement des données confidentielles devient possible. On dit que l'algorithme de chiffrement est \textbf{\textit{cassé}}.
 
 \subsection{\textit{Device} cryptographique}
 \label{sec:Introduction}
 
-Que ce soit pour un algorithme de chiffrement symétrique ou asymétrique, la clé de chiffrement tout comme l'algorithme en lui-même doivent être stockés sur un support physique. Ce support, appelé \textit{device cryptographique}, doit être suffisamment sécurisé que pour contenir la clé de manière protégée. Par la suite, les messages clairs seront envoyés au device cryptographique qui se chargera de les chiffrer selon l'algorithme implémenté et la clé utilisée.
+Que ce soit pour un algorithme de chiffrement symétrique ou asymétrique, la clé de chiffrement tout comme l'algorithme en lui-même doivent être stockés sur un support physique. Ce support, appelé \textit{device cryptographique}, doit être suffisamment sécurisé que pour contenir la clé de manière protégée. Par la suite, les messages clairs seront envoyés au device cryptographique qui se chargera de les chiffrer selon l'algorithme implémenté et la clé utilisée. Un exemple de device cryptographique utilisé est le \textit{FPGA} (\textit{Field-Programmable Gate Array}).
 
 \theoremstyle{definition}
 \begin{definition}{\textbf{Device cryptographique :}}
-Un device cryptographique est un device qui implémente des algorithmes de chiffrement et qui stocke des clés de chiffrement (exemple : FPGA).
+Un device cryptographique est un device qui implémente des algorithmes de chiffrement et qui stocke des clés de chiffrement.
 \end{definition}
 
 \newpage
@@ -386,9 +392,9 @@ Un device cryptographique est un device qui implémente des algorithmes de chiff
 
 En 1997, le NIST (\textit{National Institute of Standards and Technology}) décida qu'il était temps de développer un nouveau standard d'algorithme de chiffrement. Ce nouveau standard, nommé \textbf{AES} (pour \textit{Advanced Encryption Standard}), était appelé à remplacer l'ancien standard de chiffrement, l'algorithme DES (pour \textit{Data Encryption Standard}). Pour ce faire, le NIST organisa un concours cryptographique. Les chercheurs du monde entier furent invités à soumettre leurs propositions. En Octobre 2000, Le NIST annonça le vainqueur du concours : l'algorithme de Rijndael, du nom de ses concepteurs Joan Daemen et Vincent Rijmen, tous deux de nationalité belge.
 
-L'algorithme de Rijndael, désormais plus connu sous le nom d'algorithme AES, est un \textbf{algorithme de chiffrement symétrique par blocs}. Par \textit{blocs} signifie que les données sont traitées par blocs de 128 bits. La clé secrète peut posséder différentes tailles : 128 bits (AES-128), 192 bits (AES-192) ou encore 256 bits (AES-256). À noter qu'en théorie, plus la taille de la clé est élevée, moins il y a de chance de casser l'algorithme. Cela est dû au fait que, plus la taille de la clé est grande, plus il existe un nombre important de possibilités de clé à tester avant de retrouver celle qui correspond à la valeur exacte. L'algorithme AES n'a ainsi, à ce jour, jamais été cassé par des méthodes d'attaques classiques. Cependant, comme nous le verrons par la suite avec les attaques par canal auxiliaire (section \ref{sec:att}), le problème peut vite être contourné. Pour ce travail, il m'a été demandé d'attaquer une implémentation de l'algorithme AES-256. Cependant, pour bien comprendre son fonctionnement, la description qui suit est dans un premier temps basée sur l'algorithme AES-128. Dans un second temps, une adaptation sera insérée afin de comprendre le fonctionnement de l'algorithme AES-256.
+L'algorithme de Rijndael, désormais plus connu sous le nom d'algorithme AES, est un \textbf{algorithme de chiffrement symétrique par blocs}. Par \textit{blocs} signifie que les données sont traitées par blocs de 128 bits. La clé secrète peut posséder différentes tailles : 128 bits (AES-128), 192 bits (AES-192) ou encore 256 bits (AES-256). À noter qu'en théorie, plus la taille de la clé est élevée, moins il y a de chance de casser l'algorithme. Cela est dû au fait que, plus la taille de la clé est grande, plus il existe un nombre important de possibilités de clé à tester avant de retrouver celle qui correspond à la valeur exacte. L'algorithme AES n'a ainsi, à ce jour, jamais été cassé par des méthodes d'attaques classiques. Cependant, comme nous le verrons par la suite avec les attaques par canal auxiliaire (section \ref{sec:att}), le problème peut vite être contourné. Pour ce travail, il m'a été demandé d'attaquer une implémentation de l'algorithme AES-256. La description qui suit est dans un premier temps basée sur l'algorithme AES-128. Dans un second temps, une adaptation sera insérée afin de comprendre le fonctionnement de l'algorithme AES-256.
 
-Avant de détailler le fonctionnement de l'algorithme AES-128, précisons quelques caractéristiques principales. L'algorithme AES est caractérisé par une série de tours (\textit{rounds} en anglais) dépendant de la taille de la clé. Pour une clé dont la taille est 128 bits, on dénombre 10 tours. Pour une clé de taille 192 bits, on dénombre 12 tours et pour une clé de taille 256 bits, on dénombre 14 tours. Un \textit{round} est défini par 4 opérations appliquées succinctement sur une matrice de données. Ces 4 opérations sont : \textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}. Elles sont appliquées à divers instants dans l'exécution de l'algorithme AES. Le tableau \ref{tab:AES} présente un récapitulatif des principales caractéristiques des trois variantes de l'algorithme AES. La figure \ref{fig:AES_General} permet de visualiser l'ordre d'exécution chronologique des 4 opérations opérées par l'algorithme. L'annexe \ref{ann:AES} reprend quant à elle le code réalisé pour l'exécution de l'algorithme AES-128.
+Avant de détailler le fonctionnement de l'algorithme AES-128, précisons quelques caractéristiques principales. L'algorithme AES est caractérisé par une série de tours (\textit{rounds} en anglais) dépendant de la taille de la clé. Pour une clé dont la taille est 128 bits, on dénombre 10 tours. Pour une clé de taille 192 bits, on dénombre 12 tours et pour une clé de taille 256 bits, on dénombre 14 tours. Un \textit{round} est défini par 4 opérations appliquées succinctement sur une matrice de données. Ces 4 opérations sont : \textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}. Elles sont appliquées à divers instants dans l'exécution de l'algorithme AES. Le tableau \ref{tab:AES} présente un récapitulatif des principales caractéristiques des trois variantes de l'algorithme AES. La figure \ref{fig:AES_General} permet de visualiser l'ordre d'exécution chronologique des 4 opérations opérées par l'algorithme. Les annexes \ref{ann:AES128} et \ref{ann:AES256} respectivement, reprennent le code réalisé pour l'exécution de l'algorithme AES-128 et l'algorithme AES-256.
 
 \vspace{0.5cm}
 
@@ -437,14 +443,14 @@ L'AES-128 a donc pour rôle de chiffrer des blocs de données de 128 bits avec u
     \label{fig:XOR}
 \end{figure}
 
-\hspace{-0.5 cm}Ensuite, toujours selon la figure \ref{fig:AES_General}, une série de quatre opérations se répétant neuf fois (car AES-128) est exécutée. Ces quatres opérations sont appliquées dans l'ordre suivant : \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns}, \textit{AddRoundKey}. \\
+\hspace{-0.5 cm}Ensuite, toujours selon la figure \ref{fig:AES_General}, une série de quatre opérations se répétant neuf fois (car AES-128) est exécutée. Ces quatres opérations sont appliquées dans l'ordre chronologique suivant : \textit{SubBytes}, \textit{ShiftRows}, \textit{MixColumns}, \textit{AddRoundKey}. \\
 Enfin, une fois les neufs rounds exécutés, trois opérations terminent le chiffrement : \textit{SubBytes}, \textit{ShiftRows} et \textit{AddRoundKey}. À la fin de ces trois dernières opérations, une matrice de taille 4x4 (la matrice STATE) présente le message chiffré de 128 bits.
-`
+
 
 \newpage
 \underline{\textbf{Description des 4 opérations :}} \\
 \begin{description}
-\item[1. SubBytes]: La figure \ref{fig:SubBytes} ci-dessous présente le principe de fonctionnement de l'opération \textit{SubBytes}. Le principe de fonctionnement présenté dans ce cas-ci est simple : il repose sur une table de substitution, appelée Sbox et présentée en annexe \ref{ann:Sbox}. La matrice STATE avant l'exécution de l'opération contient 16 bytes. Chacun de ses 16 bytes (notés $S_{i,j}$) va fournir une nouvelle valeur de byte (noté $S'_{i,j}$) en fonction de la table de substitution. Un exemple est donné afin de comprendre le principe : Si le byte $S_{1,2}$ vaut $53$ (hexa) alors, selon la table Sbox, la valeur du byte résultant $S'_{1,2}$ vaut $ed$ (hexa).
+\item[1. SubBytes]: La figure \ref{fig:SubBytes} ci-dessous présente le principe de fonctionnement de l'opération \textit{SubBytes}. Le principe de fonctionnement présenté dans ce cas-ci est simple : il repose sur une table de substitution, appelée Sbox et présentée en annexe \ref{ann:Sbox}. La matrice STATE avant l'exécution de l'opération contient 16 bytes. Chacun de ses 16 bytes (notés $S_{i,j}$) va fournir une nouvelle valeur de byte (noté $S'_{i,j}$) en fonction de la table de substitution. Un exemple est donné afin de comprendre le principe : Si le byte $S_{1,2}$ vaut $53$ (en hexadécimal) alors, selon la table Sbox, la valeur du byte résultant $S'_{1,2}$ vaut $ed$ (en hexadécimal).
 
 \begin{figure}[htbp]
     \centering
@@ -489,9 +495,9 @@ La figure \ref{fig:colonne} ci-dessous présente le principe de fonctionnement d
 
 \vspace{0.25cm}Il persiste une opération qui n'a pas encore été expliquée : l'opération \textit{KeySchedule}. Cette opération s'exécute uniquement sur la matrice clé. Par conséquent, la gestion des clés se fait au travers des deux fonctions qui sont les fonctions \textit{AddRoundKey} et \textit{KeySchedule}. Nous connaissons le principe de fonctionnement de l'opération \textit{AddRoundKey}, reste à comprendre l'utilité de l'opération \textit{KeySchedule}.
 
-\hspace{-0.5cm}Jusqu'à présent, nous avons vu que la matrice STATE était modifiée après chaque opération exécutée. Ce qu'on ne sait pas encore, c'est que la matrice clé est également modifiée à chaque round afin d'éviter d'utiliser toujours la même valeur de clé. Cela permet ainsi de complexifier le chiffrement des données. On l'aura deviné, l'opération qui modifie la matrice clé initiale en une nouvelle matrice clé est appelée \textbf{\textit{KeySchedule}}. Cette opération génère une nouvelle clé sur base de la clé précédemment employée. Ainsi, pour générer la première nouvelle clé, l'opération \textit{KeySchedule} emploiera la clé initialement donnée. Étant donné que pour l'AES-128, nous avons un total de dix rounds à exécuter, cela signifie que l'opération \textit{KeySchedule} s'exécute dix fois afin de générer dix nouvelles clés de 128 bits. En rajoutant la clé initiale, nous avons alors onze clés de chiffrement différentes permettant d'exécuter les onze opérations \textit{AddRoundKey} présentes dans l'algorithme AES-128. Ainsi, comme présenté à l'annexe \ref{ann:AES}, l'opération \textit{KeySchedule} s'exécute en premier lieu dans le code afin de générer dix nouvelles clés. En comptant la clé initialement donnée, il y a donc onze clés. Chacune de ces onze clés sera utilisée lors de l'appel de la fonction \textit{AddRoundKey}. 
+\hspace{-0.5cm}Jusqu'à présent, nous avons vu que la matrice STATE était modifiée après chaque opération exécutée. Ce qu'on ne sait pas encore, c'est que la matrice clé est également modifiée à chaque round afin d'éviter d'utiliser toujours la même valeur de clé. Cela permet ainsi de complexifier le chiffrement des données. On l'aura deviné, l'opération qui modifie la matrice clé initiale en une nouvelle matrice clé est appelée \textbf{\textit{KeySchedule}}. Cette opération génère une nouvelle clé sur base de la clé précédemment employée. Ainsi, pour générer la première nouvelle clé, l'opération \textit{KeySchedule} emploiera la clé initialement donnée. Étant donné que pour l'AES-128, nous avons un total de dix rounds à exécuter, cela signifie que l'opération \textit{KeySchedule} s'exécute dix fois afin de générer dix nouvelles clés de 128 bits. En rajoutant la clé initiale, nous avons alors onze clés de chiffrement différentes permettant d'exécuter les onze opérations \textit{AddRoundKey} présentes dans l'algorithme AES-128. Ainsi, comme présenté à l'annexe \ref{ann:AES128}, l'opération \textit{KeySchedule} s'exécute en premier lieu dans le code afin de générer dix nouvelles clés. En comptant la clé initialement donnée, il y a donc onze clés. Chacune de ces onze clés sera utilisée lors de l'appel de la fonction \textit{AddRoundKey}. 
 
-\hspace{-0.5cm}L'annexe \ref{ann:KeySchedule} permet de comprendre le principe de fonctionnement de l'opération \textit{KeySchedule}, utilisée afin de générer les nouvelles clés. Plus précisément, cette annexe présente un exemple pour générer la première nouvelle clé. Le fonctionnement est le suivant : l'opération \textit{KeySchedule} s'exécute colonne par colonne (sur la matrice clé de taille 4x4). On va d'abord générer la première colonne de la nouvelle clé, ensuite on générera les colonnes 2, 3 et 4. C'est la première colonne qui est la plus compliquée à générer. Les 3 autres colonnes réalisent simplement un XOR pour générer la nouvelle colonne.
+\hspace{-0.5cm}L'annexe \ref{ann:KeySchedule} permet de comprendre le principe de fonctionnement de l'opération \textit{KeySchedule}, utilisée afin de générer les nouvelles clés. Plus précisément, cette annexe présente un exemple pour générer la première nouvelle clé (taille de 128 bits). Le fonctionnement est le suivant : l'opération \textit{KeySchedule} s'exécute colonne par colonne sur la matrice clé de taille 4x4. On va d'abord générer la première colonne de la nouvelle clé, ensuite on générera les colonnes 2, 3 et 4. C'est la première colonne qui est la plus compliquée à générer. Les 3 autres colonnes réalisent simplement un XOR pour générer la nouvelle colonne.
 Ainsi, pour obtenir la 1ère colonne de la nouvelle clé (soit les quatre premiers bytes), on va prendre trois vecteurs colonnes (taille 4x1), à savoir : 
 \begin{enumerate}
 \item Prendre la 4ème colonne de la clé initiale.
@@ -520,12 +526,14 @@ Ainsi, l'opération \textit{KeySchedule} s'exécute 14 fois. Cependant, cette op
 %%%%%%%%%%%%% Chapitre 3 %%%%%%%%%%%%%
 
 \chapter{Consommation de puissance}
+\label{chap:puissance}
 
 Ce chapitre introduit au lecteur une technologie bien répandue dans les systèmes informatiques modernes : la technologie CMOS. C'est en étudiant le fonctionnement de cette technologie que les attaques par analyse de la consommation de puissance sont rendues praticables. Le principe de fonctionnement de cette technologie constitue donc une étape nécessaire dans l'apprentissage du lecteur. En effet, ce dernier sera ainsi en mesure de comprendre pourquoi une analyse de la consommation de puissance d'un circuit en technologie CMOS permettra plus tard (chapitre \ref{chap:attaques}) de retrouver la clé d'un algorithme de chiffrement. De cette façon, ce chapitre se scinde en deux parties. Dans un premier temps, l'objectifs est de comprendre le fonctionnement de la technologie CMOS ainsi que ses répercussions sur les différentes puissances intervenant. Dans un second temps, l'objectif est d'assimiler le concept de \textit{modèle de puissance}. Pour ce faire, deux modèles seront judicieusement développés.
 
 \section{Technologie CMOS}
 \label{sec:CMOS}
-La \textbf{\textit{technologie CMOS}} (pour \textit{Complementary MOS}) est la technologie la plus répandue parmi toutes les technologies de semi-conducteurs. En effet, on la retrouve dans la majorité des systèmes informatiques modernes. En 2001, elle couvrait 86\% de la production mondiale des circuits intégrés. Pour cette raison, nous nous intéressons à leur conception afin de détecter des anomalies qui pourraient se révéler être utiles pour la cryptanalyse. Le nom de cette technologie vient du fait que toutes les fonctions logiques (portes OR, NAND, etc.) peuvent être réalisées moyennant l’utilisation d’une paire de transistors MOS complémentaires (N-MOS et P-MOS) associés symétriquement et fonctionnant en régime de commutation. Ainsi lorsqu'un des deux transistors MOS conduit, l’autre est par conséquent fermé. Grâce à ce principe, une porte logique CMOS ne consomme de l’énergie qu’au moment de la commutation. Cette caractéristique permet de distinguer le CMOS de toutes les autres technologies.
+La \textbf{\textit{technologie CMOS}} (pour \textit{Complementary Metal Oxyde Semiconductor}) est la technologie la plus répandue parmi toutes les technologies de semi-conducteurs. En effet, on la retrouve dans la majorité des systèmes informatiques modernes. En 2001, elle couvrait 86\% de la production mondiale des circuits intégrés. Pour cette raison, nous nous intéressons à leur conception afin de détecter des anomalies qui pourraient se révéler être utiles pour la cryptanalyse. \\
+Le nom de cette technologie vient du fait que toutes les fonctions logiques (portes OR, AND, etc.) peuvent être réalisées moyennant l’utilisation d’une paire de transistors MOS complémentaires (N-MOS et P-MOS) associés symétriquement et fonctionnant en régime de commutation. Cela signifie que lorsqu'un des deux transistors MOS conduit, l’autre est par conséquent fermé. Grâce à ce principe, une porte logique CMOS ne consomme de l’énergie qu’au moment de la commutation. Cette caractéristique permet de distinguer le CMOS de toutes les autres technologies.
 
 \hspace{-0.5 cm}Pour expliquer le fonctionnement de cette technologie, on peut prendre un exemple simple : \textbf{\textit{l'inverseur CMOS}}. Un inverseur CMOS est une fonction "\textit{NON}" dont voici la table de vérité (table \ref{tab:verite}):
 \begin{table}[htbp]
@@ -540,37 +548,39 @@ La \textbf{\textit{technologie CMOS}} (pour \textit{Complementary MOS}) est la t
     	\label{tab:verite} 
 \end{table}
 
+\newpage
+
 \hspace{-0.5 cm}La figure \ref{fig:CMOS} ci-dessous (schéma a) présente le schéma de l'inverseur CMOS :
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.8]{image/CMOS}
+    \includegraphics[scale=0.75]{image/CMOS}
     \caption{Schéma de l'inverseur CMOS.}
     \label{fig:CMOS} 
 \end{figure}
 
-Si on applique à l'entrée (E) un état bas, le transistor N est bloqué et le P est passant (schéma b). On place ainsi la sortie au potentiel Vdd (la tension d'alimentation), c'est-à-dire à l'état haut. Inversement, quand on met l'entrée à l'état haut, le transistor P est bloqué et le N est passant (schéma c). La sortie est donc à l'état bas. On a donc bien réalisé une fonction inversion. Dans la suite de cet ouvrage, on considérera toujours que les circuits attaqués sont réalisés en technologie CMOS.
+Si on applique à l'entrée (E) un état bas, le transistor N est bloqué et le P est passant (schéma b). On place ainsi la sortie au potentiel Vdd (la tension d'alimentation), c'est-à-dire à l'état haut. Inversement, quand on met l'entrée à l'état haut, le transistor P est bloqué et le N est passant (schéma c). La sortie est donc à l'état bas. On a donc bien réalisé une fonction inversion. Dans la suite de ce travail, on considérera toujours que les circuits attaqués sont réalisés en technologie CMOS.
 
 
 \subsection{Consommation de puissance des circuits en technologie CMOS}
 \label{sec:puissance}
 
-Il est évident que les circuits digitaux modernes consomment de la puissance lorsqu'ils exécutent des instructions (opérations) sur des données. Dans le domaine de la cryptanalyse, cette puissance va être mesurée et analysée afin de déterminer si le device cryptographique est attaquable ou non. Dans cette section, nous allons étudier plus particulièrement la consommation de puissance d'un type précis de circuit : les circuits utilisant la technologie CMOS (voir section \ref{sec:CMOS} pour plus de précision). Cette technologie est très répandue et couvre la plupart des circuit digitaux modernes. 
+Il est évident que les circuits digitaux modernes consomment de la puissance lorsqu'ils exécutent des instructions. Dans notre cas, c'est un FPGA sur lequel est implémenté l'algorithme AES qui consomme de la puissance. Dans le domaine de la cryptanalyse, cette puissance va être mesurée et analysée afin de déterminer si le device cryptographique laisse fuiter des informations. Si tel est le cas, nous verrons comment ces informations peuvent être utilisées afin de retrouver le clé de chiffrement de l'algorithme AES (chapitre \ref{chap:attaques}). Pour ce faire, nous devons tout t'abord étudier les différentes puissances intervenant dans les circuits réalisés en technologie CMOS. Pour rappel, cette technologie est très répandue et couvre la plupart des circuit digitaux modernes. 
 
-La consommation totale de puissance d'un circuit CMOS peut être obtenue en sommant les consommations de puissance respectives de chaque cellule logique du circuit CMOS. De cette façon, la consommation de puissance totale dépend essentiellement du nombre de cellules logiques dans le circuit CMOS. \\
+La consommation totale de puissance d'un circuit CMOS peut être obtenue en sommant les consommations de puissance respectives de chaque cellule logique (cellule conçue pour remplir une certaine fonction logique) du circuit CMOS. De cette façon, la consommation de puissance totale dépend essentiellement du nombre de cellules logiques dans le circuit CMOS. \\
 En prenant comme exemple de cellule logique CMOS, l'inverseur CMOS (expliqué à la section \ref{sec:CMOS}), nous allons tenter de comprendre quand et pour quelles raisons ces cellules CMOS dissipent de la puissance. Pour ce faire, il faut savoir que la consommation de puissance est essentiellement divisée en deux parties : 
 \begin{itemize}
 \item La puissance statique (notée $P_{stat}$): C'est la puissance qui est consommée lorsqu'il n'y a pas de commutation dans une cellule (c'est-à-dire dans l'inverseur). Autrement dit, c'est la puissance qui est consommée lorsque l'inverseur est en fonctionnement normal mais ne commute pas.
-\item La puissance dynamique (notée $P_{dyn}$) : C'est la puissance qui est consommée par une cellule si la sortie de cette cellule commute. 
+\item La puissance dynamique (notée $P_{dyn}$) : C'est la puissance qui est consommée par une cellule si la sortie de celle-ci commute. 
 \end{itemize}
 Ainsi, la puissance totale consommée par une cellule vaut la somme de ces deux composantes, soit :
 \begin{gather}
 	P_{total} = P_{stat} + P_{dyn}
 \end{gather}
 
-Mais de façon plus précise, que vaut la puissance statique ? De même, comment pourrait-on exprimer la puissance dynamique ? 
+Mais de façon plus précise, que vaut la puissance statique ? De même, comment peut-on exprimer la puissance dynamique ? 
 
 \hspace{-0.5 cm}\underline{\textbf{\textit{Puissance statique :}}} \vspace{0.2 cm} \\
-Les cellules CMOS sont toujours construites de façon à ce que les deux transistors complémentaires ne soient jamais passants au même moment. En effet, si on reprend l'exemple de l'inverseur CMOS (\ref{sec:CMOS}), lorsqu'on met le signal d'entrée à \textit{GND} alors le transistor P1 est passant et N1 est bloqué. Par contre, lorsqu'on met le signal d'entrée à \textit{$V_{DD}$}, le transistor P1 devient bloqué tandis que le transistor N1 devient passant. Ainsi, en théorie, un seul transistor fonctionne et laisse passer du courant. Cependant, en pratique, lorsqu'un transistor MOS est bloqué, le courant qui le traverse n'est pas totalement nul. En effet, une très petite valeur de courant circule dans le canal du transistor. Ce courant, que l'on appelle \textit{courant de fuite} et que l'on note \textit{$I_{fuite}$}, produit une consommation de puissance \textbf{statique} pouvant être calculée de la façon suivante :
+Les cellules CMOS sont toujours construites de façon à ce que les deux transistors complémentaires ne soient jamais passants au même moment. En effet, si on reprend l'exemple de l'inverseur CMOS (\ref{sec:CMOS}), lorsqu'on met le signal d'entrée à \textit{GND} alors le transistor P1 est passant et N1 est bloqué. Par contre, lorsqu'on met le signal d'entrée à \textit{$V_{DD}$}, le transistor P1 devient bloqué tandis que le transistor N1 devient passant. Ainsi, en théorie, un seul transistor fonctionne et laisse passer du courant. Cependant, en pratique, lorsqu'un transistor MOS est bloqué, le courant qui le traverse n'est jamais entièrement nul. En effet, une très petite valeur de courant circule dans le canal du transistor. Ce courant, que l'on appelle \textit{courant de fuite} et que l'on note \textit{$I_{fuite}$}, produit une consommation de puissance \textbf{statique} pouvant être calculée de la façon suivante :
 \begin{gather}
 	P_{stat} = I_{fuite} . V_{DD}
 \end{gather}
@@ -580,20 +590,27 @@ Les cellules CMOS sont toujours construites de façon à ce que les deux transis
 Ainsi, on peut conclure que la consommation de puissance statique des circuits CMOS correspond à la puissance qui est consommée par le circuit lorsqu'il n'y a pas de commutation dans une cellule. Cette puissance est typiquement très faible et sera, en pratique, négligée.
 \end{minipage}
 }
-\vspace{0.3 cm} \\
+\vspace{0.6 cm} \\
 \hspace{-0.5 cm}\underline{\textbf{\textit{Puissance dynamique :}}} \vspace{0.2 cm} \\
 La consommation de puissance dynamique apparait typiquement lors d'une commutation des transistors. Une commutation est le passage d'un état haut à un état bas ou d'un état bas à un état haut. En réalité, il existe 4 transitions d'état possibles. Ces 4 possibilités sont reprises dans le tableau \ref{fig:dyn} ci-dessous. 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.4]{image/dyn}
-    \caption{Type de puissance consommée par une cellule CMOS en fonction des 4 transitions d'état de sa sortie.}
-    \label{fig:dyn} 
-\end{figure}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{|c|c|}
+    		\hline
+   		  \textit{Transitions} & \textit{Type de puissance consommée} \\ \hline 
+   		  0  \rightarrow 0 & Statique \\ 
+   		  0  \rightarrow 1 & Statique + Dynamique \\ 
+		  1  \rightarrow 0 & Statique + Dynamique \\ 
+   		  1  \rightarrow 1 & Statique \\ \hline
+	\end{tabular}
+    	\caption{Type de puissance consommée par une cellule CMOS en fonction des 4 transitions d'état de sa sortie.}
+    	\label{fig:dyn} 
+\end{table}
 
-\hspace{-0.5 cm}On constate que pour chaque transition possible, il y a présence de puissance statique. Cependant, il n'y a présence de puissance dynamique que dans le cas d'une commutation, c'est-à-dire dans les deux transitions suivantes : 0-1 et 1-0.  En toute logique, la consommation de puissance totale dépend du type de cellule et de la technologie employée. Cependant, en général, on constate que : 
+\hspace{-0.5 cm}On constate que pour chaque transition possible, il y a présence de puissance statique. Cependant, il n'y a présence de puissance dynamique que dans le cas d'une commutation, c'est-à-dire lors des deux transitions : 0\rightarrow1 et 1\rightarrow0.  En toute logique, la consommation de puissance totale dépend du type de cellule et de la technologie employée. Cependant, en général, on constate que : 
 \begin{itemize}
-\item \textbf{\textit{Lorsqu'il n'y a pas de commutation}} (transitions 0-0 et 1-1), la puissance totale reste plus ou moins constante. En effet, la puissance dynamique étant nulle, on ne retrouve dans le calcul de puissance totale que la puissance statique. Autrement dit : $P_{total}=P_{stat}$.
-\item \textbf{\textit{Lorsqu'il y a une commutation}} (transitions 0-1 et 1-0), la puissance totale augmente. En effet, en plus de la puissance statique, vient s'ajouter la puissance dynamique. Autrement dit : $P_{total}=P_{stat}+P_{dyn}$.
+\item \textbf{\textit{Lorsqu'il n'y a pas de commutation}} (transitions 0\rightarrow0 et 1\rightarrow1), la puissance totale reste plus ou moins constante. En effet, la puissance dynamique étant nulle, on ne retrouve dans le calcul de puissance totale que la puissance statique. Autrement dit : $P_{total}=P_{stat}$.
+\item \textbf{\textit{Lorsqu'il y a une commutation}} (transitions 0\rightarrow1 et 1\rightarrow0), la puissance totale augmente. En effet, en plus de la puissance statique déjà présente, vient s'ajouter la puissance dynamique. Autrement dit : $P_{total}=P_{stat}+P_{dyn}$.
 \end{itemize}
 
 \vspace{+0.5 cm}\hspace{-0.5 cm}\fbox{
@@ -602,10 +619,12 @@ Ainsi, on peut conclure que la consommation de puissance dynamique des circuits 
 \end{minipage}
 }
 
+\newpage
+\hspace{-0.5 cm}\underline{\textbf{\textit{Calcul de la puissance dynamique :}}} 
 Le calcul de la consommation de puissance dynamique se divise en deux parties. Pour mieux comprendre pourquoi, reprenons l'exemple de l'inverseur CMOS.
 
 \begin{enumerate}
-\vspace{-0.2 cm}\item \textbf{\textit{Puissance moyenne de chargement de la capacité}} : La figure \ref{fig:CMOS} présente le schéma de l'inverseur CMOS lorsqu'il y a une commutation de sa sortie de l'état 0 à l'état 1 (schéma b) et lorsqu'il y a une commutation de sa sortie de l'état 1 à l'état 0 (schéma c). Pour rappel, le fonctionnement de l'inverseur est le suivant : Lorsque le signal d'entrée est à 1 (ou 0), le transistor du dessous est passant (ou bloqué) alors que celui du haut est bloqué (ou passant), la sortie est donc à 0 (ou 1). Maintenant, il faut regarder dans le cas d'une commutation à la sortie de l'inverseur CMOS. Si il y a une commutation de l'état 0 à l'état 1 en sortie, l'inverseur dessine un courant provenant de l'alimentation ($V_{DD}$) et venant charger le condensateur $C_L$. Ce courant est appelé \textit{courant de charge}. À contrario, lors d'une commutation de l'état 1 à l'état 0, l'inverseur décharge le courant du condensateur $C_L$ vers la masse ($GND$). Ainsi, on constate bien que la commutation à la sortie de l'inverseur génère un courant qui produira une partie de la consommation de puissance dynamique. La consommation de puissance moyenne de chargement de la capacité durant un temps T peut être calculée de la façon suivante (\ref{eqn:charge}) :
+\vspace{-0.2 cm}\item \textbf{\textit{Puissance moyenne de chargement de la capacité}} : La figure \ref{fig:CMOS} présente le schéma de l'inverseur CMOS lorsqu'il y a une commutation de sa sortie de l'état 0 à l'état 1 (schéma b) et lorsqu'il y a une commutation de sa sortie de l'état 1 à l'état 0 (schéma c). Pour rappel, le fonctionnement de l'inverseur est le suivant : Lorsque le signal d'entrée est à 1 (ou 0), le transistor du dessous est passant (ou bloqué) alors que celui du haut est bloqué (ou passant), la sortie est donc à 0 (ou 1). Maintenant, il faut regarder dans le cas d'une commutation à la sortie de l'inverseur CMOS. Si il y a une commutation de l'état 0 à l'état 1 en sortie (schéma b), l'inverseur dessine un courant provenant de l'alimentation ($V_{DD}$) et venant charger le condensateur $C_L$. Ce courant est appelé \textit{courant de charge}. À contrario, lors d'une commutation de l'état 1 à l'état 0, l'inverseur décharge le courant du condensateur $C_L$ vers la masse ($GND$). Ainsi, on constate bien que la commutation à la sortie de l'inverseur génère un courant qui produira une partie de la consommation de puissance dynamique. La consommation de puissance moyenne de chargement de la capacité durant un temps T peut être calculée de la façon suivante (\ref{eqn:charge}) :
 \begin{gather}
 	P_{chrg} = \frac{1}{T}\int_{0}^{T}p_{chrg}(t)dt=\alpha.f.C_{L}.V_{DD}^{2}\label{eqn:charge}
 \end{gather}
@@ -619,9 +638,9 @@ Où :
 \end{itemize}
 
 
-\vspace{-0.2 cm}\item \textbf{\textit{Puissance moyenne causée par les courants de court-circuit}} : En plus de la puissance moyenne de chargement de la capacité, il existe lors d'une commutation un bref instant, durant lequel les deux transistors conduisent le courant. Cela a pour effet de créer un court-circuit entre $V_{DD}$ en $GND$. Ce court-circuit va dissiper, le temps de son passage, de la puissance. La consommation de puissance moyenne qui est causée par les courants de court-circuit dans une cellule durant un temps T peut être calculée de la façon suivante (\ref{eqn:charge}) :
+\vspace{-0.2 cm}\item \textbf{\textit{Puissance moyenne causée par les courants de court-circuit}} : En plus de la puissance moyenne de chargement de la capacité, il existe lors d'une commutation un bref instant, durant lequel les deux transistors conduisent le courant. Cela a pour effet de créer un court-circuit entre $V_{DD}$ en $GND$. Ce court-circuit va dissiper, le temps de son passage, de la puissance. La consommation de puissance moyenne qui est causée par les courants de court-circuit dans une cellule durant un temps T peut être calculée de la façon suivante (\ref{eqn:cc}) :
 \begin{gather}
-	P_{cc} = \frac{1}{T}\int_{0}^{T}p_{cc}(t)dt=\alpha.f.C_{L}.V_{DD}.I_{fuite}.t_{cc}
+	P_{cc} = \frac{1}{T}\int_{0}^{T}p_{cc}(t)dt=\alpha.f.C_{L}.V_{DD}.I_{fuite}.t_{cc}\label{eqn:cc}
 \end{gather}
 
 Où : 
@@ -638,7 +657,7 @@ Où :
 
 \hspace{-0.5 cm}\fbox{
 \begin{minipage}{\textwidth}
-En conclusion, les systèmes informatiques modernes (comme le FPGA) possèdent deux composantes en puissance : 
+En conclusion, les devices cryptographiques modernes (comme le FPGA) possèdent deux composantes en puissance : 
 \begin{itemize}
 \item Une \textbf{\textit{puissance statique}} de faible valeur, requise pour garder le device en fonctionnement continu. Elle dépend du nombre de transistors dans la cellule. Elle est \textbf{négligée}.
 \item Une \textbf{\textit{puissance dynamique}} de haute valeur, qui apparait lors d'une commutation. Elle dépend des opérations exécutées et des données manipulées. Elle n'est \textbf{pas négligée}.
@@ -651,50 +670,46 @@ Ceci nous conduit donc à l'équation suivante (\ref{eqn:puissance}) :
 }
 
 
-\vspace{-0.2 cm}
-\subsubsection{Composition des traces de puissance}
-\vspace{-0.1 cm}Les attaques basées sur l'analyse de la consommation de puissance exploitent le fait que la consommation de puissance d'un device cryptographique dépend des \textbf{opérations qu'il exécute} et des \textbf{données qu'il manipule}. Ces deux informations vont ainsi permettre de définir différentes propriétés intéressantes. Pour chaque point analysé dans une trace de puissance, on notera :
+\subsection{Composition des traces de puissance}
+Les attaques basées sur l'analyse de la consommation de puissance exploitent le fait que la consommation de puissance d'un device cryptographique dépend des \textbf{opérations qu'il exécute} et des \textbf{données qu'il manipule}. Ces deux informations vont ainsi permettre de définir différentes propriétés intéressantes. Pour chaque point analysé dans une trace de puissance, on notera :
 \begin{itemize}
 \item \textbf{$P_{op}$ la composante dépendante de l'opération exécutée} ;
 \item \textbf{$P_{data}$ la composante dépendante de la donnée manipulée}. \\
 \end{itemize}
-\vspace{-0.2 cm}De plus, une troisième composante doit également être prise en compte. Cette composante fait référence au \textbf{bruit électrique} (aussi appelé bruit de fond) et sera notée \textbf{$P_{noise}$}. En effet, un signal est toujours affecté de petites fluctuations plus ou moins importantes. Ces fluctuations, dont les origines peuvent être diverses, sont appelées "bruit électrique" (ou simplement bruit). Le bruit est considéré comme un élément parasite aléatoire, c'est-à-dire qu'on ne sait pas le déterminer à l'avance. Au plus cette composante sera élevée et au plus l'analyse de la consommation de puissance sera difficile.
+De plus, une troisième composante doit également être prise en compte. Cette composante fait référence au \textbf{bruit électrique} (aussi appelé bruit de fond) et sera notée \textbf{$P_{noise}$}. En effet, un signal est toujours affecté de petites fluctuations plus ou moins importantes. Ces fluctuations, dont les origines peuvent être diverses, sont appelées "bruit électrique" (ou simplement bruit). Le bruit est considéré comme un élément parasite aléatoire, c'est-à-dire qu'on ne sait pas le déterminer à l'avance. Au plus cette composante est élevée et au plus l'analyse de la consommation de puissance est difficile.
 
-Ainsi, chaque point d'une trace de puissance peut être modélisé comme la somme des 3 composantes définies ci-dessus, soit : 
-$P_{total} = P_{op} + P_{data} + P_{noise}$. De plus, en reprenant l'équation (\ref{eqn:puissance}) définie dans la section \ref{sec:puissance}, nous pouvons conclure que (équation \ref{eqn:conclusion}) :
+\hspace{-0.5cm}Ainsi, chaque point d'une trace de puissance peut être modélisé comme la somme des 3 composantes définies ci-dessus, soit : 
+$P_{total} = P_{op} + P_{data} + P_{noise}$. Par ailleurs, en reprenant l'équation (\ref{eqn:puissance}) définie dans la section \ref{sec:puissance}, nous pouvons conclure que (équation \ref{eqn:conclusion}) :
 \begin{gather}
 	P_{total} = P_{op} + P_{data} + P_{noise} = P_{stat} + P_{dyn} \cong  P_{dyn} = P_{chrg} + P_{cc}\label{eqn:conclusion}
 \end{gather}
+
+En conclusion, la puissance consommée par un device cryptographique reflète directement ses activités internes. En effet, on remarque que cette puissance dépend aussi bien des opérations exécutées que des données manipulées, auxquelles il faut également ajouter la présence d'un bruit parasite inconnu (aléatoire). 
 
 
 
 \section{Modèles de puissance}
 \label{sec:modelpuissance}
-\vspace{-0.1 cm}Dans une attaque CPA, l'attaquant doit utiliser ce qu'on appelle un \textbf{\textit{modèle de puissance}} afin de prédire la consommation de puissance du device cryptographique attaqué. Une fois ces prédictions obtenues, celles-ci sont comparées aux mesures réelles de consommation de puissance du device (prises à l'oscilloscope). Plus précisément, comme nous le verrons à la section \ref{sec:CPAEntire}, on calcule la corrélation entre les prédictions et les mesures réelles afin de déterminer la valeur de la clé secrète. La qualité du modèle employé a un impact important sur l'efficacité de l'attaque. Deux modèles sont généralement définis et utilisés : Il s'agit des modèles de \textit{Poids de Hamming} (\textit{Hamming Weight} - HW) et de \textit{Distance de Hamming} (\textit{Hamming Distance} - HD).
-
+Dans une attaque par analyse de la consommation de puissance, l'attaquant doit utiliser ce que l'on appelle un \textbf{modèle de puissance} afin de prédire la consommation de puissance du device cryptographique attaqué. Différents modèles de prédictions existent. Chacun de ces modèles se base sur les valeurs de bits dans des set de données. La qualité du modèle employé a un impact important sur l'efficacité de l'attaque. Deux modèles sont généralement définis et utilisés : Il s'agit des modèles de \textbf{Poids de Hamming} (\textit{Hamming Weight} - HW) et de \textbf{Distance de Hamming} (\textit{Hamming Distance} - HD). Il faut noter que ces deux modèles restent généraux, c'est-à-dire qu'ils ne requièrent presque aucune connaissance à propos du design du circuit et sont par conséquent parfois imprécis. Une fois les prédictions obtenues, celles-ci sont comparées selon diverses méthodes (voir chapitre \ref{chap:attaques}) aux mesures réelles de consommation de puissance du device capturées à l'oscilloscope (traces de puissance). 
 
 \subsection{Modèle de poids de Hamming}
 \label{sec:modelHW}
 
-\underline{\textbf{Poids de Hamming} (HW)} : Le poids de Hamming est le modèle de consommation de puissance le plus élémentaire. C'est celui le plus utilisé par un attaquant lorsqu'il s'agit d'estimer la consommation de puissance d'un circuit dont on ne connait pas certaines valeurs intermédiaires consécutives calculées durant l'exécution de l'algorithme. Ce modèle considère qu'un 0 ne mène à aucune quantité significative de consommation de puissance tandis qu'un 1 implique une quantité significative de puissance consommée. Ainsi, pour ce modèle, on assume que la consommation de puissance prédite est proportionnelle au nombre de bits à 1 d'une donnée traitée. Dit vulgairement, le HW calcule le nombre de bits à 1 présents dans un nombre binaire. Exemple : HW(100110) = 3.
+Le poids de Hamming est le modèle de consommation de puissance le plus élémentaire. C'est celui le plus utilisé par un attaquant lorsqu'il s'agit d'estimer la consommation de puissance d'un circuit dont on ne connait pas certaines valeurs intermédiaires consécutives calculées durant l'exécution de l'algorithme. Ce modèle considère qu'un 0 ne mène à aucune quantité significative de consommation de puissance tandis qu'un 1 implique une quantité significative de puissance consommée. Ainsi, pour ce modèle, on assume que la consommation de puissance prédite est proportionnelle au nombre de bits à 1 d'une donnée traitée. Dit vulgairement, le poids de Hamming calcule le nombre de bits à 1 présents dans un nombre binaire. Mathématiquement, cela se traduit par l'expression \ref{eqn:HW} : \\
+\begin{gather}
+	HW(b_{0}) = \sum_{i=0}^{N-1} b_{0,i}\label{eqn:HW}
+\end{gather}
+Où $b_{0}$ est un mot de N bits. Par conséquent, $b_{0,i}$ est le $i^{ème}$ bit du mot binaire $b_{0}$. \\
+\textit{Exemple} : HW(100110) = 3.
 
 \subsection{Modèle de distance de Hamming}
 \label{sec:modelHD}
 
-\underline{\textbf{Distance de Hamming} (HD)}: La distance de Hamming est un modèle de consommation de puissance proposé par Brier et Al. Il est basé sur la relation entre la consommation de puissance et l'activité de commutation dans les circuits en technologie CMOS. En effet, comme indiqué en conclusion de la section \ref{sec:puissance}, la consommation de puissance d'un device en technologie CMOS est principalement d'ordre dynamique, c'est-à-dire due aux activités de commutation des cellules dans le circuit. Ainsi, ce modèle assume que la puissance totale consommée par un circuit CMOS (définie selon l'équation \ref{eqn:puissance}) est équivalente à la consommation de puissance lors de commutations (transitions 0-1 et 1-0). Ce modèle est donc proportionnel au nombre de transitions 0-1 et 1-0. La HD entre 2 nombres binaires se calcule en comptant le nombre de transitions (0-1 et 1-0) entre ces 2 nombres. Exemple : HD(110110 ; 100100) = 2.
-
-\subsection{Autres modèles}
-\label{sec:modelOther}
-
-\subsubsection{Fonctions linéaires et non-linéaires}
-\label{lineaire}
-Les algorithmes de chiffrement utilisent des fonctions dites linéaires mais également des fonctions non-linéaires. \textbf{Une fonction est dite \textit{linéaire} si elle respecte la propriété suivante} : 
+La distance de Hamming est un modèle de consommation de puissance proposé par Brier et Al. Il est basé sur la relation entre la consommation de puissance et l'activité de commutation dans les circuits en technologie CMOS. En effet, comme indiqué en conclusion de la section \ref{sec:puissance}, la consommation de puissance d'un device en technologie CMOS est principalement d'ordre dynamique, c'est-à-dire due aux activités de commutation des cellules dans le circuit. Ainsi, ce modèle assume que la puissance totale consommée par un circuit CMOS (définie selon l'équation \ref{eqn:puissance}) est équivalente à la consommation de puissance lors de commutations (transitions 0 \rightarrow 1 et 1 \rightarrow 0). Ce modèle est donc proportionnel au nombre de transitions 0 \rightarrow 1 et 1 \rightarrow 0. La distance de Hamming entre 2 nombres binaires, $b_1$ et $b_2$ se calcule en comptant le nombre de transitions (0 \rightarrow 1 et 1 \rightarrow 0) entre ces 2 nombres, soit l'expression \ref{eqn:HD} : 
 \begin{gather}
-	f(x*y) = f(x)*f(y)\label{eqn:lineaire}
+	HD(b_{1},b_{2}) = HW(b_1 \oplus b_2)\label{eqn:HD}
 \end{gather}
-À l'inverse, une fonction est dite \textit{non-linéaire} si elle ne respecte pas cette propriété (équation (\ref{eqn:lineaire})). \vspace{0.2 cm} \\
-\hspace{-0.5 cm} \textbf{Exemple} : Dans l'algorithme AES, on retrouve l'opération \textit{AddRoundKey} qui correspond à un XOR. Cette opération est dite linéaire car la propriété $f(x\oplus m) = f(x) \oplus f(m)$ est respectée. On notera que les opérations \textit{ShiftRows} et \textit{MixColumns} sont également linéaires. \\
-\textbf{Contre-exemple} : L'opération \textit{SubBytes} dans l'algorithme AES. Il s'agit d'une opération non-linéaire car $Sbox(x\oplus m) \neq Sbox(x) \oplus Sbox(m)$. 
+\textit{Exemple} : HD(110110,100100) = 2.
 
 \newpage
 
@@ -703,11 +718,12 @@ Les algorithmes de chiffrement utilisent des fonctions dites linéaires mais ég
 \chapter{Attaques par canaux auxiliaires}
 \label{chap:attaques}
 
-Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. Il s'agit, par ailleurs, d'un chapitre important où le lecteur ne doit pas hésiter 
+Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. Tout d'abord, une introduction générale est donnée au lecteur afin que ce dernier connaisse les potentialités des différents attaques par canaux auxiliaires existantes. Ensuite, l'attention est plus particulièrement portée sur trois types d'attaques par analyse de la consommation de puissance. La première, l'attaque par l'analyse simple de la consommation, permet de comprendre aisément le concept des attaques. La seconde, l'attaque par l'analyse différentielle de la consommation, est plus complexe mais apporte déjà de meilleurs taux de succès pour l'attaquant. Enfin, la troisième, l'attaque par l'analyse de la consommation par corrélation, est sans nul doute celle présentant le plus grand taux de succès parmi les trois attaques citées. Pour cette raison, ce sera celle mise en oeuvre afin d'attaquer l'implémentation de l'algorithme AES sur un FPGA. Les résultats de cette attaque seront présentés au chapitre X (partie 2).
+
 \section{Introduction}
 \label{sec:att}
 
-\vspace{-0.1 cm}A la fin des années 1990, une nouvelle contrainte pour la conception de systèmes informatiques a vu le jour : la sécurité matérielle. Bien souvent, la sécurité d'un système informatique s'appuie plus sur les concepts software que hardware. Cependant, un nouveau mode d'attaque s'est développé. Il s'agit d'attaques physiques, c'est-à-dire d'attaques réalisées sur le circuit électronique lui-même. En général, le but d'une attaque est de retrouver la clé de chiffrement utilisée par l'algorithme afin de déchiffrer des données sensibles. Deux grandes familles d'attaques sont recensées : 
+\vspace{-0.1 cm}À la fin des années 1990, une nouvelle contrainte pour la conception de systèmes informatiques a vu le jour : la sécurité matérielle. Bien souvent, la sécurité d'un système informatique s'appuie plus sur les concepts software que hardware. Cependant, un nouveau mode d'attaque s'est développé. Il s'agit d'attaques physiques, c'est-à-dire d'attaques réalisées sur le circuit électronique lui-même. En général, le but d'une attaque est de retrouver la clé de chiffrement utilisée par l'algorithme afin de déchiffrer des données sensibles. Deux grandes familles d'attaques sont recensées : 
 \begin{itemize}
 \item \textbf{\textit{Attaques actives}} : Une attaque est dite active lorsque les entrées et/ou l'environnement du device cryptographique sont manipulés par l'attaquant en vue de produire un comportement anormal du device. La clé secrète est révélée en exploitant les données issues de ce comportement anormal. Cela peut être une variation de la tension du device, une injection de glitch d'horloge, etc... On distingue deux types d'attaques actives : 
 \begin{itemize}
@@ -738,17 +754,17 @@ En effet, les fonctions cryptographiques, bien que pouvant être extrêmement 
 
 Dans la suite de cet ouvrage, on se concentrera sur un type précis d'attaque passive : l'attaque sur \textbf{l'analyse de la consommation de puissance}. Les sections suivantes décrivent le principe de fonctionnement de ce type d'attaque. 
 
+\section{Analyse de la consommation de puissance}
+\label{sec:PowerGeneral}
 
-\section{Analyse simple de la consommation}
-\label{sec:Introduction}
 
-\section{Analyse différentielle de la consommation}
-\label{sec:Introduction}
+\subsection{Analyse simple de la consommation}
+\label{sec:SCA}
 
-\section{Analyse de la consommation par corrélation}
-\label{sec:Introduction}
+\subsection{Analyse différentielle de la consommation}
+\label{sec:DPA}
 
-\subsection{Attaque CPA (\textit{Correlation Power Analysis})}
+\subsection{Analyse de la consommation par corrélation}
 \label{sec:CPA}
 
 
@@ -802,6 +818,7 @@ Reprenons le cas simple où l'on cherche uniquement à retrouver le premier byte
 %%%%%%%%%%%%% Chapitre 5 %%%%%%%%%%%%%
 
 \chapter{Contre-mesures}
+\label{chap:contremesure}
 
 \section{Contre-mesures Hiding}
 \label{sec:Introduction}
@@ -873,11 +890,11 @@ Reprenons le cas simple où l'on cherche uniquement à retrouver le premier byte
 
 \chapter{Évaluation des performances de la contre-mesure}
 
-\section{Évaluation par simulations}
-\label{sec:Introduction}
+\section{Évaluation par métriques}
+\label{sec:EvalMetrics}
 
-\subsection{Évaluation par critères}
-\label{sec:Introduction}
+\subsection{Évaluation par critères de performances}
+\label{sec:EvalPerf}
 
 \newpage
 
@@ -1271,37 +1288,86 @@ Depuis ces découvertes à la fin des années 90, la sécurité matérielle a
 
 %%%%%%%%%%%%%%%%%%%%%%%% ANNEXES %%%%%%%%%%%%%%%%%%%%
 \newpage
-
-\phantomsection
-\section*{Liste des annexes}
-\addcontentsline{toc}{section}{Annexes}
-\appendix
+\lhead{}
+\addcontentsline{toc}{chapter}{Annexes}
 \DeactivateToc
 
+\begin{appendices}
+%%%%% Annexe chapitre 2
+\phantomsection
+\chapter{Liste des annexes du chapitre \ref{chap:crypto}}
 
 \begin{itemize}
-\item Annexe \ref{ann:AES} : Code algorithme AES-128 - Ordre d'exécution des opérations.
+\item Annexe \ref{ann:CESAR} : Chiffre de César.
+\item Annexe \ref{ann:AES128} : Code algorithme AES-128 - Ordre d'exécution des opérations.
+\item Annexe \ref{ann:AES256} : Code algorithme AES-256 - Ordre d'exécution des opérations.
 \item Annexe \ref{ann:Sbox} : Sbox - Table de substitution.
 \item Annexe \ref{ann:KeySchedule} : Opération \textit{KeySchedule}.
-\item Annexe \ref{ann:CPAconcrete} : Principe de fonctionnement d'une attaque CPA.
-\item Annexe \ref{ann:traceExplain} : Représentation des traces de puissance prises à l'oscilloscope.
-\item Annexe \ref{ann:Traces} : Traces.
-\item Annexe \ref{ann:corrélation} : Corrélation pour les clés 1 à 4.
-\item Annexe \ref{ann:Corrélations_3D} : Corrélations 3D.
-\item Annexe \ref{ann:cle8} : Corrélation pour la clé 8.
-\item Annexe \ref{ann:resume_hiding} : Contre-mesures \textit{Hiding}.
-\item Annexe \ref{ann:ConceptFaking} : Contre-mesure \textit{Faking}.
-\item Annexe \ref{ann:lettre} : Lettre de motivation.
-\item Annexe \ref{ann:certificat} : Certificat de stage.
 \end{itemize}
-
-\lhead{}
 
 \newpage
 
-\rhead{ANNEXE \ref{ann:AES}}
+\rhead{ANNEXE \ref{ann:CESAR}}
+\section{Chiffre de César}
+\label{ann:CESAR}
+\vspace{2cm}
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{|c|c|}
+    		\hline
+   		  \textbf{Texte clair} & \textbf{Texte chiffré}  \\ \hline 
+		  A & D \\ \hline
+		  B & E \\ \hline	
+		  C & F \\ \hline
+		  D & G \\ \hline	
+		  E & H \\ \hline
+		  F & I \\ \hline	
+		  G & J \\ \hline
+		  H & K \\ \hline	
+		  I & L \\ \hline
+		  J & M \\ \hline	
+		  K & N \\ \hline
+		  L & O \\ \hline	
+		  M & P \\ \hline
+		  N & Q \\ \hline	
+		  O & R \\ \hline
+		  P & S \\ \hline	
+		  Q & T \\ \hline
+		  R & U \\ \hline	
+		  S & V \\ \hline
+		  T & W \\ \hline	
+		  U & X \\ \hline
+		  V & Y \\ \hline	
+		  W & Z \\ \hline
+		  X & A \\ \hline	
+		  Y & B \\ \hline
+		  Z & C \\ \hline	
+	\end{tabular}
+ 	\caption{Chiffre de César.}
+ 	\label{tab:CESAR}
+\end{table}
+
+\hspace{-0.5cm}Exemple : le message clair \textit{"chiffrement"} devient le message chiffré \textit{"fkliiuhphqw"}. En effet, le détail du procédé de chiffrement est donné à la table \ref{tab:CesarEx}.
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+    		\hline
+   		  Message clair & C & H & I & F & F & R & E & M & E & N & T \\ \hline 
+   		  Message chiffré & F & K & L & I & I & U & H & P & H & Q & W  \\ \hline 
+	\end{tabular}
+ 	\caption{Exemple de chiffre de César.}
+ 	\label{tab:CesarEx}
+\end{table}
+
+\newpage
+
+
+\rhead{ANNEXE \ref{ann:AES128}}
+\phantomsection
 \section{Code algorithme AES-128 - Ordre d'exécution des opérations.}
-\label{ann:AES}
+\label{ann:AES128}
 \lstset{language=Pascal}          % Set your language (you can change the language for each code-block optionally)
 \begin{lstlisting}[frame=single]  % Start your code-block
 
@@ -1324,15 +1390,61 @@ AddRoundKey(STATE, ExpandedKey[10])
 
 \newpage
 
+\rhead{ANNEXE \ref{ann:AES256}}
+\phantomsection
+\section{Code algorithme AES-256 - Ordre d'exécution des opérations.}
+\label{ann:AES256}
+\lstset{language=Pascal}          % Set your language (you can change the language for each code-block optionally)
+\begin{lstlisting}[frame=single]  % Start your code-block
+
+Require : STATE, Key
+Ensure : STATE
+
+KeySchedule(Key)
+AddRoundKey(STATE, ExpandedKey[0])
+for i=1 < 14 do
+	SubBytes(STATE)
+	ShiftRows(STATE)
+	MixColumns(STATE)
+	AddRoundKey(STATE, ExpandedKey[i])
+	i = i + 1
+end for
+SubBytes(STATE)
+ShiftRows(STATE)
+AddRoundKey(STATE, ExpandedKey[10])
+\end{lstlisting}
+
+\newpage
+
 \rhead{ANNEXE \ref{ann:Sbox}}
 
 \section{Sbox - Table de substitution}
 \label{ann:Sbox}
-\begin{figure}[!ht]
-    \includegraphics[width=\linewidth]{image/Sbox}
-    \caption{La Sbox représente une table de substitution utilisée pour l'opération non-linéaire SubBytes de l'algorithme AES. À chaque donnée hexadécimale d'entrée correspond une donnée hexadécimale de sortie.}
-    \label{fig:Sbox}
-\end{figure}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+		  \hline
+		  & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & a & b & c & d & e & f \\ \hline \hline
+		  0 & 63 & 7c & 77 & 7b & f2 & 6b & 6f & c5 & 30 & 01 & 67 & 2b & fe & d7 & ab & 76   \\ \hline	
+		  1 & ca & 82 & c9 & 7d & fa & 59 & 47 & f0 & ad & d4 & a2 & af & 9c & a4 & 72 & c0   \\ \hline	
+		  2 & b7 & fd & 93 & 26 & 36 & 3f & f7 & cc & 34 & a5 & e5 & f1 & 71 & d8 & 31 & 15   \\ \hline	
+		  3 & 04 & c7 & 23 & c3 & 18 & 96 & 05 & 9a & 07 & 12 & 80 & e2 & eb & 27 & b2 & 75   \\ \hline	
+		  4 & 09 & 83 & 2c & 1a & 1b & 6e & 5a & a0 & 52 & 3b & d6 & b3 & 29 & e3 & 2f & 84   \\ \hline	
+		  5 & 53 & dl & 00 & ed & 20 & fc & b1 & 5b & 6a & cb & be & 39 & 4a & 4c & 58 & cf   \\ \hline	
+		  6 & d0 & ef & aa & fb & 43 & 4d & 33 & 85 & 45 & f9 & 02 & 7f & 50 & 3c & 9f & a8   \\ \hline	
+		  7 & 51 & a3 & 40 & 8f & 92 & 9d & 38 & f5 & bc & b6 & da & 21 & 10 & ff & f3 & d2   \\ \hline	
+		  8 & cd & 0c & 13 & ec & 5f & 97 & 44 & 17 & c4 & a7 & 7e & 3d & 64 & 5d & 19 & 73   \\ \hline	
+		  9 & 60 & 81 & 4f & dc & 22 & 2a & 90 & 88 & 46 & ee & b8 & 14 & de & 5e & 0b & db   \\ \hline	
+		  a & e0 & 32 & 3a & 0a & 49 & 06 & 24 & 5c & c2 & d3 & ac & 62 & 91 & 95 & e4 & 79   \\ \hline	
+		  b & e7 & c8 & 37 & 6d & 8d & d5 & 4e & a9 & 6c & 56 & f4 & ea & 65 & 7a & ae & 08   \\ \hline	
+		  c & ba & 78 & 25 & 2e & 1c & a6 & b4 & c6 & e8 & dd & 74 & 1f & 4b & bd & 8b & 8a   \\ \hline	
+		  d & 70 & 3e & b5 & 66 & 48 & 03 & f6 & 0e & 61 & 35 & 57 & b9 & 86 & c1 & 1d & 9e   \\ \hline	
+		  e & e1 & f8 & 98 & 11 & 69 & d9 & 8e & 94 & 9b & 1e & 87 & e9 & ce & 55 & 28 & df   \\ \hline	
+		  f & 8c & a1 & 89 & 0d & bf & e6 & 42 & 68 & 41 & 99 & 2d & 0f & b0 & 54 & bb & 16   \\ \hline	
+	\end{tabular}
+ 	\caption{La Sbox représente une table de substitution utilisée pour l'opération non-linéaire SubBytes de l'algorithme AES. À chaque donnée hexadécimale d'entrée correspond une donnée hexadécimale de sortie.}
+ 	\label{fig:Sbox}
+\end{table}
 
 \newpage
 
@@ -1342,10 +1454,25 @@ AddRoundKey(STATE, ExpandedKey[10])
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.35]{image/KeySchedule1}
-    \includegraphics[scale=0.48]{image/KeySchedule2}
+    \includegraphics[scale=0.45]{image/KeySchedule2}
     \caption{Principe de fonctionnement de l'opération \textit{KeySchedule}.}
     \label{fig:KeySchedule1}
 \end{figure}
+
+\newpage
+
+%%%%% Annexe chapitre 3
+
+%%%%% Annexe chapitre 4
+\chapter{Liste des annexes du chapitre \ref{chap:attaques}}
+\begin{itemize}
+\item Annexe \ref{ann:CPAconcrete} : Principe de fonctionnement d'une attaque CPA.
+\item Annexe \ref{ann:traceExplain} : Représentation des traces de puissance prises à l'oscilloscope.
+\item Annexe \ref{ann:Traces} : Traces.
+\item Annexe \ref{ann:corrélation} : Corrélation pour les clés 1 à 4.
+\item Annexe \ref{ann:Corrélations_3D} : Corrélations 3D.
+\item Annexe \ref{ann:cle8} : Corrélation pour la clé 8.
+\end{itemize}
 
 \newpage
 
@@ -1390,6 +1517,15 @@ AddRoundKey(STATE, ExpandedKey[10])
 
 \newpage
 
+%%%%% Annexe chapitre 5
+\chapter{Liste des annexes du chapitre \ref{chap:contremesure}}
+\begin{itemize}
+\item Annexe \ref{ann:resume_hiding} : Contre-mesures \textit{Hiding}.
+\item Annexe \ref{ann:ConceptFaking} : Contre-mesure \textit{Faking}.
+\end{itemize}
+
+\newpage
+
 \rhead{ANNEXE \ref{ann:resume_hiding}}
 \section{Contre-mesures \textit{Hiding}}
 \label{ann:resume_hiding}
@@ -1414,6 +1550,13 @@ AddRoundKey(STATE, ExpandedKey[10])
 
 \newpage
 
+%%%%% Annexe autres
+\chapter{Autres annexes}
+\begin{itemize}
+\item Annexe \ref{ann:lettre} : Lettre de motivation.
+\item Annexe \ref{ann:certificat} : Certificat de stage.
+\end{itemize}
+
 \rhead{ANNEXE \ref{ann:lettre}}
 \includepdf[pagecommand=\section{Lettre de motivation}\label{ann:lettre}]{image/lettre.pdf}
 
@@ -1422,5 +1565,7 @@ AddRoundKey(STATE, ExpandedKey[10])
 \rhead{ANNEXE \ref{ann:certificat}}
 \includepdf[pagecommand=\section{Certificat de stage}\label{ann:certificat}]{image/certificat.pdf}
 
+
+\end{appendices}
 
 \end{document}
