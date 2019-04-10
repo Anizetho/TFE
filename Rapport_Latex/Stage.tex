@@ -767,11 +767,11 @@ Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. T
 \item \textbf{\textit{Attaques non invasives}} : Une attaque est dite non invasive lorsqu'elle ne requière pas que le device cryptographique soit ouvert. Cette attaquant exploite ainsi l'analyse, en fonctionnement normal, d'informations s'échappant d'un device cryptographique. Cela peut être l'analyse de la consommation de puissance, l'analyse temporelle, l'analyse par rayonnement électromagnétique, etc... C'est ce type d'attaque qui sera utilisée pour la réalisation de ce travail. \\
 \end{itemize}
 
-\vspace{-0.3 cm}La figure \ref{fig:attaques} ci-dessous catalogue les 3 ensembles d'attaques définis précédemment et donne pour chacun d'entre eux quelques exemples d'applications.
+\vspace{-0.3 cm}La figure \ref{fig:attaques} ci-dessous présente les 3 ensembles d'attaques définis précédemment et donne pour chacun d'entre eux quelques exemples d'applications.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.85\textwidth]{image/attaques}
-    \caption{Les 2 grandes familles d'attaques physiques possibles.}
+    \caption{Classification des attaques physiques.}
     \label{fig:attaques}
 \end{figure}
 
@@ -796,10 +796,15 @@ Par la suite, on se concentrera sur un type précis d'attaque non invasive : l'a
 Le nom de l'attaque ne trompe pas : une attaque par analyse de la consommation de puissance a pour objectif d'analyser la consommation de puissance d'un device cryptographique en cours de chiffrement afin de retrouver la clé de l'algorithme implémenté sur ce device.
 
 \subsection{Analyse simple de la consommation}
-\label{sec:SCA}
+\label{sec:SPA}
+
+Une analyse simple de la consommation (SPA pour \textit{Simple Power Analysis}) est une technique qui interprète directement la ou les mesure(s) de consommation capturée(s) sur un device cryptographique en cours de chiffrement. En d'autres mots, l'attaquant enregistre une trace de puissance et tente d'identifier sur celle-ci certaines opérations exécutées ou certaines données manipulées. En général, cela exige des connaissances avancées sur l'implémentation de l'algorithme cryptographique présent sur le device. Pour cette raison, ce type d'attaque est assez compliqué à réaliser en pratique même s'il n'exige qu'une ou quelques (nombre très limité) traces. Pour conclure, ce type d'attaque permet d'identifier un algorithme et dans des cas extrêmes et sous certaines conditions, il est même possible de lire la clé de chiffrement.
+
 
 \subsection{Analyse différentielle de la consommation}
 \label{sec:DPA}
+
+
 
 \subsection{Analyse de la consommation par corrélation}
 \label{sec:CPA}
@@ -807,7 +812,7 @@ Le nom de l'attaque ne trompe pas : une attaque par analyse de la consommation d
 
 \subsubsection{Coefficient de corrélation}
 \label{subsec:correlation}
-Par définition, le \textbf{\textit{coefficient de corrélation}} est un coefficient statistique permettant de mettre en évidence une liaison entre deux types de séries de données statistiques. La valeur du coefficient de corrélation est toujours comprise entre -1 et 1. Le coefficient de corrélation se calcule de la façon suivante (\ref{eqn:formcorrelation}) :
+Par définition, le \textbf{\textit{coefficient de corrélation}} est un coefficient statistique permettant de mettre en évidence une liaison entre deux types de séries de données statistiques. La valeur du coefficient de corrélation est toujours comprise entre -1 et 1 et cette valeur se calcule de la façon suivante (\ref{eqn:formcorrelation}) :
 \begin{gather}
 	r(X;Y) = \frac{\sum(X-\bar{X}).(Y-\bar{Y}) }{\sqrt{\sum(X-\bar{X})^2}.\sqrt{\sum(Y-\bar{Y})^2}}\label{eqn:formcorrelation}
 \end{gather}
