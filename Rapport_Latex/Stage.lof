@@ -16,8 +16,8 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Schéma de l'inverseur CMOS.\relax }}{16}{figure.caption.21}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Les 2 grandes familles d'attaques physiques possibles. La suite de ce rapport se concentre essentiellement sur les attaques physiques dites passives.\relax }}{22}{figure.caption.23}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Les différentes façons d'attaquer passivement un device cryptographique en vue de casser l'algorithme de chiffrement qu'il exploite.\relax }}{22}{figure.caption.24}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Les 2 grandes familles d'attaques physiques possibles.\relax }}{22}{figure.caption.23}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Différentes façons d'opérer une attaque non invasive sur un device cryptographique.\relax }}{23}{figure.caption.24}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

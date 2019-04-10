@@ -752,45 +752,48 @@ La distance de Hamming est un modèle de consommation de puissance proposé par 
 \chapter{Attaques par canaux auxiliaires}
 \label{chap:attaques}
 
-Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. Tout d'abord, une introduction générale est donnée au lecteur afin que ce dernier connaisse les potentialités des différents attaques par canaux auxiliaires existantes. Ensuite, l'attention est plus particulièrement portée sur trois types d'attaques par analyse de la consommation de puissance. La première, l'attaque par l'analyse simple de la consommation, permet de comprendre aisément le concept des attaques. La seconde, l'attaque par l'analyse différentielle de la consommation, est plus complexe mais apporte déjà de meilleurs taux de succès pour l'attaquant. Enfin, la troisième, l'attaque par l'analyse de la consommation par corrélation, est sans nul doute celle présentant le plus grand taux de succès parmi les trois attaques citées. Pour cette raison, ce sera celle mise en oeuvre afin d'attaquer l'implémentation de l'algorithme AES sur un FPGA. Les résultats de cette attaque seront présentés au chapitre X (partie 2).
+Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. Tout d'abord, une introduction générale est donnée au lecteur afin que ce dernier connaisse les potentialités des différents attaques par canaux auxiliaires existantes. Ensuite, l'attention est plus particulièrement portée sur trois types d'attaques par analyse de la consommation de puissance, à savoir : les attaques par analyse simple de la consommation, les attaques par analyse différentielle de la consommation et les attaques par analyse de la consommation par corrélation. Nous noterons que l'attaque mise en oeuvre dans ce travail est celle d'analyse de la consommation par corrélation. Ultérieurement, le but sera ainsi d'attaquer l'implémentation de l'algorithme AES sur un FPGA. Les résultats de cette attaque seront présentés au chapitre X (Partie 2). 
 
 \section{Introduction}
 \label{sec:att}
 
-\vspace{-0.1 cm}À la fin des années 1990, une nouvelle contrainte pour la conception de systèmes informatiques a vu le jour : la sécurité matérielle. Bien souvent, la sécurité d'un système informatique s'appuie plus sur les concepts software que hardware. Cependant, un nouveau mode d'attaque s'est développé. Il s'agit d'attaques physiques, c'est-à-dire d'attaques réalisées sur le circuit électronique lui-même. En général, le but d'une attaque est de retrouver la clé de chiffrement utilisée par l'algorithme afin de déchiffrer des données sensibles. Deux grandes familles d'attaques sont recensées : 
+\vspace{-0.1 cm}À la fin des années 1990, une nouvelle contrainte pour la conception de systèmes informatiques a vu le jour : la sécurité matérielle. Bien souvent, la sécurité d'un système informatique s'appuie plus sur les concepts \textit{software} que \textit{hardware}. Cependant, un nouveau mode d'attaque s'est développé. Il s'agit d'attaques physiques, c'est-à-dire d'attaques exploitant différents types d’information physique (consommation de puissance, rayonnement électromagnétique, temps de calcul, ...). Ces attaques posent un véritable problème à la théorie cryptographique. En effet, alors que les algorithmes de chiffrement utilisés dans des systèmes sécurisés sont habituellement considérés comme des éléments de confiance, la \textit{mise en œuvre} (implémentation) de ces algorithmes permet des attaques dévastatrices. En général, le but d'une attaque par canaux auxiliaires est de retrouver la clé de chiffrement utilisée par l'algorithme afin de déchiffrer des données sensibles. Deux grandes familles d'attaques sont distinguées : 
 \begin{itemize}
-\item \textbf{\textit{Attaques actives}} : Une attaque est dite active lorsque les entrées et/ou l'environnement du device cryptographique sont manipulés par l'attaquant en vue de produire un comportement anormal du device. La clé secrète est révélée en exploitant les données issues de ce comportement anormal. Cela peut être une variation de la tension du device, une injection de glitch d'horloge, etc... On distingue deux types d'attaques actives : 
+\item \textbf{\textit{Attaques invasives}} : Une attaque est dite invasive lorsque l'environnement interne du device cryptographique est manipulé et observé par l'attaquant. Accéder à l'environnement interne signifie accéder au \textit{silicon}. Ainsi, ce type d'attaque a généralement pour conséquence d'endommager voir de détruire entièrement le device cryptographique. La violation d'informations se fait donc au détriment du device. On distingue deux types d'attaques invasives : 
 \begin{itemize}
-\item Les attaques actives \textbf{\textit{irréversibles}} qui conduisent à la destruction du device cryptographique. Ce type d'attaque est souvent réalisé pour connaître la conception physique d'un device. \textit{Exemple} : Découpage laser d’un circuit intégré.
-\item Les attaques actives \textbf{\textit{pseudo-réversibles}} qui n’entrainent pas forcément la destruction du device cryptographique, mais qui sont souvent tout de même invasives puisqu’elles nécessitent la préparation du circuit (découpe partielle du boitier du circuit intégré par exemple). Un exemple typique de ce type d'attaque est ce qu'on appelle les \textit{attaques en fautes}. Le principe est d'introduire volontairement des fautes dans le circuit (exemple : Injection de rayon laser, injection de glitch d’horloge, etc.). Les fautes ainsi créées peuvent entrainer le circuit dans des modes de fonctionnement conduisant à des erreurs. Ces erreurs peuvent ensuite être exploitées pour déterminer la clé.
+\item Les attaques invasives \textbf{\textit{irréversibles}} qui conduisent à la destruction totale du device cryptographique. Ce type d'attaque est souvent réalisé pour connaître la conception physique d'un device. \textit{Exemple} : Découpage laser d’un circuit intégré.
+\item Les attaques invasives \textbf{\textit{pseudo-réversibles}} qui n’entrainent pas forcément la destruction totale du device cryptographique, mais qui sont souvent tout de même invasives puisqu’elles nécessitent la préparation du circuit (découpe partielle du boitier du circuit intégré par exemple). Un exemple typique de ce type d'attaque est ce qu'on appelle les \textit{attaques en fautes}. Le principe est de manipuler des conditions environnementales du système (tension, température, lumière, \textit{clock}, etc.) pour générer volontairement des fautes. Les fautes ainsi créées peuvent entrainer le circuit dans des modes de fonctionnement conduisant à des erreurs et ces erreurs peuvent ensuite être exploitées pour déterminer la clé.
 \end{itemize}
-\item \textbf{\textit{Attaques passives}} : Une attaque est dite passive lorsque l'attaquant exploite l'analyse, en fonctionnement normal, d'informations s'échappant d'un device cryptographique. Cela peut être l'analyse de la consommation de puissance, l'analyse temporelle, l'analyse par rayonnement électromagnétique, etc... C'est ce type d'attaque qui sera détaillé tout au long de ce stage et durant la réalisation du TFE. \\
+\item \textbf{\textit{Attaques non invasives}} : Une attaque est dite non invasive lorsqu'elle ne requière pas que le device cryptographique soit ouvert. Cette attaquant exploite ainsi l'analyse, en fonctionnement normal, d'informations s'échappant d'un device cryptographique. Cela peut être l'analyse de la consommation de puissance, l'analyse temporelle, l'analyse par rayonnement électromagnétique, etc... C'est ce type d'attaque qui sera utilisée pour la réalisation de ce travail. \\
 \end{itemize}
 
-\vspace{-0.3 cm}La figure \ref{fig:attaques} ci-dessous résume les différents types d'attaques physiques possibles.
+\vspace{-0.3 cm}La figure \ref{fig:attaques} ci-dessous catalogue les 3 ensembles d'attaques définis précédemment et donne pour chacun d'entre eux quelques exemples d'applications.
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.85\textwidth]{image/attaques}
-    \caption{Les 2 grandes familles d'attaques physiques possibles. La suite de ce rapport se concentre essentiellement sur les attaques physiques dites passives.}
+    \caption{Les 2 grandes familles d'attaques physiques possibles.}
     \label{fig:attaques}
 \end{figure}
 
-\vspace{-0.25 cm}Les attaques passives sont globalement beaucoup plus simples à mettre en oeuvre que les attaques actives. Comme définit précédemment, ces attaques consistent à analyser des données issues de canaux auxiliaires au device cryptographique (lorsque ce dernier est en état de fonctionnement normal). Ces canaux auxiliaires sont des canaux présents physiquement sur le circuit attaqué et le long desquels de l’information s’échappe (sous différentes formes : rayonnement électromagnétique, rayonnement photonique, consommation de puissance, etc.). C'est là qu'intervient la notion de \textit{side-channel attacks} ou en français \textit{l'attaque par canal auxiliaire}. 
-En effet, les fonctions cryptographiques, bien que pouvant être extrêmement robustes théoriquement (c'est-à-dire mathématiquement) sont très sensibles aux fuites d’informations. C'est-à-dire qu'une quantité très faible d’informations peut être exploitée pour casser un algorithme cryptographique très fort. C’est ce que les attaques par canaux auxiliaires exploitent. 
+\vspace{-0.25 cm}Les attaques non invasives sont globalement beaucoup plus simples à mettre en oeuvre que les attaques invasives. En effet, du fait qu'il faille ouvrir le device cryptographique, les attaques invasives requièrent une méthodologie et une infrastructure relativement plus compliquée et plus chère que les attaques non invasives qui ne nécessitent pas de connaissances préalables du système interne et qui sont donc plus facilement déployées. Comme définit précédemment, les attaques non invasives consistent à analyser des données issues de canaux auxiliaires au device cryptographique (lorsque ce dernier est en état de fonctionnement normal). Ces canaux auxiliaires sont des canaux présents physiquement sur le circuit attaqué et le long desquels de l’information s’échappe. Cette information peut se présenter sous différentes formes : rayonnement électromagnétique, rayonnement photonique, consommation de puissance, etc. C'est donc pour cette raison qu'on parle de \textit{side-channel attacks} ou en français \textit{l'attaque par canal auxiliaire}. 
+En effet, les fonctions cryptographiques, bien que pouvant être extrêmement robustes théoriquement (c'est-à-dire mathématiquement) sont très sensibles aux fuites d’informations. C'est-à-dire qu'une quantité très faible d’informations peut être exploitée pour retrouver la clé d'un algorithme cryptographique très fort. On réinsistera à nouveau sur le fait que l'attaque exploite les faiblesses du système cryptographique, c'est-à-dire du système implémentant l'algorithme de chiffrement (l'AES en l'occurence). En aucun cas, l'attaque exploite les failles des principes mathématiques mis en place.
 
-\hspace{-0.5 cm}La figure \ref{fig:attackpassive} ci-dessous présente les différentes façons possibles d'attaquer \textbf{passivement} un device.
+\hspace{-0.5 cm}La figure \ref{fig:attackpassive} ci-dessous présente différentes possibilités \textbf{d'attaques non invasives} sur un device cryptographique.
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.4]{image/attackpassive}
-    \caption{Les différentes façons d'attaquer passivement un device cryptographique en vue de casser l'algorithme de chiffrement qu'il exploite.}
+    \caption{Différentes façons d'opérer une attaque non invasive sur un device cryptographique.}
     \label{fig:attackpassive}
 \end{figure}
 
-Dans la suite de cet ouvrage, on se concentrera sur un type précis d'attaque passive : l'attaque sur \textbf{l'analyse de la consommation de puissance}. Les sections suivantes décrivent le principe de fonctionnement de ce type d'attaque. 
+Par la suite, on se concentrera sur un type précis d'attaque non invasive : l'attaque par \textbf{l'analyse de la consommation de puissance}. Les trois sections suivantes décrivent chacune un principe de fonctionnement différent d'attaque pour ce type d'analyse (consommation de puissance). Nous rappelons que c'est l'attaque par analyse de la consommation par corrélation qui nous intéresse en particulier pour la suite de ce travail. Pour cette raison, nous ne ferons que parcourir les deux autres possibilités que sont l'analyse simple de la consommation et l'analyse différentielle de la consommation.
+
+\newpage 
 
 \section{Analyse de la consommation de puissance}
 \label{sec:PowerGeneral}
 
+Le nom de l'attaque ne trompe pas : une attaque par analyse de la consommation de puissance a pour objectif d'analyser la consommation de puissance d'un device cryptographique en cours de chiffrement afin de retrouver la clé de l'algorithme implémenté sur ce device.
 
 \subsection{Analyse simple de la consommation}
 \label{sec:SCA}
@@ -804,7 +807,7 @@ Dans la suite de cet ouvrage, on se concentrera sur un type précis d'attaque pa
 
 \subsubsection{Coefficient de corrélation}
 \label{subsec:correlation}
-Par définition, le \textbf{\textit{coefficient de corrélation}} est un coefficient statistique permettant de mettre en évidence une liaison entre deux types de séries de données statistiques. La valeur du coefficient de corrélation est comprise entre -1 et 1. Le coefficient de corrélation se calcule de la façon suivante (\ref{eqn:formcorrelation}) :
+Par définition, le \textbf{\textit{coefficient de corrélation}} est un coefficient statistique permettant de mettre en évidence une liaison entre deux types de séries de données statistiques. La valeur du coefficient de corrélation est toujours comprise entre -1 et 1. Le coefficient de corrélation se calcule de la façon suivante (\ref{eqn:formcorrelation}) :
 \begin{gather}
 	r(X;Y) = \frac{\sum(X-\bar{X}).(Y-\bar{Y}) }{\sqrt{\sum(X-\bar{X})^2}.\sqrt{\sum(Y-\bar{Y})^2}}\label{eqn:formcorrelation}
 \end{gather}
