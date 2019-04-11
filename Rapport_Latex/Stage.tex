@@ -526,7 +526,7 @@ La figure \ref{fig:colonne} ci-dessous présente le principe de fonctionnement d
 \newpage
 \underline{\textbf{L'opération \textit{KeySchedule} :}}
 
-\vspace{0.25cm}Il persiste une opération qui n'a pas encore été expliquée : l'opération \textit{KeySchedule}. Cette opération s'exécute uniquement sur la matrice clé. Par conséquent, la gestion des clés se fait au travers des deux fonctions qui sont les fonctions \textit{AddRoundKey} et \textit{KeySchedule}. Nous connaissons le principe de fonctionnement de l'opération \textit{AddRoundKey}, reste à comprendre l'utilité de l'opération \textit{KeySchedule}.
+\vspace{0.1cm}Il persiste une opération qui n'a pas encore été expliquée : l'opération \textit{KeySchedule}. Cette opération s'exécute uniquement sur la matrice clé. Par conséquent, la gestion des clés se fait au travers des deux fonctions qui sont les fonctions \textit{AddRoundKey} et \textit{KeySchedule}. Nous connaissons le principe de fonctionnement de l'opération \textit{AddRoundKey}, reste à comprendre l'utilité de l'opération \textit{KeySchedule}.
 
 \hspace{-0.5cm}Jusqu'à présent, nous avons vu que la matrice STATE était modifiée après chaque opération exécutée. Ce qu'on ne sait pas encore, c'est que la matrice clé est également modifiée à chaque round afin d'éviter d'utiliser toujours la même valeur de clé. Cela permet ainsi de complexifier le chiffrement des données. On l'aura deviné, l'opération qui modifie la matrice clé initiale en une nouvelle matrice clé est appelée \textbf{\textit{KeySchedule}}. Cette opération génère une nouvelle clé sur base de la clé précédemment employée. Ainsi, pour générer la première nouvelle clé, l'opération \textit{KeySchedule} emploiera la clé initialement donnée. Étant donné que pour l'AES-128, nous avons un total de dix rounds à exécuter, cela signifie que l'opération \textit{KeySchedule} s'exécute dix fois afin de générer dix nouvelles clés de 128 bits. En rajoutant la clé initiale, nous avons alors onze clés de chiffrement différentes permettant d'exécuter les onze opérations \textit{AddRoundKey} présentes dans l'algorithme AES-128. Ainsi, comme présenté à l'annexe \ref{ann:AES128}, l'opération \textit{KeySchedule} s'exécute en premier lieu dans le code afin de générer dix nouvelles clés. En comptant la clé initialement donnée, il y a donc onze clés. Chacune de ces onze clés sera utilisée lors de l'appel de la fonction \textit{AddRoundKey}. 
 
@@ -545,7 +545,7 @@ Une fois ces trois vecteurs colonnes obtenus, on réalise un XOR entre eux. Le r
 
 \underline{\textbf{Adaptation pour l'AES-256 :}} 
 
-\vspace{0.25cm}En se basant sur le tableau \ref{tab:AES} et la figure \ref{fig:AES_General}, nous constatons que les deux différences majeures entre l'algorithme AES-128 et l'algorithme AES-256 sont :
+\vspace{0.1cm}En se basant sur le tableau \ref{tab:AES} et la figure \ref{fig:AES_General}, nous constatons que les deux différences majeures entre l'algorithme AES-128 et l'algorithme AES-256 sont :
 \begin{itemize}
 \item La taille de la clé : on passe de 128 bits à 256 bits.
 \item Le nombre de rounds : on passe de 10 rounds à 14 rounds. \\
@@ -752,7 +752,7 @@ La distance de Hamming est un modèle de consommation de puissance proposé par 
 \chapter{Attaques par canaux auxiliaires}
 \label{chap:attaques}
 
-Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. Tout d'abord, une introduction générale est donnée au lecteur afin que ce dernier connaisse les potentialités des différents attaques par canaux auxiliaires existantes. Ensuite, l'attention est plus particulièrement portée sur trois types d'attaques par analyse de la consommation de puissance, à savoir : les attaques par analyse simple de la consommation, les attaques par analyse différentielle de la consommation et les attaques par analyse de la consommation par corrélation. Nous noterons que l'attaque mise en oeuvre dans ce travail est celle d'analyse de la consommation par corrélation. Ultérieurement, le but sera ainsi d'attaquer l'implémentation de l'algorithme AES sur un FPGA. Les résultats de cette attaque seront présentés au chapitre X (Partie 2). 
+Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. Tout d'abord, une introduction générale est donnée au lecteur afin que ce dernier ait un aperçu des différents possibilités d'attaques par canaux auxiliaires existantes. Ensuite, l'attention est plus particulièrement portée sur trois types d'attaques par analyse de la consommation de puissance, à savoir : les attaques par analyse simple de la consommation, les attaques par analyse différentielle de la consommation et les attaques par analyse de la consommation par corrélation. Nous noterons que l'attaque mise en oeuvre dans ce travail est celle d'analyse de la consommation par corrélation. Ultérieurement, le but sera ainsi d'attaquer l'implémentation de l'algorithme AES sur un FPGA. Les résultats de cette attaque seront présentés au chapitre X (Partie 2). 
 
 \section{Introduction}
 \label{sec:att}
@@ -764,31 +764,35 @@ Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. T
 \item Les attaques invasives \textbf{\textit{irréversibles}} qui conduisent à la destruction totale du device cryptographique. Ce type d'attaque est souvent réalisé pour connaître la conception physique d'un device. \textit{Exemple} : Découpage laser d’un circuit intégré.
 \item Les attaques invasives \textbf{\textit{pseudo-réversibles}} qui n’entrainent pas forcément la destruction totale du device cryptographique, mais qui sont souvent tout de même invasives puisqu’elles nécessitent la préparation du circuit (découpe partielle du boitier du circuit intégré par exemple). Un exemple typique de ce type d'attaque est ce qu'on appelle les \textit{attaques en fautes}. Le principe est de manipuler des conditions environnementales du système (tension, température, lumière, \textit{clock}, etc.) pour générer volontairement des fautes. Les fautes ainsi créées peuvent entrainer le circuit dans des modes de fonctionnement conduisant à des erreurs et ces erreurs peuvent ensuite être exploitées pour déterminer la clé.
 \end{itemize}
-\item \textbf{\textit{Attaques non invasives}} : Une attaque est dite non invasive lorsqu'elle ne requière pas que le device cryptographique soit ouvert. Cette attaquant exploite ainsi l'analyse, en fonctionnement normal, d'informations s'échappant d'un device cryptographique. Cela peut être l'analyse de la consommation de puissance, l'analyse temporelle, l'analyse par rayonnement électromagnétique, etc... C'est ce type d'attaque qui sera utilisée pour la réalisation de ce travail. \\
+\item \textbf{\textit{Attaques non invasives}} : Une attaque est dite non invasive lorsqu'elle ne requière pas que le device cryptographique soit ouvert. Cette attaquant exploite ainsi l'analyse, en fonctionnement normal, d'informations s'échappant d'un device cryptographique. Cela peut être l'analyse de la consommation de puissance, l'analyse temporelle, l'analyse par rayonnement électromagnétique, etc... C'est ce type d'attaque qui sera étudiée pour la réalisation de ce travail. \\
 \end{itemize}
 
 \vspace{-0.3 cm}La figure \ref{fig:attaques} ci-dessous présente les 3 ensembles d'attaques définis précédemment et donne pour chacun d'entre eux quelques exemples d'applications.
 \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.85\textwidth]{image/attaques}
+    \hspace{-1.82 cm}
+    \includegraphics[width=1.17\textwidth]{image/attaques}
     \caption{Classification des attaques physiques.}
     \label{fig:attaques}
 \end{figure}
 
-\vspace{-0.25 cm}Les attaques non invasives sont globalement beaucoup plus simples à mettre en oeuvre que les attaques invasives. En effet, du fait qu'il faille ouvrir le device cryptographique, les attaques invasives requièrent une méthodologie et une infrastructure relativement plus compliquée et plus chère que les attaques non invasives qui ne nécessitent pas de connaissances préalables du système interne et qui sont donc plus facilement déployées. Comme définit précédemment, les attaques non invasives consistent à analyser des données issues de canaux auxiliaires au device cryptographique (lorsque ce dernier est en état de fonctionnement normal). Ces canaux auxiliaires sont des canaux présents physiquement sur le circuit attaqué et le long desquels de l’information s’échappe. Cette information peut se présenter sous différentes formes : rayonnement électromagnétique, rayonnement photonique, consommation de puissance, etc. C'est donc pour cette raison qu'on parle de \textit{side-channel attacks} ou en français \textit{l'attaque par canal auxiliaire}. 
+\vspace{-0.25 cm}Les attaques non invasives sont globalement beaucoup plus simples à mettre en oeuvre que les attaques invasives. En effet, du fait qu'il faille ouvrir le device cryptographique, les attaques invasives requièrent une méthodologie et une infrastructure relativement plus compliquée et plus chère que les attaques non invasives qui ne nécessitent pas de connaissances préalables du système interne et qui sont donc plus facilement déployées. 
+
+\hspace{-0.5 cm}Comme définit précédemment, les attaques non invasives consistent à analyser des données issues de canaux auxiliaires au device cryptographique (lorsque ce dernier est en état de fonctionnement normal). Ces canaux auxiliaires sont des canaux présents physiquement sur le circuit attaqué et le long desquels de l’information s’échappe. Cette information peut se présenter sous différentes formes : rayonnement électromagnétique, rayonnement photonique, consommation de puissance, etc. C'est donc pour cette raison qu'on parle de \textit{side-channel attacks} ou en français \textit{l'attaque par canal auxiliaire}. 
 En effet, les fonctions cryptographiques, bien que pouvant être extrêmement robustes théoriquement (c'est-à-dire mathématiquement) sont très sensibles aux fuites d’informations. C'est-à-dire qu'une quantité très faible d’informations peut être exploitée pour retrouver la clé d'un algorithme cryptographique très fort. On réinsistera à nouveau sur le fait que l'attaque exploite les faiblesses du système cryptographique, c'est-à-dire du système implémentant l'algorithme de chiffrement (l'AES en l'occurence). En aucun cas, l'attaque exploite les failles des principes mathématiques mis en place.
+
+\newpage
 
 \hspace{-0.5 cm}La figure \ref{fig:attackpassive} ci-dessous présente différentes possibilités \textbf{d'attaques non invasives} sur un device cryptographique.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.4]{image/attackpassive}
+    \includegraphics[scale=0.5]{image/attackpassive}
     \caption{Différentes façons d'opérer une attaque non invasive sur un device cryptographique.}
     \label{fig:attackpassive}
 \end{figure}
 
-Par la suite, on se concentrera sur un type précis d'attaque non invasive : l'attaque par \textbf{l'analyse de la consommation de puissance}. Les trois sections suivantes décrivent chacune un principe de fonctionnement différent d'attaque pour ce type d'analyse (consommation de puissance). Nous rappelons que c'est l'attaque par analyse de la consommation par corrélation qui nous intéresse en particulier pour la suite de ce travail. Pour cette raison, nous ne ferons que parcourir les deux autres possibilités que sont l'analyse simple de la consommation et l'analyse différentielle de la consommation.
+Dans la suite de ce travail, on se concentrera sur un type précis d'attaque non invasive : l'attaque par \textbf{l'analyse de la consommation de puissance}. Les trois sous-sections du point suivant (\ref{sec:PowerGeneral}) décrivent chacune un principe de fonctionnement différent d'attaque pour ce type d'analyse (consommation de puissance). L'attaque qu'il m'a été demandé de réaliser pour ce travail porte sur \textbf{l'analyse de la consommation par corrélation}. Pour cette raison, nous ne ferons que parcourir les deux autres possibilités que sont l'analyse simple de la consommation et l'analyse différentielle de la consommation. En effet, ces deux attaques sont apparues avant celle par corrélation et il convient donc de les citer pour que le lecteur comprenne l'ordre chronologique d'apparition et d'amélioration des attaques par analyse de la consommation.
 
-\newpage 
+\newpage
 
 \section{Analyse de la consommation de puissance}
 \label{sec:PowerGeneral}
@@ -798,21 +802,37 @@ Le nom de l'attaque ne trompe pas : une attaque par analyse de la consommation d
 \subsection{Analyse simple de la consommation}
 \label{sec:SPA}
 
-Une analyse simple de la consommation (SPA pour \textit{Simple Power Analysis}) est une technique qui interprète directement la ou les mesure(s) de consommation capturée(s) sur un device cryptographique en cours de chiffrement. En d'autres mots, l'attaquant enregistre une trace de puissance et tente d'identifier sur celle-ci certaines opérations exécutées ou certaines données manipulées. En général, cela exige des connaissances avancées sur l'implémentation de l'algorithme cryptographique présent sur le device. Pour cette raison, ce type d'attaque est assez compliqué à réaliser en pratique même s'il n'exige qu'une ou quelques (nombre très limité) traces. Pour conclure, ce type d'attaque permet d'identifier un algorithme et dans des cas extrêmes et sous certaines conditions, il est même possible de lire la clé de chiffrement.
+Une analyse simple de la consommation (SPA en anglais pour \textit{Simple Power Analysis}) est une technique qui interprète directement la ou les mesure(s) de consommation capturée(s) sur un device cryptographique en cours de chiffrement. En d'autres mots, l'attaquant enregistre une trace de puissance et tente d'identifier sur celle-ci certaines opérations exécutées ou certaines données manipulées. En général, cela exige des connaissances avancées sur l'implémentation de l'algorithme cryptographique présent sur le device. Pour cette raison, ce type d'attaque est assez compliqué à réaliser en pratique même s'il n'exige qu'une ou quelques (nombre très limité) traces. Ainsi, ce type d'attaque permet en général d'identifier un algorithme cryptographique et dans des cas extrêmes et sous certaines conditions, il est même possible de lire la clé de chiffrement utilisée par l'algorithme.
 
 
 \subsection{Analyse différentielle de la consommation}
 \label{sec:DPA}
 
+Une attaque par analyse différentielle de la consommation (DPA en anglais pour \textit{Differential Power Analysis}) est une attaque beaucoup plus populaire que l'attaque SPA. Ceci est dû au fait que l'attaque DPA ne requiert aucune connaissance approfondie sur le device cryptographique attaqué. De plus, cette attaque permet de retrouver la clé de chiffrement même si les traces capturées sont fortement bruitées. Par contre, en comparaison des attaques SPA qui tirent l'information d'un nombre restreint de traces, les attaques DPA nécessitent un plus grand nombre de traces et ce, afin de trouver des différences de consommation relatives à un bit. En effet, l’attaquant cherche à récupérer la clé de chiffrement en utilisant des informations relatives à un bit et en se basant sur un sous-ensemble de la clé et du texte (chiffré ou clair). Plus précisément, voici les cinq étapes utiles pour mettre en application une attaque DPA : 
+\begin{enumerate}
+\item \textbf{Mesurer la consommation de puissance} : l'attaquant doit mesurer et enregistrer des traces de puissance capturées sur le device cryptographique lorsque celui-ci est en cours de chiffrement. \textbf{Une trace} représente l'ensemble des opérations exécutées par un algorithme pour \textbf{un texte clair envoyé}. Étant donné qu'il faut un grand nombre ($N$) de traces pour que l'attaque DPA réussisse, il faudra par conséquent envoyer un grand nombre ($N$) de textes clairs.
+\item \textbf{Modèle logiciel} : un modèle logiciel reproduit les opérations de l’algorithme implémenté et donne un résultat sur 1 bit pour chaque ensemble de clé testée. Prenons l'exemple de l'algorithme AES-128 pour mieux comprendre. Pour rappel, la clé utilisée par l'AES-128 a une taille de 128 bits. Si l'attaquant tente de retrouver un seul octet de la clé, c'est-à-dire 8 bits, il existe au total $2^{8}$ soit 256 valeurs possible de clé. L'objectif de l'attaquant va alors être d'utiliser un modèle logiciel simulant l'algorithme AES-128 et testant les 256 clés qu'il existe. L'attaque DPA fonctionne plus rapidement (moins de traces nécessaires) à la sortie de l'opération \textit{SubBytes} (par rapport aux trois autres opérations). Pour cette raison, le modèle logiciel reproduit les deux premières étapes de l’AES et donne un résultat sur 1 bit pour chacune des 256 sous-clés possibles. Ce résultat est un des bits en sortie de l’étape \textit{SubBytes}, le premier est couramment utilisé.
+\item \textbf{Prise de décision} : Nous avons d'une part un ensemble de $N$ traces (disons 1000) et d'autre part un ensemble de bits de sélection (disons 256, soit 1 octet de la clé). Le but de l'attaquant va maintenant être de classer les traces mesurées en deux groupes $G_0$ et $G_1$. La prise de décision se fait de la manière suivante : pour un texte clair $T_i$ avec $i \epsilon (0 ;1000)$, si le bit de sélection vaut 0 pour une clé $K_j$ avec $j \epsilon (0 ; 256)$, la trace de puissance $TP_i$ avec $i \epsilon (0 ;1000)$ correspondant à ce texte clair $T_i$ est mémorisée dans un groupe $G_0$. À l'inverse, si le bit vaut 1, elle est mémorisée dans un groupe $G_1$.
+\item \textbf{Mesurer la courbe DPA} : La différence de la moyenne temporelle des traces du groupe $G_1$ avec la moyenne temporelle des traces du groupe $G_0$ pour la sous-clé $K_j$ donne la courbe DPA associée à cette sous-clé. Il existe donc 256 courbes DPA (pour retrouver un byte de la clé). Parmi celles-ci, la courbe dont la valeur moyenne est la plus élevée correspond à la clé de chiffrement.
+\end{enumerate}
+
+\hspace{-0.5 cm} La figure \ref{fig:DPA} ci-dessous présente les quatre étapes utiles pour mettre en oeuvre une attaque DPA.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.5]{image/attackpassive}
+    \caption{Principe de fonctionnement d'une attaque DPA.}
+    \label{fig:DPA}
+\end{figure}
 
 
 \subsection{Analyse de la consommation par corrélation}
 \label{sec:CPA}
 
+L'attaque par analyse de la consommation par corrélation (CPA en anglais pour \textit{Correlation Power Analysis}) est une attaque qui dérive de l’attaque DPA. En réalité, il s'agit d'une amélioration de l'attaque DPA. En effet, en 2004, de nouvelles recherches eurent pour objectif de directement calculer la corrélation entre la consommation de puissance du device cryptographique (les traces) et un modèle de prédiction de puissance (décrit à la section \ref{sec:power}). La faille utilisée est la corrélation, dans les circuits électroniques de technologie CMOS, entre la consommation de puissance dynamique et le nombre de transistors qui commutent (de 0-1 et de 1-0) (voir chapitre \ref{}). Pour bien comprendre le fonctionnement de cette attaque, il convient donc de définir le terme \textit{corrélation} et plus précisément le terme \textit{coefficient de corrélation}.
 
-\subsubsection{Coefficient de corrélation}
-\label{subsec:correlation}
-Par définition, le \textbf{\textit{coefficient de corrélation}} est un coefficient statistique permettant de mettre en évidence une liaison entre deux types de séries de données statistiques. La valeur du coefficient de corrélation est toujours comprise entre -1 et 1 et cette valeur se calcule de la façon suivante (\ref{eqn:formcorrelation}) :
+\theoremstyle{definition}
+\begin{definition}{\textbf{Coefficient de corrélation :}}
+Par définition, le coefficient de corrélation est un coefficient statistique permettant de mettre en évidence une liaison entre deux types de séries de données statistiques. La valeur du coefficient de corrélation est toujours comprise entre -1 et 1. Cette valeur se calcule de la façon suivante (\ref{eqn:formcorrelation}) :
 \begin{gather}
 	r(X;Y) = \frac{\sum(X-\bar{X}).(Y-\bar{Y}) }{\sqrt{\sum(X-\bar{X})^2}.\sqrt{\sum(Y-\bar{Y})^2}}\label{eqn:formcorrelation}
 \end{gather}
@@ -821,21 +841,30 @@ Où
 \item $X$ et $Y$ sont deux séries de données statistiques.
 \item $\bar{X}$ et $\bar{Y}$ sont les moyennes respectives des variables X et Y.\vspace{0.4 cm}
 \end{itemize}
-Sur base de la valeur du coefficient de corrélation, on peut conclure que :
+\end{definition}
+
+\hspace{-0.5 cm}Sur base de la valeur du coefficient de corrélation, on peut conclure que :
 \begin{itemize}
 \item Si la valeur absolue du coefficient de corrélation est élevée (proche de 1) alors c'est qu'il y a une forte liaison entre les deux séries analysées.
 \item Si la valeur absolue du coefficient de corrélation est faible (proche de 0) alors c'est qu'il y a une très faible liaison, voire aucun lien entre les deux séries analysées.
 \end{itemize}
 
-\subsubsection{L'attaque CPA en concret}
-\label{sec:CPAEntire}
-En 1999, Paul Kocher a révolutionné le monde de la sécurité matérielle en publiant une nouvelle attaque sur canaux cachés exploitant la mesure de la consommation de puissance d’un circuit en cours de chiffrement. La faille utilisée est la corrélation, dans les circuits électroniques de technologie CMOS, entre la consommation de puissance dynamique et le nombre de transistors qui commutent (de 0-1 et de 1-0). Comme précisé dans la section \ref{subsec:CPAIntroduc}, il existe différents types d'attaques par analyse de la consommation de puissance. Celle définie par Kocher en 1999 est une attaque de type DPA (elle ne sera pas abordée dans cet ouvrage). En 2004, cette attaque DPA fut améliorée par des chercheurs qui décidèrent de lui donner un nouveau nom : \textbf{\textit{Attaque CPA}} pour \textit{Correlation Power Analysis}. Ce nom se justifie par le fait que cette attaque calcule la corrélation entre la consommation de puissance mesurée à l'oscilloscope et la consommation de puissance simulée par logiciels informatiques (et plus précisément pas des modèles de puissance, comme définit à la section \ref{sec:modelpuissance}). L'annexe \ref{ann:CPAconcrete} présente le principe de fonctionnement d'une attaque CPA.\vspace{0.25 cm} \\
 \hspace{-0.5 cm}Pour réaliser une attaque CPA, nous avons  principalement besoin de deux éléments :
 \begin{description}
 \item[Un oscilloscope] : L'oscilloscope est utilisé pour enregistrer des traces de puissance. C'est-à-dire des mesures de tension en fonction du temps représentant la consommation de puissance du device cryptographique lorsqu'il chiffre une donnée (un \textit{plaintext}). Plusieurs plaintexts mènent donc à plusieurs traces.
 \item[Un ordinateur] : L'ordinateur est utilisé pour réaliser toute une série de calculs. Plus précisément, il réalise 3 grands types de calculs : calculs de simulation de l'algorithme de chiffrement, calculs de simulation du modèle de puissance et calculs des coefficients de corrélation.
 \end{description}
-Pour la suite de la description, on utilisera l'algorithme AES-128 comme algorithme de chiffrement et le modèle poids de Hamming comme modèle de puissance.
+
+\underline{Principe de fonctionnement :} \vspace{0.4 cm}\\
+\begin{enumerate}
+\item \textbf{Choisir un résultat intermédiaire de l'algorithme cryptographique exécuté} : comme nous l'avons vu au chapitre \ref{chap:cryptologie} section \ref{sec:AES}, lorsque l'algorithme AES chiffre des données, des valeurs intermédiaires sont calculées en fonction des opérations exécutées et des données manipulées. Un résultat intermédiaire de l'algorithme sera donc une fonction $f(d,k_{sub})$ où $d$ est une valeur de donnée et $k_{sub}$ est un sous-ensemble de la clé $k$.
+\item \textbf{Mesurer la consommation de puissance} : l'attaquant doit mesurer et enregistrer des traces de puissance capturées sur le device cryptographique lorsque celui-ci est en cours de chiffrement. \textbf{Une trace} représente l'ensemble des opérations exécutées par un algorithme pour \textbf{un texte clair envoyé}. Étant donné qu'il faut un grand nombre ($N$) de traces pour que l'attaque DPA réussisse, il faudra par conséquent envoyer un grand nombre ($N$) de textes clairs.
+\item \textbf{Calculer les valeurs intermédiaires hypothétiques} : Le but de l'attaquant est de retrouver la clé de chiffrement. Prenons l'exemple de l'algorithme AES-128 pour bien comprendre. La clé utilisée a une taille de 128 bits. Si on tente de retrouver un seul octet de la clé, c'est-à-dire 8 bits, il existe au total $2^{8}$ soit 256 valeurs de clé possibles. L'objectif de l'attaquant va alors être de simuler l'algorithme AES-128 en testant les 256 possibilités de clé. 
+\item \textbf{Utiliser un modèle de puissance pour faire correspondre aux valeurs intermédiaires hypothétiques des valeurs de consommation de puissance simulées} : 
+\item \textbf{Mesurer la similarité entre les vraies traces de puissance et les traces de puissance simulées} : 
+\end{enumerate}
+
+
 
 \underline{Principe de fonctionnement :} \vspace{0.4 cm}\\
 Comme le montre l'annexe \ref{ann:CPAconcrete}, avant de pouvoir calculer la corrélation, deux études doivent être réalisées : 
