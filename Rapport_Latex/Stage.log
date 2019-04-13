@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.3.15)  13 APR 2019 00:45
+This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.3.15)  13 APR 2019 10:36
  restricted system commands enabled.
  file:line:error style messages enabled.
 **Stage.tex
@@ -36,7 +36,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.112 seconds
+luaotfload | main : initialization completed in 0.118 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
@@ -2205,13 +2205,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 893--894
  []
 
 [26]
-<image/CPA_attacks.png, id=712, 692.5875pt x 385.44pt>
+<image/CPA_attacks.png, id=712, 904.37875pt x 504.88625pt>
 File: image/CPA_attacks.png Graphic file (type png)
 <use image/CPA_attacks.png>
 Package luatex.def Info: image/CPA_attacks.png  used on input line 903.
-(luatex.def)             Requested size: 533.29402pt x 296.78972pt.
+(luatex.def)             Requested size: 542.63144pt x 302.93407pt.
 
-Overfull \hbox (40.64957pt too wide) in paragraph at lines 902--904
+Overfull \hbox (47.14154pt too wide) in paragraph at lines 902--904
 []  [] 
  []
 
@@ -2637,8 +2637,8 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1455.
 Here is how much of LuaTeX's memory you used:
  41059 strings out of 494480
  745203,1144653 words of node,token memory allocated
- 602436 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 537 glue, 1 kern, 1 penalty, 95319 glyph, 11204 att
+ 602610 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 537 glue, 1 kern, 1 penalty, 95348 glyph, 11204 att
 ribute, 71 glue_spec, 1869 attribute_list, 1 write, 15 pdf_action nodes
    avail lists: 1:1,2:1967,3:315,4:149,5:360,6:212,7:1572,8:374,9:521,10:30,11:4
 85
@@ -2669,7 +2669,7 @@ ts/type1/public/lm/lmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
 ic/lm/lmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmsy7
 .pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
 sr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Stage.pdf (78 pages, 20917735 bytes).
+Output written on Stage.pdf (78 pages, 20998203 bytes).
 
 PDF statistics: 1340 PDF objects out of 1440 (max. 8388607)
  1087 compressed objects within 11 object streams
