@@ -25,8 +25,10 @@
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Différents résultats de corrélation en fonction de 4 clés testées.\relax }}{28}{figure.caption.29}
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Corrélation en fonction des 256 clés testées.\relax }}{28}{figure.caption.30}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Les contre-mesures de type hiding sont utilisées pour rendre aléatoire ou égale la consommation de puissance du device cryptographique.\relax }}{31}{figure.caption.31}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces On voit qu'au plus le nombre de traces augmente au plus une clé se distingue des 255 autres. Il s'agit de la fausse clé (en rouge). La vraie clé (en vert) ne laisse fuiter aucune information.\relax }}{33}{figure.caption.32}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Modification de l'amplitude d'une trace de puissance.\relax }}{30}{figure.caption.31}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Modification de la position dans le temps d'une trace de puissance.\relax }}{30}{figure.caption.32}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Importance du bruit pour un signal de transmission.\relax }}{31}{figure.caption.33}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces On voit qu'au plus le nombre de traces augmente au plus une clé se distingue des 255 autres. Il s'agit de la fausse clé (en rouge). La vraie clé (en vert) ne laisse fuiter aucune information.\relax }}{35}{figure.caption.35}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

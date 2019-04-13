@@ -931,41 +931,78 @@ On parle d'attaque par analyse de la consommation de puissance or avec un oscill
 \chapter{Contre-mesures}
 \label{chap:contremesure}
 
+Ce cinquième et dernier chapitre de la partie \textit{théorie} introduit au lecteur les différents types de contre-mesures existantes permettant de neutraliser les attaques par analyse de la consommation de puissance. Tout d'abord, une introduction servant de préliminaires est présentée au lecteur. Ensuite, deux grands types de contre-mesures sont détaillées. Il s'agit des contre-mesures de type \textit{masking} et de type \textit{hiding}. Enfin, une contre-mesure particulière est définie. Il s'agit de la contre-mesure de type \textit{faking}, développée pour la réalisation de ce travail.
 
-\vspace{-0.2 cm}Une fois que les attaques par analyse de la consommation de puissance ont été reconnues comme fonctionnelles, certaines entreprises (comme les banques par exemple) se devaient de trouver des moyens de contrer ces attaques afin d'assurer la confidentialité des données sensibles qu'elles manipulaient. Par conséquent, une série de contre-mesures a été développée à partir du début du deuxième millénaire. Cette section a pour objectif de présenter ces contre-mesures. \\ Pour rappel, les attaques par analyse de la consommation de puissance étudient des traces dont l'allure dépend essentiellement de deux facteurs : les opérations exécutées et les données manipulées. Pour protéger un appareil cryptographique de telles attaques, il faut donc casser les relations entre la consommation de puissance et les données sensibles manipulées et entre la consommation de puissance et les opérations exécutées. Les contre-mesures existantes sont divisées en deux catégories différentes : 
+\section{Introduction}
+\label{sec:intro_contremesure}
+
+Dès que les attaques par analyse de la consommation de puissance ont été reconnues fonctionnelles, une série de contre-mesures fut développée afin d'empêcher la réussite de celles-ci. Les attaques CPA, au même titre que toute autre attaque utilisant l'analyse de la consommation de puissance (attaque SPA, attaque DPA, etc.), fonctionnent du fait que la consommation de puissance du device cryptographique dépend des valeurs intermédiaires exécutées par l'algorithme de chiffrement. Ainsi, l'objectif d'une contre-mesure est de casser cette relation qu'il existe entre la consommation de puissance et les données sensibles manipulées et entre la consommation de puissance et les opérations exécutées. On distingue deux grandes catégories de contre-mesures : 
 \begin{enumerate}
-\item \textbf{Les contre-mesures de type \textit{Hiding}} : Le principe des contre-mesures de type Hiding est de rendre la consommation de puissance du device cryptographique indépendante des opérations exécutées et des données manipulées. Pour ce faire, on verra (section \ref{sec:hiding}) qu'il existe deux approches différentes possibles.
-\item \textbf{Les contre-mesures de type \textit{Masking}} : Le principe des contre-mesures de type Masking est de générer des valeurs intermédiaires aléatoires. Ainsi, on accepte que la consommation de puissance du device cryptographique dépende des données manipulées. Cependant, on modifie (on masque) ces valeurs intermédiaires afin de fausser les traces de puissance obtenues à l'oscilloscope. On va donc construire des devices cryptographiques dont la consommation de puissance est liée aux données manipulées mais ces données sont faussées (modifiées) volontairement. \\
+\item \textbf{Les contre-mesures de type \textit{Hiding}} : Le principe des contre-mesures de type Hiding est de rendre la consommation de puissance du device cryptographique indépendante des opérations exécutées et des données manipulées. Pour ce faire, il existe deux approches différentes possibles. Ces deux approches seront détaillées à la section \ref{sec:hiding}.
+\item \textbf{Les contre-mesures de type \textit{Masking}} : Le principe des contre-mesures de type Masking est de générer des valeurs intermédiaires aléatoires. Ainsi, on accepte que la consommation de puissance du device cryptographique dépende des données manipulées. Cependant, on modifie (on masque) volontairement ces valeurs intermédiaires afin de fausser les traces de puissance obtenues à l'oscilloscope. \\
 \end{enumerate}
 
-\vspace{-0.2 cm}Il faut noter que les traces de puissance sont en pratique caractérisées par des traces en tension (voir section \ref{subsec:CPAIntroduc}). Ainsi, sur un graphe, une trace de puissance est représentée par une courbe indiquant la tension mesurée en fonction du temps. Les contre-mesures développées pour les attaques par analyse de la consommation de puissance ont donc pour objectif de modifier l'allure de ces traces de puissances afin de compliquer la tâche de l'attaquant. Il existe deux façons de modifier une trace de puissance : 
+\hspace{-0.5cm}Il est donc important de bien comprendre que les contre-mesures développées pour les attaques par analyse de la consommation de puissance ont pour objectif général de modifier l'allure des traces de puissances afin de compliquer la tâche de l'attaquant. Il existe deux façons de modifier une trace de puissance : 
 \begin{itemize}
 \item En agissant sur \textbf{\textit{l'amplitude}} de la trace, on parlera \textbf{\textit{d'intensité du leakage.}}
 \item En agissant sur \textbf{\textit{la position dans le temps}} de la trace, on parlera \textbf{\textit{d'instant du leakage.}} \\
 \end{itemize}
 
-\vspace{-0.2 cm}Avant de détailler chacune des deux catégories de contre-mesures, rappelons la définition de rapport signal à bruit (SNR : \textit{Signal to Noise Ratio} en anglais). Le rapport signal à bruit ou SNR est un indicateur de performance. Plus précisément, son objectif est de mesurer la qualité de la transmission d'une information. Sa formulation mathématique est reprise à l'équation (\ref{eqn:SNR}). Elle peut également être exprimée en \textit{dB} (\ref{eqn:SNRdb}) : \\
+\newpage
 
-\begin{minipage}{6cm}
-\begin{equation}SNR = \frac{P_{signal}}{P_{noise}} \label{eqn:SNR} \end{equation} 
-\end{minipage}
-\begin{minipage}{6cm}
-\begin{equation}SNR_{dB} = 10.log_{10}\frac{P_{signal}}{P_{noise}} \label{eqn:SNRdb}\end{equation}
-\end{minipage}
+Les figures \ref{fig:trace_Amplitude} et \ref{fig:trace_Time} respectivement montrent comme modifier des traces de puissances en agissant d'une part sur l'amplitude (figure \ref{fig:trace_Amplitude}) et d'autre part sur la position dans le temps (\ref{fig:trace_Time}). Pour ces deux figures, nous affichons la consommation de puissance d'un FPGA en cours de chiffrement sur lequel est implémenté l'AES-256. Concernant la figure \ref{fig:trace_Amplitude}, le graphe de gauche affiche la consommation normale tandis que le graphe de droite affiche la consommation modifiée en amplitude. En effet, nous avons fait en sorte que la consommation de puissance soit plus uniforme en amplitude. Nous sommes passés d'une consommation qui variait entre [$\SI{-18.1}{\volt} ; \SI{9.7}{\volt} $] à une consommation qui varie entre [$\SI{-13.1}{\volt} ; \SI{4.9}{\volt} $]. Concernant la figure \ref{fig:trace_Time}, nous avons inversé l'ordre d'exécution des opérations. Pour l'exemple, nous avons imaginés deux opérations (ce n'est pas le cas en réalité), représentées par les cercles rouge et vert. Le graphe de gauche affiche la consommation normale tandis que le graphe de droite affiche la consommation \textit{retournée} dans le temps. En effet, certaines opérations sont parfois mélangées dans un algorithme cryptographique afin de nuire à l'attaque. Pour conclure, on se rend bien compte que la modification de ces traces de puissance, que ce soit en amplitude ou dans le temps, complexifie la tâche de l'attaquant étant donné qu'il ne possède plus les mêmes repères.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.3]{image/trace_Amplitude}
+    \caption{Modification de l'amplitude d'une trace de puissance.}
+    \label{fig:trace_Amplitude}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.32]{image/trace_Time}
+    \caption{Modification de la position dans le temps d'une trace de puissance.}
+    \label{fig:trace_Time}
+\end{figure}
+
+\hspace{-0.5cm}Avant de détailler chacune des deux catégories de contre-mesures, rappelons la définition de rapport signal à bruit (SNR : \textit{Signal to Noise Ratio} en anglais). Sa définition est reprise ci-dessous. 
+
+\theoremstyle{definition}
+\begin{definition}{\textbf{Rapport Signal à Bruit (SNR) :}}
+Le rapport signal à bruit ou SNR est un indicateur de performance. Son objectif est de mesurer la qualité de la transmission d'une information. Sa formulation mathématique est reprise à l'équation (\ref{eqn:SNR}). Elle peut également être exprimée en \textit{dB} (\ref{eqn:SNRdb}) : \\
+
+\begin{gather}
+	SNR = \frac{P_{signal}}{P_{noise}} \label{eqn:SNR}
+\end{gather}
+\begin{gather}
+	SNR_{dB} = 10.log_{10}\frac{P_{signal}}{P_{noise}} \label{eqn:SNRdb}
+\end{gather}
 
 \hspace{-0.5 cm}Où :
 \begin{itemize}
-\item $SNR$ représente l'indicateur de performance de la transmission de l'information (sans unité/dB).
+\item $SNR$ ($SNR_{dB}$) représente l'indicateur de performance de la transmission de l'information sans unité (en dB).
 \item $P_{signal}$ représente la puissance du signal (en \textit{Watt}).
 \item $P_{noise}$ représente la puissance du bruit (en \textit{Watt}). \\
 \end{itemize}
+\end{definition}
 
-\vspace{-0.2 cm}Ainsi, le calcul du SNR permet d'évaluer si le signal de transmission que l'on étudie est fortement bruité ou non. Selon l'équation (\ref{eqn:SNR}), cet indicateur SNR est d'autant plus élevé que la puissance du signal est élevée ou est d'autant plus élevé que la puissance du bruit est faible. Dans une transmission idéale, on désirera toujours un SNR très grand, signifiant que la trace obtenue représente majoritairement le signal et minoritairment le bruit (qui pour rappel est un élément parasite aléatoire). \\
-Pour une trace de puissance, si le SNR d'une opération est élevé, cela signifie que la puissance du signal est plus élevée que la puissance du bruit, c'est-à-dire qu'il est plus facile de détecter des fuites d'information. Idéalement, il faut donc que le SNR soit proche de 0. De cette façon, le bruit recouvre tellement le signal qu'il est impossible de détecter du \textit{leakage} (fuite). En pratique, cela peut être réalisé en diminuant la variance du signal vers 0 ou en augmentant la variance du bruit vers l'infini.
+\vspace{-0.4 cm}\hspace{-0.5 cm}Ainsi, le calcul du SNR permet d'évaluer si le signal de transmission que l'on étudie est fortement bruité ou non. Selon l'équation (\ref{eqn:SNR}), cet indicateur SNR est d'autant plus élevé que la puissance du signal est élevée ou est d'autant plus élevé que la puissance du bruit est faible. Dans une transmission idéale, on désirera toujours un SNR très grand, signifiant que la trace obtenue représente majoritairement le signal et minoritairment le bruit (qui pour rappel est un élément parasite aléatoire).
+
+\hspace{-0.5 cm}Pour une trace de puissance, si le SNR d'une opération est élevé, cela signifie que la puissance du signal est plus élevée que la puissance du bruit, c'est-à-dire qu'il est plus facile de détecter des fuites d'information. Idéalement, il faut donc que le SNR soit proche de 0. De cette façon, le bruit recouvre tellement le signal qu'il est impossible de détecter du \textit{leakage} (fuite d'information). En pratique, cela peut être réalisé en diminuant la variance du signal vers 0 ou en augmentant la variance du bruit vers l'infini.
 \begin{itemize}
 \item Pour réduire la variance du signal, la consommation de puissance a besoin d'être exactement égale pour toutes les opérations exécutées et données manipulées. En pratique, cela se traduira par de petites valeurs de variances pour le signal.
 \item Pour augmenter la variance du bruit, l'amplitude du bruit a besoin d'être augmentée de façon significative laissant croire à l'attaquant l'existence de commutations sur les cellules du device. En pratique, cela se traduira par de grandes valeurs de variances pour le bruit.
 \end{itemize}
+
+\hspace{-0.5 cm}La figure \ref{fig:SNR_Fig} ci-dessous présente une fonction sinusoïdale sans bruit (gauche) et avec bruit (droite). 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.2]{image/SNR_Fig}
+    \caption{Importance du bruit pour un signal de transmission.}
+    \label{fig:SNR_Fig}
+\end{figure}
+
+\newpage
 
 \section{Contre-mesures Hiding}
 \label{sec:hiding}
@@ -978,19 +1015,24 @@ Pour une trace de puissance, si le SNR d'une opération est élevé, cela signif
 \item \textit{La modification de l'intensité du leakage peut être réalisée par une modification du rapport signal à bruit}. Nous avons vu que pour modifier le SNR, il suffisait d'augmenter le bruit ou de diminuer le signal. Dans ce cas-ci, nous allons augmenter la variance du bruit. En effet, en ajoutant du bruit de façon indépendante à l'exécution de l'algorithme, on va diminuer le SNR, ce qui va avoir pour conséquence de diminuer le leakage d'une opération : L'attaquant aura dès lors plus de difficultés à retrouver la clé secrète. On peut, pour ce faire, utiliser un filtre afin de ne laisser passer que certaines composantes de puissance ou encore utiliser ce qu'on appelle des "\textit{noise engines}", systèmes fonctionnant en parallèle du device cryptographique et ayant pour but de générer du bruit.
 \end{itemize}
 \item Faire en sorte que la consommation de puissance du device cryptographique soit \textbf{\textit{identique}}. Cela signifie qu'à chaque coup de clock, une quantité égale de puissance est consommée pour toutes les opérations exécutées et pour toutes les données manipulées. Le but est donc de \textbf{modifier l'intensité du leakage}. Autrement dit, on souhaite uniformiser l'amplitude de la trace. 
-\textit{Pour ce faire, on va à nouveau modifier le rapport signal à bruit}. L'idéal étant d'avoir un SNR proche de 0, si on n'augmente pas la variance du bruit, la deuxième approche consiste à diminuer la variance du signal. Pour ce faire, on va modifier de façon physique les cellules CMOS. En effet, le but est de faire en sorte que chaque cellule logique consomme la même consommation de puissance pour toute opération demandée.
+\textit{Pour ce faire, on va à nouveau modifier le rapport signal à bruit}. L'idéal étant d'avoir un SNR proche de 0, si on n'augmente pas la variance du bruit, la deuxième approche consiste à diminuer la variance du signal. Pour ce faire, on va modifier de façon physique les cellules CMOS. En effet, le but est de faire en sorte que chaque cellule logique consomme la même consommation de puissance pour toute opération demandée. \\
 \end{enumerate}
 
-La figure \ref{fig:hiding} ci-dessous présente les possibilités de contre-mesures mises en oeuvre selon le type d'approche suivi tandis que l'annexe \ref{ann:resume_hiding} reprend l'ensemble des contre-mesures de type hiding.
+\hspace{-0.5cm}Le tableau \ref{tab:hiding} ci-dessous présente les paramètres influencés pour la réalisation d'une contre-mesure selon le type d'approche suivi (puissance équivalente ou aléatoire) tandis que l'annexe \ref{ann:resume_hiding} reprend un ensemble de contre-mesures de type hiding. Pour rappel, des exemples de modification de l'intensité du leakage et de l'instant du leakage pour une trace de puissance ont été donnés en introduction de ce chapitre (voir figures \ref{fig:trace_Amplitude} et \ref{fig:trace_Time}).
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.5]{image/hiding}
-    \caption{Les contre-mesures de type hiding sont utilisées pour rendre aléatoire ou égale la consommation de puissance du device cryptographique.}
-    \label{fig:hiding} 
-\end{figure}
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{|c|c|}
+    		\hline
+   		  \textit{Consommation de puissance \textbf{équivalente}} & \textit{Consommation de puissance \textbf{aléatoire}} \\ \hline 
+   		  \textbf{Intensité} du leakage &  \textbf{Instant} du leakage \\ 
+   		   &  \textbf{Intensité} du leakage \\ \hline
+	\end{tabular}
+    	\caption{Les contre-mesures de type hiding sont utilisées pour rendre aléatoire ou égale la consommation de puissance du device cryptographique..}
+    	\label{tab:hiding} 
+\end{table}
 
-\hspace{-0.5 cm}Sur base de l'annexe \ref{ann:resume_hiding}, nous pouvons expliquer le principe de certains exemples de contre-mesures :
+\hspace{-0.5 cm}Sur base de l'annexe \ref{ann:resume_hiding}, nous pouvons expliquer le principe de fonctionnement de certains exemples de contre-mesures :
 \begin{itemize}
 \item Concernant la manipulation d’horloge, nous pouvons :
 \begin{itemize}
@@ -1010,40 +1052,64 @@ La figure \ref{fig:hiding} ci-dessous présente les possibilités de contre-mesu
 \item On peut diminuer le SNR en diminuant la variance du signal. En pratique, il existe deux possibilités pour diminuer la variance du signal :
 \begin{itemize}
 \item Une première approche pourrait concerner la cellule logique CMOS en elle-même. On sait (section \ref{sec:puissance}) que la consommation de puissance totale d'un device cryptographique est la somme des puissances consommées par chaque cellule. Ainsi, si chaque cellule consomme une puissance constante, la puissance totale est constante. Il faut donc construire des cellules qui consomment des quantités de puissance constantes.
-\item Une seconde approche plus complexe concerne le filtrage. Il s'agit de filtrer la puissance consommée par le device cryptographique. Le but est alors de supprimer, via ce filtre, toutes les composantes de la trace de puissance qui dépendent des données manipulées et des opérations exécutées. 
+\item Une seconde approche plus complexe concerne le filtrage. Il s'agit de filtrer la puissance consommée par le device cryptographique. Le but est alors de supprimer, via ce filtre, toutes les composantes de la trace de puissance qui dépendent des données manipulées et des opérations exécutées. \\
 \end{itemize}
 \end{itemize}
 \end{itemize}
+
+En conclusion, le développement d'une contre-mesure de type hiding se concrétise soit en modifiant le \textit{design} du circuit électronique lors de sa conception (fabrication) soit en manipulant les coups de clocks et/ou l'ordre d'exécution des instructions devant être opérées par le circuit électronique (si cela est permis). Par conséquent, ce type de contre-mesure est généralement assez compliqué à mettre en oeuvre.
 
 \section{Contre-mesures Masking}
 \label{sec:masking}
 
 Le principe des contre-mesures de type masking est de générer des valeurs intermédiaires aléatoires. Autrement dit, lors de l'exécution d'un algorithme, différentes opérations sont exécutées conduisant à différentes valeurs intermédiaires calculées. Si aucune protection n'est mise en place, la consommation de puissance du device cryptographique dépendra des données intermédiaires qui sont manipulées par le device cryptographique (par l'algorithme précisément). L'attaquant peut alors potentiellement retrouver la clé secrète en analysant la consommation de puissance du device cryptographique. Par contre, si chaque valeur intermédiaire est dissimulée sous une nouvelle valeur intermédiaire aléatoire dite \textbf{masquée}, alors l'attaquant pourra toujours analyser la consommation de puissance, les traces qu'il obtiendra fourniront des informations faussées (par le masque). En d'autres mots, ce type de contre-mesure accepte que la consommation de puissance du device cryptographique dépend des données manipulées et des opérations exécutées. Cependant, on va modifier les valeurs intermédiaires de façon aléatoire pour que les traces mesurées à l'oscilloscope n'aient plus de sens. Un avantage de cette approche est qu'elle peut être implémentée au niveau de l'algorithme, c'est-à-dire sans changer les caractéristiques de consommation de puissance du device cryptographique (ce qui est plus complexe) comme c'est le cas pour les contre-mesures de type \textit{Hiding}.
 
-
-\underline{Définition du masque} : Une valeur intermédiaire masquée $v_m$ est une valeur intermédiaire $v$ cachée par une valeur aléatoire $m$. On obtient donc la relation suivante (\ref{eqn:masking}) : 
+\theoremstyle{definition}
+\begin{definition}{\textbf{Masque :}}
+Une valeur intermédiaire masquée $v_m$ est une valeur intermédiaire $v$ cachée par une valeur aléatoire $m$. On obtient donc la relation suivante (\ref{eqn:masking}) : 
 \begin{gather}
 	v_m = v * m\label{eqn:masking}
 \end{gather}
-Ne connaissant pas la valeur aléatoire $m$, l'attaquant ne peut pas retrouver la valeur intermédiaire $v$. Ainsi, la consommation de puissance du device cryptographique dépend des valeurs intermédiaires masquées $v_m$ qui ne fournissent aucune information sur les valeurs intermédiaires $v$. Autrement dit, un masque cache les valeurs intermédiaires et il n'est donc plus possible de retrouver la clé de chiffrement. Bien évidemment, les masques ont besoin d'être supprimés à la fin des opérations algorithmiques afin d'obtenir \textit{in fine} le \textit{vrai} message chiffré. \\
-L'opération $*$ (dans (\ref{eqn:masking})) représente le type d'opération réalisé pour appliquer le masque (sur les valeurs intermédiaires). Il peut s'agir d'une fonction booléenne ou d'une fonction arithmétique. Ainsi, on définit : 
-\begin{enumerate}
-\item \textbf{\textit{Un masque booléen}} : l'opération $*$ est alors remplacée par la fonction booléenne XOR (\oplus). Dans ce cas, le masque devient : $v_m = v \oplus m$.
-\item \textbf{\textit{Un masque arithmétique}} : l'opération $*$ est alors remplacée par une addition modulaire ($+$) ou par une multiplication modulaire (\times ). Dans ce cas, le masque devient : $v_m = v + m$ $(mod$ $n)$ ou $v_m = v \times m$ $(mod$ $n)$ où \textit{modulo n} est définit en fonction de l'algorithme de chiffrement.
-\end{enumerate}
+\end{definition}
+
+\hspace{-0.5cm}Ne connaissant pas la valeur aléatoire $m$, l'attaquant ne peut pas retrouver la valeur intermédiaire $v$. Ainsi, la consommation de puissance du device cryptographique dépend des valeurs intermédiaires masquées $v_m$ qui ne fournissent aucune information sur les valeurs intermédiaires $v$. Autrement dit, un masque cache les valeurs intermédiaires et il n'est donc plus possible de retrouver la clé de chiffrement. Bien évidemment, les masques ont besoin d'être supprimés à la fin des opérations algorithmiques afin d'obtenir \textit{in fine} le \textit{vrai} message chiffré.
+
+\hspace{-0.5cm}Le symbole $*$ dans (\ref{eqn:masking}) représente le type d'opérateur utilisé pour appliquer le masque sur les valeurs intermédiaires. Il peut s'agir d'une fonction booléenne ou d'une fonction arithmétique. Ainsi, on définit : 
+
+\theoremstyle{definition}
+\begin{definition}{\textbf{Masque booléen:}}
+l'opération $*$ est remplacée par la fonction booléenne XOR (\oplus). Dans ce cas, le masque devient (\ref{eqn:maskingBool}):
+\begin{gather}
+	v_m = v \oplus m\label{eqn:maskingBool}
+\end{gather}
+\end{definition}
+\theoremstyle{definition}
+\begin{definition}{\textbf{Masque arithmétique:}}
+l'opération $*$ est remplacée par une addition modulaire ($+$) ou par une multiplication modulaire (\times ). Dans ce cas, le masque devient (\ref{eqn:maskingArith1} ou \ref{eqn:maskingArith2}): 
+\begin{gather}
+	v_m = v + m \ (mod \ n)\label{eqn:maskingArith1}
+\end{gather}
+ou
+\begin{gather}
+	v_m = v \times m \ (mod \ n)\label{eqn:maskingArith2}
+\end{gather}
+où \textit{modulo n} est définit en fonction de l'algorithme de chiffrement.
+\end{definition}
+
+En conclusion, le développement d'une contre-mesure de type masking est plus facilement réalisable que le développement d'une contre-mesure de type hiding. En effet, ce type de contre-mesure consiste à s'intéresser à l'exécution des opérations d'un algorithme cryptographique (à ses valeurs intermédiaires) et d'ensuite modifier ces valeurs intermédiaires au travers de fonctions de masquage. Même si le principe semble facile, attention tout de même à la mise en application. En effet, certaines contre-mesures proposées sont considérablement compliquées à comprendre et à traduire en langage machine.
 
 \section{Contre-mesures Faking}
 \label{sec:faking}
 
-Après diverses recherches sur \textit{Internet}, j'ai constaté qu'un nouveau type de contre-mesure a vu le jour : les contre-mesures de type \textbf{\textit{Faking}}. Les articles définissant ce type de contre-mesure ont été rédigés fin 2016 au plus tôt, il s'agit donc d'une contre-mesure assez récente. Cette contre-mesure s'appuie sur une partie du concept de contre-mesure par \textit{Masking}. 
+Après diverses recherches dans les livres de références et dans des articles sur \textit{Internet}, j'ai trouvé un nouveau principe de contre-mesure. Ce type de contre-mesure se nomme \textbf{\textit{Faking}}. Cette contre-mesure s'appuie sur une partie du concept de contre-mesure par \textit{Masking} mais avec quelques subtilités. C'est ce type de contre-mesure que j'ai décidé de développer dans le cadre de mon travail. Les résultats seront présentés au chapitre \ref{chap:faking} (Partie 2).
 
 \hspace{-0.5 cm}L'objectif de la contre-mesure est le suivant : Dès le départ, on va venir masquer la vraie valeur de clé ($Key_{Real}$) en réalisant un XOR avec un masque ($Key_{Mask}$) produisant ainsi une fausse clé ($Key_{Fake}$). On a donc la relation (\ref{eqn:faking}) : 
 \begin{gather}
 	Key_{Fake} = Key_{Real} \oplus Key_{Mask}\label{eqn:faking}
 \end{gather}
-À partir de cette fausse clé, on va exécuter l'algorithme AES de façon normale (tel que décrit à la section \ref{sec:AES}): C'est-à-dire qu'on va tout d'abord appliquer l'opération \textit{KeySchedule} générant ainsi d'autres fausses clés et ensuite on va exécuter les quatre opérations élémentaires (\textit{AddRoundKey, SubBytes, ShiftRows, MixColumns}) afin de chiffrer les données. On constate ainsi que c'est la fausse clé qui est utilisée pour chiffrer les données et non la vraie clé. De cette manière, si un attaquant opère une attaque de type CPA (ou autre), en supposant qu'il ne connaisse pas la valeur du masque ($Key_{Mask}$) appliqué sur la vraie clé, il sera capable de retrouver une valeur de clé cependant, il s'agira de la fausse clé générée au départ. En conclusion, l'attaquant ne pourra, à partir de la fausse clé, déchiffrer les données.
+À partir de cette fausse clé, on va exécuter l'algorithme AES de façon ordinaire (tel que décrit à la section \ref{subsec:AES}): C'est-à-dire qu'on va tout d'abord appliquer l'opération \textit{KeySchedule} générant ainsi d'autres fausses clés et ensuite on va exécuter les quatre opérations élémentaires (\textit{AddRoundKey, SubBytes, ShiftRows, MixColumns}) afin de chiffrer les données. On constate ainsi que c'est la fausse clé qui est utilisée pour chiffrer les données et non la vraie clé. De cette manière, si un attaquant opère une attaque de type CPA (ou autre), en supposant qu'il ne connaisse pas la valeur du masque ($Key_{Mask}$) appliqué sur la vraie clé, il sera capable de retrouver une valeur de clé cependant, il s'agira de la fausse clé générée dès le départ. En conclusion, l'attaquant sera incapable de déchiffrer les données étant donné qu'il possède une fausse clé.
 
-Dans les contre-mesures de type \textit{Masking}, lorsqu'on applique un masque sur les données intermédiaires, il faut ensuite le retirer de façon à obtenir \textit{in fine} le \textit{vrai} texte chiffré. Pour le cas des contre-mesures de type \textit{Faking}, le principe est identique. Pour ce faire, on va utiliser un co-processeur dont le rôle est d'annuler l'emploi du masque afin d'obtenir les vraies données intermédiaires à chaque fin de round et donc \textit{in fine} les vraies données chiffrées. L'annexe \ref{ann:ConceptFaking} présente le principe de fonctionnement d'une contre-mesure de type Faking. On y retrouve les opérations élémentaires de l'algorithme AES (\textit{AddRoundKey, SubBytes, ShiftRows, MixColumns}) ainsi que deux opérations spéciales exécutées par le co-processeur (\textit{SubBytesTrans, MixCol}). SubBytesTrans est définie de façon à annuler l'utilisation de la fausse clé sur les données alors que MixCol réalise la même opération que MixColumns. 
+Dans les contre-mesures de type \textit{Masking}, lorsqu'on applique un masque sur les données intermédiaires, il faut ensuite le retirer de façon à obtenir \textit{in fine} le \textit{vrai} texte chiffré. Pour le cas des contre-mesures de type \textit{Faking}, le principe est identique. Pour ce faire, on va ajouter deux nouvelles opérations dont le rôle est d'annuler l'emploi du masque afin d'obtenir les vraies données chiffrées. L'annexe \ref{ann:ConceptFaking} présente le principe de fonctionnement d'une contre-mesure de type Faking. On y retrouve les opérations élémentaires de l'algorithme AES (\textit{AddRoundKey, SubBytes, ShiftRows, MixColumns}) ainsi que les deux opérations spéciales (\textit{SubBytesTrans, MixCol}). SubBytesTrans est définie de façon à annuler l'utilisation de la fausse clé sur les données alors que \textit{MixCol} réalise la même opération que \textit{MixColumns}. 
 
 À l'aide de MATLAB, j'ai réalisé une simulation dans laquelle le device cryptographique est protégé par une contre-mesure de type \textit{Faking}. Ensuite, j'ai simulé une attaque de type CPA sur ce device. Le résultat, observable à la figure \ref{fig:faking}, montre clairement qu'un attaquant est capable de retrouver la clé de chiffrement. Néanmoins, il s'agit de la fausse clé ! La vrai clé quant à elle ne laisse fuiter aucune information !
 \begin{figure}[htbp]
@@ -1101,6 +1167,7 @@ Dans les contre-mesures de type \textit{Masking}, lorsqu'on applique un masque s
 %%%%%%%%%%%%% Chapitre 8 %%%%%%%%%%%%%
 
 \chapter{Implémentation de la contre-mesure de type \textit{faking}}
+\label{chap:faking}
 
 \section{Développement de la contre-mesure}
 \label{sec:Introduction}
@@ -1411,14 +1478,17 @@ AddRoundKey(STATE, ExpandedKey[10])
 \newpage
 
 \rhead{ANNEXE \ref{ann:resume_hiding}}
-\section{Contre-mesures \textit{Hiding}}
-\label{ann:resume_hiding}
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=1.2\linewidth, angle=90]{image/resume_hiding}
-    \caption{Ce schéma présente les différentes sortes de contre-mesures de type hiding.}
-    \label{fig:resume_hiding} 
-\end{figure}
+\includepdf[pagecommand=\section{Contre-mesures \textit{Hiding}}\label{ann:resume_hiding}]{image/resume_hiding.pdf}
+
+%\rhead{ANNEXE \ref{ann:resume_hiding}}
+%\section{Contre-mesures \textit{Hiding}}
+%\label{ann:resume_hiding}
+%\begin{figure}[htb]
+%    \centering
+%    \includegraphics[width=1\linewidth, angle=90]{image/resume_hiding}
+%    \caption{Ce schéma présente les différentes sortes de contre-mesures de type hiding.}
+%    \label{fig:resume_hiding} 
+%\end{figure}
 
 \newpage
 
