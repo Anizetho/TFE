@@ -35,24 +35,24 @@
 \contentsline {section}{\numberline {5.4}Contre-mesures Faking}{34}{section.5.4}
 \contentsline {subsection}{\numberline {5.4.1}Définition}{34}{subsection.5.4.1}
 \contentsline {subsection}{\numberline {5.4.2}Points faibles et améliorations}{36}{subsection.5.4.2}
-\contentsline {part}{II\hspace {1em}Acquis pratiques}{37}{part.2}
-\contentsline {chapter}{\numberline {6}Configuration de l'attaque}{38}{chapter.6}
-\contentsline {section}{\numberline {6.1}Méthodologie}{38}{section.6.1}
-\contentsline {section}{\numberline {6.2}Configuration du FPGA}{38}{section.6.2}
-\contentsline {section}{\numberline {6.3}Configuration de l'oscilloscope}{38}{section.6.3}
-\contentsline {section}{\numberline {6.4}Configuration de l'attaque CPA}{38}{section.6.4}
-\contentsline {chapter}{\numberline {7}Mise en application d'une attaque CPA (\textit {Correlation Power Analysis})}{39}{chapter.7}
-\contentsline {section}{\numberline {7.1}Résultats de simulations}{39}{section.7.1}
-\contentsline {section}{\numberline {7.2}Résultats expérimentaux}{39}{section.7.2}
-\contentsline {section}{\numberline {7.3}Conclusion}{39}{section.7.3}
-\contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit {faking}}{40}{chapter.8}
-\contentsline {section}{\numberline {8.1}Développement de la contre-mesure}{40}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Résultats expérimentaux}{40}{subsection.8.1.1}
-\contentsline {section}{\numberline {8.2}Conclusion}{40}{section.8.2}
-\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{41}{chapter.9}
-\contentsline {section}{\numberline {9.1}Évaluation par métriques}{41}{section.9.1}
-\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{41}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusion}{42}{chapter.10}
-\contentsline {section}{Crédits}{43}{section*.38}
-\contentsline {section}{Références}{43}{section*.39}
-\contentsline {chapter}{Annexes}{46}{section*.39}
+\contentsline {part}{II\hspace {1em}Acquis pratiques}{38}{part.2}
+\contentsline {chapter}{\numberline {6}Configuration de l'attaque}{39}{chapter.6}
+\contentsline {section}{\numberline {6.1}Méthodologie}{39}{section.6.1}
+\contentsline {section}{\numberline {6.2}Configuration du FPGA}{39}{section.6.2}
+\contentsline {section}{\numberline {6.3}Configuration de l'oscilloscope}{39}{section.6.3}
+\contentsline {section}{\numberline {6.4}Configuration de l'attaque CPA}{39}{section.6.4}
+\contentsline {chapter}{\numberline {7}Mise en application d'une attaque CPA (\textit {Correlation Power Analysis})}{40}{chapter.7}
+\contentsline {section}{\numberline {7.1}Résultats de simulations}{40}{section.7.1}
+\contentsline {section}{\numberline {7.2}Résultats expérimentaux}{40}{section.7.2}
+\contentsline {section}{\numberline {7.3}Conclusion}{40}{section.7.3}
+\contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit {faking}}{41}{chapter.8}
+\contentsline {section}{\numberline {8.1}Développement de la contre-mesure}{41}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Résultats expérimentaux}{41}{subsection.8.1.1}
+\contentsline {section}{\numberline {8.2}Conclusion}{41}{section.8.2}
+\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{42}{chapter.9}
+\contentsline {section}{\numberline {9.1}Évaluation par métriques}{42}{section.9.1}
+\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{42}{section.9.2}
+\contentsline {chapter}{\numberline {10}Conclusion}{43}{chapter.10}
+\contentsline {section}{Crédits}{44}{section*.39}
+\contentsline {section}{Références}{44}{section*.40}
+\contentsline {chapter}{Annexes}{47}{section*.40}
