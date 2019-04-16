@@ -24,6 +24,14 @@
 \usepackage[titletoc]{appendix}
 \usepackage{appendix}
 \usepackage{chngcntr}
+% Glossaire
+\usepackage{glossaries}
+\newglossaryentry{<mot à utiliser pour appeler le terme du glossaire>}
+{%
+	name={<terme>}, % le terme à référencer (l'entrée qui apparaitra dans le glossaire)
+	description={<description>} % la description du terme (sans retour à la ligne)
+}
+\makeglossaries
 
 \usepackage{mwe} % For dummy images
 \usepackage{subcaption}
@@ -138,6 +146,8 @@ Ceci est aujourd'hui possible depuis la découverte fin des années 1990 d'un no
 \chapter*{Remerciements}
 \addcontentsline{toc}{chapter}{Remerciements}
 
+Encore à compléter...
+
 Je tiens à remercier toutes les personnes qui ont permis à ce travail de voir le jour, mais qui m’ont également soutenu tout au long de ces 5 années d’étude à l’ECAM.
 
 Je remercie \textit{Thales Belgium Communications \& Security} de m’avoir permis de réaliser mon stage et mon TFE.
@@ -156,38 +166,34 @@ Je remercie également mademoiselle Clémence Flémal, ma tutrice, qui m’a acc
 
 \phantomsection
 \addcontentsline{toc}{chapter}{Cahier des charges} %Pour l'ajout dans la table des matières au même rang que chapitre
-\includepdf[pagecommand=\section*{}\label{ann:Cahier_des_charges}]{image/Cahier_des_charges.pdf}
-\newpage
 
 \begin{center}
 	\includegraphics[scale=0.1]{logos/logo-ecam.png}\\
 \end{center}
-
 \hspace{-0.5 cm}\fbox{
 \begin{minipage}{\textwidth}
 \centering
-\textbf{\Large{Cahier des charges relatifs au travail de fin d'études de}}
-\vspace{0.5cm}\Large{Thomas ANIZET, inscrit en 2ème Master, orientation électronique}
+\textbf{\Large{Cahier des charges relatif au travail de fin d'études de}} \\
+\vspace{0.5cm}\Large{Thomas ANIZET, inscrit en 2\up{ème} Master, orientation électronique}
 \end{minipage}
 }
 
 \vspace{1cm}
 \begin{itemize}[label=$\bullet$]
-\item \underline{Année académique} : 2018-2019 \\
-\item \underline{Titre provisoire} : Contre-mesure pour les attaques par canaux cachés \\
-\item \underline{Objectifs à atteindre} : Étant un acteur majeur dans le domaine de la Défense, Thales collabore étroitement avec de nombreux gouvernements. La cybersécurité est au centre des préoccupations actuelles. Le besoin en implémentations sécurisées se fait donc de plus en plus ressentir. L’objectif est de se prémunir contre des attaques classiques et des attaques plus bas niveau exploitant des caractéristiques physiques. Afin de se familiariser avec ce domaine, l’étudiant devra réaliser une recherche bibliographique de règles de bonnes pratiques pour de la programmation sécurisée hardware. Après en avoir étudié les tenants et aboutissants, l’étudiant réalisera (i) une série de démonstrateurs permettant de mettre en évidence l’impact des failles non traitées et (ii) le gain en sécurité dû aux contre-mesures. \\
+\item \underline{Année académique} : 2018-2019 \\ \\
+\item \underline{Titre provisoire} : Contre-mesure pour les attaques par canaux cachés \\ \\
+\item \underline{Objectifs à atteindre} : Étant un acteur majeur dans le domaine de la Défense, Thales collabore étroitement avec de nombreux gouvernements. La cybersécurité est au centre des préoccupations actuelles. Le besoin en implémentations sécurisées se fait donc de plus en plus ressentir. L’objectif est de se prémunir contre des attaques classiques et des attaques plus bas niveau exploitant des caractéristiques physiques. Afin de se familiariser avec ce domaine, l’étudiant devra réaliser une recherche bibliographique de règles de bonnes pratiques pour de la programmation sécurisée hardware. Après en avoir étudié les tenants et aboutissants, l’étudiant réalisera (\textit{i}) une série de démonstrateurs permettant de mettre en évidence l’impact des failles non traitées et (\textit{ii}) le gain en sécurité dû aux contre-mesures. \\ \\
 \item \underline{Principales étapes} : \begin{itemize}
 \item  Recherches bibliographiques de règles de bonnes pratiques.
 \item Implémentation de l’algorithme AES sur FPGA.
 \item Réalisation d’une attaque CPA (Correlation Power Analysis).
 \item Étude et choix de métrique(s) pour l’analyse de contre-mesures.
 \item Développement d’une contre-mesure.
-\item Analyse et conclusion sur la contre-mesure développée. \\
+\item Analyse et conclusion sur la contre-mesure développée. \\ \\ \\ \\ \\ \\ \\ \\
 \end{itemize}
 
-Fait en trois exemplaires à Tubize, le 22 Novembre 2018.
+\hfill Fait en trois exemplaires à Tubize, le 22 Novembre 2018.
 \end{itemize}
-
 
 
 \newpage
@@ -211,6 +217,29 @@ Fait en trois exemplaires à Tubize, le 22 Novembre 2018.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \listoftables
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                        Liste des acronymes                       								 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\phantomsection
+\chapter*{Liste des acronymes}
+\addcontentsline{toc}{chapter}{Liste des acronymes}
+
+\hspace{-0.5 cm}Encore à compléter ... \\ \\
+\hspace{-0.5cm}\textbf{AES} \hfill Advanced Encryption Standard \\ \\
+\textbf{CMOS} \hfill Complementary Metal Oxyde Semiconductor \\ \\
+\textbf{CPA} \hfill Correlation Power Analysis \\ \\
+\textbf{DPA} \hfill Differential Power Analysis \\ \\
+\textbf{FPGA} \hfill Field Programmable Gate Array \\ \\
+\textbf{NIST} \hfill National Institute of Standard and Technology \\ \\
+\textbf{RSA} \hfill Rivest Shamir Adleman \\ \\
+\textbf{SPA} \hfill Simple Power Analysis \\ \\
+\textbf{SNR} \hfill Signal-to-Noise Ratio \\ \\
+\textbf{VHDL} \hfill VHSIC Hardware Description Language \\ \\
+\textbf{XOR} \hfill Exclusive OR \\ \\
+
 % Laisser une page vierge
 \newpage
 \strut
@@ -905,7 +934,7 @@ On parle d'attaque par analyse de la consommation de puissance or avec un oscill
     \label{fig:CPA_attacks}
 \end{figure}
 
- \vspace{1cm}\hspace{-0.5 cm}La figure \ref{fig:4KeysEx} présente de manière générale la corrélation en fonction du temps pour le huitième byte d'une clé de chiffrement. En effet, dans cet exemple, nous considérons que l'attaquant a pour tâche de retrouver le huitième byte d'une clé utilisée par l'AES-256 (pour rappel, une clé utilisée avec l'AES-256 possède une taille de trente-deux bytes). La première figure (\ref{fig:4KeysEx}) représente l'évolution du coefficient de corrélation pour quatre valeurs de clés différentes. On remarque un pic de corrélation plus élevé dans le graphe dédié à la clé 40. Il s'agit en effet de la vraie valeur du huitième byte de la clé employée par l'algorithme AES qui pour cet exemple vaut 40. Pour encore mieux comprendre le principe de corrélation, la figure \ref{fig:TrueKey} présente la corrélation obtenue en fonction des 256 valeurs de clés testées (toujours pour le huitième byte de la clé). Sur ce graphe encore, on constate qu'il y a un pic de corrélation. Cette valeur maximale du coefficient de corrélation correspond à la clé 40. Ainsi, si l'attaquant souhaite retrouver les trente-deux bytes de la clé employée pour le chiffrement, il lui suffit de retrouver les trente-deux valeurs de clé correspondantes aux trente-deux valeurs maximales du coefficient de corrélation. Les deux figures (\ref{fig:4KeysEx} et \ref{fig:TrueKey}) sont présentées à la page suivante.
+ \vspace{1cm}\hspace{-0.5 cm}Les figures \ref{fig:4KeysEx} et \ref{fig:TrueKey} présentent de manière générale l'évolution du coefficient de corrélation pour le huitième byte d'une clé de chiffrement. En effet, dans cet exemple, nous considérons que l'attaquant a pour tâche de retrouver le huitième byte d'une clé utilisée par l'AES-256 (pour rappel, une clé utilisée avec l'AES-256 possède une taille totale de trente-deux bytes). La première figure (\ref{fig:4KeysEx}) représente l'évolution du coefficient de corrélation au cours du temps pour quatre valeurs de clés différentes. On remarque un pic de corrélation plus élevé dans le graphe dédié à la clé 40. Il s'agit en effet de la vraie valeur du huitième byte de la clé employée par l'algorithme AES pour cet exemple. Pour encore mieux comprendre le principe de corrélation, la figure \ref{fig:TrueKey} présente la corrélation obtenue en fonction des 256 valeurs de clés testées (toujours pour le huitième byte de la clé). Sur ce graphe encore, on constate qu'il y a un pic de corrélation. Cette valeur maximale du coefficient de corrélation correspond à la clé 40. Ainsi, si l'attaquant souhaite retrouver les trente-deux bytes de la clé employée pour le chiffrement, il lui suffit de retrouver les trente-deux valeurs de clé correspondantes aux trente-deux valeurs maximales du coefficient de corrélation. Les deux figures (\ref{fig:4KeysEx} et \ref{fig:TrueKey}) sont présentées à la page suivante.
 
  \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1156,46 +1185,56 @@ Définissons la nouvelle opération \textit{SubBytesTrans}. Pour ce faire, noton
 	SubBytesTrans(a_{F}(i,j)) = Sbox(a_{R}(i,j))  \oplus Sbox(a_{F}(i,j)) \label{eqn:faking_7}
 \end{gather}
 
-\hspace{-0.5cm}Concernant la nouvelle opération \textit{MixCol}, il ne s'agit en réalité pas d'une nouvelle opération étant donné que cette opérations réalise la même fonction que l'opération \textit{MixColumns} (tel que décrit à la section \ref{subsec:AES}). Cependant, nous précisons à la section suivante (\ref{subsec:points}) qu'elle permet d'éviter une faille dans la contre-mesure. C'est donc la raison pour laquelle, le \textit{remarsking} (opération XOR) ne se fait pas avant cette opération.
+\hspace{-0.5cm}Concernant la nouvelle opération \textit{MixCol}, il ne s'agit en réalité pas d'une nouvelle opération étant donné que cette opérations réalise la même fonction que l'opération \textit{MixColumns} (tel que décrit à la section \ref{subsec:AES}). Cependant, nous précisons à la section suivante (\ref{subsec:points}) que \textit{MixCol} permet d'éviter une faille dans la contre-mesure. C'est donc la raison pour laquelle, le \textit{remarsking} (opération XOR) ne se fait pas avant cette opération.
 
 \subsection{Points faibles et améliorations}
 \label{subsec:points}
 
 Deux points faibles de l'implémentation de la contre-mesure faking proposés à la figure \ref{fig:ConceptFaking} sont repris ci-dessous et améliorés afin de diminuer grandement les chances de réussite de l'attaquant.
 \begin{enumerate}
-\item Le but de la contre-mesure faking est d'autoriser l'attaquant à trouver une fausse valeur de clé. Cependant, connaissant la valeur de cette faussé clé, si l'attaquant trouve la valeur du masque, il peut retrouver la valeur de la vraie clé selon l'équation \ref{eqn:faking}. Ainsi, pour améliorer ce problème, il faut que chaque byte du masque utilisé ($Key_{mask}$) soit différent. 
-\item Il existe une attaque utilisant les résultats intermédiaires à la sortie des opérations \textit{SubBytes} et \textit{SubBytesTrans} et qui permet de retrouver la clé réelle. En effet, si l'attaquant récupère ces deux valeurs intermédiaires et qu'il réalise un XOR entre eux, il obtient l'équation \ref{eqn:faille1}: 
+\item Le but de la contre-mesure faking est d'autoriser l'attaquant à trouver une fausse valeur de clé. Cependant, connaissant la valeur de cette faussé clé, si l'attaquant trouve la valeur du masque, il peut retrouver la valeur de la vraie clé selon l'équation \ref{eqn:faking}. Ainsi, pour améliorer ce problème, il faut que chaque byte du masque utilisé ($Key_{mask}$) soit différent. Ceci complique la tâche de l'attaquant.
+\item Il existe une attaque utilisant les résultats intermédiaires à la sortie des opérations \textit{SubBytes} et \textit{SubBytesTrans} et qui permet de retrouver la clé réelle. En effet, si l'attaquant récupère ces deux valeurs intermédiaires et qu'il réalise un XOR entre eux, il obtient la simplification suivante : 
 \begin{gather}
-	Sbox(a_{F}(i,j)) \oplus SubBytesTrans(a_{F}(i,j)) = Sbox(a_{R}(i,j)) 
+\begin{align*}
+        Sbox(a_{F}(i,j)) \oplus SubBytesTrans(a_{F}(i,j)) &= Sbox(a_{R}(i,j))  \\
+            &=Sbox(ShiftRows(Key_{Real}(i,j) \oplus State(i,j)))  
+\end{align*}
+\label{eqn:faille1}
 \end{gather}
-\begin{gather}
-	\Leftrightarrow Sbox(a_{F}(i,j)) \oplus SubBytesTrans(a_{F}(i,j)) = Sbox(ShiftRows(Key_{Real}(i,j) \oplus State(i,j))) \label{eqn:faille1}
-\end{gather}
+
 En considérant le premier round de l'AES-256, l'élément $State(i,j)$ représente un texte clair ($P(i,j)$). Dans ce cas, connaissant le fonctionnement des opérations \textit{ShiftRows} et \textit{SubBytes}, l'attaquant peut retrouver la valeur de la vraie clé $Key_{Real}$. Pour se prémunir de ce problème, une amélioration de la contre-mesure faking consiste à masquer les valeurs en sortie de l'opération \textit{SubBytesTrans}. En effet, à chaque round, un masque aléatoire $M_{h}(i,j)$ est appliqué sur les résultats intermédiaires en sortie de l'opération \textit{SubBytesTrans} de sorte à obtenir l'équation suivante \ref{eqn:faille1_solution} : 
 \begin{gather}
 	SubBytesTrans(a_{F}(i,j)) = Sbox(a_{R}(i,j))  \oplus Sbox(a_{F}(i,j)) \oplus M_{h}(i,j) \label{eqn:faille1_solution}
 \end{gather}
-Notons que le masque $M_{h}(i,j)$ est renouvelé de façon aléatoire à chaque round pour complexifier le chiffrement.
+Notons que le masque $M_{h}(i,j)$ est renouvelé de façon aléatoire à chaque round pour complexifier le chiffrement. Ce masque $M_{h}(i,j)$ devient le masque $M_{k}(i,j)$ après l'exécution de l'opération \textit{MixColumns}. 
 \end{enumerate}
 
 \newpage
 
-La figure \ref{ConceptFakingWithMasking} présente le principe de fonctionnement de la contre-mesure faking avec les améliorations apportées.
+\hspace{-0.5cm}La figure \ref{fig:ConceptFakingWithMasking} présente le principe de fonctionnement de la contre-mesure faking avec les améliorations apportées.
 \begin{figure}[htbp]
-    \hspace{-1.4cm}
-    \includegraphics[scale=0.52]{image/ConceptFaking}
-    \caption{Implémentation de la contre-mesure \textit{faking} pour l'algorithme de chiffrement AES.}
+    \hspace{-1.2cm}
+    \includegraphics[scale=0.58]{image/ConceptFakingWithMasking}
+    \caption{Implémentation de la contre-mesure \textit{faking} pour l'algorithme de chiffrement AES avec prise en compte des améliorations.}
     \label{fig:ConceptFakingWithMasking} 
 \end{figure}
 
 
-À l'aide de MATLAB, j'ai réalisé une simulation dans laquelle le device cryptographique est protégé par une contre-mesure de type \textit{Faking}. Ensuite, j'ai simulé une attaque de type CPA sur ce device. Le résultat, observable à la figure \ref{fig:faking}, montre clairement qu'un attaquant est capable de retrouver la clé de chiffrement. Néanmoins, il s'agit de la fausse clé ! La vrai clé quant à elle ne laisse fuiter aucune information !
+Reprenons l'exemple du chapitre précédent (chapitre \ref{chap:attaques}) où l'on présentait les résultats (voir figures \ref{fig:4KeysEx} et \ref{fig:TrueKey}) d'une attaque CPA sur un FPGA implémentant l'algorithme AES-256. Pour rappel, l'attaque est réalisée sur le huitième byte de la clé dont la valeur attendue est 40. Considérons maintenant avoir implémenté une contre-mesure de type faking sur le device cryptographique (il s'agit d'une simulation réalisée sur MATLAB). Dans ce cas, si l'attaquant réalise une nouvelle attaque CPA sur le device, la clé qu'il obtient doit être différente de la vraie clé utilisée. Ceci se vérifie sur la figure \ref{fig:fakingExemple}. La vraie clé utilisée pour le chiffrement des données (40) ne laisse fuiter aucune information. Par contre, la clé laissant fuiter le plus d'information est bien la fausse clé (185). En effet, la valeur du masque étant 145, selon l'équation \ref{eqn:faking}, nous trouvons :
+\begin{gather}
+\hspace{-5cm}\begin{align*}
+        Key_{Fake} &= Key_{Real} \oplus Key_{Mask}  \\
+            &= 40 \oplus 145 \\
+            &= 185  
+\end{align*}
+\end{gather}
+
 \begin{figure}[htbp]
+    \vspace{-0.6cm}
     \centering
-    \hspace{-1 cm}
-    \includegraphics[scale=0.24]{image/faking}
-    \caption{On voit qu'au plus le nombre de traces augmente au plus une clé se distingue des 255 autres. Il s'agit de la fausse clé (en rouge). La vraie clé (en vert) ne laisse fuiter aucune information.}
-    \label{fig:faking} 
+    \includegraphics[scale=0.30]{image/fakingExemple}
+    \caption{Valeur de la clé obtenue avec implémentation d'une contre-mesure faking.}
+    \label{fig:fakingExemple} 
 \end{figure}
 
 
@@ -1273,6 +1312,8 @@ La figure \ref{ConceptFakingWithMasking} présente le principe de fonctionnement
 %%%%%%%%%%%%% Chapitre 10 %%%%%%%%%%%%%
 
 \chapter{Conclusion}
+
+Ancienne conclusion ... (stage)
 
 Nous vivons dans une société de consommation où les technologies évoluent sans cesse. Il y a 40 ans, la gestion des signaux relevait de la science-fiction. Il y a 25 ans, les GSM constituaient une innovation majeure. Aujourd’hui, tout le monde se demande comment il était possible de vivre à cette époque sans toutes ces nouvelles technologies ! Le sujet qu'il m'a été proposé d'étudier durant ces 6 semaines de stage en immersion fut, à première vue, aussi complexe qu'inconnu. En effet, ce sujet, les attaques par canaux cachés, est encore assez méconnu à ce jour dans le domaine de l'ingénierie. Tenter d'expliquer à quiconque qu'il est possible de subtiliser des données sensibles précautionneusement chiffrées par divers algorithmes, à partir de moyens simples (oscilloscope, ordinateurs, ...) et de calculs élémentaires, semble au premier abord, difficilement concevable. 
 
@@ -1495,24 +1536,8 @@ AddRoundKey(STATE, ExpandedKey[10])
 %%%%% Annexe chapitre 4
 \chapter{Liste des annexes du chapitre \ref{chap:attaques}}
 \begin{itemize}
-\item Annexe \ref{ann:CPAconcrete} : Principe de fonctionnement d'une attaque CPA.
 \item Annexe \ref{ann:traceExplain} : Représentation des traces de puissance prises à l'oscilloscope.
-\item Annexe \ref{ann:Traces} : Traces.
-\item Annexe \ref{ann:corrélation} : Corrélation pour les clés 1 à 4.
-\item Annexe \ref{ann:Corrélations_3D} : Corrélations 3D.
-\item Annexe \ref{ann:cle8} : Corrélation pour la clé 8.
 \end{itemize}
-
-\newpage
-
-\rhead{ANNEXE \ref{ann:CPAconcrete}}
-\section{Principe de fonctionnement d'une attaque CPA.}
-\label{ann:CPAconcrete}
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.52, angle=90]{image/CPAconcrete}
-    \label{fig:CPAconcrete}
-\end{figure}
 
 \newpage
 
@@ -1525,24 +1550,6 @@ AddRoundKey(STATE, ExpandedKey[10])
     \caption{La figure du haut représente une trace de puissance (i.e 1 plaintext utilisé) dans laquelle on retrouve 9 échantillons. La figure du bas représente N traces de puissance dans lesquelles on retrouve également 9 échantillons. En pratique, le nombre d'échantillons dans une trace de puissance est beaucoup plus élevé (de l'ordre de 10000) et sera noté par la lettre S (pour \textit{Sampling}).}
     \label{fig:traceExplain}
 \end{figure}
-
-\newpage
-
-\rhead{ANNEXE \ref{ann:Traces}}
-\includepdf[pagecommand=\section{Traces}\label{ann:Traces}, angle=90]{image/traces.pdf}
-%\caption{Les 4 premières traces mesurées à l'oscilloscope.}
-
-\rhead{ANNEXE \ref{ann:corrélation}}
-\includepdf[pagecommand=\section{Corrélation pour les clés 1 à 4}\label{ann:corrélation}, angle=90]{image/cle.pdf}
-%     \caption{Les valeurs de coefficient de corrélation obtenues pour les valeurs de clé : 128, 129, 130 et 131 respectivement.}
-
-\rhead{ANNEXE \ref{ann:Corrélations_3D}}
-\includepdf[pagecommand=\section{Corrélations 3D}\label{ann:Corrélations_3D}, angle=90]{image/correlation3D.pdf}
-%     \caption{Affichage en 3D de toutes les valeurs de corrélation obtenues pour chaque valeur de clé possible.}
-
-\rhead{ANNEXE \ref{ann:cle8}}
-\includepdf[pagecommand=\section{Corrélation pour la clé 8}\label{ann:cle8}, angle=90]{image/cle8.pdf}
-%     \caption{Valeurs de corrélation obtenue pour la clé secrète 8 (bonne clé).}
 
 \newpage
 

@@ -29,8 +29,8 @@
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Modification de la position dans le temps d'une trace de puissance.\relax }}{30}{figure.caption.32}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Importance du bruit pour un signal de transmission.\relax }}{31}{figure.caption.33}
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Implémentation de la contre-mesure \textit {faking} pour l'algorithme de chiffrement AES.\relax }}{35}{figure.caption.35}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Implémentation de la contre-mesure \textit {faking} pour l'algorithme de chiffrement AES.\relax }}{37}{figure.caption.36}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces On voit qu'au plus le nombre de traces augmente au plus une clé se distingue des 255 autres. Il s'agit de la fausse clé (en rouge). La vraie clé (en vert) ne laisse fuiter aucune information.\relax }}{37}{figure.caption.37}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Implémentation de la contre-mesure \textit {faking} pour l'algorithme de chiffrement AES avec prise en compte des améliorations.\relax }}{37}{figure.caption.36}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Valeur de la clé obtenue avec implémentation d'une contre-mesure faking.\relax }}{37}{figure.caption.37}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

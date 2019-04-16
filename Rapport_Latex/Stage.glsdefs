@@ -1,0 +1,120 @@
+\ifglsentryexists{AES}{}%
+{%
+\gls@defglossaryentry{AES}%
+{%
+name={AES},%
+sort={AES},%
+type={main},%
+first={Advanced Encryption Standard\glsspace (AES)},%
+firstplural={Advanced Encryption Standard\glsspace (AES)},%
+text={AES},%
+plural={AES},%
+description={Advanced Encryption Standard},%
+descriptionplural={Advanced Encryption Standard\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Advanced Encryption Standard},%
+longplural={Advanced Encryption Standard},%
+short={AES},%
+shortplural={AES},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{AES}{}%
+{%
+\gls@defglossaryentry{AES}%
+{%
+name={AES},%
+sort={AES},%
+type={main},%
+first={Advanced Encryption Standard\glsspace (AES)},%
+firstplural={Advanced Encryption Standard\glsspace (AES)},%
+text={AES},%
+plural={AES},%
+description={Advanced Encryption Standard},%
+descriptionplural={Advanced Encryption Standard\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Advanced Encryption Standard},%
+longplural={Advanced Encryption Standard},%
+short={AES},%
+shortplural={AES},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{AES}{}%
+{%
+\gls@defglossaryentry{AES}%
+{%
+name={AES},%
+sort={AES},%
+type={main},%
+first={Advanced Encryption Standard\glsspace (AES)},%
+firstplural={Advanced Encryption Standard\glsspace (AES)},%
+text={AES},%
+plural={AES},%
+description={Advanced Encryption Standard},%
+descriptionplural={Advanced Encryption Standard\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Advanced Encryption Standard},%
+longplural={Advanced Encryption Standard},%
+short={AES},%
+shortplural={AES},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{AES}{}%
+{%
+\gls@defglossaryentry{AES}%
+{%
+name={AES},%
+sort={AES},%
+type={main},%
+first={Advanced Encryption Standard\glsspace (AES)},%
+firstplural={Advanced Encryption Standard\glsspace (AES)},%
+text={AES},%
+plural={AES},%
+description={Advanced Encryption Standard},%
+descriptionplural={Advanced Encryption Standard\acrpluralsuffix },%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Advanced Encryption Standard},%
+longplural={Advanced Encryption Standard},%
+short={AES},%
+shortplural={AES},%
+counter={page},%
+parent={},%
+%
+}%
+}%

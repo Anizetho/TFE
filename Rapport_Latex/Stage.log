@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.3.15)  15 APR 2019 21:09
+This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.3.15)  16 APR 2019 13:44
  restricted system commands enabled.
  file:line:error style messages enabled.
 **Stage.tex
@@ -36,7 +36,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.110 seconds
+luaotfload | main : initialization completed in 0.138 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
@@ -895,12 +895,195 @@ Package: appendix 2009/09/02 v1.2b extra appendix facilities
 (/usr/local/texlive/2017/texmf-dist/tex/latex/chngcntr/chngcntr.sty
 Package: chngcntr 2009/09/02 v1.0a change counter resetting
 )
-(/usr/local/texlive/2017/texmf-dist/tex/latex/mwe/mwe.sty
+(/usr/local/texlive/2017/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+Package: glossaries 2017/11/14 v4.35 (NLCT)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2017/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks24
+\XKV@tempa@toks=\toks25
+)
+\XKV@depth=\count290
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
+Package: mfirstuc 2017/11/14 v2.06 (NLCT)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count291
+)
+\@glsmfirst=\toks26
+\@glsmrest=\toks27
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/textcase/textcase.sty
+Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/xfor/xfor.sty
+Package: xfor 2009/02/05 v1.05 (NLCT)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/datatool/datatool-base.sty
+Package: datatool-base 2017/11/12 v2.29 (NLCT)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/substr/substr.sty
+Package: substr 2009/10/20 v1.2 Handle substrings
+\c@su@anzahl=\count292
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/datatool/datatool-fp.sty
+Package: datatool-fp 2017/11/12 v2.29 (NLCT)
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp.sty
+Package: fp 1995/04/02
+
+`Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/defpattern.sty
+Package: defpattern 1994/10/12
+\actioncount=\count293
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp-basic.sty
+Package: fp-basic 1996/05/13
+\FP@xs=\count294
+\FP@xia=\count295
+\FP@xib=\count296
+\FP@xfa=\count297
+\FP@xfb=\count298
+\FP@rega=\count299
+\FP@regb=\count300
+\FP@regs=\count301
+\FP@times=\count302
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp-addons.sty
+Package: fp-addons 1995/03/15
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp-snap.sty
+Package: fp-snap 1995/04/05
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp-exp.sty
+Package: fp-exp 1995/04/03
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp-trigo.sty
+Package: fp-trigo 1995/04/14
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp-pas.sty
+Package: fp-pas 1994/08/29
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp-random.sty
+Package: fp-random 1995/02/23
+\FPseed=\count303
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp-eqn.sty
+Package: fp-eqn 1995/04/03
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp-upn.sty
+Package: fp-upn 1996/10/21
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/fp/fp-eval.sty
+Package: fp-eval 1995/04/03
+)))
+\@dtl@toks=\toks28
+\@dtl@tmpcount=\count304
+\dtl@tmplength=\skip61
+\dtl@sortresult=\count305
+\@dtl@numgrpsepcount=\count306
+\@dtl@datatype=\count307
+\dtl@codeA=\count308
+\dtl@codeB=\count309
+\@dtl@foreach@level=\count310
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/glossaries/base/glossaries-compat
+ible-307.sty
+Package: glossaries-compatible-307 2017/11/14 v4.35 (NLCT)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/tracklang/tracklang.sty
+Package: tracklang 2018/02/21 v1.3.5 (NLCT) Track Languages
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/tracklang/tracklang.tex))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/glossaries-english/glossaries-eng
+lish.ldf
+File: glossaries-english.ldf 2014/11/23 v1.0
+)
+\gls@level=\count311
+\@gls@tmpb=\toks29
+\gls@tmplen=\skip62
+\glskeylisttok=\toks30
+\glslabeltok=\toks31
+\glsshorttok=\toks32
+\glslongtok=\toks33
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/glossaries/styles/glossary-hypern
+av.sty
+Package: glossary-hypernav 2017/11/14 v4.35 (NLCT)
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/glossaries/styles/glossary-list.s
+ty
+Package: glossary-list 2017/11/14 v4.35 (NLCT)
+\glslistdottedwidth=\skip63
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/glossaries/styles/glossary-long.s
+ty
+Package: glossary-long 2017/11/14 v4.35 (NLCT)
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip64
+\LTright=\skip65
+\LTpre=\skip66
+\LTpost=\skip67
+\LTchunksize=\count312
+\LTcapwidth=\dimen181
+\LT@head=\box53
+\LT@firsthead=\box54
+\LT@foot=\box55
+\LT@lastfoot=\box56
+\LT@cols=\count313
+\LT@rows=\count314
+\c@LT@tables=\count315
+\c@LT@chunks=\count316
+\LT@p@ftn=\toks34
+)
+\glsdescwidth=\skip68
+\glspagelistwidth=\skip69
+)
+(/usr/local/texlive/2017/texmf-dist/tex/latex/glossaries/styles/glossary-super.
+sty
+Package: glossary-super 2017/11/14 v4.35 (NLCT)
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/supertabular/supertabular.sty
+Package: supertabular 2004/02/20 v4.1e the supertabular environment
+\c@tracingst=\count317
+\ST@wd=\dimen182
+\ST@rightskip=\skip70
+\ST@leftskip=\skip71
+\ST@parfillskip=\skip72
+\ST@pageleft=\dimen183
+\ST@headht=\dimen184
+\ST@tailht=\dimen185
+\ST@pagesofar=\dimen186
+\ST@pboxht=\dimen187
+\ST@lineht=\dimen188
+\ST@stretchht=\dimen189
+\ST@prevht=\dimen190
+\ST@toadd=\dimen191
+\ST@dimen=\dimen192
+\ST@pbox=\box57
+))
+(/usr/local/texlive/2017/texmf-dist/tex/latex/glossaries/styles/glossary-tree.s
+ty
+Package: glossary-tree 2017/11/14 v4.35 (NLCT)
+\glstreeindent=\skip73
+))
+\glswrite=\write3
+\glo@main@file=\write4
+
+\openout4 = Stage.glo
+Package glossaries Info: Writing glossary file Stage.glo on input line 34.
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/mwe/mwe.sty
 Package: mwe 2017/12/10 v0.4 Package to support minimal working examples (MWE)
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lipsum/lipsum.sty
 Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
-\c@lips@count=\count290
+\c@lips@count=\count318
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/blindtext/blindtext.sty
 Package: blindtext 2012/01/06 V2.0 blindtext-Package
@@ -908,64 +1091,64 @@ Package: blindtext 2012/01/06 V2.0 blindtext-Package
 (/usr/local/texlive/2017/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-\c@blindtext=\count291
-\c@Blindtext=\count292
-\c@blind@countparstart=\count293
-\blind@countxx=\count294
-\blindtext@numBlindtext=\count295
-\blind@countyy=\count296
-\c@blindlist=\count297
-\c@blindlistlevel=\count298
-\c@blindlist@level=\count299
-\blind@listitem=\count300
-\c@blind@listcount=\count301
-\c@blind@levelcount=\count302
-\blind@mathformula=\count303
-\blind@Mathformula=\count304
-\c@blind@randomcount=\count305
-\c@blind@randommax=\count306
-\c@blind@pangramcount=\count307
-\c@blind@pangrammax=\count308
+\c@blindtext=\count319
+\c@Blindtext=\count320
+\c@blind@countparstart=\count321
+\blind@countxx=\count322
+\blindtext@numBlindtext=\count323
+\blind@countyy=\count324
+\c@blindlist=\count325
+\c@blindlistlevel=\count326
+\c@blindlist@level=\count327
+\blind@listitem=\count328
+\c@blind@listcount=\count329
+\c@blind@levelcount=\count330
+\blind@mathformula=\count331
+\blind@Mathformula=\count332
+\c@blind@randomcount=\count333
+\c@blind@randommax=\count334
+\c@blind@pangramcount=\count335
+\c@blind@pangrammax=\count336
 ))
 (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
-\c@subfigure=\count309
-\c@subtable=\count310
+\c@subfigure=\count337
+\c@subtable=\count338
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footers
 
-\f@nch@headwidth=\skip61
-\f@nch@O@elh=\skip62
-\f@nch@O@erh=\skip63
-\f@nch@O@olh=\skip64
-\f@nch@O@orh=\skip65
-\f@nch@O@elf=\skip66
-\f@nch@O@erf=\skip67
-\f@nch@O@olf=\skip68
-\f@nch@O@orf=\skip69
+\f@nch@headwidth=\skip74
+\f@nch@O@elh=\skip75
+\f@nch@O@erh=\skip76
+\f@nch@O@olh=\skip77
+\f@nch@O@orh=\skip78
+\f@nch@O@elf=\skip79
+\f@nch@O@erf=\skip80
+\f@nch@O@olf=\skip81
+\f@nch@O@orf=\skip82
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/rotating.sty
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
-\c@r@tfl@t=\count311
-\rotFPtop=\skip70
-\rotFPbot=\skip71
-\rot@float@box=\box53
-\rot@mess@toks=\toks24
+\c@r@tfl@t=\count339
+\rotFPtop=\skip83
+\rotFPbot=\skip84
+\rot@float@box=\box58
+\rot@mess@toks=\toks35
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
-\pgfutil@everybye=\toks25
-\pgfutil@tempdima=\dimen181
-\pgfutil@tempdimb=\dimen182
+\pgfutil@everybye=\toks36
+\pgfutil@tempdima=\dimen193
+\pgfutil@tempdimb=\dimen194
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
 sts.tex))
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box54
+\pgfutil@abb=\box59
 (/usr/local/texlive/2017/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
@@ -978,30 +1161,30 @@ Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks26
-\pgfkeys@temptoks=\toks27
+\pgfkeys@pathtoks=\toks37
+\pgfkeys@temptoks=\toks38
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
 ode.tex
-\pgfkeys@tmptoks=\toks28
+\pgfkeys@tmptoks=\toks39
 ))
-\pgf@x=\dimen183
-\pgf@y=\dimen184
-\pgf@xa=\dimen185
-\pgf@ya=\dimen186
-\pgf@xb=\dimen187
-\pgf@yb=\dimen188
-\pgf@xc=\dimen189
-\pgf@yc=\dimen190
-\w@pgf@writea=\write3
+\pgf@x=\dimen195
+\pgf@y=\dimen196
+\pgf@xa=\dimen197
+\pgf@ya=\dimen198
+\pgf@xb=\dimen199
+\pgf@yb=\dimen256
+\pgf@xc=\dimen257
+\pgf@yc=\dimen258
+\w@pgf@writea=\write5
 \r@pgf@reada=\read2
-\c@pgf@counta=\count312
-\c@pgf@countb=\count313
-\c@pgf@countc=\count314
-\c@pgf@countd=\count315
-\t@pgf@toka=\toks29
-\t@pgf@tokb=\toks30
-\t@pgf@tokc=\toks31
+\c@pgf@counta=\count340
+\c@pgf@countb=\count341
+\c@pgf@countc=\count342
+\c@pgf@countd=\count343
+\t@pgf@toka=\toks40
+\t@pgf@tokb=\toks41
+\t@pgf@tokc=\toks42
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
@@ -1019,8 +1202,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count316
-\pgfsyssoftpath@bigbuffer@items=\count317
+\pgfsyssoftpath@smallbuffer@items=\count344
+\pgfsyssoftpath@bigbuffer@items=\count345
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
 code.tex
@@ -1032,12 +1215,12 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen191
-\pgfmath@count=\count318
-\pgfmath@box=\box55
-\pgfmath@toks=\toks32
-\pgfmath@stack@operand=\toks33
-\pgfmath@stack@operation=\toks34
+\pgfmath@dimen=\dimen259
+\pgfmath@count=\count346
+\pgfmath@box=\box60
+\pgfmath@toks=\toks43
+\pgfmath@stack@operand=\toks44
+\pgfmath@stack@operation=\toks45
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
 tex
@@ -1058,57 +1241,57 @@ code.tex)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
 erarithmetics.code.tex)))
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count319
+\c@pgfmathroundto@lastzeros=\count347
 ))
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
 de.tex
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
-\pgf@picminx=\dimen192
-\pgf@picmaxx=\dimen193
-\pgf@picminy=\dimen194
-\pgf@picmaxy=\dimen195
-\pgf@pathminx=\dimen196
-\pgf@pathmaxx=\dimen197
-\pgf@pathminy=\dimen198
-\pgf@pathmaxy=\dimen199
-\pgf@xx=\dimen256
-\pgf@xy=\dimen257
-\pgf@yx=\dimen258
-\pgf@yy=\dimen259
-\pgf@zx=\dimen260
-\pgf@zy=\dimen261
+\pgf@picminx=\dimen260
+\pgf@picmaxx=\dimen261
+\pgf@picminy=\dimen262
+\pgf@picmaxy=\dimen263
+\pgf@pathminx=\dimen264
+\pgf@pathmaxx=\dimen265
+\pgf@pathminy=\dimen266
+\pgf@pathmaxy=\dimen267
+\pgf@xx=\dimen268
+\pgf@xy=\dimen269
+\pgf@yx=\dimen270
+\pgf@yy=\dimen271
+\pgf@zx=\dimen272
+\pgf@zy=\dimen273
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
 ruct.code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
-\pgf@path@lastx=\dimen262
-\pgf@path@lasty=\dimen263
+\pgf@path@lastx=\dimen274
+\pgf@path@lasty=\dimen275
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
 .code.tex
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
-\pgf@shorten@end@additional=\dimen264
-\pgf@shorten@start@additional=\dimen265
+\pgf@shorten@end@additional=\dimen276
+\pgf@shorten@start@additional=\dimen277
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
 de.tex
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
-\pgfpic=\box56
-\pgf@hbox=\box57
-\pgf@layerbox@main=\box58
-\pgf@picture@serial@count=\count320
+\pgfpic=\box61
+\pgf@hbox=\box62
+\pgf@layerbox@main=\box63
+\pgf@picture@serial@count=\count348
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
 ate.code.tex
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
-\pgflinewidth=\dimen266
+\pgflinewidth=\dimen278
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
 ations.code.tex
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
-\pgf@pt@x=\dimen267
-\pgf@pt@y=\dimen268
-\pgf@pt@temp=\dimen269
+\pgf@pt@x=\dimen279
+\pgf@pt@y=\dimen280
+\pgf@pt@temp=\dimen281
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
 e.tex
@@ -1125,13 +1308,13 @@ File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
 de.tex
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
-\pgfarrowsep=\dimen270
+\pgfarrowsep=\dimen282
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
 e.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
-\pgf@max=\dimen271
-\pgf@sys@shading@range@num=\count321
+\pgf@max=\dimen283
+\pgf@sys@shading@range@num=\count349
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
 e.tex
@@ -1140,7 +1323,7 @@ File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
 code.tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
-\pgfexternal@startupbox=\box59
+\pgfexternal@startupbox=\box64
 ))
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
 de.tex
@@ -1157,7 +1340,7 @@ File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
 e.tex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
-\pgfnodeparttextbox=\box60
+\pgfnodeparttextbox=\box65
 )
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
 tex
@@ -1166,8 +1349,8 @@ File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 (/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -0-65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen272
-\pgf@nodesepend=\dimen273
+\pgf@nodesepstart=\dimen284
+\pgf@nodesepend=\dimen285
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -1-18.sty
@@ -1182,10 +1365,10 @@ Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen274
-\pgffor@skip=\dimen275
-\pgffor@stack=\toks35
-\pgffor@toks=\toks36
+\pgffor@iter=\dimen286
+\pgffor@skip=\dimen287
+\pgffor@stack=\toks46
+\pgffor@toks=\toks47
 ))
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
 e.tex
@@ -1194,32 +1377,32 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count322
-\pgfplotmarksize=\dimen276
+\pgf@plot@mark@count=\count350
+\pgfplotmarksize=\dimen288
 )
-\tikz@lastx=\dimen277
-\tikz@lasty=\dimen278
-\tikz@lastxsaved=\dimen279
-\tikz@lastysaved=\dimen280
-\tikzleveldistance=\dimen281
-\tikzsiblingdistance=\dimen282
-\tikz@figbox=\box61
-\tikz@figbox@bg=\box62
-\tikz@tempbox=\box63
-\tikz@tempbox@bg=\box64
-\tikztreelevel=\count323
-\tikznumberofchildren=\count324
-\tikznumberofcurrentchild=\count325
-\tikz@fig@count=\count326
+\tikz@lastx=\dimen289
+\tikz@lasty=\dimen290
+\tikz@lastxsaved=\dimen291
+\tikz@lastysaved=\dimen292
+\tikzleveldistance=\dimen293
+\tikzsiblingdistance=\dimen294
+\tikz@figbox=\box66
+\tikz@figbox@bg=\box67
+\tikz@tempbox=\box68
+\tikz@tempbox@bg=\box69
+\tikztreelevel=\count351
+\tikznumberofchildren=\count352
+\tikznumberofcurrentchild=\count353
+\tikz@fig@count=\count354
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
 e.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count327
-\pgfmatrixcurrentcolumn=\count328
-\pgf@matrix@numberofcolumns=\count329
+\pgfmatrixcurrentrow=\count355
+\pgfmatrixcurrentcolumn=\count356
+\pgf@matrix@numberofcolumns=\count357
 )
-\tikz@expandcount=\count330
+\tikz@expandcount=\count358
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
@@ -1227,31 +1410,31 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 )))
 (/usr/local/texlive/2017/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
-\labelindent=\skip72
-\enit@outerparindent=\dimen283
-\enit@toks=\toks37
-\enit@inbox=\box65
-\enitdp@description=\count331
+\labelindent=\skip85
+\enit@outerparindent=\dimen295
+\enit@toks=\toks48
+\enit@inbox=\box70
+\enitdp@description=\count359
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count332
-\lst@gtempboxa=\box66
-\lst@token=\toks38
-\lst@length=\count333
-\lst@currlwidth=\dimen284
-\lst@column=\count334
-\lst@pos=\count335
-\lst@lostspace=\dimen285
-\lst@width=\dimen286
-\lst@newlines=\count336
-\lst@lineno=\count337
-\lst@maxwidth=\dimen287
+\lst@mode=\count360
+\lst@gtempboxa=\box71
+\lst@token=\toks49
+\lst@length=\count361
+\lst@currlwidth=\dimen296
+\lst@column=\count362
+\lst@pos=\count363
+\lst@lostspace=\dimen297
+\lst@width=\dimen298
+\lst@newlines=\count364
+\lst@lineno=\count365
+\lst@maxwidth=\dimen299
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count338
-\lst@skipnumbers=\count339
-\lst@framebox=\box67
+\c@lstnumber=\count366
+\lst@skipnumbers=\count367
+\lst@framebox=\box72
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
@@ -1260,17 +1443,17 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2017/10/31 v2.20.4
-\thm@style=\toks39
-\thm@bodyfont=\toks40
-\thm@headfont=\toks41
-\thm@notefont=\toks42
-\thm@headpunct=\toks43
-\thm@preskip=\skip73
-\thm@postskip=\skip74
-\thm@headsep=\skip75
-\dth@everypar=\toks44
+\thm@style=\toks50
+\thm@bodyfont=\toks51
+\thm@headfont=\toks52
+\thm@notefont=\toks53
+\thm@headpunct=\toks54
+\thm@preskip=\skip86
+\thm@postskip=\skip87
+\thm@headsep=\skip88
+\dth@everypar=\toks55
 )
-\c@definition=\count340
+\c@definition=\count368
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2018/02/14 3.18 The Babel package
@@ -1369,12 +1552,12 @@ Language: french 2018/02/04 v3.4b French support from the babel system
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2018/02/14 3.18 Babel common definitions
-\babel@savecnt=\count341
-\U@D=\dimen288
+\babel@savecnt=\count369
+\U@D=\dimen300
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/babel/luababel.def))
 \l@acadian = a dialect from \language\l@french 
-\FB@nonchar=\count342
+\FB@nonchar=\count370
 \FB@spacing=\attribute5
 \FB@addDPspace=\attribute6
 \FB@addGUILspace=\attribute7
@@ -1383,23 +1566,23 @@ File: babel.def 2018/02/14 3.18 Babel common definitions
 Package french.ldf Info: No need for active punctuation characters
 (french.ldf)             with this version of LuaTeX!
 (french.ldf)             reported on input line 246.
-\FBguill@level=\count343
-\FB@everypar=\toks45
-\FB@Mht=\dimen289
+\FBguill@level=\count371
+\FB@everypar=\toks56
+\FB@Mht=\dimen301
 LaTeX Info: Redefining \degres on input line 753.
-\mc@charclass=\count344
-\mc@charfam=\count345
-\mc@charslot=\count346
-\std@mcc=\count347
-\dec@mcc=\count348
+\mc@charclass=\count372
+\mc@charfam=\count373
+\mc@charslot=\count374
+\std@mcc=\count375
+\dec@mcc=\count376
 Inserting `frenchb.french_punctuation' at position 1 in `kerning'.
-\c@FBcaption@count=\count349
-\listindentFB=\skip76
-\descindentFB=\skip77
-\labelwidthFB=\skip78
-\leftmarginFB=\skip79
-\parindentFFN=\dimen290
-\FBfnindent=\skip80
+\c@FBcaption@count=\count377
+\listindentFB=\skip89
+\descindentFB=\skip90
+\labelwidthFB=\skip91
+\leftmarginFB=\skip92
+\parindentFFN=\dimen302
+\FBfnindent=\skip93
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/hyph-utf8/loadhyph/loadhyph-fr.
 tex UTF-8 French hyphenation patterns
@@ -1410,19 +1593,19 @@ uote-fr.tex))))
 (/usr/local/texlive/2017/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2018/01/14 v2.7a Micro-typographical refinements (RS)
-\MT@toks=\toks46
-\MT@count=\count350
+\MT@toks=\toks57
+\MT@count=\count378
 LaTeX Info: Redefining \textls on input line 793.
-\MT@outer@kern=\dimen291
+\MT@outer@kern=\dimen303
 LaTeX Info: Redefining \textmicrotypecontext on input line 1339.
-\MT@listname@count=\count351
+\MT@listname@count=\count379
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/microtype-luatex.def
 File: microtype-luatex.def 2018/01/14 v2.7a Definitions specific to luatex (RS)
 Lua module: microtype 2018/01/14 2.7a microtype module.
 LaTeX Info: Redefining \lsstyle on input line 679.
 LaTeX Info: Redefining \lslig on input line 679.
-\MT@outer@space=\skip81
+\MT@outer@space=\skip94
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
@@ -1456,7 +1639,7 @@ Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-\pdftexcmds@toks=\toks47
+\pdftexcmds@toks=\toks58
 Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
 Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO)
 
@@ -1468,7 +1651,6 @@ Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
 Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
 Package: xcolor-patch 2016/05/16 xcolor patch
 Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package atveryend Info: \enddocument detected (standard20110627).
 Package hobsub Info: Skipping package `atbegshi' (already loaded).
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
@@ -1479,14 +1661,14 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen292
-\Hy@linkcounter=\count352
-\Hy@pagecounter=\count353
+\@linkdim=\dimen304
+\Hy@linkcounter=\count380
+\Hy@pagecounter=\count381
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2018/02/06 v6.86b Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count354
+\Hy@SavedSpaceFactor=\count382
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -1507,17 +1689,17 @@ Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 2.
 ))
-\c@Hy@tempcnt=\count355
+\c@Hy@tempcnt=\count383
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5115.
-\XeTeXLinkMargin=\dimen293
-\Fld@menulength=\count356
-\Field@Width=\dimen294
-\Fld@charsize=\dimen295
+\XeTeXLinkMargin=\dimen305
+\Fld@menulength=\count384
+\Field@Width=\dimen306
+\Fld@charsize=\dimen307
 Package hyperref Info: Hyper figures OFF on input line 6369.
 Package hyperref Info: Link nesting OFF on input line 6374.
 Package hyperref Info: Hyper index ON on input line 6377.
@@ -1527,44 +1709,41 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6394.
 Package hyperref Info: PDF/A mode OFF on input line 6399.
 LaTeX Info: Redefining \ref on input line 6439.
 LaTeX Info: Redefining \pageref on input line 6443.
-\Hy@abspage=\count357
-\c@Item=\count358
-\c@Hfootnote=\count359
+\Hy@abspage=\count385
+\c@Item=\count386
+\c@Hfootnote=\count387
 )
 Package hyperref Info: Driver: hluatex.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/hluatex.def
 File: hluatex.def 2018/02/06 v6.86b Hyperref driver for luaTeX
-\Fld@listcount=\count360
-\c@bookmark@seq@number=\count361
-\Hy@SectionHShift=\skip82
+\Fld@listcount=\count388
+\c@bookmark@seq@number=\count389
+\Hy@SectionHShift=\skip95
 )
-Package hyperref Info: Option `unicode' set `true' on input line 59.
+Package hyperref Info: Option `unicode' set `true' on input line 67.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2018/02/06 v6.86b Hyperref: PDF Unicode definition (HO)
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 59.
-Package hyperref Info: Option `breaklinks' set `true' on input line 59.
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 59.
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 59.
+Package hyperref Info: Option `colorlinks' set `true' on input line 67.
+Package hyperref Info: Option `breaklinks' set `true' on input line 67.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 67.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 67.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/fncychap/fncychap.sty
 Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
-\RW=\skip83
-\mylen=\skip84
-\myhi=\skip85
-\px=\skip86
-\py=\skip87
-\pyy=\skip88
-\pxx=\skip89
+\RW=\skip96
+\mylen=\skip97
+\myhi=\skip98
+\px=\skip99
+\py=\skip100
+\pyy=\skip101
+\pxx=\skip102
 )
 (./Stage.aux
 
 LaTeX Warning: Label `sec:Introduction' multiply defined.
-
-
-LaTeX Warning: Label `fig:ConceptFaking' multiply defined.
 
 
 LaTeX Warning: Label `sec:Introduction' multiply defined.
@@ -1599,37 +1778,37 @@ LaTeX Warning: Label `sec:Introduction' multiply defined.
 )
 \openout1 = Stage.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 70.
-LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
  (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count362
-\scratchdimen=\dimen296
-\scratchbox=\box68
-\nofMPsegments=\count363
-\nofMParguments=\count364
-\everyMPshowfont=\toks48
-\MPscratchCnt=\count365
-\MPscratchDim=\dimen297
-\MPnumerator=\count366
-\makeMPintoPDFobject=\count367
-\everyMPtoPDFconversion=\toks49
+\scratchcounter=\count390
+\scratchdimen=\dimen308
+\scratchbox=\box73
+\nofMPsegments=\count391
+\nofMParguments=\count392
+\everyMPshowfont=\toks59
+\MPscratchCnt=\count393
+\MPscratchDim=\dimen309
+\MPnumerator=\count394
+\makeMPintoPDFobject=\count395
+\everyMPtoPDFconversion=\toks60
 ) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1692,10 +1871,16 @@ File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
+)
 Package caption Info: rotating package is loaded.
+Package caption Info: supertabular package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box69
- (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+\AtBeginShipoutBox=\box74
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/pdflscape.sty
 Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/lscape.sty
@@ -1703,17 +1888,17 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-ABD: EveryShipout initializing macros
-\c@lstlisting=\count368
-LaTeX Info: Redefining \dots on input line 70.
+(./Stage.glsdefs) ABD: EveryShipout initializing macros
+\c@lstlisting=\count396
+LaTeX Info: Redefining \dots on input line 78.
 Package french.ldf Info: Setting StandardItemizeEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 70.
+(french.ldf)             reported on input line 78.
 Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             compatibility with enumitem package,
-(french.ldf)             reported on input line 70.
-LaTeX Info: Redefining \up on input line 70.
-LaTeX Info: Redefining \microtypecontext on input line 70.
+(french.ldf)             reported on input line 78.
+LaTeX Info: Redefining \up on input line 78.
+LaTeX Info: Redefining \microtypecontext on input line 78.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1728,25 +1913,25 @@ Package microtype Info: No adjustment of kerning.
 File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mode
 rn Roman (RS)
 )
-Package hyperref Info: Link coloring ON on input line 70.
+Package hyperref Info: Link coloring ON on input line 78.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count369
+\c@section@level=\count397
 )
-LaTeX Info: Redefining \ref on input line 70.
-LaTeX Info: Redefining \pageref on input line 70.
-LaTeX Info: Redefining \nameref on input line 70.
+LaTeX Info: Redefining \ref on input line 78.
+LaTeX Info: Redefining \pageref on input line 78.
+LaTeX Info: Redefining \nameref on input line 78.
 
 (./Stage.out) (./Stage.out)
-\@outlinefile=\write4
+\@outlinefile=\write6
 
-\openout4 = Stage.out
-\c__siunitx_mathsf_int=\count370
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 70.
+\openout6 = Stage.out
+\c__siunitx_mathsf_int=\count398
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 78.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1755,28 +1940,28 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmr' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 70.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 78.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 70.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 78.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 70.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 78.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 70.
+(Font)              <10> on input line 78.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 70.
+(Font)              <7> on input line 78.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 70.
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 70.
+(Font)              <5> on input line 78.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 78.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1785,8 +1970,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-\c__siunitx_mathtt_int=\count371
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 70.
+\c__siunitx_mathtt_int=\count399
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 78.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1795,15 +1980,17 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<logos/logo-ecam.png, id=235, 1089.06876pt x 801.99625pt>
+<logos/logo-ecam.png, id=239, 1089.06876pt x 801.99625pt>
 File: logos/logo-ecam.png Graphic file (type png)
 <use logos/logo-ecam.png>
-Package luatex.def Info: logos/logo-ecam.png  used on input line 80.
+Package luatex.def Info: logos/logo-ecam.png  used on input line 88.
 (luatex.def)             Requested size: 163.35326pt x 120.29424pt.
 (load luc: /Users/AnizetThomas/Library/texlive/2017/texmf-var/luatex-cache/gener
 ic/fonts/otl/lmroman12-regular.luc)(load luc: /Users/AnizetThomas/Library/texliv
 e/2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-italic.luc) [1
 
+
+\openout3 = Stage.ist
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}<./logos/l
 ogo-ecam.png>] [2](load luc: /Users/AnizetThomas/Library/texlive/2017/texmf-var/
 luatex-cache/generic/fonts/otl/lmroman12-bold.luc)(load luc: /Users/AnizetThomas
@@ -1813,63 +2000,28 @@ gular.luc) [1]
 neric/fonts/otl/lmroman17-regular.luc) [3
 
 ]
-<image/Cahier_des_charges.pdf, id=266, 597.50786pt x 845.04686pt>
-File: image/Cahier_des_charges.pdf Graphic file (type pdf)
-<use image/Cahier_des_charges.pdf>
-Package luatex.def Info: image/Cahier_des_charges.pdf  used on input line 159.
-(luatex.def)             Requested size: 597.5064pt x 845.0448pt.
-File: image/Cahier_des_charges.pdf Graphic file (type pdf)
-<use image/Cahier_des_charges.pdf>
-Package luatex.def Info: image/Cahier_des_charges.pdf  used on input line 159.
-(luatex.def)             Requested size: 597.5064pt x 845.0448pt.
-<image/Cahier_des_charges.pdf, id=269, page=1, 597.50786pt x 845.04686pt>
-File: image/Cahier_des_charges.pdf Graphic file (type pdf)
-<use image/Cahier_des_charges.pdf, page 1>
-Package luatex.def Info: image/Cahier_des_charges.pdf , page1 used on input line
- 159.
-(luatex.def)             Requested size: 597.5064pt x 845.0448pt.
-File: image/Cahier_des_charges.pdf Graphic file (type pdf)
-<use image/Cahier_des_charges.pdf, page 1>
-Package luatex.def Info: image/Cahier_des_charges.pdf , page1 used on input line
- 159.
-(luatex.def)             Requested size: 562.12244pt x 795.00179pt.
-File: image/Cahier_des_charges.pdf Graphic file (type pdf)
-<use image/Cahier_des_charges.pdf, page 1>
-Package luatex.def Info: image/Cahier_des_charges.pdf , page1 used on input line
- 159.
-(luatex.def)             Requested size: 562.12244pt x 795.00179pt.
-File: image/Cahier_des_charges.pdf Graphic file (type pdf)
-<use image/Cahier_des_charges.pdf, page 1>
-Package luatex.def Info: image/Cahier_des_charges.pdf , page1 used on input line
- 159.
-(luatex.def)             Requested size: 562.12244pt x 795.00179pt.
-File: image/Cahier_des_charges.pdf Graphic file (type pdf)
-<use image/Cahier_des_charges.pdf, page 1>
-Package luatex.def Info: image/Cahier_des_charges.pdf , page1 used on input line
- 159.
-(luatex.def)             Requested size: 562.12244pt x 795.00179pt.
- [4<./image/Cahier_des_charges.pdf>]
 File: logos/logo-ecam.png Graphic file (type png)
 <use logos/logo-ecam.png>
-Package luatex.def Info: logos/logo-ecam.png  used on input line 163.
+Package luatex.def Info: logos/logo-ecam.png  used on input line 171.
 (luatex.def)             Requested size: 108.91325pt x 80.20432pt.
-
-Overfull \hbox (14.23363pt too wide) in paragraph at lines 166--173
-[] [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
+(load luc: /Users/AnizetThomas/Library/texlive/2017/texmf-var/luatex-cache/gener
+ic/fonts/otl/lmroman9-regular.luc)
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--178
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
 
  []
 
@@ -1878,7 +2030,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 185--186
 
  []
 
-[5] (./Stage.toc [6
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+[4] (./Stage.toc [5
 
 ](load luc: /Users/AnizetThomas/Library/texlive/2017/texmf-var/luatex-cache/gene
 ric/fonts/otl/lmroman10-bolditalic.luc)
@@ -1888,10 +2085,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7])
-\tf@toc=\write5
+[6])
+\tf@toc=\write7
 
-\openout5 = Stage.toc
+\openout7 = Stage.toc
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1899,21 +2096,88 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[8] (./Stage.lof [9
+[7] (./Stage.lof [8
 
 ])
-\tf@lof=\write6
+\tf@lof=\write8
 
-\openout6 = Stage.lof
- [10] (./Stage.lot)
-\tf@lot=\write7
+\openout8 = Stage.lof
+ [9] (./Stage.lot)
+\tf@lot=\write9
 
-\openout7 = Stage.lot
- [11
+\openout9 = Stage.lot
+ [10
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--242
+
+ []
+
+[11
 
 ] [12]
 Chapitre 1.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 227.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 256.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
@@ -1921,7 +2185,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 227.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 256.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -1933,13 +2197,13 @@ warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
 [1
 
 ]
-<image/intro.png, id=461, 723.70375pt x 351.3125pt>
+<image/intro.png, id=449, 723.70375pt x 351.3125pt>
 File: image/intro.png Graphic file (type png)
 <use image/intro.png>
-Package luatex.def Info: image/intro.png  used on input line 242.
+Package luatex.def Info: image/intro.png  used on input line 271.
 (luatex.def)             Requested size: 521.0663pt x 252.9448pt.
 
-Overfull \hbox (18.46321pt too wide) in paragraph at lines 241--243
+Overfull \hbox (18.46321pt too wide) in paragraph at lines 270--272
 []  [] 
  []
 
@@ -1962,24 +2226,24 @@ Chapitre 2.
 [5
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 316--317
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
 
  []
 
-<image/fondamentaux_crypto.png, id=491, 840.13875pt x 260.975pt>
+<image/fondamentaux_crypto.png, id=478, 840.13875pt x 260.975pt>
 File: image/fondamentaux_crypto.png Graphic file (type png)
 <use image/fondamentaux_crypto.png>
-Package luatex.def Info: image/fondamentaux_crypto.png  used on input line 323.
+Package luatex.def Info: image/fondamentaux_crypto.png  used on input line 352.
 (luatex.def)             Requested size: 391.61586pt x 121.64679pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
+Underfull \hbox (badness 10000) in paragraph at lines 362--363
 
  []
 
-<image/symetrique.png, id=494, 874.26625pt x 389.455pt>
+<image/symetrique.png, id=481, 874.26625pt x 389.455pt>
 File: image/symetrique.png Graphic file (type png)
 <use image/symetrique.png>
-Package luatex.def Info: image/symetrique.png  used on input line 355.
+Package luatex.def Info: image/symetrique.png  used on input line 384.
 (luatex.def)             Requested size: 345.54092pt x 153.92514pt.
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1988,15 +2252,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [6<./image/fondamentaux_crypto.png>]
-<image/cle_asymetrique.png, id=503, 500.87125pt x 237.88875pt>
+<image/cle_asymetrique.png, id=491, 500.87125pt x 237.88875pt>
 File: image/cle_asymetrique.png Graphic file (type png)
 <use image/cle_asymetrique.png>
-Package luatex.def Info: image/cle_asymetrique.png  used on input line 377.
+Package luatex.def Info: image/cle_asymetrique.png  used on input line 406.
 (luatex.def)             Requested size: 230.36061pt x 109.41199pt.
-<image/asymetrique.png, id=504, 880.28876pt x 393.47pt>
+<image/asymetrique.png, id=492, 880.28876pt x 393.47pt>
 File: image/asymetrique.png Graphic file (type png)
 <use image/asymetrique.png>
-Package luatex.def Info: image/asymetrique.png  used on input line 378.
+Package luatex.def Info: image/asymetrique.png  used on input line 407.
 (luatex.def)             Requested size: 345.54092pt x 154.44931pt.
 
 
@@ -2007,80 +2271,80 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [7<./image/symetrique.png><./image/cle_asymetrique.png><./image/asymetrique.png>
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 398--399
+Underfull \hbox (badness 10000) in paragraph at lines 427--428
 
  []
 
-<image/chiffrement.png, id=516, 635.37375pt x 205.76875pt>
+<image/chiffrement.png, id=504, 635.37375pt x 205.76875pt>
 File: image/chiffrement.png Graphic file (type png)
 <use image/chiffrement.png>
-Package luatex.def Info: image/chiffrement.png  used on input line 404.
+Package luatex.def Info: image/chiffrement.png  used on input line 433.
 (luatex.def)             Requested size: 368.57838pt x 119.37106pt.
 [8<./image/chiffrement.png>]
-<image/AES_General.png, id=530, 1210.5225pt x 225.84375pt>
+<image/AES_General.png, id=518, 1210.5225pt x 225.84375pt>
 File: image/AES_General.png Graphic file (type png)
 <use image/AES_General.png>
-Package luatex.def Info: image/AES_General.png  used on input line 451.
+Package luatex.def Info: image/AES_General.png  used on input line 480.
 (luatex.def)             Requested size: 581.0442pt x 108.40376pt.
 
-Overfull \hbox (62.79202pt too wide) in paragraph at lines 450--452
+Overfull \hbox (62.79202pt too wide) in paragraph at lines 479--481
 []  [] 
  []
 
 [9<./image/AES_General.png>]
-<image/matrix.png, id=540, 624.3325pt x 211.79124pt>
+<image/matrix.png, id=528, 624.3325pt x 211.79124pt>
 File: image/matrix.png Graphic file (type png)
 <use image/matrix.png>
-Package luatex.def Info: image/matrix.png  used on input line 461.
+Package luatex.def Info: image/matrix.png  used on input line 490.
 (luatex.def)             Requested size: 374.60239pt x 127.07571pt.
-<image/XOR.png, id=543, 693.59125pt x 217.81375pt>
+<image/XOR.png, id=531, 693.59125pt x 217.81375pt>
 File: image/XOR.png Graphic file (type png)
 <use image/XOR.png>
-Package luatex.def Info: image/XOR.png  used on input line 474.
+Package luatex.def Info: image/XOR.png  used on input line 503.
 (luatex.def)             Requested size: 360.66953pt x 113.2638pt.
  [10<./image/matrix.png><./image/XOR.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 484--486
+Underfull \hbox (badness 10000) in paragraph at lines 513--515
 
  []
 
-<image/SubBytes.png, id=554, 612.2875pt x 303.1325pt>
+<image/SubBytes.png, id=542, 612.2875pt x 303.1325pt>
 File: image/SubBytes.png Graphic file (type png)
 <use image/SubBytes.png>
-Package luatex.def Info: image/SubBytes.png  used on input line 490.
+Package luatex.def Info: image/SubBytes.png  used on input line 519.
 (luatex.def)             Requested size: 355.127pt x 175.81697pt.
-<image/ligne.png, id=556, 635.37375pt x 200.75pt>
+<image/ligne.png, id=544, 635.37375pt x 200.75pt>
 File: image/ligne.png Graphic file (type png)
 <use image/ligne.png>
-Package luatex.def Info: image/ligne.png  used on input line 500.
+Package luatex.def Info: image/ligne.png  used on input line 529.
 (luatex.def)             Requested size: 508.29968pt x 160.6002pt.
 
-Overfull \hbox (47.57845pt too wide) in paragraph at lines 500--501
+Overfull \hbox (47.57845pt too wide) in paragraph at lines 529--530
  [][] 
  []
 
 [11<./image/SubBytes.png><./image/ligne.png>]
-<image/colonne.png, id=573, 680.5425pt x 280.04625pt>
+<image/colonne.png, id=561, 680.5425pt x 280.04625pt>
 File: image/colonne.png Graphic file (type png)
 <use image/colonne.png>
-Package luatex.def Info: image/colonne.png  used on input line 511.
+Package luatex.def Info: image/colonne.png  used on input line 540.
 (luatex.def)             Requested size: 374.29953pt x 154.0259pt.
-<image/colonnebis.png, id=574, 640.3925pt x 468.75125pt>
+<image/colonnebis.png, id=562, 640.3925pt x 468.75125pt>
 File: image/colonnebis.png Graphic file (type png)
 <use image/colonnebis.png>
-Package luatex.def Info: image/colonnebis.png  used on input line 517.
+Package luatex.def Info: image/colonnebis.png  used on input line 546.
 (luatex.def)             Requested size: 268.96301pt x 196.87418pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--524
+Underfull \hbox (badness 10000) in paragraph at lines 552--553
 
  []
 
 [12<./image/colonne.png><./image/colonnebis.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 544--545
+Underfull \hbox (badness 10000) in paragraph at lines 573--574
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 551--552
+Underfull \hbox (badness 10000) in paragraph at lines 580--581
 
  []
 
@@ -2089,28 +2353,28 @@ Chapitre 3.
 [14
 
 ]
-<image/CMOS.png, id=607, 611.28375pt x 306.14375pt>
+<image/CMOS.png, id=595, 611.28375pt x 306.14375pt>
 File: image/CMOS.png Graphic file (type png)
 <use image/CMOS.png>
-Package luatex.def Info: image/CMOS.png  used on input line 589.
+Package luatex.def Info: image/CMOS.png  used on input line 618.
 (luatex.def)             Requested size: 458.46169pt x 229.60724pt.
  [15<./image/CMOS.png>]
-Overfull \hbox (14.23363pt too wide) in paragraph at lines 621--642
+Overfull \hbox (14.23363pt too wide) in paragraph at lines 650--671
 [] []
  []
 
 
-Overfull \hbox (14.23363pt too wide) in paragraph at lines 649--654
+Overfull \hbox (14.23363pt too wide) in paragraph at lines 678--683
 [] [] 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 670--671
+Underfull \hbox (badness 10000) in paragraph at lines 699--700
 
  []
 
 
-Overfull \hbox (14.23363pt too wide) in paragraph at lines 691--704
+Overfull \hbox (14.23363pt too wide) in paragraph at lines 720--733
 [] [] 
  []
 
@@ -2122,26 +2386,26 @@ Package epstopdf Info: Source file: <image/static_dynamic.eps>
 (epstopdf)                    size: 18465 bytes
 (epstopdf)             Command: <repstopdf --outfile=image/static_dynamic-eps-co
 nverted-to.pdf image/static_dynamic.eps>
-(epstopdf)             \includegraphics on input line 708.
+(epstopdf)             \includegraphics on input line 737.
 Package epstopdf Info: Output file is already uptodate.
-<image/static_dynamic-eps-converted-to.pdf, id=631, 1445.4pt x 724.7075pt>
+<image/static_dynamic-eps-converted-to.pdf, id=619, 1445.4pt x 724.7075pt>
 File: image/static_dynamic-eps-converted-to.pdf Graphic file (type pdf)
 <use image/static_dynamic-eps-converted-to.pdf>
 Package luatex.def Info: image/static_dynamic-eps-converted-to.pdf  used on inpu
-t line 708.
+t line 737.
 (luatex.def)             Requested size: 491.4295pt x 246.3973pt.
 
-Overfull \hbox (4.47552pt too wide) in paragraph at lines 707--709
+Overfull \hbox (4.47552pt too wide) in paragraph at lines 736--738
 []  [] 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 720--721
+Underfull \hbox (badness 10000) in paragraph at lines 749--750
 
  []
 
 [18<./image/static_dynamic-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 741--742
+Underfull \hbox (badness 10000) in paragraph at lines 770--771
 
  []
 
@@ -2157,71 +2421,71 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [19]
 Chapitre 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 777--778
+Underfull \hbox (badness 10000) in paragraph at lines 806--807
 
  []
 
 [20
 
 ]
-<image/attaques.png, id=677, 944.52875pt x 368.37625pt>
+<image/attaques.png, id=665, 944.52875pt x 368.37625pt>
 File: image/attaques.png Graphic file (type png)
 <use image/attaques.png>
-Package luatex.def Info: image/attaques.png  used on input line 783.
+Package luatex.def Info: image/attaques.png  used on input line 812.
 (luatex.def)             Requested size: 548.25938pt x 213.83261pt.
 
-Overfull \hbox (37.97394pt too wide) in paragraph at lines 782--784
+Overfull \hbox (37.97394pt too wide) in paragraph at lines 811--813
 []  [] 
  []
 
 [21<./image/attaques.png>]
-<image/attackpassive.png, id=685, 548.0475pt x 375.4025pt>
+<image/attackpassive.png, id=673, 548.0475pt x 375.4025pt>
 File: image/attackpassive.png Graphic file (type png)
 <use image/attackpassive.png>
-Package luatex.def Info: image/attackpassive.png  used on input line 798.
+Package luatex.def Info: image/attackpassive.png  used on input line 827.
 (luatex.def)             Requested size: 383.63063pt x 262.77995pt.
  [22<./image/attackpassive.png>]
-<image/DPA.png, id=694, 1084.05pt x 553.06625pt>
+<image/DPA.png, id=682, 1084.05pt x 553.06625pt>
 File: image/DPA.png Graphic file (type png)
 <use image/DPA.png>
-Package luatex.def Info: image/DPA.png  used on input line 832.
+Package luatex.def Info: image/DPA.png  used on input line 861.
 (luatex.def)             Requested size: 509.50357pt x 259.94116pt.
 
-Overfull \hbox (22.54959pt too wide) in paragraph at lines 831--833
+Overfull \hbox (22.54959pt too wide) in paragraph at lines 860--862
 []  [] 
  []
 
 [23] [24<./image/DPA.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 865--866
+Underfull \hbox (badness 10000) in paragraph at lines 894--895
 
  []
 
 (load luc: /Users/AnizetThomas/Library/texlive/2017/texmf-var/luatex-cache/gener
 ic/fonts/otl/lmroman7-regular.luc)(load luc: /Users/AnizetThomas/Library/texlive
 /2017/texmf-var/luatex-cache/generic/fonts/otl/lmroman5-regular.luc)
-<image/oscillo.png, id=716, 602.25pt x 341.275pt>
+<image/oscillo.png, id=704, 602.25pt x 341.275pt>
 File: image/oscillo.png Graphic file (type png)
 <use image/oscillo.png>
-Package luatex.def Info: image/oscillo.png  used on input line 871.
+Package luatex.def Info: image/oscillo.png  used on input line 900.
 (luatex.def)             Requested size: 301.12425pt x 170.63707pt.
  [25<./image/oscillo.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 893--894
+Underfull \hbox (badness 10000) in paragraph at lines 922--923
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 893--894
+Underfull \hbox (badness 10000) in paragraph at lines 922--923
 
  []
 
 [26]
-<image/CPA_attacks.png, id=742, 904.37875pt x 504.88625pt>
+<image/CPA_attacks.png, id=730, 904.37875pt x 504.88625pt>
 File: image/CPA_attacks.png Graphic file (type png)
 <use image/CPA_attacks.png>
-Package luatex.def Info: image/CPA_attacks.png  used on input line 903.
+Package luatex.def Info: image/CPA_attacks.png  used on input line 932.
 (luatex.def)             Requested size: 542.63144pt x 302.93407pt.
 
-Overfull \hbox (47.14154pt too wide) in paragraph at lines 902--904
+Overfull \hbox (47.14154pt too wide) in paragraph at lines 931--933
 []  [] 
  []
 
@@ -2233,16 +2497,16 @@ Package epstopdf Info: Source file: <image/4KeysEx.eps>
 (epstopdf)                    size: 46591 bytes
 (epstopdf)             Command: <repstopdf --outfile=image/4KeysEx-eps-converted
 -to.pdf image/4KeysEx.eps>
-(epstopdf)             \includegraphics on input line 912.
+(epstopdf)             \includegraphics on input line 941.
 Package epstopdf Info: Output file is already uptodate.
-<image/4KeysEx-eps-converted-to.pdf, id=748, 1445.4pt x 727.71875pt>
+<image/4KeysEx-eps-converted-to.pdf, id=737, 1445.4pt x 727.71875pt>
 File: image/4KeysEx-eps-converted-to.pdf Graphic file (type pdf)
 <use image/4KeysEx-eps-converted-to.pdf>
 Package luatex.def Info: image/4KeysEx-eps-converted-to.pdf  used on input line 
-912.
+941.
 (luatex.def)             Requested size: 578.14977pt x 291.08234pt.
 
-Overfull \hbox (62.74303pt too wide) in paragraph at lines 911--913
+Overfull \hbox (62.74303pt too wide) in paragraph at lines 940--942
 []  [] 
  []
 
@@ -2254,16 +2518,16 @@ Package epstopdf Info: Source file: <image/TrueKey.eps>
 (epstopdf)                    size: 10861 bytes
 (epstopdf)             Command: <repstopdf --outfile=image/TrueKey-eps-converted
 -to.pdf image/TrueKey.eps>
-(epstopdf)             \includegraphics on input line 919.
+(epstopdf)             \includegraphics on input line 948.
 Package epstopdf Info: Output file is already uptodate.
-<image/TrueKey-eps-converted-to.pdf, id=749, 1445.4pt x 727.71875pt>
+<image/TrueKey-eps-converted-to.pdf, id=738, 1445.4pt x 727.71875pt>
 File: image/TrueKey-eps-converted-to.pdf Graphic file (type pdf)
 <use image/TrueKey-eps-converted-to.pdf>
 Package luatex.def Info: image/TrueKey-eps-converted-to.pdf  used on input line 
-919.
+948.
 (luatex.def)             Requested size: 578.14977pt x 291.08234pt.
 
-Overfull \hbox (62.74303pt too wide) in paragraph at lines 918--920
+Overfull \hbox (62.74303pt too wide) in paragraph at lines 947--949
 []  [] 
  []
 
@@ -2271,12 +2535,12 @@ Overfull \hbox (62.74303pt too wide) in paragraph at lines 918--920
 TrueKey-eps-converted-to.pdf>]
 Chapitre 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 942--943
+Underfull \hbox (badness 10000) in paragraph at lines 971--972
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 948--949
+Underfull \hbox (badness 10000) in paragraph at lines 977--978
 
  []
 
@@ -2292,13 +2556,13 @@ Package epstopdf Info: Source file: <image/trace_Amplitude.eps>
 (epstopdf)                    size: 10868 bytes
 (epstopdf)             Command: <repstopdf --outfile=image/trace_Amplitude-eps-c
 onverted-to.pdf image/trace_Amplitude.eps>
-(epstopdf)             \includegraphics on input line 956.
+(epstopdf)             \includegraphics on input line 985.
 Package epstopdf Info: Output file is already uptodate.
-<image/trace_Amplitude-eps-converted-to.pdf, id=795, 1445.4pt x 737.75626pt>
+<image/trace_Amplitude-eps-converted-to.pdf, id=784, 1445.4pt x 737.75626pt>
 File: image/trace_Amplitude-eps-converted-to.pdf Graphic file (type pdf)
 <use image/trace_Amplitude-eps-converted-to.pdf>
 Package luatex.def Info: image/trace_Amplitude-eps-converted-to.pdf  used on inp
-ut line 956.
+ut line 985.
 (luatex.def)             Requested size: 433.62335pt x 221.32858pt.
 Package epstopdf Info: Source file: <image/trace_Time.eps>
 (epstopdf)                    date: 2019-04-13 21:29:22
@@ -2308,27 +2572,27 @@ Package epstopdf Info: Source file: <image/trace_Time.eps>
 (epstopdf)                    size: 14655 bytes
 (epstopdf)             Command: <repstopdf --outfile=image/trace_Time-eps-conver
 ted-to.pdf image/trace_Time.eps>
-(epstopdf)             \includegraphics on input line 963.
+(epstopdf)             \includegraphics on input line 992.
 Package epstopdf Info: Output file is already uptodate.
-<image/trace_Time-eps-converted-to.pdf, id=796, 1445.4pt x 632.3625pt>
+<image/trace_Time-eps-converted-to.pdf, id=785, 1445.4pt x 632.3625pt>
 File: image/trace_Time-eps-converted-to.pdf Graphic file (type pdf)
 <use image/trace_Time-eps-converted-to.pdf>
 Package luatex.def Info: image/trace_Time-eps-converted-to.pdf  used on input li
-ne 963.
+ne 992.
 (luatex.def)             Requested size: 462.53746pt x 202.36014pt.
 
-Overfull \hbox (1.81622pt too wide) in paragraph at lines 963--964
+Overfull \hbox (1.81622pt too wide) in paragraph at lines 992--993
  [][] 
  []
 
 [30<./image/trace_Amplitude-eps-converted-to.pdf><./image/trace_Time-eps-convert
 ed-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 971--973
+Underfull \hbox (badness 10000) in paragraph at lines 1000--1002
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 985--986
+Underfull \hbox (badness 10000) in paragraph at lines 1014--1015
 
  []
 
@@ -2340,71 +2604,70 @@ Package epstopdf Info: Source file: <image/SNR_Fig.eps>
 (epstopdf)                    size: 20348 bytes
 (epstopdf)             Command: <repstopdf --outfile=image/SNR_Fig-eps-converted
 -to.pdf image/SNR_Fig.eps>
-(epstopdf)             \includegraphics on input line 1000.
+(epstopdf)             \includegraphics on input line 1029.
 Package epstopdf Info: Output file is already uptodate.
-<image/SNR_Fig-eps-converted-to.pdf, id=826, 1445.4pt x 735.74875pt>
+<image/SNR_Fig-eps-converted-to.pdf, id=815, 1445.4pt x 735.74875pt>
 File: image/SNR_Fig-eps-converted-to.pdf Graphic file (type pdf)
 <use image/SNR_Fig-eps-converted-to.pdf>
 Package luatex.def Info: image/SNR_Fig-eps-converted-to.pdf  used on input line 
-1000.
+1029.
 (luatex.def)             Requested size: 289.07487pt x 147.14714pt.
 [31<./image/SNR_Fig-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 1017--1019
+Underfull \hbox (badness 10000) in paragraph at lines 1046--1048
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 1055--1056
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1085
 
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 1113--1115
+Underfull \hbox (badness 10000) in paragraph at lines 1142--1144
 
  []
 
 [34]
-<image/ConceptFaking.png, id=888, 1026.83624pt x 349.305pt>
+<image/ConceptFaking.png, id=877, 1026.83624pt x 349.305pt>
 File: image/ConceptFaking.png Graphic file (type png)
 <use image/ConceptFaking.png>
-Package luatex.def Info: image/ConceptFaking.png  used on input line 1118.
+Package luatex.def Info: image/ConceptFaking.png  used on input line 1147.
 (luatex.def)             Requested size: 533.95793pt x 181.63963pt.
 
-Overfull \hbox (35.62302pt too wide) in paragraph at lines 1117--1119
+Overfull \hbox (35.62302pt too wide) in paragraph at lines 1146--1148
 []  [] 
  []
 
 [35<./image/ConceptFaking.png>] [36]
+<image/ConceptFakingWithMasking.png, id=915, 880.28876pt x 295.1025pt>
+File: image/ConceptFakingWithMasking.png Graphic file (type png)
+<use image/ConceptFakingWithMasking.png>
+Package luatex.def Info: image/ConceptFakingWithMasking.png  used on input line 
+1217.
+(luatex.def)             Requested size: 510.56784pt x 171.15956pt.
 
-LaTeX Warning: Reference `ConceptFakingWithMasking' on page 37 undefined on inpu
-t line 1183.
-
-File: image/ConceptFaking.png Graphic file (type png)
-<use image/ConceptFaking.png>
-Package luatex.def Info: image/ConceptFaking.png  used on input line 1186.
-(luatex.def)             Requested size: 533.95793pt x 181.63963pt.
-
-Overfull \hbox (35.62302pt too wide) in paragraph at lines 1185--1187
+Overfull \hbox (17.92339pt too wide) in paragraph at lines 1216--1218
 []  [] 
  []
 
-Package epstopdf Info: Source file: <image/faking.eps>
-(epstopdf)                    date: 2019-04-11 14:17:49
-(epstopdf)                    size: 471560 bytes
-(epstopdf)             Output file: <image/faking-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-04-11 14:17:49
-(epstopdf)                    size: 146668 bytes
-(epstopdf)             Command: <repstopdf --outfile=image/faking-eps-converted-
-to.pdf image/faking.eps>
-(epstopdf)             \includegraphics on input line 1196.
+Package epstopdf Info: Source file: <image/fakingExemple.eps>
+(epstopdf)                    date: 2019-04-16 12:02:36
+(epstopdf)                    size: 21639 bytes
+(epstopdf)             Output file: <image/fakingExemple-eps-converted-to.pdf>
+(epstopdf)                    date: 2019-04-16 12:10:48
+(epstopdf)                    size: 11067 bytes
+(epstopdf)             Command: <repstopdf --outfile=image/fakingExemple-eps-con
+verted-to.pdf image/fakingExemple.eps>
+(epstopdf)             \includegraphics on input line 1235.
 Package epstopdf Info: Output file is already uptodate.
-<image/faking-eps-converted-to.pdf, id=929, 1927.2pt x 905.3825pt>
-File: image/faking-eps-converted-to.pdf Graphic file (type pdf)
-<use image/faking-eps-converted-to.pdf>
-Package luatex.def Info: image/faking-eps-converted-to.pdf  used on input line 1
-196.
-(luatex.def)             Requested size: 462.53746pt x 217.29623pt.
-[37<./image/faking-eps-converted-to.pdf>] [38
+<image/fakingExemple-eps-converted-to.pdf, id=921, 1445.4pt x 743.77875pt>
+File: image/fakingExemple-eps-converted-to.pdf Graphic file (type pdf)
+<use image/fakingExemple-eps-converted-to.pdf>
+Package luatex.def Info: image/fakingExemple-eps-converted-to.pdf  used on input
+ line 1235.
+(luatex.def)             Requested size: 433.62335pt x 223.13535pt.
+[37<./image/ConceptFakingWithMasking.png><./image/fakingExemple-eps-converted-to
+.pdf>] [38
 
 ]
 Chapitre 6.
@@ -2425,30 +2688,27 @@ Chapitre 9.
 ]
 Chapitre 10.
 
-LaTeX Warning: Reference `sec:objectifs' on page 43 undefined on input line 1281
+LaTeX Warning: Reference `sec:objectifs' on page 43 undefined on input line 1322
 .
 
 [43
 
 ]
 
-LaTeX Warning: Reference `fig:thales' on page 44 undefined on input line 1294.
+LaTeX Warning: Reference `fig:thales' on page 44 undefined on input line 1335.
 
-(load luc: /Users/AnizetThomas/Library/texlive/2017/texmf-var/luatex-cache/gener
-ic/fonts/otl/lmroman9-regular.luc)
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 1295.
+(Font)              <9> on input line 1336.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 1295.
-
+(Font)              <6> on input line 1336.
 
 LaTeX Warning: Reference `ann:ConceptFaking' on page 44 undefined on input line 
-1303.
+1344.
 
 (./Stage.bbl (./Stage.brf)
-\tf@brf=\write8
+\tf@brf=\write10
 
-\openout8 = Stage.brf
+\openout10 = Stage.brf
  [44](load luc: /Users/AnizetThomas/Library/texlive/2017/texmf-var/luatex-cache/
 generic/fonts/otl/lmroman9-italic.luc) [45
 
@@ -2461,219 +2721,82 @@ Annexe A.
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 [49] [50] [51]
-<image/KeySchedule1.png, id=1117, 1200.485pt x 569.12625pt>
+<image/KeySchedule1.png, id=1109, 1200.485pt x 569.12625pt>
 File: image/KeySchedule1.png Graphic file (type png)
 <use image/KeySchedule1.png>
-Package luatex.def Info: image/KeySchedule1.png  used on input line 1485.
+Package luatex.def Info: image/KeySchedule1.png  used on input line 1526.
 (luatex.def)             Requested size: 420.17606pt x 199.19717pt.
-<image/KeySchedule2.png, id=1118, 850.17625pt x 671.50874pt>
+<image/KeySchedule2.png, id=1110, 850.17625pt x 671.50874pt>
 File: image/KeySchedule2.png Graphic file (type png)
 <use image/KeySchedule2.png>
-Package luatex.def Info: image/KeySchedule2.png  used on input line 1486.
+Package luatex.def Info: image/KeySchedule2.png  used on input line 1527.
 (luatex.def)             Requested size: 382.57578pt x 302.17615pt.
  [52<./image/KeySchedule1.png><./image/KeySchedule2.png>]
 Annexe B.
 [53
 
 ]
-<image/CPAconcrete.png, id=1148, 1064.97874pt x 594.22pt>
-File: image/CPAconcrete.png Graphic file (type png)
-<use image/CPAconcrete.png>
-Package luatex.def Info: image/CPAconcrete.png  used on input line 1513.
-(luatex.def)             Requested size: 553.79214pt x 308.99619pt.
- [54] [55<./image/CPAconcrete.png>]
-<image/Sampling.png, id=1163, 531.9875pt x 772.8875pt>
+<image/Sampling.png, id=1129, 531.9875pt x 772.8875pt>
 File: image/Sampling.png Graphic file (type png)
 <use image/Sampling.png>
-Package luatex.def Info: image/Sampling.png  used on input line 1524.
+Package luatex.def Info: image/Sampling.png  used on input line 1549.
 (luatex.def)             Requested size: 345.78778pt x 502.37091pt.
- [56] [57<./image/Sampling.png>]
-<image/traces.pdf, id=1179, 1927.2pt x 905.3825pt>
-File: image/traces.pdf Graphic file (type pdf)
-<use image/traces.pdf>
-Package luatex.def Info: image/traces.pdf  used on input line 1532.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/traces.pdf Graphic file (type pdf)
-<use image/traces.pdf>
-Package luatex.def Info: image/traces.pdf  used on input line 1532.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-<image/traces.pdf, id=1182, page=1, 1927.2pt x 905.3825pt>
-File: image/traces.pdf Graphic file (type pdf)
-<use image/traces.pdf, page 1>
-Package luatex.def Info: image/traces.pdf , page1 used on input line 1532.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/traces.pdf Graphic file (type pdf)
-<use image/traces.pdf, page 1>
-Package luatex.def Info: image/traces.pdf , page1 used on input line 1532.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/traces.pdf Graphic file (type pdf)
-<use image/traces.pdf, page 1>
-Package luatex.def Info: image/traces.pdf , page1 used on input line 1532.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/traces.pdf Graphic file (type pdf)
-<use image/traces.pdf, page 1>
-Package luatex.def Info: image/traces.pdf , page1 used on input line 1532.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/traces.pdf Graphic file (type pdf)
-<use image/traces.pdf, page 1>
-Package luatex.def Info: image/traces.pdf , page1 used on input line 1532.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-
-[58<./image/traces.pdf>]
-<image/cle.pdf, id=1196, 1927.2pt x 905.3825pt>
-File: image/cle.pdf Graphic file (type pdf)
-<use image/cle.pdf>
-Package luatex.def Info: image/cle.pdf  used on input line 1536.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/cle.pdf Graphic file (type pdf)
-<use image/cle.pdf>
-Package luatex.def Info: image/cle.pdf  used on input line 1536.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-<image/cle.pdf, id=1199, page=1, 1927.2pt x 905.3825pt>
-File: image/cle.pdf Graphic file (type pdf)
-<use image/cle.pdf, page 1>
-Package luatex.def Info: image/cle.pdf , page1 used on input line 1536.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/cle.pdf Graphic file (type pdf)
-<use image/cle.pdf, page 1>
-Package luatex.def Info: image/cle.pdf , page1 used on input line 1536.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/cle.pdf Graphic file (type pdf)
-<use image/cle.pdf, page 1>
-Package luatex.def Info: image/cle.pdf , page1 used on input line 1536.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/cle.pdf Graphic file (type pdf)
-<use image/cle.pdf, page 1>
-Package luatex.def Info: image/cle.pdf , page1 used on input line 1536.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/cle.pdf Graphic file (type pdf)
-<use image/cle.pdf, page 1>
-Package luatex.def Info: image/cle.pdf , page1 used on input line 1536.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
- [59<./image/cle.pdf>]
-<image/correlation3D.pdf, id=1213, 1445.4pt x 724.7075pt>
-File: image/correlation3D.pdf Graphic file (type pdf)
-<use image/correlation3D.pdf>
-Package luatex.def Info: image/correlation3D.pdf  used on input line 1540.
-(luatex.def)             Requested size: 1445.39648pt x 724.70573pt.
-File: image/correlation3D.pdf Graphic file (type pdf)
-<use image/correlation3D.pdf>
-Package luatex.def Info: image/correlation3D.pdf  used on input line 1540.
-(luatex.def)             Requested size: 1445.39648pt x 724.70573pt.
-<image/correlation3D.pdf, id=1216, page=1, 1445.4pt x 724.7075pt>
-File: image/correlation3D.pdf Graphic file (type pdf)
-<use image/correlation3D.pdf, page 1>
-Package luatex.def Info: image/correlation3D.pdf , page1 used on input line 1540
-.
-(luatex.def)             Requested size: 1445.39648pt x 724.70573pt.
-File: image/correlation3D.pdf Graphic file (type pdf)
-<use image/correlation3D.pdf, page 1>
-Package luatex.def Info: image/correlation3D.pdf , page1 used on input line 1540
-.
-(luatex.def)             Requested size: 1445.39648pt x 724.70573pt.
-File: image/correlation3D.pdf Graphic file (type pdf)
-<use image/correlation3D.pdf, page 1>
-Package luatex.def Info: image/correlation3D.pdf , page1 used on input line 1540
-.
-(luatex.def)             Requested size: 1445.39648pt x 724.70573pt.
-File: image/correlation3D.pdf Graphic file (type pdf)
-<use image/correlation3D.pdf, page 1>
-Package luatex.def Info: image/correlation3D.pdf , page1 used on input line 1540
-.
-(luatex.def)             Requested size: 1445.39648pt x 724.70573pt.
-File: image/correlation3D.pdf Graphic file (type pdf)
-<use image/correlation3D.pdf, page 1>
-Package luatex.def Info: image/correlation3D.pdf , page1 used on input line 1540
-.
-(luatex.def)             Requested size: 1445.39648pt x 724.70573pt.
- [60<./image/correlation3D.pdf>]
-<image/cle8.pdf, id=1230, 1927.2pt x 905.3825pt>
-File: image/cle8.pdf Graphic file (type pdf)
-<use image/cle8.pdf>
-Package luatex.def Info: image/cle8.pdf  used on input line 1544.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/cle8.pdf Graphic file (type pdf)
-<use image/cle8.pdf>
-Package luatex.def Info: image/cle8.pdf  used on input line 1544.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-<image/cle8.pdf, id=1233, page=1, 1927.2pt x 905.3825pt>
-File: image/cle8.pdf Graphic file (type pdf)
-<use image/cle8.pdf, page 1>
-Package luatex.def Info: image/cle8.pdf , page1 used on input line 1544.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/cle8.pdf Graphic file (type pdf)
-<use image/cle8.pdf, page 1>
-Package luatex.def Info: image/cle8.pdf , page1 used on input line 1544.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/cle8.pdf Graphic file (type pdf)
-<use image/cle8.pdf, page 1>
-Package luatex.def Info: image/cle8.pdf , page1 used on input line 1544.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/cle8.pdf Graphic file (type pdf)
-<use image/cle8.pdf, page 1>
-Package luatex.def Info: image/cle8.pdf , page1 used on input line 1544.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-File: image/cle8.pdf Graphic file (type pdf)
-<use image/cle8.pdf, page 1>
-Package luatex.def Info: image/cle8.pdf , page1 used on input line 1544.
-(luatex.def)             Requested size: 1927.19533pt x 905.3803pt.
-
-[61<./image/cle8.pdf>]
+ [54] [55<./image/Sampling.png>]
 Annexe C.
-[62
+[56
 
 ]
-<image/resume_hiding.pdf, id=1255, 597.23125pt x 845.1575pt>
+<image/resume_hiding.pdf, id=1153, 597.23125pt x 845.1575pt>
 File: image/resume_hiding.pdf Graphic file (type pdf)
 <use image/resume_hiding.pdf>
-Package luatex.def Info: image/resume_hiding.pdf  used on input line 1558.
+Package luatex.def Info: image/resume_hiding.pdf  used on input line 1565.
 (luatex.def)             Requested size: 597.22978pt x 845.15544pt.
 File: image/resume_hiding.pdf Graphic file (type pdf)
 <use image/resume_hiding.pdf>
-Package luatex.def Info: image/resume_hiding.pdf  used on input line 1558.
+Package luatex.def Info: image/resume_hiding.pdf  used on input line 1565.
 (luatex.def)             Requested size: 597.22978pt x 845.15544pt.
-<image/resume_hiding.pdf, id=1258, page=1, 597.23125pt x 845.1575pt>
+<image/resume_hiding.pdf, id=1156, page=1, 597.23125pt x 845.1575pt>
 File: image/resume_hiding.pdf Graphic file (type pdf)
 <use image/resume_hiding.pdf, page 1>
-Package luatex.def Info: image/resume_hiding.pdf , page1 used on input line 1558
+Package luatex.def Info: image/resume_hiding.pdf , page1 used on input line 1565
 .
 (luatex.def)             Requested size: 597.22978pt x 845.15544pt.
 File: image/resume_hiding.pdf Graphic file (type pdf)
 <use image/resume_hiding.pdf, page 1>
-Package luatex.def Info: image/resume_hiding.pdf , page1 used on input line 1558
+Package luatex.def Info: image/resume_hiding.pdf , page1 used on input line 1565
 .
 (luatex.def)             Requested size: 561.86221pt x 795.10587pt.
 File: image/resume_hiding.pdf Graphic file (type pdf)
 <use image/resume_hiding.pdf, page 1>
-Package luatex.def Info: image/resume_hiding.pdf , page1 used on input line 1558
+Package luatex.def Info: image/resume_hiding.pdf , page1 used on input line 1565
 .
 (luatex.def)             Requested size: 561.86221pt x 795.10587pt.
 File: image/resume_hiding.pdf Graphic file (type pdf)
 <use image/resume_hiding.pdf, page 1>
-Package luatex.def Info: image/resume_hiding.pdf , page1 used on input line 1558
+Package luatex.def Info: image/resume_hiding.pdf , page1 used on input line 1565
 .
 (luatex.def)             Requested size: 561.86221pt x 795.10587pt.
 File: image/resume_hiding.pdf Graphic file (type pdf)
 <use image/resume_hiding.pdf, page 1>
-Package luatex.def Info: image/resume_hiding.pdf , page1 used on input line 1558
+Package luatex.def Info: image/resume_hiding.pdf , page1 used on input line 1565
 .
 (luatex.def)             Requested size: 561.86221pt x 795.10587pt.
- [63<./image/resume_hiding.pdf>]
+ [57<./image/resume_hiding.pdf>]
 Annexe D.
 
 warning  (file image/lettre.pdf) (pdf inclusion): PDF inclusion: found PDF versi
 on '1.7', but at most version '1.5' allowed
-<image/lettre.pdf, id=1282, 597.23125pt x 845.1575pt>
+<image/lettre.pdf, id=1181, 597.23125pt x 845.1575pt>
 File: image/lettre.pdf Graphic file (type pdf)
 <use image/lettre.pdf>
-Package luatex.def Info: image/lettre.pdf  used on input line 1580.
+Package luatex.def Info: image/lettre.pdf  used on input line 1587.
 (luatex.def)             Requested size: 597.22978pt x 845.15544pt.
 
 warning  (file image/lettre.pdf) (pdf inclusion): PDF inclusion: found PDF versi
 on '1.7', but at most version '1.5' allowed
 File: image/lettre.pdf Graphic file (type pdf)
 <use image/lettre.pdf>
-Package luatex.def Info: image/lettre.pdf  used on input line 1580.
+Package luatex.def Info: image/lettre.pdf  used on input line 1587.
 (luatex.def)             Requested size: 597.22978pt x 845.15544pt.
 
 warning  (file image/lettre.pdf) (pdf inclusion): PDF inclusion: found PDF versi
@@ -2681,69 +2804,74 @@ on '1.7', but at most version '1.5' allowed
 
 warning  (file image/lettre.pdf) (pdf inclusion): PDF inclusion: found PDF versi
 on '1.7', but at most version '1.5' allowed
-<image/lettre.pdf, id=1285, page=1, 597.23125pt x 845.1575pt>
+<image/lettre.pdf, id=1184, page=1, 597.23125pt x 845.1575pt>
 File: image/lettre.pdf Graphic file (type pdf)
 <use image/lettre.pdf, page 1>
-Package luatex.def Info: image/lettre.pdf , page1 used on input line 1580.
+Package luatex.def Info: image/lettre.pdf , page1 used on input line 1587.
 (luatex.def)             Requested size: 597.22978pt x 845.15544pt.
 File: image/lettre.pdf Graphic file (type pdf)
 <use image/lettre.pdf, page 1>
-Package luatex.def Info: image/lettre.pdf , page1 used on input line 1580.
+Package luatex.def Info: image/lettre.pdf , page1 used on input line 1587.
 (luatex.def)             Requested size: 561.86221pt x 795.10587pt.
-[64
+[58
 
 ]
 File: image/lettre.pdf Graphic file (type pdf)
 <use image/lettre.pdf, page 1>
-Package luatex.def Info: image/lettre.pdf , page1 used on input line 1580.
+Package luatex.def Info: image/lettre.pdf , page1 used on input line 1587.
 (luatex.def)             Requested size: 561.86221pt x 795.10587pt.
 File: image/lettre.pdf Graphic file (type pdf)
 <use image/lettre.pdf, page 1>
-Package luatex.def Info: image/lettre.pdf , page1 used on input line 1580.
+Package luatex.def Info: image/lettre.pdf , page1 used on input line 1587.
 (luatex.def)             Requested size: 561.86221pt x 795.10587pt.
 File: image/lettre.pdf Graphic file (type pdf)
 <use image/lettre.pdf, page 1>
-Package luatex.def Info: image/lettre.pdf , page1 used on input line 1580.
+Package luatex.def Info: image/lettre.pdf , page1 used on input line 1587.
 (luatex.def)             Requested size: 561.86221pt x 795.10587pt.
- [65<./image/lettre.pdf>]
-<image/certificat.pdf, id=1316, 598.235pt x 845.1575pt>
+ [59<./image/lettre.pdf>]
+<image/certificat.pdf, id=1214, 598.235pt x 845.1575pt>
 File: image/certificat.pdf Graphic file (type pdf)
 <use image/certificat.pdf>
-Package luatex.def Info: image/certificat.pdf  used on input line 1585.
+Package luatex.def Info: image/certificat.pdf  used on input line 1592.
 (luatex.def)             Requested size: 598.23354pt x 845.15544pt.
 File: image/certificat.pdf Graphic file (type pdf)
 <use image/certificat.pdf>
-Package luatex.def Info: image/certificat.pdf  used on input line 1585.
+Package luatex.def Info: image/certificat.pdf  used on input line 1592.
 (luatex.def)             Requested size: 598.23354pt x 845.15544pt.
-<image/certificat.pdf, id=1319, page=1, 598.235pt x 845.1575pt>
+<image/certificat.pdf, id=1217, page=1, 598.235pt x 845.1575pt>
 File: image/certificat.pdf Graphic file (type pdf)
 <use image/certificat.pdf, page 1>
-Package luatex.def Info: image/certificat.pdf , page1 used on input line 1585.
+Package luatex.def Info: image/certificat.pdf , page1 used on input line 1592.
 (luatex.def)             Requested size: 598.23354pt x 845.15544pt.
 File: image/certificat.pdf Graphic file (type pdf)
 <use image/certificat.pdf, page 1>
-Package luatex.def Info: image/certificat.pdf , page1 used on input line 1585.
+Package luatex.def Info: image/certificat.pdf , page1 used on input line 1592.
 (luatex.def)             Requested size: 562.80652pt x 795.10587pt.
 File: image/certificat.pdf Graphic file (type pdf)
 <use image/certificat.pdf, page 1>
-Package luatex.def Info: image/certificat.pdf , page1 used on input line 1585.
+Package luatex.def Info: image/certificat.pdf , page1 used on input line 1592.
 (luatex.def)             Requested size: 562.80652pt x 795.10587pt.
 File: image/certificat.pdf Graphic file (type pdf)
 <use image/certificat.pdf, page 1>
-Package luatex.def Info: image/certificat.pdf , page1 used on input line 1585.
+Package luatex.def Info: image/certificat.pdf , page1 used on input line 1592.
 (luatex.def)             Requested size: 562.80652pt x 795.10587pt.
 File: image/certificat.pdf Graphic file (type pdf)
 <use image/certificat.pdf, page 1>
-Package luatex.def Info: image/certificat.pdf , page1 used on input line 1585.
+Package luatex.def Info: image/certificat.pdf , page1 used on input line 1592.
 (luatex.def)             Requested size: 562.80652pt x 795.10587pt.
- [66<./image/certificat.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1590.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1590.
- (./Stage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1590.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1590.
+ [60<./image/certificat.pdf>]
+
+Package glossaries Warning: No \printglossary or \printglossaries found. 
+(Remove \makeglossaries if you don't want any glossaries.) 
+This document will not have a glossary.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1597.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1597.
+(./Stage.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1597.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1597.
 Package rerunfilecheck Info: File `Stage.out' has not changed.
-(rerunfilecheck)             Checksum: 1D4862E8304055228F6FE848B9CFF7C0;11457.
+(rerunfilecheck)             Checksum: D549228D8FF13EA8EA0AF048AC871A29;11602.
 Package rerunfilecheck Info: File `Stage.brf' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -2753,29 +2881,28 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1590.
 )
 
 Here is how much of LuaTeX's memory you used:
- 41402 strings out of 494480
- 745203,1144653 words of node,token memory allocated
- 646570 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 546 glue, 1 kern, 1 penalty, 102413 glyph, 11852 at
-tribute, 70 glue_spec, 1977 attribute_list, 1 write, 15 pdf_action nodes
-   avail lists: 1:1,2:2100,3:315,4:165,5:364,6:69,7:1578,8:374,9:521,10:31,11:46
-8
- 42672 multiletter control sequences out of 65536+600000
- 79 fonts using 12848623 bytes
- 55i,20n,67p,1721b,1076s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 47130 strings out of 494480
+ 746189,1373583 words of node,token memory allocated
+ 648454 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 530 glue, 1 kern, 1 penalty, 102802 glyph, 11690 at
+tribute, 78 glue_spec, 1950 attribute_list, 1 write, 15 pdf_action nodes
+   avail lists: 1:5,2:2289,3:315,4:163,5:364,6:155,7:1588,8:374,9:521,10:31,11:4
+68
+ 48410 multiletter control sequences out of 65536+600000
+ 80 fonts using 12980375 bytes
+ 55i,18n,77p,2040b,1161s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/local/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman9-italic.otf
-></usr/local/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.o
-tf>{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/lo
-cal/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/201
-7/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2017/texmf-dis
-t/fonts/enc/dvips/lm/lm-mathit.enc}</Library/Fonts/Microsoft/Arial Bold.ttf>{/us
-r/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/
-2017/texmf-dist/fonts/opentype/public/lm/lmroman10-bolditalic.otf></usr/local/te
-xlive/2017/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/
+>{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/loca
+l/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2017/
+texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2017/texmf-dist/
+fonts/enc/dvips/lm/lm-mathit.enc}</Library/Fonts/Microsoft/Arial Bold.ttf>{/usr/
+local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/20
+17/texmf-dist/fonts/opentype/public/lm/lmroman10-bolditalic.otf></usr/local/texl
+ive/2017/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/lo
+cal/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/
 local/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman17-regular.otf></u
 sr/local/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf><
 /usr/local/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.ot
@@ -2791,10 +2918,10 @@ ts/type1/public/lm/lmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
 ic/lm/lmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmsy7
 .pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
 sr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Stage.pdf (80 pages, 21275922 bytes).
+Output written on Stage.pdf (74 pages, 4571262 bytes).
 
-PDF statistics: 1465 PDF objects out of 1728 (max. 8388607)
- 1197 compressed objects within 12 object streams
- 309 named destinations out of 1000 (max. 131072)
- 472 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 1364 PDF objects out of 1440 (max. 8388607)
+ 1128 compressed objects within 12 object streams
+ 295 named destinations out of 1000 (max. 131072)
+ 480 words of extra memory for PDF output out of 10000 (max. 100000000)
 

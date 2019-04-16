@@ -16,11 +16,17 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\providecommand\@newglossary[4]{}
+\@newglossary{main}{glg}{gls}{glo}
+\providecommand\@glsorder[1]{}
+\providecommand\@istfilename[1]{}
+\@istfilename{Stage.ist}
+\@glsorder{word}
 \babel@aux{french}{}
 \@writefile{toc}{\contentsline {chapter}{Abstract}{I}{section*.1}}
 \@writefile{toc}{\contentsline {chapter}{Remerciements}{III}{section*.3}}
 \@writefile{toc}{\contentsline {chapter}{Cahier des charges}{IV}{section*.4}}
-\newlabel{ann:Cahier_des_charges}{{}{IV}{}{section*.5}{}}
+\@writefile{toc}{\contentsline {chapter}{Liste des acronymes}{XI}{section*.5}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -174,12 +180,12 @@
 \newlabel{eqn:faking_7}{{5.13}{36}{Définition}{equation.5.4.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Points faibles et améliorations}{36}{subsection.5.4.2}}
 \newlabel{subsec:points}{{5.4.2}{36}{Points faibles et améliorations}{subsection.5.4.2}{}}
-\newlabel{eqn:faille1}{{5.15}{36}{Points faibles et améliorations}{equation.5.4.15}{}}
-\newlabel{eqn:faille1_solution}{{5.16}{36}{Points faibles et améliorations}{equation.5.4.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Implémentation de la contre-mesure \textit  {faking} pour l'algorithme de chiffrement AES.\relax }}{37}{figure.caption.36}}
-\newlabel{fig:ConceptFakingWithMasking}{{5.5}{37}{Implémentation de la contre-mesure \textit {faking} pour l'algorithme de chiffrement AES.\relax }{figure.caption.36}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces On voit qu'au plus le nombre de traces augmente au plus une clé se distingue des 255 autres. Il s'agit de la fausse clé (en rouge). La vraie clé (en vert) ne laisse fuiter aucune information.\relax }}{37}{figure.caption.37}}
-\newlabel{fig:faking}{{5.6}{37}{On voit qu'au plus le nombre de traces augmente au plus une clé se distingue des 255 autres. Il s'agit de la fausse clé (en rouge). La vraie clé (en vert) ne laisse fuiter aucune information.\relax }{figure.caption.37}{}}
+\newlabel{eqn:faille1}{{2}{36}{Points faibles et améliorations}{Item.23}{}}
+\newlabel{eqn:faille1_solution}{{5.14}{36}{Points faibles et améliorations}{equation.5.4.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Implémentation de la contre-mesure \textit  {faking} pour l'algorithme de chiffrement AES avec prise en compte des améliorations.\relax }}{37}{figure.caption.36}}
+\newlabel{fig:ConceptFakingWithMasking}{{5.5}{37}{Implémentation de la contre-mesure \textit {faking} pour l'algorithme de chiffrement AES avec prise en compte des améliorations.\relax }{figure.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Valeur de la clé obtenue avec implémentation d'une contre-mesure faking.\relax }}{37}{figure.caption.37}}
+\newlabel{fig:fakingExemple}{{5.6}{37}{Valeur de la clé obtenue avec implémentation d'une contre-mesure faking.\relax }{figure.caption.37}{}}
 \@writefile{toc}{\contentsline {part}{II\hspace  {1em}Acquis pratiques}{38}{part.2}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {6}Configuration de l'attaque}{39}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
@@ -260,18 +266,12 @@
 \newlabel{fig:KeySchedule1}{{A.1}{52}{Principe de fonctionnement de l'opération \textit {KeySchedule}.\relax }{figure.caption.47}{}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ann:CPAconcrete}{{B.1}{54}{Principe de fonctionnement d'une attaque CPA}{section.a.B.1}{}}
-\newlabel{fig:CPAconcrete}{{\caption@xref {fig:CPAconcrete}{ on input line 1514}}{55}{Principe de fonctionnement d'une attaque CPA}{figure.caption.48}{}}
-\newlabel{ann:traceExplain}{{B.2}{56}{Représentation des traces de puissance prises à l'oscilloscope}{section.a.B.2}{}}
-\newlabel{fig:traceExplain}{{B.1}{57}{La figure du haut représente une trace de puissance (i.e 1 plaintext utilisé) dans laquelle on retrouve 9 échantillons. La figure du bas représente N traces de puissance dans lesquelles on retrouve également 9 échantillons. En pratique, le nombre d'échantillons dans une trace de puissance est beaucoup plus élevé (de l'ordre de 10000) et sera noté par la lettre S (pour \textit {Sampling}).\relax }{figure.caption.49}{}}
-\newlabel{ann:Traces}{{B.3}{58}{Traces}{section.a.B.3}{}}
-\newlabel{ann:corrélation}{{B.4}{59}{Corrélation pour les clés 1 à 4}{section.a.B.4}{}}
-\newlabel{ann:Corrélations_3D}{{B.5}{60}{Corrélations 3D}{section.a.B.5}{}}
-\newlabel{ann:cle8}{{B.6}{61}{Corrélation pour la clé 8}{section.a.B.6}{}}
+\newlabel{ann:traceExplain}{{B.1}{54}{Représentation des traces de puissance prises à l'oscilloscope}{section.a.B.1}{}}
+\newlabel{fig:traceExplain}{{B.1}{55}{La figure du haut représente une trace de puissance (i.e 1 plaintext utilisé) dans laquelle on retrouve 9 échantillons. La figure du bas représente N traces de puissance dans lesquelles on retrouve également 9 échantillons. En pratique, le nombre d'échantillons dans une trace de puissance est beaucoup plus élevé (de l'ordre de 10000) et sera noté par la lettre S (pour \textit {Sampling}).\relax }{figure.caption.48}{}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ann:resume_hiding}{{C.1}{63}{Contre-mesures \textit {Hiding}}{section.a.C.1}{}}
+\newlabel{ann:resume_hiding}{{C.1}{57}{Contre-mesures \textit {Hiding}}{section.a.C.1}{}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ann:lettre}{{D.1}{65}{Lettre de motivation}{section.a.D.1}{}}
-\newlabel{ann:certificat}{{D.2}{66}{Certificat de stage}{section.a.D.2}{}}
+\newlabel{ann:lettre}{{D.1}{59}{Lettre de motivation}{section.a.D.1}{}}
+\newlabel{ann:certificat}{{D.2}{60}{Certificat de stage}{section.a.D.2}{}}
