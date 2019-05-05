@@ -1245,24 +1245,125 @@ Reprenons l'exemple du chapitre précédent (chapitre \ref{chap:attaques}) où l
 %                                                                            Partie 2 - Pratique                     								 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\part{Acquis pratiques}
+\part{Mise en application}
 
 %%%%%%%%%%%%% Chapitre 6 %%%%%%%%%%%%%
 
-\chapter{Configuration de l'attaque}
+\chapter{Mise en oeuvre de l'attaque}
 \label{chap:config}
 
-\section{Méthodologie}
-\label{sec:Introduction}
+Ce chapitre décrit la mise en oeuvre de l'attaque CPA. Une introduction sur les différents langages utilisées est tout apportée. Ensuite, trois sections sont respectivement réservées à la description de la configuration du FPGA, à la description de la configuration de l'oscilloscope et enfin à la description de la configuration de l'attaque.
 
-\section{Configuration du FPGA}
-\label{sec:Introduction}
+\section{Langages de programmation}
+\label{sec:langages}
 
-\section{Configuration de l'oscilloscope}
-\label{sec:Introduction}
+\hspace{-0.5cm}Trois langages de programmation ont été utiles à la réalisation de ce travail : 
+\begin{itemize}
+\item \textbf{\textit{PYTHON}} pour la configuration de la communication entre l'ordinateur et le FPGA et entre l'ordinateur et l'oscilloscope ;
+\item \textbf{\textit{VHDL}} (\textit{VHSIC Hardware Description Language}) pour l'implémentation de l'algorithme AES-256 et de la contre-mesure \textit{Faking} sur le FPGA ;
+\item \textbf{\textit{MATLAB}} (\textit{MATrix LABoratory}) pour d'une part la mise en application de l'attaque CPA et d'autre part les simulations et réalisations de graphes utiles à la compréhension des notions théoriques. \\
+\end{itemize}
+
+
+\section{Procédure de chiffrement et configuration de l'oscilloscope}
+\label{sec:config_chiff}
+
+\hspace{-0.5cm}La liste du matériel nécessaire pour le chiffrement de messages clairs est présentée ci-dessous : 
+
+\hspace{-0.5cm}\textbf{Un device cryptographique} : le device cryptographique employé pour implémenter l'algorithme AES-256 est un FPGA. Plus précisément, il s'agit d'une carte de test spécialement conçue pour de la recherche et développement dans le domaine de la sécurité matérielle. Cette carte, visible sur la figure \ref{fig:sakura} et portant le nom \textit{SAKURA-G}, est en effet utilisée pour réaliser des attaques par canaux cachés mais également d'autres types d'attaques physiques comme les attaques par injections de fautes, etc. Cette carte intègre deux FPGAs de la famille \textit{Spartan-6} : l'un est utilisé comme contrôleur (\textit{Controller FPGA}) et l'autre comme circuit principal de sécurité (\textit{Main FPGA}). Pour la réalisation de ce travail, le FPGA principal est configuré pour chiffrer des données (il implémente l'algorithme AES-256) tandis que le contrôleur est utilisé pour gérer la communication entre le FPGA principal et l'ordinateur. La fréquence d'horloge pour ces deux FPGA est de 48 MHz. Il est à noter qu'il existe trois points de mesures sur la carte SAKURA-G pour analyser la consommation de puissance du FPGA principal. Ces trois connecteurs SMA (\textit{SubMiniature version A}) sont visibles sur la figure \ref{fig:sakura} et plus précisément sur la figure \ref{fig:mesurePoints}. À l'inverse des connecteurs $J_1$ et $J_2$, le connecteur $J_3$ amplifie la consommation de puissance du FPGA principal (section \ref{sec:CPA}). Enfin, cette carte peut être alimentée de deux façons différentes : soit par le port USB soit par une alimentation externe.
+
+\newpage
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.69]{image/Sakura}
+    \caption{Carte SAKURA-G.}
+    \label{fig:sakura} 
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.62]{image/points_mesures}
+    \caption{Les trois points de mesures utilisés pour déterminer la consommation de puissance (la tension pour être exact) du FPGA principal.}
+    \label{fig:mesurePoints} 
+\end{figure}
+
+\hspace{-0.5cm}\textbf{Alimentation de laboratoire} : Comme précisé ci-avant, il existe deux moyen d'alimenter la carte SAKURA-G : soit par l'interface du port USB, soit par une alimentation externe. Par expérience d'un ancien étudiant, il s'avère que l'alimentation via le port USB est instable, ce qui rend l'analyse de la consommation de puissance plus compliquée. Pour cette raison, une alimentation de laboratoire est utilisée et alimente la carte en $5V\pm 5\%$ (avec courant limité à 3A).  
+
+\hspace{-0.5cm}\textbf{Oscilloscope} : L'oscilloscope est l'instrument de mesure utilisé pour capturer la consommation de puissance du device cryptographique (FPGA) lorsque celui-ci est en cours de chiffrement. L'oscilloscope utilisé est un Picoscope de la série 5000D possédant deux canaux de mesures (A et B) (voir figure \ref{fig:picoscope}). Ce Picoscope possède une bande passante de 200 MHz et un échantillonnage pouvant aller jusqu'à 1 Gé/s. Sa résolution peut être configurée sur 8, 12, 14, 15 ou 16 bits. La particularité de cet oscilloscope est que l'affichage, les commandes et l'alimentation (USB) s'effectuent exclusivement à partir de l'ordinateur auquel il est branché. Il existe une interface logicielle (voir figure \ref{fig:picoscope_interface}) permettant de le configurer. Cependant pour la réalisation de ce travail, l'oscilloscope sera configuré et utilisé via un script python (utilisant une librairie en référence à ce Picoscope). Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Picoscope utilisés dans ce travail pour la prise des mesures sur le FPGA.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.38]{image/picoscope}
+    \caption{Le Picoscope est l'instrument de mesure utilisé pour analyser la consommation de puissance (tension) du FPGA.}
+    \label{fig:picoscope} 
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.45]{image/picoscope_interface}
+    \caption{Interface logicielle du Picoscope présentant une trace de puissance du FPGA en cours de chiffrement.}
+    \label{fig:picoscope_interface} 
+\end{figure}
+
+\begin{table}[htbp]
+	\hspace{-1.2cm}
+	\begin{tabular}{|c||c|c|c|c|}
+    		\hline
+  		  \textbf{Canal} &\textbf{ Couplage} & \textbf{Plage de tension ($mv$)} & \textbf{Résolution} & \textbf{Nombre d'échantillons} \\ \hline 
+		  Canal A & AC & \pm200 & 12 bits & 755\\ \hline 
+  		  Canal B &  / & / & / & / \\ \hline \hline 
+ 		  \textbf{Canal} &  \textbf{Seuil de déclenchement ($mv$)} & \textbf{Sur flanc} & \textbf{délai ($ms$)} & \textbf{Post trigger ($ns$)} \\ \hline
+ 		  Canal Ext &  40 & montant & 3000 & 1510 \\ \hline
+	\end{tabular}
+    	\caption{Paramètres des canaux A, B et Ext du Picoscope.}
+    	\label{tab:picoscope} 
+\end{table}
+
+
+\newpage
+
+\hspace{-0.5cm}\textbf{Ordinateur} : 
+
+
+\newpage
+
+\hspace{-0.5cm}La figure \ref{fig:procedure_1} décrit la procédure générale utilisée pour configurer les différents systèmes informatiques employés (FPGA, oscilloscope, ordinateur) ainsi que pour chiffrer différents messages clairs. Cette procédure se compose de six étapes décrites ci-après. Pour cette procédure, on considère que le code VHDL de l'algorithme AES-256 est déjà implémenté sur le FPGA. 
+\begin{enumerate}
+\item Configuration du protocole de communication entre l'oscilloscope et l'ordinateur (Python)  ;
+\item Configuration du protocole de communication entre le FPGA et l'ordinateur (Python) ;
+\item Envoi de la clé de chiffrement ($K$) et d'un texte clair ($P$) au FPGA depuis l'ordinateur (Python)  ;
+\item Chiffrement du message clair sur le FPGA et génération d'un trigger par la FPGA pour aligner les traces sur l'oscilloscope (VHDL) ;
+\item Une fois le chiffrement du message clair terminé :
+\begin{enumerate}
+\item Sauvegarde sur ordinateur de la trace de puissances capturée à l'oscilloscope (Python) ;
+\item Sauvegarde sur ordinateur du message chiffré par le FPGA (Python) ;
+\end{enumerate}
+\item Étant donné qu'il faut envoyer un grand nombre (N) de messages clairs au FPGA pour que l'attaque CPA fonctionne (voir section \ref{sec:CPA}) : répétition des étapes 3 à 5 jusqu'à ce le nombre de messages clairs à envoyés soit atteint.
+\end{enumerate}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.6]{image/procedure_1}
+    \caption{Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.}
+    \label{fig:procedure_1} 
+\end{figure}
+
+
+\newpage
 
 \section{Configuration de l'attaque CPA}
-\label{sec:Introduction}
+\label{sec:CPA_App}
+
+\hspace{-0.5cm}La figure \ref{} ci-dessous décrit la procédure générale utilisée pour appliquer une attaque CPA sur l'implémentation de l'algorithme AES-256 sur un FPGA. Cette procédure se compose de six étapes décrites ci-après. Pour cette procédure, on considère que l'enregistrement des traces (procédure précédente) a déjà été réalisé. De plus, cette procédure est entièrement réalisée avec le logiciel MATLAB.
+\begin{enumerate}
+\item Récupération et chargement des traces de puissance capturées à l'oscilloscope ;
+\item Récupération et chargement des $N$ messages clairs envoyés au FPGA pour être chiffrés ;
+\item Simulation des opérations \textit{AddRoundKey} et \textit{SubBytes} permettant de tester toutes les valeurs de clés possibles ;
+\item Prédiction de la puissance consommée par utilisation d'un modèle de puissance (Poids de Hamming) ;
+\item Calcul de la corrélation entre les traces de puissance et les prédictions de consommation ;
+\item Détermination de la clé secrète sur base de la corrélation maximum ;
+\end{enumerate}
 
 \newpage
 
