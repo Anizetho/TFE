@@ -33,10 +33,13 @@
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Valeur de la clé obtenue avec implémentation d'une contre-mesure faking.\relax }}{37}{figure.caption.37}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Carte SAKURA-G.\relax }}{40}{figure.caption.38}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Les trois points de mesures utilisés pour déterminer la consommation de puissance (la tension pour être exact) du FPGA principal.\relax }}{40}{figure.caption.39}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Les trois points de mesures prévus pour analyser la consommation de puissance (la tension pour être exact) du FPGA principal.\relax }}{40}{figure.caption.39}
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Le Picoscope est l'instrument de mesure utilisé pour analyser la consommation de puissance (tension) du FPGA.\relax }}{41}{figure.caption.40}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Interface logicielle du Picoscope présentant une trace de puissance du FPGA en cours de chiffrement.\relax }}{41}{figure.caption.41}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{43}{figure.caption.43}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Interface logicielle utilisée pour le Picoscope. La trace de puissance affichée correspond à l'exécution de l'algorithme AES-256 sur le FPGA.\relax }}{41}{figure.caption.41}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Formules permettant de déterminer le nombre d'échantillons dans une trace en fonction de la résolution, du \textit {timebase} et du nombreux de canaux activés (tableaux tirés de la \textit {datasheet}).\relax }}{42}{figure.caption.43}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Matériel nécessaire pour la mise en oeuvre d'une attaque CPA.\relax }}{43}{figure.caption.44}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{43}{figure.caption.45}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{44}{figure.caption.46}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -187,28 +187,35 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Valeur de la clé obtenue avec implémentation d'une contre-mesure faking.\relax }}{37}{figure.caption.37}}
 \newlabel{fig:fakingExemple}{{5.6}{37}{Valeur de la clé obtenue avec implémentation d'une contre-mesure faking.\relax }{figure.caption.37}{}}
 \@writefile{toc}{\contentsline {part}{II\hspace  {1em}Mise en application}{38}{part.2}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Mise en oeuvre de l'attaque}{39}{chapter.6}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Mise en oeuvre de l'attaque CPA}{39}{chapter.6}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:config}{{6}{39}{Mise en oeuvre de l'attaque}{chapter.6}{}}
+\newlabel{chap:config}{{6}{39}{Mise en oeuvre de l'attaque CPA}{chapter.6}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6.1}Langages de programmation}{39}{section.6.1}}
 \newlabel{sec:langages}{{6.1}{39}{Langages de programmation}{section.6.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6.2}Procédure de chiffrement et configuration de l'oscilloscope}{39}{section.6.2}}
 \newlabel{sec:config_chiff}{{6.2}{39}{Procédure de chiffrement et configuration de l'oscilloscope}{section.6.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Carte SAKURA-G.\relax }}{40}{figure.caption.38}}
 \newlabel{fig:sakura}{{6.1}{40}{Carte SAKURA-G.\relax }{figure.caption.38}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Les trois points de mesures utilisés pour déterminer la consommation de puissance (la tension pour être exact) du FPGA principal.\relax }}{40}{figure.caption.39}}
-\newlabel{fig:mesurePoints}{{6.2}{40}{Les trois points de mesures utilisés pour déterminer la consommation de puissance (la tension pour être exact) du FPGA principal.\relax }{figure.caption.39}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Les trois points de mesures prévus pour analyser la consommation de puissance (la tension pour être exact) du FPGA principal.\relax }}{40}{figure.caption.39}}
+\newlabel{fig:mesurePoints}{{6.2}{40}{Les trois points de mesures prévus pour analyser la consommation de puissance (la tension pour être exact) du FPGA principal.\relax }{figure.caption.39}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Le Picoscope est l'instrument de mesure utilisé pour analyser la consommation de puissance (tension) du FPGA.\relax }}{41}{figure.caption.40}}
 \newlabel{fig:picoscope}{{6.3}{41}{Le Picoscope est l'instrument de mesure utilisé pour analyser la consommation de puissance (tension) du FPGA.\relax }{figure.caption.40}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Interface logicielle du Picoscope présentant une trace de puissance du FPGA en cours de chiffrement.\relax }}{41}{figure.caption.41}}
-\newlabel{fig:picoscope_interface}{{6.4}{41}{Interface logicielle du Picoscope présentant une trace de puissance du FPGA en cours de chiffrement.\relax }{figure.caption.41}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Paramètres des canaux A, B et Ext du Picoscope.\relax }}{42}{table.caption.42}}
-\newlabel{tab:picoscope}{{6.1}{42}{Paramètres des canaux A, B et Ext du Picoscope.\relax }{table.caption.42}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{43}{figure.caption.43}}
-\newlabel{fig:procedure_1}{{6.5}{43}{Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Interface logicielle utilisée pour le Picoscope. La trace de puissance affichée correspond à l'exécution de l'algorithme AES-256 sur le FPGA.\relax }}{41}{figure.caption.41}}
+\newlabel{fig:picoscope_interface}{{6.4}{41}{Interface logicielle utilisée pour le Picoscope. La trace de puissance affichée correspond à l'exécution de l'algorithme AES-256 sur le FPGA.\relax }{figure.caption.41}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Paramètres de configuration pour les canaux A, B et Ext du Picoscope.\relax }}{42}{table.caption.42}}
+\newlabel{tab:picoscope}{{6.1}{42}{Paramètres de configuration pour les canaux A, B et Ext du Picoscope.\relax }{table.caption.42}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Formules permettant de déterminer le nombre d'échantillons dans une trace en fonction de la résolution, du \textit  {timebase} et du nombreux de canaux activés (tableaux tirés de la \textit  {datasheet}).\relax }}{42}{figure.caption.43}}
+\newlabel{fig:samplingData}{{6.5}{42}{Formules permettant de déterminer le nombre d'échantillons dans une trace en fonction de la résolution, du \textit {timebase} et du nombreux de canaux activés (tableaux tirés de la \textit {datasheet}).\relax }{figure.caption.43}{}}
+\newlabel{eqn:sampling}{{6.1}{42}{Procédure de chiffrement et configuration de l'oscilloscope}{equation.6.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Matériel nécessaire pour la mise en oeuvre d'une attaque CPA.\relax }}{43}{figure.caption.44}}
+\newlabel{fig:matos}{{6.6}{43}{Matériel nécessaire pour la mise en oeuvre d'une attaque CPA.\relax }{figure.caption.44}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{43}{figure.caption.45}}
+\newlabel{fig:procedure_1}{{6.7}{43}{Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }{figure.caption.45}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6.3}Configuration de l'attaque CPA}{44}{section.6.3}}
 \newlabel{sec:CPA_App}{{6.3}{44}{Configuration de l'attaque CPA}{section.6.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{44}{figure.caption.46}}
+\newlabel{fig:procedure_2}{{6.8}{44}{Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }{figure.caption.46}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {7}Mise en application d'une attaque CPA (\textit  {Correlation Power Analysis})}{45}{chapter.7}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -240,8 +247,8 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \citation{*}
 \bibdata{Stage}
-\@writefile{toc}{\contentsline {section}{Crédits}{49}{section*.45}}
-\@writefile{toc}{\contentsline {section}{Références}{49}{section*.46}}
+\@writefile{toc}{\contentsline {section}{Crédits}{49}{section*.48}}
+\@writefile{toc}{\contentsline {section}{Références}{49}{section*.49}}
 \bibcite{Complete}{1}
 \bibcite{SCA}{2}
 \bibcite{advanced}{3}
@@ -262,22 +269,22 @@
 \bibcite{test}{18}
 \bibcite{wiki}{19}
 \bibstyle{unsrt}
-\@writefile{toc}{\contentsline {chapter}{Annexes}{52}{section*.46}}
+\@writefile{toc}{\contentsline {chapter}{Annexes}{52}{section*.49}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{ann:CESAR}{{A.1}{53}{Chiffre de César}{section.a.A.1}{}}
-\newlabel{tab:CESAR}{{A.1}{53}{Chiffre de César.\relax }{table.caption.48}{}}
-\newlabel{tab:CesarEx}{{A.2}{53}{Exemple de chiffre de César.\relax }{table.caption.49}{}}
+\newlabel{tab:CESAR}{{A.1}{53}{Chiffre de César.\relax }{table.caption.51}{}}
+\newlabel{tab:CesarEx}{{A.2}{53}{Exemple de chiffre de César.\relax }{table.caption.52}{}}
 \newlabel{ann:AES128}{{A.2}{54}{Code algorithme AES-128 - Ordre d'exécution des opérations}{section.a.A.2}{}}
 \newlabel{ann:AES256}{{A.3}{55}{Code algorithme AES-256 - Ordre d'exécution des opérations}{section.a.A.3}{}}
 \newlabel{ann:Sbox}{{A.4}{56}{Sbox - Table de substitution}{section.a.A.4}{}}
-\newlabel{fig:Sbox}{{A.3}{56}{La Sbox représente une table de substitution utilisée pour l'opération non-linéaire SubBytes de l'algorithme AES. À chaque donnée hexadécimale d'entrée correspond une donnée hexadécimale de sortie.\relax }{table.caption.52}{}}
+\newlabel{fig:Sbox}{{A.3}{56}{La Sbox représente une table de substitution utilisée pour l'opération non-linéaire SubBytes de l'algorithme AES. À chaque donnée hexadécimale d'entrée correspond une donnée hexadécimale de sortie.\relax }{table.caption.55}{}}
 \newlabel{ann:KeySchedule}{{A.5}{57}{Opération \textit {KeySchedule}}{section.a.A.5}{}}
-\newlabel{fig:KeySchedule1}{{A.1}{57}{Principe de fonctionnement de l'opération \textit {KeySchedule}.\relax }{figure.caption.53}{}}
+\newlabel{fig:KeySchedule1}{{A.1}{57}{Principe de fonctionnement de l'opération \textit {KeySchedule}.\relax }{figure.caption.56}{}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{ann:traceExplain}{{B.1}{59}{Représentation des traces de puissance prises à l'oscilloscope}{section.a.B.1}{}}
-\newlabel{fig:traceExplain}{{B.1}{60}{La figure du haut représente une trace de puissance (i.e 1 plaintext utilisé) dans laquelle on retrouve 9 échantillons. La figure du bas représente N traces de puissance dans lesquelles on retrouve également 9 échantillons. En pratique, le nombre d'échantillons dans une trace de puissance est beaucoup plus élevé (de l'ordre de 10000) et sera noté par la lettre S (pour \textit {Sampling}).\relax }{figure.caption.54}{}}
+\newlabel{fig:traceExplain}{{B.1}{60}{La figure du haut représente une trace de puissance (i.e 1 plaintext utilisé) dans laquelle on retrouve 9 échantillons. La figure du bas représente N traces de puissance dans lesquelles on retrouve également 9 échantillons. En pratique, le nombre d'échantillons dans une trace de puissance est beaucoup plus élevé (de l'ordre de 10000) et sera noté par la lettre S (pour \textit {Sampling}).\relax }{figure.caption.57}{}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{ann:resume_hiding}{{C.1}{62}{Contre-mesures \textit {Hiding}}{section.a.C.1}{}}

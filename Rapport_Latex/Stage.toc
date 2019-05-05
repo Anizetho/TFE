@@ -37,7 +37,7 @@
 \contentsline {subsection}{\numberline {5.4.1}Définition}{34}{subsection.5.4.1}
 \contentsline {subsection}{\numberline {5.4.2}Points faibles et améliorations}{36}{subsection.5.4.2}
 \contentsline {part}{II\hspace {1em}Mise en application}{38}{part.2}
-\contentsline {chapter}{\numberline {6}Mise en oeuvre de l'attaque}{39}{chapter.6}
+\contentsline {chapter}{\numberline {6}Mise en oeuvre de l'attaque CPA}{39}{chapter.6}
 \contentsline {section}{\numberline {6.1}Langages de programmation}{39}{section.6.1}
 \contentsline {section}{\numberline {6.2}Procédure de chiffrement et configuration de l'oscilloscope}{39}{section.6.2}
 \contentsline {section}{\numberline {6.3}Configuration de l'attaque CPA}{44}{section.6.3}
@@ -53,6 +53,6 @@
 \contentsline {section}{\numberline {9.1}Évaluation par métriques}{47}{section.9.1}
 \contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{47}{section.9.2}
 \contentsline {chapter}{\numberline {10}Conclusion}{48}{chapter.10}
-\contentsline {section}{Crédits}{49}{section*.45}
-\contentsline {section}{Références}{49}{section*.46}
-\contentsline {chapter}{Annexes}{52}{section*.46}
+\contentsline {section}{Crédits}{49}{section*.48}
+\contentsline {section}{Références}{49}{section*.49}
+\contentsline {chapter}{Annexes}{52}{section*.49}
