@@ -1288,14 +1288,14 @@ Ce chapitre décrit la mise en oeuvre de l'attaque CPA. Une description des diff
     \label{fig:mesurePoints} 
 \end{figure}
 
-\hspace{-0.5cm}\textbf{Alimentation de laboratoire} : Comme précisé ci-avant, il existe deux moyens d'alimenter la carte SAKURA-G : soit par l'interface du port USB, soit par une alimentation externe. Par expérience d'un ancien étudiant, il s'avère que l'alimentation via le port USB est instable, ce qui rend l'analyse de la consommation de puissance plus compliquée. Pour cette raison, une alimentation de laboratoire est utilisée et alimente la carte en $5V\pm 5\%$ (avec courant limité à 3A).  
+\hspace{-0.5cm}\textbf{Alimentation de laboratoire} : Comme précisé ci-avant, il existe deux moyens d'alimenter la carte SAKURA-G : soit par l'interface du port USB, soit par une alimentation externe. Par expérience d'un ancien étudiant, il s'avère que l'alimentation via le port USB est instable, ce qui rend l'analyse de la consommation de puissance plus compliquée. Pour cette raison, une alimentation de laboratoire est utilisée et alimente la carte en $5V\pm 5\%$ (avec un courant limité à 3A).  
 
-\hspace{-0.5cm}\textbf{Oscilloscope} : L'oscilloscope est l'instrument de mesure utilisé pour capturer la consommation de puissance du device cryptographique (FPGA) lorsque celui-ci est en cours de chiffrement. L'oscilloscope utilisé est un Picoscope de la série 5000D possédant deux canaux de mesures (A et B), un \textit{trigger} externe (synchronisation de signaux sur base d'un "déclencheur" externe) et un canal prévu comme générateur de signaux (voir figure \ref{fig:picoscope}). Ce Picoscope possède une bande passante de 200 MHz et un échantillonnage pouvant aller jusqu'à 1 Gé/s. Sa résolution peut être configurée sur 8, 12, 14, 15 ou 16 bits. La particularité de cet oscilloscope est que l'affichage, les commandes et l'alimentation (USB) s'effectuent exclusivement à partir de l'ordinateur auquel il est branché. Il existe une interface logicielle (voir figure \ref{fig:picoscope_interface}) permettant de le configurer. Cependant pour la réalisation de ce travail, l'oscilloscope sera configuré et utilisé via un script python (utilisant une librairie en référence à ce Picoscope).
+\hspace{-0.5cm}\textbf{Oscilloscope} : L'oscilloscope est l'instrument de mesure utilisé pour capturer la consommation de puissance du device cryptographique (FPGA) lorsque celui-ci est en cours de chiffrement. L'oscilloscope utilisé est un Picoscope de la série 5000D possédant deux canaux de mesures (A et B), un \textit{trigger} externe (permettant la synchronisation de signaux sur base d'un "déclencheur" externe) et un canal prévu pour générer certaines formes de signaux (voir figure \ref{fig:picoscope}). Ce Picoscope possède une bande passante de 200 MHz et un échantillonnage pouvant aller jusqu'à 1 Gé/s. Sa résolution peut être configurée sur 8, 12, 14, 15 ou 16 bits. La particularité de cet oscilloscope est que l'affichage, les commandes et l'alimentation (USB) s'effectuent exclusivement à partir de l'ordinateur auquel il est branché. Il existe une interface logicielle (voir figure \ref{fig:picoscope_interface}) permettant de le configurer. Cependant pour la réalisation de ce travail, l'oscilloscope sera configuré et utilisé via un script python (utilisant une librairie en référence à ce Picoscope).
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.38]{image/picoscope}
-    \caption{Le Picoscope est l'instrument de mesure utilisé pour analyser la consommation de puissance (tension) du FPGA.}
+    \caption{Le Picoscope est l'instrument de mesure utilisé pour analyser la consommation de puissance (la tension pour être exact) du FPGA.}
     \label{fig:picoscope} 
 \end{figure}
 
@@ -1306,7 +1306,7 @@ Ce chapitre décrit la mise en oeuvre de l'attaque CPA. Une description des diff
     \label{fig:picoscope_interface} 
 \end{figure}
 
-Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Picoscope utilisés dans ce travail pour la prise de mesures sur le FPGA. Seul le canal A est utilisé pour la prise de mesures. Le canal Ext est utilisé pour capter le \textit{trigger} généré par le FPGA, permettant ainsi d'aligner (synchroniser) les traces entre elles. Le canal B a initialement été utilisé pour capter le \textit{trigger} cependant cela avait pour conséquence négative de réduire la résolution. De cette façon, le canal Ext constitue une alternative intéressante. Concernant les paramètres de configuration du canal A, le nombre d'échantillons peut être calculé grâce à l'équation \ref{eqn:sampling}. Concernant le canal Ext, le délai représente le temps d'attente du programme (servant à enregistrer les traces) si aucun trigger n'est détecté. Autrement dit, si le canal Ext ne détecte pas à 40 mv un flanc montant, il va patienter durant 3 secondes. Une fois ce délai dépassé, Le FPGA génère un nouveau trigger. Enfin, le paramètre \textit{post trigger} du canal Ext détermine le temps durant lequel le Picoscope analyse le signal mesuré sur la canal A après que le trigger ait été détecté. Autrement dit, ce paramètre définit la largeur de la fenêtre de mesure (dans ce cas, elle vaut 1510 ns). 
+Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Picoscope utilisés dans ce travail pour la prise de mesures sur le FPGA. Seul le canal A est utilisé pour la mesure de la consommation. Le canal Ext est utilisé pour détecter le \textit{trigger} généré par le FPGA. Ce \textit{trigger} permet d'aligner (synchroniser) les traces entre elles, ce qui est nécessaire pour analyser correctement la corrélation entre les traces de puissance et les prédictions de puissance (voir section \ref{sec:CPA}). Le canal B a initialement été utilisé pour détecter le \textit{trigger} cependant cela avait pour conséquence négative de réduire la résolution des traces. pour cette raison, le canal Ext constitue une alternative intéressante. Concernant les paramètres de configuration du canal A, le nombre d'échantillons peut être calculé grâce à l'équation \ref{eqn:sampling}. Concernant le canal Ext, le délai représente le temps d'attente du programme (servant à enregistrer les traces) si aucun trigger n'est détecté. Autrement dit, si le canal Ext ne détecte pas à 40 mv un flanc montant, il va patienter durant 3 secondes. Une fois ce délai dépassé, Le FPGA génère un nouveau trigger. Enfin, le paramètre \textit{post trigger} du canal Ext détermine le temps durant lequel le Picoscope analyse le signal mesuré sur la canal A après que le trigger ait été détecté. Autrement dit, ce paramètre définit la largeur de la fenêtre de mesure (dans ce cas, elle vaut 1510 ns). 
 
 \begin{table}[htbp]
 	\hspace{-1.2cm}
@@ -1327,24 +1327,24 @@ Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Pic
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=1.45]{image/samplingData}
-    \caption{Formules permettant de déterminer le nombre d'échantillons dans une trace en fonction de la résolution, du \textit{timebase} et du nombreux de canaux activés (tableaux tirés de la \textit{datasheet}).}
+    \caption{Formules permettant de déterminer intervalle de temps entre chaque échantillon (tableaux repris de la \textit{datasheet}).}
     \label{fig:samplingData} 
 \end{figure}
 
 \hspace{-0.5cm}Selon la figure \ref{fig:samplingData}, pour une résolution sur 12 bits et pour un \textit{timebase} de 1, l'intervalle de temps entre chaque échantillon dans une trace vaut 2 ns. De plus, si on considère que la largeur de la fenêtre de mesure vaut 1500 ns, alors on obtient le résultat suivant (\ref{eqn:sampling}) : 
 \begin{gather}
-	 Nombre d'échantillons = \frac{1500}{2} = 755 \label{eqn:sampling}
+	 Nombre d'echantillons = \frac{Valeur \ Post \ trigger}{Intervalle \ de \ temps \ entre \ 2 \ echantillons} = \frac{1500}{2} = 755 \label{eqn:sampling}
 \end{gather}
 
-\hspace{-0.5cm}\textbf{Ordinateur} : D'une part, l'ordinateur permet de sauvegarder toutes les données provenant de l'oscilloscope (les traces) mais aussi toutes les données provenant du FPGA (les textes chiffrés). D'autre part, l'ordinateur fournit la puissance de calcul nécessaire à l'exécution des différents scripts (python, matlab) utiles pour l'analyse de données. Les différents scripts écrits en Python et sous Matlab sont mentionnés ci-après.
+\hspace{-0.5cm}\textbf{Ordinateur} : D'une part, l'ordinateur est utilisé pour configurer et sauvegarder toutes les données provenant de l'oscilloscope (les traces) mais aussi toutes les données provenant du FPGA (les textes chiffrés). D'autre part, l'ordinateur fournit la puissance de calcul nécessaire à l'exécution des différents scripts (python, matlab) utiles pour l'analyse de données. Ces différents scripts écrits en Python et sous Matlab sont mentionnés ci-après.
 
 \newpage
 
-\hspace{-0.5cm}La figure \ref{fig:matos} regroupe les différents outils/matériels pour la mise en oeuvre de l'attaque CPA. 
+\hspace{-0.5cm}La figure \ref{fig:matos} regroupe les différents matériels/instruments de mesure cités précédemment et utilisés d'une part pour chiffrer des données claires et récupérer les résultats s'y rapportant (textes chiffrés) et d'autre part pour mesurer la consommation de puissance du device cryptographique lorsque celui-ci est en cours de chiffrement.
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.9]{image/matos}
-    \caption{Matériel nécessaire pour la mise en oeuvre d'une attaque CPA.}
+    \caption{Banc de mesures en laboratoire.}
     \label{fig:matos} 
 \end{figure}
 
@@ -1359,7 +1359,7 @@ Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Pic
 \item Sauvegarde sur ordinateur de la trace de puissances capturée à l'oscilloscope (Python) ;
 \item Sauvegarde sur ordinateur du message chiffré par le FPGA (Python) ;
 \end{enumerate}
-\item Étant donné qu'il faut envoyer un grand nombre (N) de messages clairs au FPGA pour que l'attaque CPA fonctionne (voir section \ref{sec:CPA}) : répétition des étapes 3 à 5 jusqu'à ce le nombre de messages clairs à envoyés soit atteint.
+\item Étant donné qu'il faut envoyer un grand nombre ($N$) de messages clairs au FPGA pour que l'attaque CPA fonctionne aisément (voir section \ref{sec:CPA}) : répétition des étapes 3 à 5 jusqu'à ce le nombre de messages clairs à envoyés ($N$) soit atteint.
 \end{enumerate}
 
 \begin{figure}[htbp]
@@ -1375,13 +1375,13 @@ Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Pic
 \section{Configuration de l'attaque CPA}
 \label{sec:CPA_App}
 
-\hspace{-0.5cm}La figure \ref{fig:procedure_2} ci-dessous décrit la procédure générale utilisée pour appliquer une attaque CPA sur l'implémentation de l'algorithme AES-256 sur un FPGA. Cette procédure se compose de six étapes décrites ci-après. Pour cette procédure, on considère que l'enregistrement des traces (procédure précédente) a déjà été réalisé. De plus, cette procédure est entièrement réalisée avec le logiciel MATLAB.
+L'attaque CPA s'exécute uniquement via un script MATLAB. Ce script va d'une part reprendre les traces de puissance enregistrées à l'oscilloscope et d'autre part calculer des prédictions de puissance sur base des textes clairs envoyés au FPGA. La figure \ref{fig:procedure_2} ci-dessous décrit la procédure générale utilisée pour appliquer une attaque CPA sur l'implémentation de l'algorithme AES-256 pour un FPGA. Cette procédure se compose de six étapes décrites ci-après. Pour cette procédure, on considère que l'enregistrement des traces a déjà été réalisé (voir procédure précédente, section \ref{sec:config_chiff}).
 \begin{enumerate}
 \item Récupération et chargement des traces de puissance capturées à l'oscilloscope ;
 \item Récupération et chargement des $N$ messages clairs envoyés au FPGA pour être chiffrés ;
-\item Simulation des opérations \textit{AddRoundKey} et \textit{SubBytes} permettant de tester toutes les valeurs de clés possibles ;
-\item Prédiction de la puissance consommée par utilisation d'un modèle de puissance (Poids de \textit{Hamming}) ;
-\item Calcul de la corrélation entre les traces de puissance et les prédictions de consommation ;
+\item Simulation des opérations \textit{AddRoundKey} et \textit{SubBytes} pour tester toutes les valeurs de clés possibles ;
+\item Prédiction de la puissance consommée par le FPGA par utilisation d'un modèle de puissance (Poids de \textit{Hamming}) ;
+\item Calcul de la corrélation entre les traces de puissance et les prédictions de consommation de puissance ;
 \item Détermination de la clé secrète sur base de la corrélation maximum ;
 \end{enumerate}
 
@@ -1396,16 +1396,87 @@ Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Pic
 
 %%%%%%%%%%%%% Chapitre 7 %%%%%%%%%%%%%
 
-\chapter{Mise en application d'une attaque CPA (\textit{Correlation Power Analysis})}
+\chapter{Attaque CPA sur l'implémentation de l'AES-256}
+\label{chap:CPA_Result}
+
+Ce chapitre présente les résultats de l'attaque CPA sur l'implémentation de l'algorithme AES-256. Tout d'abord, une présentation de l'implémentation de l'algorithme AES-256 sur FPGA est présentée. Ensuite, des résultats de simulations d'une attaque CPA sont décrits. Ces simulations ont été réalisées à l'aide du logiciel MATLAB afin de bien appréhender les notions théoriques (voir partie 1). Enfin, les résultats expérimentaux de l'attaque CPA sur le FPGA sont présentés et discutés. 
+
+\section{Implémentation de l'algorithme AES-256 et du contrôleur}
+\label{sec:AES_256}
+
+Les codes \textit{VHDL} pour l'implémentation de l'algorithme AES-256 sur FPGA et pour l'implémentation du contrôleur sur FPGA ont été repris du travail d'un ancien étudiant stagiaire. La compréhension de ces codes est une tâche obligatoire pour pouvoir par la suite implémenter la contre-mesure de type \textit{faking} (chapitre \ref{chap:faking}). Comme présenté au chapitre \ref{chap:config}, la carte SAKURA-G est composée de deux FPGAs : 
+\begin{itemize}
+\item Le FPGA principal sur lequel est implémenté le code pour l'algorithme AES-256 ;
+\item Le FPGA secondaire utilisé comme contrôleur.
+\end{itemize}
+
+\hspace{-0.5cm}Les deux sous-sections suivantes présentent brièvement l'implémentation de l'AES-256 et l'implémentation du contrôleur.
+
+\subsection{Implémentation AES-256}
+\label{sec:Imp_AES_256}
+
+\hspace{-0.5cm}La figure \ref{fig:FPGA_AES_TOP} donne une représention haut niveau du bloc de chiffrement (AES-256).
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.29]{image/FPGA_AES_TOP}
+    \caption{Représentation haut niveau du bloc de chiffrement.}
+    \label{fig:FPGA_AES_TOP} 
+\end{figure}
+
+\hspace{-0.5cm}Le bloc de chiffrement prend donc en entrée un clé sur 256 bits et un message clair sur 128 bits. Le port \textit{start} en entrée permet de débuter le chiffrement alors que le port \textit{done} en sortie prévient quand le chiffrement est terminé. Enfin, précisons que le message chiffré sur 128 bits constitue le second port de sortie de ce bloc de chiffrement.
+
+\hspace{-0.5cm}La figure \ref{fig:FPGA_arch} présente l'architecture implémentée pour l'algorithme AES-256.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=1]{image/FPGA_arch}
+    \caption{Architecture de l'algorithme AES-256 implémentée sur le FPGA principal.}
+    \label{fig:FPGA_arch} 
+\end{figure}
+
+\hspace{-0.5cm}Dans cette architecture, chaque opération de l'AES (\textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}) est exécutée en un seul coup d'horloge. L'opération \textit{Key Schedule} compte quand à elle X coups d'horloge. Étant donné que l'AES-256 comprend 14 \textit{rounds} (voir section \ref{subsec:AES}), cette implémentation requiert donc 56+X coups d'horloge pour chiffrer un bloc de 128 bits.
+
+\subsection{Implémentation contrôleur}
+\label{sec:Imp_contrôleur}
+
+\hspace{-0.5cm}La figure \ref{fig:FPGA_Controler} présente le schéma-bloc de la chaine de communication entre l'ordinateur et le FPGA principal (bloc de chiffrement).
+\begin{figure}[htbp]
+    \hspace{-2cm}
+    \includegraphics[scale=0.56]{image/FPGA_Controler}
+    \caption{Chaine de communication entre le l'ordinateur et le FPGA principal.}
+    \label{fig:FPGA_Controler} 
+\end{figure}
+
+\hspace{-0.5cm}Dans cette architecture, chaque opération de l'AES (\textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}) est exécutée en un seul coup d'horloge. L'opération \textit{Key Schedule} compte quand à elle X coups d'horloge. Étant donné que l'AES-256 comprend 14 \textit{rounds} (voir section \ref{subsec:AES}), cette implémentation requiert donc 56+X coups d'horloge pour chiffrer un bloc de 128 bits.
+ 
+\newpage
+
+
 
 \section{Résultats de simulations}
-\label{sec:Introduction}
+\label{sec:Sim_results_CPA}
 
-\section{Résultats expérimentaux}
-\label{sec:Introduction}
+\subsection{Traces simulées}
+\label{sec:real_trace}
 
-\section{Conclusion}
-\label{sec:Introduction}
+\subsection{Traces simulées bruitées}
+\label{sec:filter}
+
+
+
+\section{Résultats expérimentaux }
+\label{sec:Exp_results_CPA}
+
+
+\subsection{Traces réelles brutes}
+\label{sec:real_trace}
+
+\subsection{Traces réelles filtrées}
+\label{sec:filter}
+
+\subsection{Taux de succès de l'attaque}
+\label{sec:success_rate}
+
+
 
 \newpage
 
@@ -1414,20 +1485,21 @@ Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Pic
 \chapter{Implémentation de la contre-mesure de type \textit{faking}}
 \label{chap:faking}
 
-\section{Développement de la contre-mesure}
-\label{sec:Introduction}
+\section{Résultats de simulations}
+\label{sec:Sim_results_Faking}
 
-\subsection{Résultats expérimentaux}
-\label{sec:Introduction}
+\section{Résultats expérimentaux}
+\label{sec:Exp_Results_Faking}
 
-\section{Conclusion}
-\label{sec:Introduction}
 
 \newpage
 
 %%%%%%%%%%%%% Chapitre 9 %%%%%%%%%%%%%
 
 \chapter{Évaluation des performances de la contre-mesure}
+
+\section{Simulations (\textit{testbench})}
+\label{sec:EvalSim}
 
 \section{Évaluation par métriques}
 \label{sec:EvalMetrics}

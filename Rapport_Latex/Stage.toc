@@ -2,7 +2,7 @@
 \contentsline {chapter}{Abstract}{I}{section*.1}
 \contentsline {chapter}{Remerciements}{III}{section*.3}
 \contentsline {chapter}{Cahier des charges}{IV}{section*.4}
-\contentsline {chapter}{Liste des acronymes}{X}{section*.5}
+\contentsline {chapter}{Liste des acronymes}{XI}{section*.5}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Présentation du problème}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Structure du travail}{3}{section.1.2}
@@ -41,18 +41,25 @@
 \contentsline {section}{\numberline {6.1}Langages de programmation}{39}{section.6.1}
 \contentsline {section}{\numberline {6.2}Procédure de chiffrement et configuration de l'oscilloscope}{39}{section.6.2}
 \contentsline {section}{\numberline {6.3}Configuration de l'attaque CPA}{44}{section.6.3}
-\contentsline {chapter}{\numberline {7}Mise en application d'une attaque CPA (\textit {Correlation Power Analysis})}{45}{chapter.7}
-\contentsline {section}{\numberline {7.1}Résultats de simulations}{45}{section.7.1}
-\contentsline {section}{\numberline {7.2}Résultats expérimentaux}{45}{section.7.2}
-\contentsline {section}{\numberline {7.3}Conclusion}{45}{section.7.3}
-\contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit {faking}}{46}{chapter.8}
-\contentsline {section}{\numberline {8.1}Développement de la contre-mesure}{46}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Résultats expérimentaux}{46}{subsection.8.1.1}
-\contentsline {section}{\numberline {8.2}Conclusion}{46}{section.8.2}
-\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{47}{chapter.9}
-\contentsline {section}{\numberline {9.1}Évaluation par métriques}{47}{section.9.1}
-\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{47}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusion}{48}{chapter.10}
-\contentsline {section}{Crédits}{49}{section*.48}
-\contentsline {section}{Références}{49}{section*.49}
-\contentsline {chapter}{Annexes}{52}{section*.49}
+\contentsline {chapter}{\numberline {7}Attaque CPA sur l'implémentation de l'AES-256}{45}{chapter.7}
+\contentsline {section}{\numberline {7.1}Implémentation de l'algorithme AES-256 et du contrôleur}{45}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Implémentation AES-256}{45}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Implémentation contrôleur}{46}{subsection.7.1.2}
+\contentsline {section}{\numberline {7.2}Résultats de simulations}{47}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Traces simulées}{47}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Traces simulées bruitées}{47}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Résultats expérimentaux }{47}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Traces réelles brutes}{47}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Traces réelles filtrées}{47}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Taux de succès de l'attaque}{47}{subsection.7.3.3}
+\contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit {faking}}{48}{chapter.8}
+\contentsline {section}{\numberline {8.1}Résultats de simulations}{48}{section.8.1}
+\contentsline {section}{\numberline {8.2}Résultats expérimentaux}{48}{section.8.2}
+\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{49}{chapter.9}
+\contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{49}{section.9.1}
+\contentsline {section}{\numberline {9.2}Évaluation par métriques}{49}{section.9.2}
+\contentsline {section}{\numberline {9.3}Évaluation par critères de performances}{49}{section.9.3}
+\contentsline {chapter}{\numberline {10}Conclusion}{50}{chapter.10}
+\contentsline {section}{Crédits}{51}{section*.51}
+\contentsline {section}{Références}{51}{section*.52}
+\contentsline {chapter}{Annexes}{54}{section*.52}
