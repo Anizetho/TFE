@@ -1252,7 +1252,7 @@ Reprenons l'exemple du chapitre précédent (chapitre \ref{chap:attaques}) où l
 \chapter{Mise en oeuvre de l'attaque CPA}
 \label{chap:config}
 
-Ce chapitre décrit la mise en oeuvre de l'attaque CPA. Une description des différents langages de programmation utilisés est tout d'abord abordée. Ensuite, deux sections sont respectivement réservées à la description de la configuration de l'oscilloscope et à la procédure mise en place pour le chiffrement des données ainsi qu'à une description de la configuration de l'attaque CPA.
+Ce chapitre décrit la mise en oeuvre de l'attaque CPA. Une description des différents langages de programmation utilisés est tout d'abord abordée. Ensuite, deux sections sont respectivement réservées à la description de la configuration de l'oscilloscope et à la procédure mise en place pour le chiffrement des données ainsi qu'une description de la configuration de l'attaque CPA.
 
 \section{Langages de programmation}
 \label{sec:langages}
@@ -1270,7 +1270,7 @@ Ce chapitre décrit la mise en oeuvre de l'attaque CPA. Une description des diff
 
 \hspace{-0.5cm}La liste du matériel nécessaire pour le chiffrement de messages clairs est présentée ci-dessous : 
 
-\hspace{-0.5cm}\textbf{Un device cryptographique} : le device cryptographique employé pour implémenter l'algorithme AES-256 est un FPGA. Plus précisément, il s'agit d'une carte de test spécialement conçue pour de la recherche et développement dans le domaine de la sécurité matérielle. Cette carte, visible sur la figure \ref{fig:sakura} et portant le nom \textit{SAKURA-G}, est effectivement utilisée pour réaliser des attaques par canaux cachés mais également d'autres types d'attaques physiques comme les attaques par injections de fautes, etc. Cette carte intègre deux FPGAs de la famille \textit{Spartan-6} : l'un est utilisé comme contrôleur (\textit{Controller FPGA}) et l'autre comme circuit principal de sécurité (\textit{Main FPGA}). Pour la réalisation de ce travail, le FPGA principal est configuré pour chiffrer des données (il implémente l'algorithme AES-256) tandis que le contrôleur est utilisé pour gérer la communication entre le FPGA principal et l'ordinateur. La fréquence d'horloge pour ces deux FPGA est de 48 MHz. Il est à noter que trois points de mesures sur la carte SAKURA-G sont prévus pour analyser la consommation de puissance du FPGA principal. Ces trois connecteurs SMA (\textit{SubMiniature version A}) sont visibles sur la figure \ref{fig:sakura} et plus précisément sur le schématique présenté à le figure \ref{fig:mesurePoints}. À l'inverse des connecteurs $J_1$ et $J_2$, le connecteur $J_3$ amplifie la consommation de puissance du FPGA principal (voir section \ref{sec:CPA}). Enfin, cette carte peut être alimentée de deux façons différentes : soit par l'interface du port USB soit par une alimentation externe.
+\hspace{-0.5cm}\textbf{Un device cryptographique} : le device cryptographique employé pour implémenter l'algorithme AES-256 est un FPGA. Plus précisément, il s'agit d'une carte de test spécialement conçue pour de la recherche et développement dans le domaine de la sécurité matérielle. Cette carte, visible sur la figure \ref{fig:sakura} et portant le nom \textit{SAKURA-G}, est effectivement utilisée pour réaliser des attaques par canaux cachés mais également d'autres types d'attaques physiques comme les attaques par injections de fautes, etc. Cette carte intègre deux FPGAs de la famille \textit{Spartan-6} : l'un est utilisé comme contrôleur (\textit{Controller FPGA}) et l'autre comme circuit principal de sécurité (\textit{Main FPGA}). Pour la réalisation de ce travail, le FPGA principal est configuré comme bloc de chiffrement (il implémente l'algorithme AES-256) tandis que le contrôleur est utilisé pour gérer la communication entre le FPGA principal et l'ordinateur. La fréquence d'horloge pour ces deux FPGA est de 48 MHz. Il est à noter que trois points de mesures sur la carte SAKURA-G sont prévus pour analyser la consommation de puissance du FPGA principal. Ces trois connecteurs SMA (\textit{SubMiniature version A}) sont visibles sur la figure \ref{fig:sakura} et plus précisément sur le schématique présenté à le figure \ref{fig:mesurePoints}. À l'inverse des connecteurs $J_1$ et $J_2$, le connecteur $J_3$ amplifie la consommation de puissance du FPGA principal (voir section \ref{sec:CPA}). Enfin, cette carte peut être alimentée de deux façons différentes : soit par l'interface du port USB soit par une alimentation externe.
 
 \newpage
 
@@ -1288,7 +1288,7 @@ Ce chapitre décrit la mise en oeuvre de l'attaque CPA. Une description des diff
     \label{fig:mesurePoints} 
 \end{figure}
 
-\hspace{-0.5cm}\textbf{Alimentation de laboratoire} : Comme précisé ci-avant, il existe deux moyens d'alimenter la carte SAKURA-G : soit par l'interface du port USB, soit par une alimentation externe. Par expérience d'un ancien étudiant, il s'avère que l'alimentation via le port USB est instable, ce qui rend l'analyse de la consommation de puissance plus compliquée. Pour cette raison, une alimentation de laboratoire est utilisée et alimente la carte en $5V\pm 5\%$ (avec un courant limité à 3A).  
+\hspace{-0.5cm}\textbf{Alimentation de laboratoire} : Comme précisé ci-avant, il existe deux façons d'alimenter la carte SAKURA-G : soit par l'interface du port USB, soit par une alimentation externe. Par expérience d'un ancien étudiant stagiaire, il s'avère que l'alimentation via le port USB est instable, ce qui rend l'analyse de la consommation de puissance plus compliquée. Pour cette raison, une alimentation de laboratoire est utilisée et alimente la carte en $5V\pm 5\%$ (avec un courant limité à 3A).  
 
 \hspace{-0.5cm}\textbf{Oscilloscope} : L'oscilloscope est l'instrument de mesure utilisé pour capturer la consommation de puissance du device cryptographique (FPGA) lorsque celui-ci est en cours de chiffrement. L'oscilloscope utilisé est un Picoscope de la série 5000D possédant deux canaux de mesures (A et B), un \textit{trigger} externe (permettant la synchronisation de signaux sur base d'un "déclencheur" externe) et un canal prévu pour générer certaines formes de signaux (voir figure \ref{fig:picoscope}). Ce Picoscope possède une bande passante de 200 MHz et un échantillonnage pouvant aller jusqu'à 1 Gé/s. Sa résolution peut être configurée sur 8, 12, 14, 15 ou 16 bits. La particularité de cet oscilloscope est que l'affichage, les commandes et l'alimentation (USB) s'effectuent exclusivement à partir de l'ordinateur auquel il est branché. Il existe une interface logicielle (voir figure \ref{fig:picoscope_interface}) permettant de le configurer. Cependant pour la réalisation de ce travail, l'oscilloscope sera configuré et utilisé via un script python (utilisant une librairie en référence à ce Picoscope).
 
@@ -1306,32 +1306,32 @@ Ce chapitre décrit la mise en oeuvre de l'attaque CPA. Une description des diff
     \label{fig:picoscope_interface} 
 \end{figure}
 
-Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Picoscope utilisés dans ce travail pour la prise de mesures sur le FPGA. Seul le canal A est utilisé pour la mesure de la consommation. Le canal Ext est utilisé pour détecter le \textit{trigger} généré par le FPGA. Ce \textit{trigger} permet d'aligner (synchroniser) les traces entre elles, ce qui est nécessaire pour analyser correctement la corrélation entre les traces de puissance et les prédictions de puissance (voir section \ref{sec:CPA}). Le canal B a initialement été utilisé pour détecter le \textit{trigger} cependant cela avait pour conséquence négative de réduire la résolution des traces. pour cette raison, le canal Ext constitue une alternative intéressante. Concernant les paramètres de configuration du canal A, le nombre d'échantillons peut être calculé grâce à l'équation \ref{eqn:sampling}. Concernant le canal Ext, le délai représente le temps d'attente du programme (servant à enregistrer les traces) si aucun trigger n'est détecté. Autrement dit, si le canal Ext ne détecte pas à 40 mv un flanc montant, il va patienter durant 3 secondes. Une fois ce délai dépassé, Le FPGA génère un nouveau trigger. Enfin, le paramètre \textit{post trigger} du canal Ext détermine le temps durant lequel le Picoscope analyse le signal mesuré sur la canal A après que le trigger ait été détecté. Autrement dit, ce paramètre définit la largeur de la fenêtre de mesure (dans ce cas, elle vaut 1510 ns). 
+Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Picoscope utilisés dans ce travail pour la prise de mesures sur le FPGA. Seul le canal A est utilisé pour la mesure de la tension. Le canal Ext est utilisé pour détecter le \textit{trigger} généré par le FPGA. Ce \textit{trigger} permet d'aligner (synchroniser) les traces entre elles, ce qui est nécessaire pour analyser correctement la corrélation entre les traces de puissance et les prédictions de puissance (voir section \ref{sec:CPA}). Le canal B a initialement été utilisé pour détecter le \textit{trigger} cependant cela avait pour conséquence négative de réduire la résolution des traces. Pour cette raison, le canal Ext constitue une alternative intéressante. Concernant les paramètres de configuration du canal A, le nombre d'échantillons peut être calculé grâce à l'équation \ref{eqn:sampling}. Concernant le canal Ext, le délai représente le temps d'attente du programme si aucun trigger n'est détecté. Autrement dit, si le canal Ext ne détecte pas à 40 mv un flanc montant, il va patienter durant 3 secondes. Une fois ce délai dépassé, Le FPGA génère un nouveau trigger. Enfin, le paramètre \textit{post trigger} du canal Ext détermine le temps durant lequel le Picoscope analyse le signal mesuré sur la canal A après que le trigger ait été détecté. Autrement dit, ce paramètre définit la largeur de la fenêtre de mesure (dans ce cas, elle vaut 1510 ns). 
 
 \begin{table}[htbp]
 	\hspace{-1.2cm}
 	\begin{tabular}{|c||c|c|c|c|}
     		\hline
-  		  \textbf{Canal} &\textbf{ Couplage} & \textbf{Plage de tension ($mv$)} & \textbf{Résolution} & \textbf{Nombre d'échantillons*} \\ \hline 
+  		  \textbf{Canal} &\textbf{ Couplage} & \textbf{Plage de tension (\si{\milli\volt})} & \textbf{Résolution} & \textbf{Nombre d'échantillons*} \\ \hline 
 		  Canal A & AC & \pm200 & 12 bits & 755\\ \hline 
   		  Canal B &  / & / & / & / \\ \hline \hline 
- 		  \textbf{Canal} &  \textbf{Seuil de déclenchement ($mv$)} & \textbf{Sur flanc} & \textbf{Délai ($ms$)} & \textbf{Post trigger ($ns$)} \\ \hline
- 		  Canal Ext &  40 & montant & 3000 & 1510 \\ \hline
+ 		  \textbf{Canal} &  \textbf{Seuil de déclenchement (\si{\milli\volt})} & \textbf{Sur flanc} & \textbf{Délai ($ms$)} & \textbf{Post trigger (\si{\nano\second})} \\ \hline
+ 		  Canal Ext &  40 & montant & 3000 & 1500 \\ \hline
 	\end{tabular}
     	\caption{Paramètres de configuration pour les canaux A, B et Ext du Picoscope.}
     	\label{tab:picoscope} 
 \end{table}
 
-\hspace{-0.5cm}*Pour déterminer le nombre d'échantillons capturés dans une trace, il faut se référer à la datasheet du Picoscope. En effet, ce nombre dépend de différents facteurs tels que la résolution, le \textit{timebase} ou encore le nombre de canaux activés. La figure \ref{fig:samplingData} présente pour des résolutions sur 8 bits et 12 bits, différentes formules permettant de déterminer l'intervalle de temps entre deux échantillons successifs dans une trace. L'équation \ref{eqn:sampling} permet de calculer le nombre d'échantillons capturés sur une trace pour une résolution de 12 bits et un \textit{timebase} de 1 (configuration utilisée pour ce travail).
+\hspace{-0.5cm}*Pour déterminer le nombre d'échantillons capturés dans une trace, il faut se référer à la datasheet du Picoscope. Ce nombre dépend effectivement de différents facteurs tels que la résolution, le \textit{timebase} ou encore le nombre de canaux activés. La figure \ref{fig:samplingData} présente pour des résolutions sur 8 bits et 12 bits, différentes formules permettant de déterminer l'intervalle de temps entre deux échantillons successifs dans une trace. L'équation \ref{eqn:sampling} permet de calculer le nombre d'échantillons capturés sur une trace pour une résolution de 12 bits et un \textit{timebase} de 1 (configuration utilisée pour ce travail).
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=1.45]{image/samplingData}
-    \caption{Formules permettant de déterminer intervalle de temps entre chaque échantillon (tableaux repris de la \textit{datasheet}).}
+    \caption{Formules permettant de déterminer l'intervalle d'échantillonnage (tableaux repris de la \textit{datasheet}).}
     \label{fig:samplingData} 
 \end{figure}
 
-\hspace{-0.5cm}Selon la figure \ref{fig:samplingData}, pour une résolution sur 12 bits et pour un \textit{timebase} de 1, l'intervalle de temps entre chaque échantillon dans une trace vaut 2 ns. De plus, si on considère que la largeur de la fenêtre de mesure vaut 1500 ns, alors on obtient le résultat suivant (\ref{eqn:sampling}) : 
+\hspace{-0.5cm}Selon la figure \ref{fig:samplingData}, pour une résolution sur 12 bits et pour un \textit{timebase} de 1, l'intervalle de temps entre chaque échantillon dans une trace vaut \SI{2}{\nano\second}. De plus, si on considère que la largeur de la fenêtre de mesure vaut 1500 ns, alors on obtient le résultat suivant (\ref{eqn:sampling}) : 
 \begin{gather}
 	 Nombre d'echantillons = \frac{Valeur \ Post \ trigger}{Intervalle \ de \ temps \ entre \ 2 \ echantillons} = \frac{1500}{2} = 755 \label{eqn:sampling}
 \end{gather}
@@ -1438,7 +1438,8 @@ Les codes \textit{VHDL} pour l'implémentation de l'algorithme AES-256 sur FPGA 
 \subsection{Implémentation contrôleur}
 \label{sec:Imp_contrôleur}
 
-\hspace{-0.5cm}La figure \ref{fig:FPGA_Controler} présente le schéma-bloc de la chaine de communication entre l'ordinateur et le FPGA principal (bloc de chiffrement).
+Un bloc de chiffrement (AES-256) est implémenté sur le FPGA principal. L'étape suivante est de trouver une façon d'envoyer des données claires à ce bloc de chiffrement et de recevoir en retour des données chiffrées. La solution est d'utiliser le second FPGA comme contrôleur. Ainsi, cette sous-section décrit brièvement la chaine de communication entre l'ordinateur et la bloc de chiffrement via ce contrôleur. La figure \ref{fig:FPGA_Controler} présente le schéma-bloc de cette chaine de communication. Quatre grands blocs sont parfaitement distinguables sur la figure : l'USB, la puce FT2232H, le contrôleur et le FPGA principal. La puce FT2232H est une puce se trouvant sur le carte SAKURA-G et qui permet de réaliser une communication série entre le FPGA et l'ordinateur via la port USB. Cette puce offre la capacité d'être configurée dans une grande variété d'interfaces standards. Voici quelques exemples de protocoles possibles avec cette puce : UART, 245 FIFO, SPI, JTAG, etc. Le protocole conseillé selon la \textit{datasheet} de la carte SAKURA-G et mis en place par l'étudiant stagiaire précédent est le protocole 245 FIFO Sync [\ref{ref:}]. Nous n'entrerons pas plus dans les détails cependant, pour communiquer les données depuis l'ordinateur vers le bloc de chiffrement, trois interfaces sont employées, chacune permettant de transférer 1 byte de données à la fois. 
+
 \begin{figure}[htbp]
     \hspace{-2cm}
     \includegraphics[scale=0.56]{image/FPGA_Controler}
@@ -1446,12 +1447,7 @@ Les codes \textit{VHDL} pour l'implémentation de l'algorithme AES-256 sur FPGA 
     \label{fig:FPGA_Controler} 
 \end{figure}
 
-\hspace{-0.5cm}From now, we have a complete implementation of AES-256-CBC and AES-256-GCM on FPGA. So, the next step is to find a way to send data to be decrypted or encrypted and receives the result back. So, this section aims to describe how the communication chain has been implemented between the FPGA and PC.
-In order to do that, the solution offers by the SAKURA-G board offers has been explored. The board provides a FT2232H chip which allows a serial communication between the FPGA and PC via a USB port. The FT2232H is FTDI’s 5th generation of USB devices and is a USB 2.0 Hi-Speed to UART/FIFO IC. It has the capability of being configured in a variety of industry standard serial or parallel interfaces. Here are listed some protocols handled by the chip : UART, 245 FIFO SYNC/ASYNC, SPI, JTAG, BIT BANG SYNC/ASYNC, ...
 
-
-Then, a choice has to be made to define the protocols that will be used for the data transfer. In the beginning, the UART protocol has been chosen which is the most common popular protocol for data transfer. However, by reading the data sheet of the SAKURA-G and the FT2232H, it was advised to use the 245 FIFO Sync mode when good performance (throughput) are needed. Since, the goal here is to send an entire file, the 245 FIFO Sync has been chosen. Only channel A can be configured as a FT245 style synchronous FIFO interface. When configured in this mode, channel B is not available as all resources have been switched onto channel A.
-This mode needs 14 pins to work. One pin deliver a clock of 60 MHz which must be used by the FPGA to communicate with the chip. Eight pins are intended to data and the others are control pins. The eight bits data bus is bidirectional. So it means that we cannot send or receive data at the same time. After setting up properly the control signals, one byte can be sent every clock cycle.
  
 \newpage
 
@@ -1471,7 +1467,7 @@ This mode needs 14 pins to work. One pin deliver a clock of 60 MHz which must be
 \section{Résultats expérimentaux }
 \label{sec:Exp_results_CPA}
 
-Cette section présente les résultats expérimentaux obtenus durant l'attaque CPA. 
+\hspace{-0.5cm}Cette section présente les résultats expérimentaux obtenus durant l'attaque CPA. 
 
 \subsection{Traces réelles brutes}
 \label{sec:real_trace}
