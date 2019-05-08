@@ -38,12 +38,14 @@
 \contentsline {figure}{\numberline {6.4}{\ignorespaces Interface logicielle utilisée pour le Picoscope. La trace de puissance affichée correspond à l'exécution de l'algorithme AES-256 sur le FPGA.\relax }}{41}{figure.caption.41}
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Formules permettant de déterminer intervalle de temps entre chaque échantillon (tableaux repris de la \textit {datasheet}).\relax }}{42}{figure.caption.43}
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Banc de mesures en laboratoire.\relax }}{43}{figure.caption.44}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{44}{figure.caption.45}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{43}{figure.caption.45}
 \contentsline {figure}{\numberline {6.8}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{44}{figure.caption.46}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {7.1}{\ignorespaces Représentation haut niveau du bloc de chiffrement.\relax }}{45}{figure.caption.47}
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Architecture de l'algorithme AES-256 implémentée sur le FPGA principal.\relax }}{46}{figure.caption.48}
 \contentsline {figure}{\numberline {7.3}{\ignorespaces Chaine de communication entre le l'ordinateur et le FPGA principal.\relax }}{47}{figure.caption.49}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{48}{figure.caption.50}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{49}{figure.caption.51}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

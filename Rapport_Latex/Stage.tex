@@ -1343,7 +1343,7 @@ Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Pic
 \hspace{-0.5cm}La figure \ref{fig:matos} regroupe les différents matériels/instruments de mesure cités précédemment et utilisés d'une part pour chiffrer des données claires et récupérer les résultats s'y rapportant (textes chiffrés) et d'autre part pour mesurer la consommation de puissance du device cryptographique lorsque celui-ci est en cours de chiffrement.
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.9]{image/matos}
+    \includegraphics[scale=0.35]{image/matos}
     \caption{Banc de mesures en laboratoire.}
     \label{fig:matos} 
 \end{figure}
@@ -1364,7 +1364,7 @@ Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Pic
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.6]{image/procedure_1}
+    \includegraphics[scale=0.53]{image/procedure_1}
     \caption{Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.}
     \label{fig:procedure_1} 
 \end{figure}
@@ -1375,7 +1375,7 @@ Le tableau \ref{tab:picoscope} présente les paramètres de configuration du Pic
 \section{Configuration de l'attaque CPA}
 \label{sec:CPA_App}
 
-L'attaque CPA s'exécute uniquement via un script MATLAB. Ce script va d'une part reprendre les traces de puissance enregistrées à l'oscilloscope et d'autre part calculer des prédictions de puissance sur base des textes clairs envoyés au FPGA. La figure \ref{fig:procedure_2} ci-dessous décrit la procédure générale utilisée pour appliquer une attaque CPA sur l'implémentation de l'algorithme AES-256 pour un FPGA. Cette procédure se compose de six étapes décrites ci-après. Pour cette procédure, on considère que l'enregistrement des traces a déjà été réalisé (voir procédure précédente, section \ref{sec:config_chiff}).
+L'attaque CPA s'exécute uniquement via un script MATLAB. Ce script va d'une part reprendre les traces de puissance enregistrées à l'oscilloscope et d'autre part calculer des prédictions de puissance sur base des textes clairs envoyés au FPGA. La figure \ref{fig:procedure_2} ci-dessous décrit la procédure générale utilisée pour appliquer une attaque CPA sur l'implémentation de l'algorithme AES-256. Cette procédure se compose de six étapes décrites ci-après. Pour cette procédure, on considère que l'enregistrement des traces a déjà été réalisé (voir procédure précédente, section \ref{sec:config_chiff}).
 \begin{enumerate}
 \item Récupération et chargement des traces de puissance capturées à l'oscilloscope ;
 \item Récupération et chargement des $N$ messages clairs envoyés au FPGA pour être chiffrés ;
@@ -1387,7 +1387,7 @@ L'attaque CPA s'exécute uniquement via un script MATLAB. Ce script va d'une par
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[scale=0.6]{image/procedure_1}
+    \includegraphics[scale=0.56]{image/procedure_2}
     \caption{Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.}
     \label{fig:procedure_2} 
 \end{figure}
@@ -1446,7 +1446,12 @@ Les codes \textit{VHDL} pour l'implémentation de l'algorithme AES-256 sur FPGA 
     \label{fig:FPGA_Controler} 
 \end{figure}
 
-\hspace{-0.5cm}Dans cette architecture, chaque opération de l'AES (\textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}) est exécutée en un seul coup d'horloge. L'opération \textit{Key Schedule} compte quand à elle X coups d'horloge. Étant donné que l'AES-256 comprend 14 \textit{rounds} (voir section \ref{subsec:AES}), cette implémentation requiert donc 56+X coups d'horloge pour chiffrer un bloc de 128 bits.
+\hspace{-0.5cm}From now, we have a complete implementation of AES-256-CBC and AES-256-GCM on FPGA. So, the next step is to find a way to send data to be decrypted or encrypted and receives the result back. So, this section aims to describe how the communication chain has been implemented between the FPGA and PC.
+In order to do that, the solution offers by the SAKURA-G board offers has been explored. The board provides a FT2232H chip which allows a serial communication between the FPGA and PC via a USB port. The FT2232H is FTDI’s 5th generation of USB devices and is a USB 2.0 Hi-Speed to UART/FIFO IC. It has the capability of being configured in a variety of industry standard serial or parallel interfaces. Here are listed some protocols handled by the chip : UART, 245 FIFO SYNC/ASYNC, SPI, JTAG, BIT BANG SYNC/ASYNC, ...
+
+
+Then, a choice has to be made to define the protocols that will be used for the data transfer. In the beginning, the UART protocol has been chosen which is the most common popular protocol for data transfer. However, by reading the data sheet of the SAKURA-G and the FT2232H, it was advised to use the 245 FIFO Sync mode when good performance (throughput) are needed. Since, the goal here is to send an entire file, the 245 FIFO Sync has been chosen. Only channel A can be configured as a FT245 style synchronous FIFO interface. When configured in this mode, channel B is not available as all resources have been switched onto channel A.
+This mode needs 14 pins to work. One pin deliver a clock of 60 MHz which must be used by the FPGA to communicate with the chip. Eight pins are intended to data and the others are control pins. The eight bits data bus is bidirectional. So it means that we cannot send or receive data at the same time. After setting up properly the control signals, one byte can be sent every clock cycle.
  
 \newpage
 
@@ -1466,12 +1471,29 @@ Les codes \textit{VHDL} pour l'implémentation de l'algorithme AES-256 sur FPGA 
 \section{Résultats expérimentaux }
 \label{sec:Exp_results_CPA}
 
+Cette section présente les résultats expérimentaux obtenus durant l'attaque CPA. 
 
 \subsection{Traces réelles brutes}
 \label{sec:real_trace}
 
+\hspace{-0.5cm}La figure \ref{fig:trace_brute} ci-dessous présente une trace brute capturée à l'oscilloscope. 
+\begin{figure}[htbp]
+    \hspace{-2cm}
+    \includegraphics[scale=0.6]{image/trace_brute}
+    \caption{Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.}
+    \label{fig:trace_brute} 
+\end{figure}
+
 \subsection{Traces réelles filtrées}
 \label{sec:filter}
+
+\hspace{-0.5cm}La figure \ref{fig:trace_brute} ci-dessous présente une trace brute qui a été filtrée.
+\begin{figure}[htbp]
+    \hspace{-2cm}
+    \includegraphics[scale=0.6]{image/trace_brute}
+    \caption{Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.}
+    \label{fig:trace_brute} 
+\end{figure}
 
 \subsection{Taux de succès de l'attaque}
 \label{sec:success_rate}
