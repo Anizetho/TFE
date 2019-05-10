@@ -1466,12 +1466,30 @@ Un bloc de chiffrement (AES-256) est implémenté sur le FPGA principal. L'étap
 \section{Résultats de simulations}
 \label{sec:Sim_results_CPA}
 
-Avant d'attaquer une réelle implémentation de l'AES-256 sur un FPGA, différentes simulations ont été mises en oeuvre à l'aide du logiciel MATLAB. Ces simulations ont permis de mieux appréhender le concept de l'attaque CPA. Les sections \ref{sec:sim_trace} et \ref{sec:sim_trace_noise} décrivent respectivement les résultats obtenus sur base de traces simulées sans bruit et avec bruit. L'importance du bruit dans une trace est ainsi mise en évidence au travers de ces simulations. L'attaque CPA s'opère sur deux \textit{rounds} de l'AES. Pour rappel, la taille de la clé de chiffrement pour l'AES-256 est de 32 bytes or l'algorithme ne chiffre des messages clairs que par bloc de 128 bits. Ainsi, deux \textit{rounds} sont nécessaires pour retrouver les 32 bytes de la clé. Le premier \textit{round} permet de retrouver les 16 premiers bytes tandis que le second \textit{round} permet de retrouver les 16 derniers bytes de clé. Le poids de Hamming est utilisé comme modèle de prédiction de puissance.
+Avant d'attaquer une réelle implémentation de l'AES-256 sur un FPGA, différentes simulations ont été mises en oeuvre à l'aide du logiciel MATLAB. Ces simulations ont permis de mieux appréhender le concept de l'attaque CPA. Les sections \ref{sec:sim_trace} et \ref{sec:sim_trace_noise} décrivent respectivement les résultats obtenus sur base de traces simulées sans bruit et avec bruit. L'importance du bruit dans une trace est ainsi mise en évidence au travers de ces simulations. L'attaque CPA s'opère sur les deux permiers \textit{rounds} de l'AES. Pour rappel, la taille de la clé de chiffrement pour l'AES-256 est de 32 bytes or l'algorithme ne chiffre des messages clairs que par bloc de 128 bits. Ainsi, deux \textit{rounds} sont nécessaires pour retrouver les 32 bytes de la clé. Le premier \textit{round} permet de retrouver les 16 premiers bytes de la clé tandis que le second \textit{round} permet de retrouver les 16 derniers bytes de la clé. Le poids de Hamming est utilisé comme modèle de prédiction de puissance.
 
 \subsection{Traces simulées}
 \label{sec:sim_trace}
 
-Dans cette section, nous considérons le cas idéal où les traces ne sont pas bruitées. La figure \ref{fig:} présente le résultat de l'attaque CPA sur un byte de l'algorithme AES-256. 
+Dans ce premier exemple, nous considérons un cas idéal où les traces ne sont pas bruitées. La figure \ref{fig:sim_10000_traces} présente le résultat de l'attaque CPA (telle que décrite à la section \ref{subsec:CPA}) sur un byte de l'algorithme AES-256. Plus précisément, l'attaque cible le dixième byte de la clé de chiffrement. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées par l'attaquant. Nous remarquons que la valeur maximum des 256 coefficients de corrélation calculés vaut approximativement 0,6 et correspond à la clé 200. C'est effectivement cette valeur décimale qui est utilisée en tant que dixième byte de la clé secrète.
+
+\begin{figure}[htbp]
+    \hspace{-1cm}
+    \includegraphics[scale=0.36]{image/sim_10000_traces}
+    \caption{Attaque sur le dixième byte de la clé. Ce graphe présente les valeurs du coefficient de corrélation en fonction des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 0,6 et correspond à la clé 200.}
+    \label{fig:sim_10000_traces} 
+\end{figure}
+
+on sait qu’en fonction du nombre de traces analysées, les valeurs du facteur de corrélation fluctuent dans un intervalle plus ou moins grand. Ainsi, au plus le nombre de traces sera élevé, au plus l’intervalle des valeurs de corrélation sera faible et au plus ce sera facile de repérer la clé de chiffrement. En effet, si on observe les trois graphes ci-dessous, on peut remarquer que pour 10 traces, le coefficient de corrélation varie entre -0,66 et 0,73 ; pour 100 traces, le coefficient de corrélation varie entre -0,33 et 0,24 ; pour 1000 traces, le coefficient de corrélation varie entre -0,22 et 0,18. En observant ces 3 figures, on remarque que 10 traces ne suffisent pas à retrouver la valeur exacte de la clé secrète (indiquée à 125). Par contre, avec 100 traces et 1000 traces, la valeur du coefficient de corrélation maximum culmine à 0.54 et à 0.58 respectivement et permet de retrouver la bonne clé secrète utilisée pour le chiffrement (200).
+
+\begin{figure}[htbp]
+    \hspace{-3.3cm}
+    \includegraphics[scale=0.45]{image/sim_nb_traces}
+    \caption{Influence du nombre de traces analysées sur les valeurs de coefficient de corrélation.}
+    \label{fig:sim_nb_traces} 
+\end{figure}
+
+
 
 
 \subsection{Traces simulées avec addition de bruit}
