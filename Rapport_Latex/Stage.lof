@@ -44,8 +44,8 @@
 \contentsline {figure}{\numberline {7.1}{\ignorespaces Représentation haut niveau du bloc de chiffrement.\relax }}{46}{figure.caption.47}
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Architecture de l'algorithme AES-256 implémentée sur le FPGA principal.\relax }}{46}{figure.caption.48}
 \contentsline {figure}{\numberline {7.3}{\ignorespaces Chaine de communication entre le l'ordinateur et le FPGA principal.\relax }}{47}{figure.caption.49}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{48}{figure.caption.51}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{49}{figure.caption.52}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{49}{figure.caption.51}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{50}{figure.caption.52}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
