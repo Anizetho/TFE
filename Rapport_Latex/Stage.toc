@@ -1,0 +1,65 @@
+\babel@toc {french}{}
+\contentsline {chapter}{Abstract}{I}{section*.1}
+\contentsline {chapter}{Remerciements}{III}{section*.3}
+\contentsline {chapter}{Cahier des charges}{IV}{section*.4}
+\contentsline {chapter}{Liste des acronymes}{XI}{section*.5}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Présentation du problème}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Structure du travail}{3}{section.1.2}
+\contentsline {part}{I\hspace {1em}Contexte théorique}{4}{part.1}
+\contentsline {chapter}{\numberline {2}Cryptologie}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Concepts et définitions}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Chiffrement symétrique}{6}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Chiffrement asymétrique}{7}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Algorithme de chiffrement}{8}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Principe}{8}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}\textit {Device} cryptographique}{8}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Algorithme \textit {AES} (\textit {Advanced Encryption Standard})}{9}{subsection.2.2.3}
+\contentsline {chapter}{\numberline {3}Consommation de puissance}{14}{chapter.3}
+\contentsline {section}{\numberline {3.1}Technologie CMOS}{14}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Consommation de puissance des circuits en technologie CMOS}{15}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Composition des traces de puissance}{18}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Modèles de puissance}{19}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Modèle de poids de Hamming}{19}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Modèle de distance de Hamming}{19}{subsection.3.2.2}
+\newpage 
+\contentsline {chapter}{\numberline {4}Attaques par canaux auxiliaires}{20}{chapter.4}
+\contentsline {section}{\numberline {4.1}Introduction}{20}{section.4.1}
+\contentsline {section}{\numberline {4.2}Analyse de la consommation de puissance}{23}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Analyse simple de la consommation}{23}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Analyse différentielle de la consommation}{23}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Analyse de la consommation par corrélation}{24}{subsection.4.2.3}
+\contentsline {chapter}{\numberline {5}Contre-mesures}{29}{chapter.5}
+\contentsline {section}{\numberline {5.1}Introduction}{29}{section.5.1}
+\contentsline {section}{\numberline {5.2}Contre-mesures Hiding}{32}{section.5.2}
+\contentsline {section}{\numberline {5.3}Contre-mesures Masking}{33}{section.5.3}
+\contentsline {section}{\numberline {5.4}Contre-mesures Faking}{34}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Définition}{34}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Points faibles et améliorations}{36}{subsection.5.4.2}
+\contentsline {part}{II\hspace {1em}Mise en application}{38}{part.2}
+\contentsline {chapter}{\numberline {6}Mise en oeuvre de l'attaque CPA}{39}{chapter.6}
+\contentsline {section}{\numberline {6.1}Langages de programmation}{39}{section.6.1}
+\contentsline {section}{\numberline {6.2}Procédure de chiffrement et configuration de l'oscilloscope}{39}{section.6.2}
+\contentsline {section}{\numberline {6.3}Procédure appliquée pour l'attaque CPA}{44}{section.6.3}
+\contentsline {chapter}{\numberline {7}Attaque CPA sur l'implémentation de l'AES-256}{45}{chapter.7}
+\contentsline {section}{\numberline {7.1}Implémentation de l'algorithme AES-256 et du contrôleur}{45}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Implémentation AES-256}{45}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Implémentation contrôleur}{47}{subsection.7.1.2}
+\contentsline {section}{\numberline {7.2}Résultats de simulations}{48}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Traces simulées}{48}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Traces simulées avec addition de bruit}{50}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Résultats expérimentaux }{52}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Traces réelles brutes}{52}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Traces réelles filtrées}{52}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Taux de succès de l'attaque}{53}{subsection.7.3.3}
+\contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit {faking}}{55}{chapter.8}
+\contentsline {section}{\numberline {8.1}Résultats de simulations}{55}{section.8.1}
+\contentsline {section}{\numberline {8.2}Résultats expérimentaux}{55}{section.8.2}
+\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{56}{chapter.9}
+\contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{56}{section.9.1}
+\contentsline {section}{\numberline {9.2}Évaluation par métriques}{56}{section.9.2}
+\contentsline {section}{\numberline {9.3}Évaluation par critères de performances}{56}{section.9.3}
+\contentsline {chapter}{\numberline {10}Conclusion}{57}{chapter.10}
+\contentsline {chapter}{Crédits}{58}{section*.61}
+\contentsline {chapter}{Références}{58}{section*.62}
+\contentsline {chapter}{Annexes}{61}{section*.62}

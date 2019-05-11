@@ -1500,7 +1500,7 @@ Pour indiquer que l’augmentation du nombre de traces permet de trouver plus fa
 
 \begin{figure}[htbp]
     \hspace{-2.5cm}
-    \includegraphics[scale=0.4]{image/sim_corr_fonction_nb_traces}
+    \includegraphics[scale=0.41]{image/sim_corr_fonction_nb_traces}
     \caption{Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus il est facile de retrouver la valeur de la clé secrète.}
     \label{fig:sim_corr_fonction_nb_traces} 
 \end{figure}
@@ -1508,25 +1508,40 @@ Pour indiquer que l’augmentation du nombre de traces permet de trouver plus fa
 \subsection{Traces simulées avec addition de bruit}
 \label{sec:sim_trace_noise}
 
-Le bruit étant systématiquement présent dans les circuits électroniques, cette section met en évidence l'impact du bruit dans le résultat de l'attaque CPA. En théorie, plus le bruit est présent, plus il est difficile de retrouver la bonne valeur de la clé secrète. Ceci est dû au fait que la trace capturée à l'oscilloscope ne représente plus uniquement la consommation de puissance du FPGA mais elle représente cette consommation de puissance additionnée de bruit parasite. Ainsi, plus le bruit devient important, moins les traces représentent la puissance consommée par le FPGA et donc plus il est difficile de retrouver la clé secrète. La figure \ref{fig:sim_traces_noise} présente le résultat d'une attaque CPA sur le dixième byte de la clé de chiffrement. Les mêmes ensembles de messages clairs et de traces simulées ont été repris de l'exemple précédent (voir section \ref{sec:sim_trace}) afin de comparer efficacement l'impact du bruit sur les résultats.
+Le bruit étant systématiquement présent dans les circuits électroniques, cette section met en évidence l'impact du bruit dans le résultat de l'attaque CPA. En théorie, plus le bruit est présent, plus il est difficile de retrouver la valeur exacte de la clé secrète. Ceci est dû au fait que la trace capturée à l'oscilloscope ne représente plus uniquement la consommation de puissance du FPGA mais elle représente cette consommation de puissance additionnée de bruit parasite. Ainsi, plus le bruit devient important, moins les traces représentent la puissance consommée par le FPGA et donc plus il est difficile de retrouver la clé secrète. 
+
+\hspace{-0.5cm}La figure \ref{fig:sim_corr_fonction_nb_traces_noise} présente le résultat d'une attaque CPA sur le dixième byte de la clé de chiffrement. Les mêmes ensembles de messages clairs et de traces simulées ont été repris de l'exemple précédent (voir section \ref{sec:sim_trace}) afin de comparer efficacement l'impact du bruit sur les résultats. Nous pouvons remarquer que la valeur de corrélation pour la clé secrète est inférieure à 0,6 alors qu'elle était supérieure ou égale à 0,6 sans bruit (voir figure \ref{fig:sim_corr_fonction_nb_traces}). 
+
+\hspace{-0.5cm}Pour mieux montrer l'impact du bruit, une métrique est utilisée afin de mesurer la taux de succès de l'attaque selon que la trace simulée soit avec ou sans bruit. La figure \ref{fig:success_rate_sim} présent le taux de succès de l'attaque CPA pour des traces idéales (sans bruit) et des traces avec bruit. Nous remarquons que la clé secrète peut être révélée à partir de X traces lorsque les traces ne sont pas bruitées et qu'elle peut être révélée à partir de X traces lorsque les traces sont bruitées. On se rend ainsi mieux compte de l'impact du bruit dans le résultat de l'attaque CPA. 
+
+\newpage
+
+\begin{figure}[htbp]
+    \hspace{-2.2cm}
+    \includegraphics[scale=0.4]{image/sim_corr_fonction_nb_traces_noise}
+    \caption{Attaque sur le dixième byte de la clé avec pour objectif la mise en évidence de l'influence du bruit sur le résultat de l'attaque CPA. La présence du bruit complexifie la tâche de l'attaquant.}
+    \label{fig:sim_corr_fonction_nb_traces_noise} 
+\end{figure}
 
 \begin{figure}[htbp]
     \hspace{-3.3cm}
     \includegraphics[scale=0.45]{image/sim_traces_noise}
     \caption{Attaque sur le dixième byte de la clé avec pour objectif la mise en évidence de l'influence du bruit sur le résultat de l'attaque CPA. La présence du bruit complexifie la tâche de l'attaquant.}
-    \label{fig:sim_traces_noise} 
+    \label{fig:success_rate_sim} 
 \end{figure}
 
+\newpage
 
 \section{Résultats expérimentaux }
 \label{sec:Exp_results_CPA}
 
-Cette section présente les résultats expérimentaux obtenus lors de la mise en application de l'attaque CPA sur une réelle implémentation de l'AES-256 (voir \ref{sec:Imp_AES_256}). Nous remarquons que les résultats obtenus pour une vraie implémentation sont fort différents de ceux obtenus par simulations (voir section \ref{sec:sim_trace}). Ceci est dû à différents facteurs définis ci-après.
+Cette section présente les résultats expérimentaux obtenus lors de la mise en application de l'attaque CPA (voir section \ref{sec:CPA_App}) sur l'implémentation de l'AES-256 (voir \ref{sec:Imp_AES_256}). Nous remarquons que les résultats obtenus pour une vraie implémentation sont fort différents de ceux obtenus par simulations (voir section \ref{sec:Sim_results_CPA}). Ceci est dû à différents facteurs définis ci-après.
 
 \subsection{Traces réelles brutes}
 \label{sec:real_trace}
 
-\hspace{-0.5cm}La figure \ref{fig:trace_brute} ci-dessous présente une trace brute capturée à l'oscilloscope. 
+La figure \ref{fig:trace_brute} présente une trace brute capturée à l'oscilloscope. La tension consommée par le FPGA varie entre $-104$ \si{\milli\volt} et $56$ \si{\milli\volt} et l'algorithme met approximativement 1500 \si{\nano\second} pour chiffrer un message clair. Cette trace ne sera pas plus analysée en profondeur cependant, nous pouvons affirmer que la première forme représentée sur la trace, située entre $100$ \si{\nano\second} et $300$ \si{\nano\second} (et qui représente grossièrement un \textit{"V"}),  correspond à la première opération exécutée par l'AES-256, c'est-à-dire l'opération \textit{KeySchedule}.
+
 \begin{figure}[htbp]
     \hspace{-2cm}
     \includegraphics[scale=0.6]{image/trace_brute}
@@ -1534,10 +1549,22 @@ Cette section présente les résultats expérimentaux obtenus lors de la mise en
     \label{fig:trace_brute} 
 \end{figure}
 
+La figure \ref{fig:real_result_CPA} présente le résultat de l'attaque CPA sur sur un byte de l'algorithme AES-256. Plus précisément, l'attaque cible le dixième byte de la clé secrète. Nous remarquons que les valeurs de corrélations sont très faibles comparativement aux valeurs obtenues pour les simulations. 
+
+\begin{figure}[htbp]
+    \hspace{-2cm}
+    \includegraphics[scale=0.6]{image/trace_brute}
+    \caption{}
+    \label{fig:real_result_CPA} 
+\end{figure}
+
+
+
 \subsection{Traces réelles filtrées}
 \label{sec:filter}
 
-\hspace{-0.5cm}La figure \ref{fig:trace_brute} ci-dessous présente une trace brute qui a été filtrée.
+La figure \ref{fig:trace_brute} ci-dessous présente une trace brute qui a été filtrée. Le filtre employé est un filtre numérique FIR de type passe-bas. Le fenêtre employée est une fenêtre de \textit{Hamming} et l'ordre du filtre est 100. 
+
 \begin{figure}[htbp]
     \hspace{-2cm}
     \includegraphics[scale=0.6]{image/trace_brute}
@@ -1548,7 +1575,14 @@ Cette section présente les résultats expérimentaux obtenus lors de la mise en
 \subsection{Taux de succès de l'attaque}
 \label{sec:success_rate}
 
+Comme pour les simulations, nous mesurons le taux de succès de l'attaque CPA avec et sans filtrage. Le résultat est présenté à la figure \ref{fig:success_rate_real}. Nous mettons ainsi en évidence l'avantage qu'apporte le filtrage sur les traces mesurées.
 
+\begin{figure}[htbp]
+    \hspace{-2cm}
+    \includegraphics[scale=0.6]{image/success_rate_real}
+    \caption{}
+    \label{fig:success_rate_real} 
+\end{figure}
 
 \newpage
 

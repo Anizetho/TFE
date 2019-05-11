@@ -226,4 +226,110 @@
 \newlabel{sec:Imp_AES_256}{{7.1.1}{45}{Implémentation AES-256}{subsection.7.1.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Représentation haut niveau du bloc de chiffrement.\relax }}{46}{figure.caption.47}}
 \newlabel{fig:FPGA_AES_TOP}{{7.1}{46}{Représentation haut niveau du bloc de chiffrement.\relax }{figure.caption.47}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Architecture de l'algorithme AES-256 implém
+\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Architecture de l'algorithme AES-256 implémentée sur le FPGA principal.\relax }}{46}{figure.caption.48}}
+\newlabel{fig:FPGA_arch}{{7.2}{46}{Architecture de l'algorithme AES-256 implémentée sur le FPGA principal.\relax }{figure.caption.48}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Implémentation contrôleur}{47}{subsection.7.1.2}}
+\newlabel{sec:Imp_contrôleur}{{7.1.2}{47}{Implémentation contrôleur}{subsection.7.1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.3}{\ignorespaces Chaine de communication entre le l'ordinateur et le FPGA principal.\relax }}{47}{figure.caption.49}}
+\newlabel{fig:FPGA_Controler}{{7.3}{47}{Chaine de communication entre le l'ordinateur et le FPGA principal.\relax }{figure.caption.49}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7.1}{\ignorespaces Identification des données utiles au bloc de chiffrement par l'entremise d'une entête sur un byte.\relax }}{47}{table.caption.50}}
+\newlabel{tab:header}{{7.1}{47}{Identification des données utiles au bloc de chiffrement par l'entremise d'une entête sur un byte.\relax }{table.caption.50}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Résultats de simulations}{48}{section.7.2}}
+\newlabel{sec:Sim_results_CPA}{{7.2}{48}{Résultats de simulations}{section.7.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Traces simulées}{48}{subsection.7.2.1}}
+\newlabel{sec:sim_trace}{{7.2.1}{48}{Traces simulées}{subsection.7.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.4}{\ignorespaces Attaque sur le dixième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 0,6 et correspond à la clé 200.\relax }}{48}{figure.caption.51}}
+\newlabel{fig:sim_10000_traces}{{7.4}{48}{Attaque sur le dixième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 0,6 et correspond à la clé 200.\relax }{figure.caption.51}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.5}{\ignorespaces Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus la corrélation obtenue pour la bonne clé testée est prédominante par rapport aux 255 autres.\relax }}{49}{figure.caption.52}}
+\newlabel{fig:sim_nb_traces}{{7.5}{49}{Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus la corrélation obtenue pour la bonne clé testée est prédominante par rapport aux 255 autres.\relax }{figure.caption.52}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.6}{\ignorespaces Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus il est facile de retrouver la valeur de la clé secrète.\relax }}{50}{figure.caption.53}}
+\newlabel{fig:sim_corr_fonction_nb_traces}{{7.6}{50}{Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus il est facile de retrouver la valeur de la clé secrète.\relax }{figure.caption.53}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Traces simulées avec addition de bruit}{50}{subsection.7.2.2}}
+\newlabel{sec:sim_trace_noise}{{7.2.2}{50}{Traces simulées avec addition de bruit}{subsection.7.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.7}{\ignorespaces Attaque sur le dixième byte de la clé avec pour objectif la mise en évidence de l'influence du bruit sur le résultat de l'attaque CPA. La présence du bruit complexifie la tâche de l'attaquant.\relax }}{51}{figure.caption.54}}
+\newlabel{fig:sim_corr_fonction_nb_traces_noise}{{7.7}{51}{Attaque sur le dixième byte de la clé avec pour objectif la mise en évidence de l'influence du bruit sur le résultat de l'attaque CPA. La présence du bruit complexifie la tâche de l'attaquant.\relax }{figure.caption.54}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.8}{\ignorespaces Attaque sur le dixième byte de la clé avec pour objectif la mise en évidence de l'influence du bruit sur le résultat de l'attaque CPA. La présence du bruit complexifie la tâche de l'attaquant.\relax }}{51}{figure.caption.55}}
+\newlabel{fig:success_rate_sim}{{7.8}{51}{Attaque sur le dixième byte de la clé avec pour objectif la mise en évidence de l'influence du bruit sur le résultat de l'attaque CPA. La présence du bruit complexifie la tâche de l'attaquant.\relax }{figure.caption.55}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Résultats expérimentaux }{52}{section.7.3}}
+\newlabel{sec:Exp_results_CPA}{{7.3}{52}{Résultats expérimentaux}{section.7.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Traces réelles brutes}{52}{subsection.7.3.1}}
+\newlabel{sec:real_trace}{{7.3.1}{52}{Traces réelles brutes}{subsection.7.3.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.9}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{52}{figure.caption.56}}
+\newlabel{fig:trace_brute}{{7.9}{52}{Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }{figure.caption.56}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Traces réelles filtrées}{52}{subsection.7.3.2}}
+\newlabel{sec:filter}{{7.3.2}{52}{Traces réelles filtrées}{subsection.7.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.10}{\ignorespaces \relax }}{53}{figure.caption.57}}
+\newlabel{fig:real_result_CPA}{{7.10}{53}{\relax }{figure.caption.57}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Taux de succès de l'attaque}{53}{subsection.7.3.3}}
+\newlabel{sec:success_rate}{{7.3.3}{53}{Taux de succès de l'attaque}{subsection.7.3.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.11}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{54}{figure.caption.58}}
+\newlabel{fig:trace_brute}{{7.11}{54}{Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }{figure.caption.58}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.12}{\ignorespaces \relax }}{54}{figure.caption.59}}
+\newlabel{fig:success_rate_real}{{7.12}{54}{\relax }{figure.caption.59}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit  {faking}}{55}{chapter.8}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{chap:faking}{{8}{55}{Implémentation de la contre-mesure de type \textit {faking}}{chapter.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Résultats de simulations}{55}{section.8.1}}
+\newlabel{sec:Sim_results_Faking}{{8.1}{55}{Résultats de simulations}{section.8.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Résultats expérimentaux}{55}{section.8.2}}
+\newlabel{sec:Exp_Results_Faking}{{8.2}{55}{Résultats expérimentaux}{section.8.2}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{56}{chapter.9}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {9.1}Simulations (\textit  {testbench})}{56}{section.9.1}}
+\newlabel{sec:EvalSim}{{9.1}{56}{Simulations (\textit {testbench})}{section.9.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}Évaluation par métriques}{56}{section.9.2}}
+\newlabel{sec:EvalMetrics}{{9.2}{56}{Évaluation par métriques}{section.9.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.3}Évaluation par critères de performances}{56}{section.9.3}}
+\newlabel{sec:EvalPerf}{{9.3}{56}{Évaluation par critères de performances}{section.9.3}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}Conclusion}{57}{chapter.10}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\citation{*}
+\bibdata{Stage}
+\@writefile{toc}{\contentsline {chapter}{Crédits}{58}{section*.61}}
+\@writefile{toc}{\contentsline {chapter}{Références}{58}{section*.62}}
+\bibcite{Complete}{1}
+\bibcite{SCA}{2}
+\bibcite{advanced}{3}
+\bibcite{Horowitz:2015aa}{4}
+\bibcite{gray1998quantization}{5}
+\bibcite{irf2017mosfet}{6}
+\bibcite{cryptoeprint:2015:536}{7}
+\bibcite{cryptoeprint}{8}
+\bibcite{PowerModel}{9}
+\bibcite{Faking}{10}
+\bibcite{owen}{11}
+\bibcite{Power}{12}
+\bibcite{CPAWiki}{13}
+\bibcite{tel}{14}
+\bibcite{hamming}{15}
+\bibcite{bruit}{16}
+\bibcite{crypto}{17}
+\bibcite{test}{18}
+\bibcite{wiki}{19}
+\bibstyle{unsrt}
+\@writefile{toc}{\contentsline {chapter}{Annexes}{61}{section*.62}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ann:CESAR}{{A.1}{62}{Chiffre de César}{section.a.A.1}{}}
+\newlabel{tab:CESAR}{{A.1}{62}{Chiffre de César.\relax }{table.caption.64}{}}
+\newlabel{tab:CesarEx}{{A.2}{62}{Exemple de chiffre de César.\relax }{table.caption.65}{}}
+\newlabel{ann:AES128}{{A.2}{63}{Code algorithme AES-128 - Ordre d'exécution des opérations}{section.a.A.2}{}}
+\newlabel{ann:AES256}{{A.3}{64}{Code algorithme AES-256 - Ordre d'exécution des opérations}{section.a.A.3}{}}
+\newlabel{ann:Sbox}{{A.4}{65}{Sbox - Table de substitution}{section.a.A.4}{}}
+\newlabel{fig:Sbox}{{A.3}{65}{La Sbox représente une table de substitution utilisée pour l'opération non-linéaire SubBytes de l'algorithme AES. À chaque donnée hexadécimale d'entrée correspond une donnée hexadécimale de sortie.\relax }{table.caption.68}{}}
+\newlabel{ann:KeySchedule}{{A.5}{66}{Opération \textit {KeySchedule}}{section.a.A.5}{}}
+\newlabel{fig:KeySchedule1}{{A.1}{66}{Principe de fonctionnement de l'opération \textit {KeySchedule}.\relax }{figure.caption.69}{}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ann:traceExplain}{{B.1}{68}{Représentation des traces de puissance prises à l'oscilloscope}{section.a.B.1}{}}
+\newlabel{fig:traceExplain}{{B.1}{69}{La figure du haut représente une trace de puissance (i.e 1 plaintext utilisé) dans laquelle on retrouve 9 échantillons. La figure du bas représente N traces de puissance dans lesquelles on retrouve également 9 échantillons. En pratique, le nombre d'échantillons dans une trace de puissance est beaucoup plus élevé (de l'ordre de 10000) et sera noté par la lettre S (pour \textit {Sampling}).\relax }{figure.caption.70}{}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ann:resume_hiding}{{C.1}{71}{Contre-mesures \textit {Hiding}}{section.a.C.1}{}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ann:lettre}{{D.1}{73}{Lettre de motivation}{section.a.D.1}{}}
+\newlabel{ann:certificat}{{D.2}{74}{Certificat de stage}{section.a.D.2}{}}

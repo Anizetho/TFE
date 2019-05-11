@@ -1,0 +1,62 @@
+\babel@toc {french}{}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Matériel nécessaire pour réaliser une attaque par analyse de la consommation de puissance.\relax }}{2}{figure.caption.6}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Concepts de chiffrement et de déchiffrement.\relax }}{6}{figure.caption.8}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Chiffrement symétrique : Une seule clé est utilisée pour chiffrer et déchiffrer les messages.\relax }}{7}{figure.caption.9}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Chiffrement asymétrique : Un clé publique est utilisée pour chiffrer le message et une clé privée est utilisée pour le déchiffrer.\relax }}{7}{figure.caption.10}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Concept d'un algorithme de chiffrement.\relax }}{8}{figure.caption.11}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Fonctionnement général de l'algorithme AES.\relax }}{9}{figure.caption.13}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Les 3 matrices utilisées par l'algorithme AES.\relax }}{10}{figure.caption.14}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Opération \textit {AddRoundKey} entre la matrice STATE et la matrice clé.\relax }}{10}{figure.caption.15}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Opération \textit {SubBytes} exécutée sur la matrice STATE.\relax }}{11}{figure.caption.16}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Opération \textit {ShiftRows} exécutée sur la matrice STATE.\relax }}{11}{figure.caption.17}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Opération \textit {MixColumns} exécutée sur la matrice STATE.\relax }}{12}{figure.caption.18}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Exemple de l'opération \textit {MixColumns} exécutée sur la deuxième colonne (i.e colonne 1) de la matrice STATE.\relax }}{12}{figure.caption.19}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Schéma de l'inverseur CMOS.\relax }}{15}{figure.caption.21}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Comparaison de la puissance statique et dynamique.\relax }}{18}{figure.caption.23}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Classification des attaques physiques.\relax }}{21}{figure.caption.24}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Différentes façons d'opérer une attaque non invasive sur un device cryptographique.\relax }}{22}{figure.caption.25}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Principe de fonctionnement d'une attaque DPA.\relax }}{24}{figure.caption.26}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Principe de mesure à l'oscilloscope.\relax }}{25}{figure.caption.27}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Principe de fonctionnement d'une attaque CPA.\relax }}{27}{figure.caption.28}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Différents résultats de corrélation en fonction de 4 clés testées.\relax }}{28}{figure.caption.29}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Corrélation en fonction des 256 clés testées.\relax }}{28}{figure.caption.30}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Modification de l'amplitude d'une trace de puissance.\relax }}{30}{figure.caption.31}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Modification de la position dans le temps d'une trace de puissance.\relax }}{30}{figure.caption.32}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Importance du bruit pour un signal de transmission.\relax }}{31}{figure.caption.33}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Implémentation de la contre-mesure \textit {faking} pour l'algorithme de chiffrement AES.\relax }}{35}{figure.caption.35}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Implémentation de la contre-mesure \textit {faking} pour l'algorithme de chiffrement AES avec prise en compte des améliorations.\relax }}{37}{figure.caption.36}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Valeur de la clé obtenue avec implémentation d'une contre-mesure faking.\relax }}{37}{figure.caption.37}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Carte SAKURA-G.\relax }}{40}{figure.caption.38}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Les trois points de mesures prévus pour analyser la consommation de puissance (la tension pour être exact) du FPGA principal. Seul le connecteur SMA $J_3$ est utilisé.\relax }}{40}{figure.caption.39}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Le Picoscope est l'instrument de mesure utilisé pour analyser la consommation de puissance (la tension pour être exact) du FPGA.\relax }}{41}{figure.caption.40}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Interface logicielle utilisée pour le Picoscope. La trace de puissance affichée correspond à l'exécution de l'algorithme AES-256 sur le FPGA.\relax }}{41}{figure.caption.41}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Formules permettant de déterminer l'intervalle d'échantillonnage (tableaux repris de la \textit {datasheet} du Picoscope).\relax }}{42}{figure.caption.43}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Banc de mesures en laboratoire.\relax }}{43}{figure.caption.44}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{43}{figure.caption.45}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Procédure mise en place pour réaliser une attaque par analyse de la consommation de puissance de type CPA.\relax }}{44}{figure.caption.46}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Représentation haut niveau du bloc de chiffrement.\relax }}{46}{figure.caption.47}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Architecture de l'algorithme AES-256 implémentée sur le FPGA principal.\relax }}{46}{figure.caption.48}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Chaine de communication entre le l'ordinateur et le FPGA principal.\relax }}{47}{figure.caption.49}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Attaque sur le dixième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 0,6 et correspond à la clé 200.\relax }}{48}{figure.caption.51}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus la corrélation obtenue pour la bonne clé testée est prédominante par rapport aux 255 autres.\relax }}{49}{figure.caption.52}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus il est facile de retrouver la valeur de la clé secrète.\relax }}{50}{figure.caption.53}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Attaque sur le dixième byte de la clé avec pour objectif la mise en évidence de l'influence du bruit sur le résultat de l'attaque CPA. La présence du bruit complexifie la tâche de l'attaquant.\relax }}{51}{figure.caption.54}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Attaque sur le dixième byte de la clé avec pour objectif la mise en évidence de l'influence du bruit sur le résultat de l'attaque CPA. La présence du bruit complexifie la tâche de l'attaquant.\relax }}{51}{figure.caption.55}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{52}{figure.caption.56}
+\contentsline {figure}{\numberline {7.10}{\ignorespaces \relax }}{53}{figure.caption.57}
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{54}{figure.caption.58}
+\contentsline {figure}{\numberline {7.12}{\ignorespaces \relax }}{54}{figure.caption.59}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
