@@ -47,11 +47,11 @@
 \contentsline {subsection}{\numberline {7.1.2}Implémentation contrôleur}{47}{subsection.7.1.2}
 \contentsline {section}{\numberline {7.2}Résultats de simulations}{48}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}Traces simulées}{48}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Traces simulées avec addition de bruit}{49}{subsection.7.2.2}
-\contentsline {section}{\numberline {7.3}Résultats expérimentaux }{49}{section.7.3}
-\contentsline {subsection}{\numberline {7.3.1}Traces réelles brutes}{49}{subsection.7.3.1}
-\contentsline {subsection}{\numberline {7.3.2}Traces réelles filtrées}{49}{subsection.7.3.2}
-\contentsline {subsection}{\numberline {7.3.3}Taux de succès de l'attaque}{52}{subsection.7.3.3}
+\contentsline {subsection}{\numberline {7.2.2}Traces simulées avec addition de bruit}{50}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Résultats expérimentaux }{50}{section.7.3}
+\contentsline {subsection}{\numberline {7.3.1}Traces réelles brutes}{51}{subsection.7.3.1}
+\contentsline {subsection}{\numberline {7.3.2}Traces réelles filtrées}{51}{subsection.7.3.2}
+\contentsline {subsection}{\numberline {7.3.3}Taux de succès de l'attaque}{51}{subsection.7.3.3}
 \contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit {faking}}{53}{chapter.8}
 \contentsline {section}{\numberline {8.1}Résultats de simulations}{53}{section.8.1}
 \contentsline {section}{\numberline {8.2}Résultats expérimentaux}{53}{section.8.2}
@@ -60,6 +60,6 @@
 \contentsline {section}{\numberline {9.2}Évaluation par métriques}{54}{section.9.2}
 \contentsline {section}{\numberline {9.3}Évaluation par critères de performances}{54}{section.9.3}
 \contentsline {chapter}{\numberline {10}Conclusion}{55}{chapter.10}
-\contentsline {chapter}{Crédits}{56}{section*.56}
-\contentsline {chapter}{Références}{56}{section*.57}
-\contentsline {chapter}{Annexes}{59}{section*.57}
+\contentsline {chapter}{Crédits}{56}{section*.58}
+\contentsline {chapter}{Références}{56}{section*.59}
+\contentsline {chapter}{Annexes}{59}{section*.59}

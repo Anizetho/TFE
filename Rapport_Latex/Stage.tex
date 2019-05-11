@@ -1415,9 +1415,9 @@ Les codes \textit{VHDL} pour l'implémentation de l'algorithme AES-256 et pour l
 \subsection{Implémentation AES-256}
 \label{sec:Imp_AES_256}
 
-La figure \ref{fig:FPGA_AES_TOP} donne une représention haut niveau du bloc de chiffrement (AES-256). Ce bloc de chiffrement prend en entrée un clé sur 256 bits et un message clair sur 128 bits. Le port \textit{start} en entrée permet de débuter le chiffrement alors que le port \textit{done} en sortie indique lorsque le chiffrement est terminé. Une \textit{clock} est utilisée à la fréquence de 48 MHz et un bouton \textit{reset} permet d'effacer toutes les données contenues dans des registres durant le chiffrement. Enfin, précisons que le port de sortie \textit{Ciphertext} renvoie le message chiffré sur 128 bits.
+La figure \ref{fig:FPGA_AES_TOP} donne une représention haut niveau du bloc de chiffrement (AES-256). Ce bloc de chiffrement prend en entrée un clé sur 256 bits et un message clair sur 128 bits. Le port \textit{start} en entrée permet de débuter le chiffrement alors que le port \textit{done} en sortie indique lorsque le chiffrement est terminé. Une \textit{clock} est utilisée à la fréquence de 48 MHz et un bouton \textit{reset} permet d'effacer les données contenues dans les différents registres utilisés pour le chiffrement. Enfin, précisons que le port de sortie \textit{Ciphertext} renvoie le message chiffré sur 128 bits.
 
-La figure \ref{fig:FPGA_arch} présente l'architecture implémentée pour l'algorithme AES-256. Dans cette architecture, chaque opération de l'AES (\textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}) est exécutée en un seul coup d'horloge. L'opération \textit{Key Schedule} compte quant à elle X coups d'horloge. Étant donné que l'AES-256 comprend 14 \textit{rounds} (voir section \ref{subsec:AES}), cette implémentation requiert donc un total de 56+X, soit X coups d'horloge pour chiffrer un bloc de 128 bits.
+La figure \ref{fig:FPGA_arch} présente l'architecture implémentée pour l'algorithme AES-256. Dans cette architecture, l'opération \textit{KeySchedule} est exécutée en premier lieu afin de fournir les nouvelles clés qui seront utilisées pour les \textit{rounds} suivants. Les quatre autres opérations principales de l'AES (\textit{AddRoundKey}, \textit{SubBytes}, \textit{ShiftRows} et \textit{MixColumns}) sont chacune exécutées en un seul coup d'horloge. L'opération \textit{Key Schedule} compte quant à elle X coups d'horloge. Sachant que l'AES-256 comprend 14 \textit{rounds} (voir section \ref{subsec:AES}), cette implémentation requiert donc un total de 56+X, soit X coups d'horloge pour chiffrer un bloc de 128 bits.
 
 \begin{figure}[htbp]
     \centering
@@ -1437,7 +1437,7 @@ La figure \ref{fig:FPGA_arch} présente l'architecture implémentée pour l'algo
 \subsection{Implémentation contrôleur}
 \label{sec:Imp_contrôleur}
 
-Un bloc de chiffrement (AES-256) est implémenté sur le FPGA principal. L'étape suivante est de trouver une façon d'envoyer les données claires à ce bloc de chiffrement et de recevoir en retour les données chiffrées. La solution est d'utiliser le second FPGA comme contrôleur. Ainsi, cette sous-section décrit brièvement le chaine de communication entre l'ordinateur et la bloc de chiffrement via ce contrôleur. La figure \ref{fig:FPGA_Controler} présente le schéma-bloc de cette chaine de communication. Quatre grands blocs sont parfaitement distinguables sur la figure : l'USB, la puce FT2232H, le contrôleur et le FPGA principal. La puce FT2232H est une puce se trouvant sur le carte SAKURA-G et qui permet de réaliser une communication série entre le FPGA et l'ordinateur via la port USB. Cette puce peut être configurée dans une grande variété d'interfaces standards. Voici quelques exemples de protocoles possibles avec cette puce : UART, 245 FIFO, SPI, JTAG, etc. Le protocole conseillé selon la \textit{datasheet} de la carte SAKURA-G et mis en place par l'étudiant stagiaire précédent est le protocole 245 FIFO Sync [\ref{ref:}]. Nous n'entrons pas dans les détails du protocole de communication cependant, sachez que pour transférer les données depuis l'ordinateur vers le bloc de chiffrement (et inversement), trois interfaces sont employées, chacune permettant de transférer 1 byte de données à la fois. Enfin, pour que le bloc de chiffrement puisse distinguer les données qu'il reçoit (distinguer la clé du message clair), un byte de tête est utilisé pour indiquer l'identité de la donnée qui va être envoyé par l'ordinateur. En effet, les données envoyées depuis le script Python sont envoyées par paquet de 17 bytes. Le premier byte sert d'entête et indique le type de donnée qui va suivre (les 16 bytes suivants représentent par conséquent la donnée utile au bloc de chiffrement). Le tableau \ref{tab:header} présente les trois différentes entêtes possibles. Pour rappel, l'algorithme AES-256 chiffre les données par bloc de 128 bits (16 bytes) et la clé de chiffrement a une taille de 32 bytes.
+Un bloc de chiffrement (AES-256) est implémenté sur le FPGA principal. L'étape suivante est de trouver une façon d'envoyer les données claires à ce bloc de chiffrement et de recevoir en retour les données chiffrées. La solution est d'utiliser le second FPGA comme contrôleur. Ainsi, cette sous-section décrit brièvement le chaine de communication entre l'ordinateur et la bloc de chiffrement via ce contrôleur. La figure \ref{fig:FPGA_Controler} présente le schéma-bloc de cette chaine de communication. Quatre grands blocs sont parfaitement distinguables sur la figure : l'USB, la puce FT2232H, le contrôleur et le FPGA principal. La puce FT2232H est une puce se trouvant sur le carte SAKURA-G et qui permet de réaliser une communication série entre le FPGA et l'ordinateur via la port USB. Cette puce peut être configurée dans une grande variété d'interfaces standards. Voici quelques exemples de protocoles possibles avec cette puce : UART, 245 FIFO, SPI, JTAG, etc. Le protocole conseillé dans la \textit{datasheet} de la carte SAKURA-G et mis en place par l'étudiant stagiaire précédent est le protocole 245 FIFO Sync [\ref{ref:}]. Nous n'entrons pas dans les détails du protocole de communication cependant, sachez que pour transférer les données depuis l'ordinateur vers le bloc de chiffrement (et inversement), trois interfaces sont employées, chacune permettant de transférer 1 byte de données à la fois. Enfin, pour que le bloc de chiffrement puisse distinguer les données qu'il reçoit (distinguer la clé du message clair), un byte de tête est utilisé pour indiquer l'identité de la donnée qui va être envoyé par l'ordinateur. En effet, les données envoyées depuis le script Python sont envoyées par paquet de 17 bytes. Le premier byte sert d'entête et indique le type de donnée qui va suivre (les 16 bytes suivants représentent par conséquent la donnée utile au bloc de chiffrement). Le tableau \ref{tab:header} présente les trois différentes entêtes possibles. Pour rappel, l'algorithme AES-256 chiffre les données par bloc de 128 bits (16 bytes) et la clé de chiffrement a une taille de 32 bytes.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1466,34 +1466,56 @@ Un bloc de chiffrement (AES-256) est implémenté sur le FPGA principal. L'étap
 \section{Résultats de simulations}
 \label{sec:Sim_results_CPA}
 
-Avant d'attaquer une réelle implémentation de l'AES-256 sur un FPGA, différentes simulations ont été mises en oeuvre à l'aide du logiciel MATLAB. Ces simulations ont permis de mieux appréhender le concept de l'attaque CPA. Les sections \ref{sec:sim_trace} et \ref{sec:sim_trace_noise} décrivent respectivement les résultats obtenus sur base de traces simulées sans bruit et avec bruit. L'importance du bruit dans une trace est ainsi mise en évidence au travers de ces simulations. L'attaque CPA s'opère sur les deux permiers \textit{rounds} de l'AES. Pour rappel, la taille de la clé de chiffrement pour l'AES-256 est de 32 bytes or l'algorithme ne chiffre des messages clairs que par bloc de 128 bits. Ainsi, deux \textit{rounds} sont nécessaires pour retrouver les 32 bytes de la clé. Le premier \textit{round} permet de retrouver les 16 premiers bytes de la clé tandis que le second \textit{round} permet de retrouver les 16 derniers bytes de la clé. Le poids de Hamming est utilisé comme modèle de prédiction de puissance.
+Avant d'attaquer une réelle implémentation de l'AES-256 sur un FPGA, différentes simulations ont été mises en oeuvre à l'aide du logiciel MATLAB. Ces simulations ont permis de mieux appréhender le concept de l'attaque CPA. Les sections \ref{sec:sim_trace} et \ref{sec:sim_trace_noise} décrivent respectivement les résultats obtenus sur base de traces simulées sans bruit et avec bruit. L'importance du bruit dans une trace est ainsi mise en évidence au travers de ces simulations. L'attaque CPA s'opère sur les deux permiers \textit{rounds} de l'AES. En effet, sachant que la taille de la clé de chiffrement pour l'AES-256 est de 32 bytes et sachant que l'algorithme ne chiffre des messages que par bloc de 128 bits, deux \textit{rounds} sont nécessaires pour retrouver les 32 bytes de la clé. Le premier \textit{round} permet de retrouver les 16 premiers bytes de la clé tandis que le second \textit{round} permet de retrouver les 16 derniers bytes de la clé. Le poids de Hamming (voir section \ref{sec:modelHW}) est utilisé comme modèle de prédiction de puissance.
 
 \subsection{Traces simulées}
 \label{sec:sim_trace}
 
-Dans ce premier exemple, nous considérons un cas idéal où les traces ne sont pas bruitées. La figure \ref{fig:sim_10000_traces} présente le résultat de l'attaque CPA (telle que décrite à la section \ref{subsec:CPA}) sur un byte de l'algorithme AES-256. Plus précisément, l'attaque cible le dixième byte de la clé de chiffrement. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées par l'attaquant. Nous remarquons que la valeur maximum des 256 coefficients de corrélation calculés vaut approximativement 0,6 et correspond à la clé 200. C'est effectivement cette valeur décimale qui est utilisée en tant que dixième byte de la clé secrète.
+Dans ce premier exemple, nous considérons le cas idéal où les traces ne sont pas bruitées. La figure \ref{fig:sim_10000_traces} présente le résultat de l'attaque CPA (tel que décrite à la section \ref{sec:CPA}) sur un byte de l'algorithme AES-256. Plus précisément, l'attaque cible le dixième byte de la clé de chiffrement. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées par l'attaquant. Nous remarquons que la valeur maximum des 256 coefficients de corrélation calculés vaut approximativement 0,6 et correspond à la clé 200. C'est effectivement cette valeur décimale qui est utilisée en tant que dixième byte de la clé secrète. Enfin, notons que la valeur maximale de corrélation (0,6) se distingue clairement des 255 autres valeurs obtenues. Nous allons cependant voir que cette différence n'est pas toujours aussi marquée. 
 
 \begin{figure}[htbp]
-    \hspace{-1cm}
-    \includegraphics[scale=0.36]{image/sim_10000_traces}
-    \caption{Attaque sur le dixième byte de la clé. Ce graphe présente les valeurs du coefficient de corrélation en fonction des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 0,6 et correspond à la clé 200.}
+    \hspace{-2cm}
+    \includegraphics[scale=0.4]{image/sim_10000_traces}
+    \caption{Attaque sur le dixième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 0,6 et correspond à la clé 200.}
     \label{fig:sim_10000_traces} 
 \end{figure}
 
-on sait qu’en fonction du nombre de traces analysées, les valeurs du facteur de corrélation fluctuent dans un intervalle plus ou moins grand. Ainsi, au plus le nombre de traces sera élevé, au plus l’intervalle des valeurs de corrélation sera faible et au plus ce sera facile de repérer la clé de chiffrement. En effet, si on observe les trois graphes ci-dessous, on peut remarquer que pour 10 traces, le coefficient de corrélation varie entre -0,66 et 0,73 ; pour 100 traces, le coefficient de corrélation varie entre -0,33 et 0,24 ; pour 1000 traces, le coefficient de corrélation varie entre -0,22 et 0,18. En observant ces 3 figures, on remarque que 10 traces ne suffisent pas à retrouver la valeur exacte de la clé secrète (indiquée à 125). Par contre, avec 100 traces et 1000 traces, la valeur du coefficient de corrélation maximum culmine à 0.54 et à 0.58 respectivement et permet de retrouver la bonne clé secrète utilisée pour le chiffrement (200).
+\newpage
+
+Nous avons vu à la section \ref{sec:CPA} que le nombre de traces employées pour réaliser l'attaque CPA influence le résultat obtenu. Pour rappel, lorsqu'un message clair est envoyé au bloc de chiffrement, une trace est enregistrée grâce à l'oscilloscope. Par conséquent, lorsqu'on augmente le nombre de messages clairs envoyés au bloc de chiffrement, le nombre de traces augmente proportionnellement. En théorie, plus le nombre de traces employées est grand, plus la corrélation entre cet ensemble de traces et l'ensemble des valeurs prédites de consommation doit être :
+\begin{itemize}
+\item Élevée lorsque la bonne clé est testée ;
+\item Faible lorsqu'une mauvaise clé est testée ;
+\end{itemize}
+À titre d'exemple, la figure \ref{fig:sim_nb_traces} présente la corrélation obtenue pour les 256 valeurs différentes de clé testées lorsque 10, 100 et 1000 traces sont employées. Il s'agit du même exemple que celui cité précédemment (attaque CPA sur le dixième byte de la clé). La figure \ref{fig:sim_nb_traces} montre clairement que plus le nombre de traces augmente, plus la corrélation obtenue pour la bonne clé est prédominante comparativement aux 255 autres valeurs de clé testées. Nous remarquons même que pour 10 traces, la clé retrouvée (144) ne correspond pas à la bonne clé (200).
 
 \begin{figure}[htbp]
     \hspace{-3.3cm}
     \includegraphics[scale=0.45]{image/sim_nb_traces}
-    \caption{Influence du nombre de traces analysées sur les valeurs de coefficient de corrélation.}
+    \caption{Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus la corrélation obtenue pour la bonne clé testée est prédominante par rapport aux 255 autres.}
     \label{fig:sim_nb_traces} 
 \end{figure}
 
+Pour indiquer que l’augmentation du nombre de traces permet de trouver plus facilement la valeur de la clé secrète, on utilise un graphe comme celui présenté à la figure \ref{fig:sim_corr_fonction_nb_traces}. Pour une attaque sur le dixième byte de la clé, ce graphe présente la corrélation obtenue en fonction du nombre de traces utilisées. Plus le nombre de traces employées augmente, plus la bonne clé testée (200) se distingue des 255 autres clés testées.
 
-
+\begin{figure}[htbp]
+    \hspace{-2.5cm}
+    \includegraphics[scale=0.4]{image/sim_corr_fonction_nb_traces}
+    \caption{Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus il est facile de retrouver la valeur de la clé secrète.}
+    \label{fig:sim_corr_fonction_nb_traces} 
+\end{figure}
 
 \subsection{Traces simulées avec addition de bruit}
 \label{sec:sim_trace_noise}
+
+Le bruit étant systématiquement présent dans les circuits électroniques, cette section met en évidence l'impact du bruit dans le résultat de l'attaque CPA. En théorie, plus le bruit est présent, plus il est difficile de retrouver la bonne valeur de la clé secrète. Ceci est dû au fait que la trace capturée à l'oscilloscope ne représente plus uniquement la consommation de puissance du FPGA mais elle représente cette consommation de puissance additionnée de bruit parasite. Ainsi, plus le bruit devient important, moins les traces représentent la vraie consommation de puissance du FPGA et donc plus il est difficile de retrouver la clé secrète. La figure \ref{fig:sim_traces_noise} présente le résultat de l'attaque CPA pour le dixième byte de la clé. Les mêmes ensembles de messages clairs et les mêmes ensembles de traces simulées ont été repris de l'exemple précédent (voir section \ref{sec:sim_trace}) afin de comparer efficacement l'impact du bruit.
+
+\begin{figure}[htbp]
+    \hspace{-3.3cm}
+    \includegraphics[scale=0.45]{image/sim_traces_noise}
+    \caption{Attaque sur le dixième byte de la clé avec pour objectif la mise en évidence de l'influence du bruit sur le résultat de l'attaque CPA. La présence du bruit complexifie la tâche de l'attaquant.}
+    \label{fig:sim_traces_noise} 
+\end{figure}
 
 
 \section{Résultats expérimentaux }

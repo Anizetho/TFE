@@ -44,10 +44,12 @@
 \contentsline {figure}{\numberline {7.1}{\ignorespaces Représentation haut niveau du bloc de chiffrement.\relax }}{46}{figure.caption.47}
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Architecture de l'algorithme AES-256 implémentée sur le FPGA principal.\relax }}{46}{figure.caption.48}
 \contentsline {figure}{\numberline {7.3}{\ignorespaces Chaine de communication entre le l'ordinateur et le FPGA principal.\relax }}{47}{figure.caption.49}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Attaque sur le dixième byte de la clé. Ce graphe présente les valeurs du coefficient de corrélation en fonction des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 0,6 et correspond à la clé 200.\relax }}{48}{figure.caption.51}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Influence du nombre de traces analysées sur les valeurs de coefficient de corrélation.\relax }}{49}{figure.caption.52}
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{50}{figure.caption.53}
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{51}{figure.caption.54}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Attaque sur le dixième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 0,6 et correspond à la clé 200.\relax }}{48}{figure.caption.51}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus la corrélation obtenue pour la bonne clé testée est prédominante par rapport aux 255 autres.\relax }}{49}{figure.caption.52}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Influence du nombre de traces employées pour la réalisation de l'attaque CPA. Plus le nombre de traces augmente, plus il est facile de retrouver la valeur de la clé secrète.\relax }}{50}{figure.caption.53}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Attaque sur le dixième byte de la clé avec pour objectif la mise en évidence de l'influence du bruit sur le résultat de l'attaque CPA. La présence du bruit complexifie la tâche de l'attaquant.\relax }}{50}{figure.caption.54}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{51}{figure.caption.55}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{52}{figure.caption.56}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
