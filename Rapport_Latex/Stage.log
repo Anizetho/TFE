@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.3.15)  11 MAY 2019 20:19
+This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.3.15)  11 MAY 2019 21:26
  restricted system commands enabled.
  file:line:error style messages enabled.
 **Stage.tex
@@ -36,7 +36,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.114 seconds
+luaotfload | main : initialization completed in 0.183 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
@@ -3211,14 +3211,14 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of LuaTeX's memory you used:
  48185 strings out of 494480
  932742,1373583 words of node,token memory allocated
- 809769 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 642 glue, 1 kern, 1 penalty, 128749 glyph, 13730 at
+ 809361 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 642 glue, 1 kern, 1 penalty, 128681 glyph, 13730 at
 tribute, 79 glue_spec, 2290 attribute_list, 1 write, 29 pdf_action nodes
-   avail lists: 1:7,2:2289,3:315,4:173,5:369,6:155,7:1588,8:374,9:521,10:33,11:4
+   avail lists: 1:6,2:2289,3:315,4:173,5:369,6:155,7:1588,8:374,9:521,10:33,11:4
 68
  48520 multiletter control sequences out of 65536+600000
  80 fonts using 12980375 bytes
- 55i,18n,77p,2203b,1161s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 55i,18n,77p,2119b,1161s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/local/texlive/2017/texmf-dist/fonts/opentype/public/lm/lmroman9-italic.otf
 >{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/loca
 l/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2017/
@@ -3243,7 +3243,7 @@ ts/type1/public/lm/lmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
 ic/lm/lmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmsy7
 .pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
 sr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Stage.pdf (88 pages, 28132574 bytes).
+Output written on Stage.pdf (88 pages, 28132488 bytes).
 
 PDF statistics: 1673 PDF objects out of 1728 (max. 8388607)
  1380 compressed objects within 14 object streams
