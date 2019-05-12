@@ -1468,7 +1468,7 @@ Un bloc de chiffrement (AES-256) est implémenté sur le FPGA principal. L'étap
 \section{Résultats de simulations}
 \label{sec:Sim_results_CPA}
 
-Avant d'attaquer une réelle implémentation de l'AES-256 sur un FPGA, différentes simulations ont été mises en oeuvre à l'aide du logiciel MATLAB. Ces simulations ont permis de mieux appréhender le concept de l'attaque CPA. Les sections \ref{sec:sim_trace} et \ref{sec:sim_trace_noise} décrivent respectivement les résultats obtenus sur base de traces simulées sans bruit et avec bruit. L'importance du bruit dans une trace est ainsi mise en évidence au travers de ces simulations. L'attaque CPA s'opère sur les deux permiers \textit{rounds} de l'AES. En effet, sachant que la taille de la clé de chiffrement pour l'AES-256 est de 32 bytes et sachant que l'algorithme ne chiffre des messages que par bloc de 128 bits, deux \textit{rounds} sont nécessaires pour retrouver les 32 bytes de la clé. Le premier \textit{round} permet de retrouver les 16 premiers bytes de la clé tandis que le second \textit{round} permet de retrouver les 16 derniers bytes de la clé. Le poids de Hamming (voir section \ref{sec:modelHW}) est utilisé en tant que modèle de prédiction de puissance.
+Avant d'attaquer une réelle implémentation de l'AES-256 sur un FPGA, différentes simulations ont été mises en oeuvre à l'aide du logiciel MATLAB. Ces simulations ont permis de mieux appréhender le concept de l'attaque CPA. Les sections \ref{sec:sim_trace} et \ref{sec:sim_trace_noise} décrivent respectivement les résultats obtenus sur base de traces simulées sans bruit et avec bruit. L'importance du bruit dans une trace est ainsi mise en évidence au travers de ces simulations. L'attaque CPA s'opère sur les deux permiers \textit{rounds} de l'AES. En effet, sachant que la taille de la clé de chiffrement pour l'AES-256 est de 32 bytes et sachant que l'algorithme ne chiffre des messages que par bloc de 128 bits, deux \textit{rounds} sont nécessaires pour retrouver les 32 bytes de la clé. Le premier \textit{round} permet de retrouver les 16 premiers bytes de la clé tandis que le second \textit{round} permet de retrouver les 16 derniers bytes de la clé. Le poids de Hamming (voir section \ref{sec:modelHW}) est utilisé en tant que modèle de prédiction de puissance pour ces simulations.
 
 \subsection{Traces simulées idéales}
 \label{sec:sim_trace}
@@ -1478,7 +1478,7 @@ Dans ce premier exemple, nous considérons le cas idéal où les traces ne sont 
 \begin{figure}[htbp]
     \hspace{-2cm}
     \includegraphics[scale=0.4]{image/sim_10000_traces}
-    \caption{Attaque sur le dixième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 1 et correspond à la clé 200.}
+    \caption{Résultat de l'attaque CPA sur le dixième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 1 et correspond à la clé 200.}
     \label{fig:sim_10000_traces} 
 \end{figure}
 
@@ -1498,7 +1498,7 @@ Nous avons vu à la section \ref{sec:CPA} que le nombre de traces employées pou
     \label{fig:sim_nb_traces} 
 \end{figure}
 
-Pour montrer que l’augmentation du nombre de traces permet de trouver plus facilement la valeur de la clé secrète, on utilise un graphe comme celui présenté à la figure \ref{fig:sim_corr_fonction_nb_traces}. Pour une attaque sur le dixième byte de la clé, ce graphe présente la corrélation obtenue en fonction du nombre de traces utilisées. Plus le nombre de traces employées augmente, plus la bonne clé testée (200) se distingue des 255 autres clés testées. On remarque que la bonne clé est révélée à partir d'une seule trace. Ceci est impossible en réalité à cause du bruit. Le section suivante ajoute ainsi dans les traces un bruit \textit{gaussien} de moyenne \mu et d'écart-type \sigma afin que les résultats obtenus par simulations représentent un peu plus la réalité.
+Pour montrer que l’augmentation du nombre de traces permet de révéler plus facilement la valeur de la clé secrète, on utilise un graphe comme celui présenté à la figure \ref{fig:sim_corr_fonction_nb_traces}. Pour une attaque sur le dixième byte de la clé, ce graphe présente la corrélation obtenue en fonction du nombre de traces utilisées. Plus le nombre de traces employées augmente, plus la bonne clé testée (200) se distingue des 255 autres clés testées. Sur ce graphe, on remarque que la bonne clé est révélée à partir d'une seule trace. Ceci est impossible en réalité à cause du bruit. Le section suivante ajoute ainsi dans les traces un bruit \textit{gaussien} de moyenne \mu \ et d'écart-type \sigma \ afin que les résultats obtenus par simulations représentent un peu plus la réalité.
 
 \begin{figure}[htbp]
     \hspace{-2.5cm}
@@ -1510,11 +1510,11 @@ Pour montrer que l’augmentation du nombre de traces permet de trouver plus fac
 \subsection{Traces simulées avec addition de bruit}
 \label{sec:sim_trace_noise}
 
-Le bruit étant systématiquement présent dans les circuits électroniques, cette section met en évidence l'impact du bruit dans le résultat de l'attaque CPA. En théorie, plus le bruit est présent, plus il est difficile de retrouver la valeur exacte de la clé secrète. Ceci est dû au fait que la trace capturée à l'oscilloscope ne représente plus uniquement la consommation de puissance du FPGA mais elle représente cette consommation de puissance additionnée de bruit parasite. Ainsi, plus le bruit devient important, moins les traces représentent la puissance consommée par le FPGA et donc plus il est difficile de retrouver la clé secrète. Le bruit ajouté sur les traces est un bruit \textit{gaussien}. Un bruit \textit{gaussien} suit une loi normale de moyenne \mu \ et d'écart-type \sigma.
+Le bruit étant systématiquement présent dans les circuits électroniques, cette section met en évidence l'impact du bruit dans le résultat de l'attaque CPA. En théorie, plus le bruit est présent, plus il est difficile de retrouver la valeur exacte de la clé secrète. Ceci est dû au fait que la trace capturée à l'oscilloscope ne représente plus uniquement la consommation de puissance du FPGA mais elle représente cette consommation de puissance additionnée de bruit parasite. Ainsi, plus le bruit devient important, moins les traces représentent la puissance consommée par le FPGA et donc plus il est difficile de retrouver la clé secrète. Le bruit ajouté sur les traces simulées est un bruit \textit{gaussien}. Un bruit \textit{gaussien} suit une loi normale de moyenne \mu \ et d'écart-type \sigma.
 
 \hspace{-0.5cm}La figure \ref{fig:sim_corr_fonction_nb_traces_noise} présente le résultat d'une attaque CPA sur le dixième byte de la clé de chiffrement. Les mêmes ensembles de messages clairs et de traces simulées ont été repris de l'exemple précédent (voir section \ref{sec:sim_trace}) afin de comparer efficacement l'impact du bruit sur les résultats. Le bruit additionné pour cet exemple possède une moyenne égale à 0 et une écart-type égal à 15. Nous pouvons remarquer que la valeur de corrélation pour la clé secrète est désormais nettement inférieure à 1 alors qu'elle était égal à 1 sans bruit (voir figure \ref{fig:sim_corr_fonction_nb_traces}). Nous remarquons également que pour cet exemple, la clé secrète est toujours retrouvée à partir de 800 traces approximativement.
 
-\hspace{-0.5cm}Pour mieux montrer l'impact du bruit, une métrique est utilisée afin de mesurer la taux de succès de l'attaque en fonction du nombre de traces utilisées. Ce taux de succès est également fonction de la quantité de bruit ajoutées dans les traces simulées (et qui dépend du paramètre \sigma). La figure \ref{fig:success_rate_sim} présent le taux de succès de l'attaque CPA sur le dixième byte de la clé secrète. Trois bruits différents sont ajoutés dans les traces. Ces trois bruits ont chacun une moyenne nulle mais un écart-type différent : \sigma \ $= 10$, \sigma \ $= 15$ et \sigma \ $= 20$. Nous remarquons que la clé secrète peut être révélée à partir de 1000 traces lorsque les traces sont bruitées avec un \sigma \ égal à 15, ce qui correspond avec le graphe à la figure \ref{fig:sim_corr_fonction_nb_traces_noise}. On se rend ainsi mieux compte de l'impact du bruit dans le résultat de l'attaque CPA. 
+\hspace{-0.5cm}Pour mieux montrer l'impact du bruit, une métrique est utilisée afin de mesurer le taux de succès de l'attaque en fonction du nombre de traces utilisées. Ce taux de succès est également fonction de la quantité de bruit ajoutées dans les traces simulées (et qui dépend du paramètre \sigma). La figure \ref{fig:success_rate_sim} présent le taux de succès de l'attaque CPA sur le dixième byte de la clé secrète. Trois bruits différents sont ajoutés dans les traces. Ces trois bruits ont chacun une moyenne nulle mais un écart-type différent : \sigma \ $= 10$, \sigma \ $= 15$ et \sigma \ $= 20$. Nous remarquons que la clé secrète peut, en moyenne, être révélée à partir de 1000 traces lorsque les traces sont bruitées avec un \sigma \ égal à 15, ce qui correspond avec le graphe à la figure \ref{fig:sim_corr_fonction_nb_traces_noise}. On se rend ainsi mieux compte de l'impact du bruit dans le résultat de l'attaque CPA. 
 
 \begin{figure}[htbp]
     \hspace{-2.3cm}
@@ -1523,7 +1523,7 @@ Le bruit étant systématiquement présent dans les circuits électroniques, cet
     \label{fig:sim_corr_fonction_nb_traces_noise} 
     \hspace{-2.2cm}
     \includegraphics[scale=0.4]{image/success_rate_sim}
-    \caption{Taux de succès de l'attaque CPA en fonction du nombre de traces utilisées. La courbe orange présente le résultat pour une trace idéale (pas de bruit) tandis que la courbe bleue présente le résultat pour une trace dans laquelle un bruit gaussien de moyenne nulle et d'écart-type égal à 0 a été ajouté.}
+    \caption{Taux de succès de l'attaque CPA en fonction du nombre de traces utilisées. Les 3 courbes présentées sur le graphe correspondent à des valeurs différentes de \sigma \ (pour le bruit ajouté). La courbe bleue présente le résultat pour \sigma \ $= 15$, qui correspond à l'exemple présenté précédemment (voir figure \ref{fig:sim_corr_fonction_nb_traces_noise}).}
     \label{fig:success_rate_sim} 
 \end{figure}
 
@@ -1532,7 +1532,7 @@ Le bruit étant systématiquement présent dans les circuits électroniques, cet
 \section{Résultats expérimentaux }
 \label{sec:Exp_results_CPA}
 
-Cette section présente les résultats expérimentaux obtenus lors de la mise en application de l'attaque CPA (voir section \ref{sec:CPA_App}) sur l'implémentation de l'AES-256 (voir \ref{sec:Imp_AES_256}). Nous remarquons que les résultats obtenus pour une vraie implémentation ressemblent faiblement à ceux obtenus par simulations (voir section \ref{sec:Sim_results_CPA}). Ceci est dû à différents facteurs comme l'importance du bruit. 
+Cette section présente les résultats expérimentaux obtenus lors de la mise en application de l'attaque CPA (voir section \ref{sec:CPA_App}) sur l'implémentation de l'AES-256 (voir \ref{sec:Imp_AES_256}).
 
 \subsection{Traces réelles brutes}
 \label{sec:real_trace}
@@ -1546,21 +1546,31 @@ La figure \ref{fig:trace_brute} présente une trace brute capturée à l'oscillo
     \label{fig:trace_brute} 
 \end{figure}
 
-La figure \ref{fig:real_result_CPA} présente le résultat de l'attaque CPA sur un byte de l'algorithme AES-256. Plus précisément, l'attaque cible le dixième byte de la clé secrète. Nous remarquons que les valeurs de corrélations sont très faibles comparativement aux valeurs obtenues pour les simulations. 
+La figure \ref{fig:real_result_CPA} présente le résultat de l'attaque CPA sur un byte de l'algorithme AES-256. Plus précisément, l'attaque cible le quatorzième byte de la clé secrète. Pour réaliser cette attaque, 5000 messages clairs ont été envoyés au FPGA, ce qui correspond donc à 5000 traces de puissance enregistrées à l'oscilloscope. Le résultat de cette attaque montre que les 256 valeurs du coefficient de corrélation sont extrêmement faibles. La valeur maximale de corrélation vaut -0,085 et révèle la valeur décimale 13 pour le quatorzième byte de la clé secrète (ce qui est correcte). Les 255 autres valeurs de corrélation sont comprises dans l'intervalle [-0,5 : 0,4]. Cela montre que la différence entre la valeur maximale de corrélation et les autres valeurs de corrélation reste faible (0,035 de différence) et qu'il est donc nécessaire d'utiliser un grand nombre de traces pour retrouver la bonne clé de chiffrement. Le nombre de traces minimum nécessaire à l'attaquant pour réussir une attaque CPA est présenté ci-après.
 
-\begin{figure}[htbp]
-    \hspace{-2cm}
-    \includegraphics[scale=0.6]{image/trace_brute}
-    \caption{}
+\begin{figure}[ht!]
+    \hspace{-1.8cm}
+    \includegraphics[scale=0.6]{image/real_result_CPA}
+    \caption{Résultat de l'attaque CPA sur le quatorzième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut -0,085 et révèle la valeur décimale 13 pour le quatorzième byte de la clé.}
     \label{fig:real_result_CPA} 
 \end{figure}
+\FloatBarrier 
 
+La figure \ref{fig:real_result_corr_vs_nb_traces_CPA} indique le nombre de traces minimum qu'un attaquant doit utiliser pour que l'attaque CPA puisse toujours permettre de révéler la clé de chiffrement. Ce graphe présente les résultats de l'attaque CPA pour le quatorzième byte de la clé. On constate qu'au-dessus d'approximativement 1400 traces, l'attaque CPA révèle toujours la valeur de la clé secrète. De plus, au plus le nombre de traces augmente, au plus la clé secrète se distingue des 255 autres clés testées par l'attaquant. À noter que le graphe peut être totalement différent pour les 31 autres bytes de la clé.
 
+\begin{figure}[htbp]
+    \hspace{-2.8cm}
+    \includegraphics[scale=0.65]{image/real_result_corr_vs_nb_traces_CPA}
+    \caption{Attaque CPA sur le quatorzième byte de la clé de chiffrement. Ce graphe indique qu'il faut un minimum de 1400 traces à l'attaquant pour que l'attaque CPA fonctionne tout le temps.}
+    \label{fig:real_result_corr_vs_nb_traces_CPA} 
+\end{figure}
+
+\newpage
 
 \subsection{Traces réelles filtrées}
 \label{sec:filter}
 
-La figure \ref{fig:trace_brute} présente une trace brute qui a été filtrée. Le filtre employé est un filtre numérique FIR de type passe-bas. Le fenêtre employée est une fenêtre de \textit{Hamming} et l'ordre du filtre est 100. 
+À la section \ref{sec:Sim_results_CPA}, l'influence du bruit dans les traces analysées a été mise en évidence. De ce fait, un pré-traitement des traces peut être réalisé afin de retirer ce bruit parasite inutile. Une façon efficace d'enlever ce bruit parasite est d'utiliser un filtre. L'utilisation de ce filtre ayant pour objectif d'augmenter le taux de succès de l'attaque. Sachant que le Picoscope possède une bande passante de 200 MHz et qu'il échantillonne à 1 Gé/s et sachant que le fréquence d'horloge utilisée par le FPGA est de 48 Mhz (voir section \ref{sec:config_chiff} pour description du matériel utilisé), l'idée est d'utiliser un filtre numérique de type passe-bas. Plus précisément, le filtre employé est un filtre à réponse impulsionnelle finie (\textit{FIR}) d'ordre 100 et dont la fréquence de coupure est définie à 48 MHz. La fenêtre employée est une fenêtre de \textit{Hamming} [\ref{}]. La figure \ref{fig:trace_brute} compare une trace brute (non-filtrée) à une trace filtrée. La figure \ref{fig:} présente la réponse en fréquence du filtre utilisé. Enfin, la figure \ref{} présente la transformée de Fourier inverse pour la trace brute et pour la trace filtrée. On remarque ainsi que le bruit parasite au-dessus de la fréquence de 48 MHz a bien été enlevé.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1569,10 +1579,12 @@ La figure \ref{fig:trace_brute} présente une trace brute qui a été filtrée. 
     \label{fig:trace_brute} 
 \end{figure}
 
+La figure \ref{fig:} indique le nombre de traces filtrées qu'un attaquant doit utiliser pour que l'attaque CPA révèle la valeur du quatorzième byte de la clé de chiffrement. On constate qu'au-dessus de X traces, l'attaque révèle toujours la valeur de la clé secrète. Ainsi, comparativement aux résultats obtenus sans pré-traitement (voir section \ref{sec:real_trace}), le filtrage a permis d'améliorer l'attaque. La section \ref{sec:success_rate} suivante présente le taux de succès de l'attaque selon que le pré-traitement a été appliqué ou non.
+
 \subsection{Taux de succès de l'attaque}
 \label{sec:success_rate}
 
-Comme pour les simulations, nous mesurons le taux de succès de l'attaque CPA avec et sans filtrage. Le résultat est présenté à la figure \ref{fig:success_rate_real}. Nous mettons ainsi en évidence l'avantage qu'apporte le filtrage sur les traces mesurées.
+Comme pour les simulations, nous mesurons le taux de succès de l'attaque CPA avec et sans filtrage. Le résultat est présenté à la figure \ref{fig:success_rate_real}. Il est ainsi mis en évidence l'avantage qu'apporte le filtrage sur les traces mesurées.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1603,9 +1615,6 @@ Comme pour les simulations, nous mesurons le taux de succès de l'attaque CPA av
 
 \section{Simulations (\textit{testbench})}
 \label{sec:EvalSim}
-
-\section{Évaluation par métriques}
-\label{sec:EvalMetrics}
 
 \section{Évaluation par critères de performances}
 \label{sec:EvalPerf}
