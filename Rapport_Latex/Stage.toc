@@ -46,7 +46,7 @@
 \contentsline {subsection}{\numberline {7.1.1}Implémentation AES-256}{45}{subsection.7.1.1}
 \contentsline {subsection}{\numberline {7.1.2}Implémentation contrôleur}{47}{subsection.7.1.2}
 \contentsline {section}{\numberline {7.2}Résultats de simulations}{48}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Traces simulées}{48}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.1}Traces simulées idéales}{48}{subsection.7.2.1}
 \contentsline {subsection}{\numberline {7.2.2}Traces simulées avec addition de bruit}{50}{subsection.7.2.2}
 \contentsline {section}{\numberline {7.3}Résultats expérimentaux }{52}{section.7.3}
 \contentsline {subsection}{\numberline {7.3.1}Traces réelles brutes}{52}{subsection.7.3.1}
@@ -60,6 +60,6 @@
 \contentsline {section}{\numberline {9.2}Évaluation par métriques}{56}{section.9.2}
 \contentsline {section}{\numberline {9.3}Évaluation par critères de performances}{56}{section.9.3}
 \contentsline {chapter}{\numberline {10}Conclusion}{57}{chapter.10}
-\contentsline {chapter}{Crédits}{58}{section*.61}
-\contentsline {chapter}{Références}{58}{section*.62}
-\contentsline {chapter}{Annexes}{61}{section*.62}
+\contentsline {chapter}{Crédits}{58}{section*.60}
+\contentsline {chapter}{Références}{58}{section*.61}
+\contentsline {chapter}{Annexes}{61}{section*.61}
