@@ -62,6 +62,7 @@
 \newlabel{fig:chiffrement}{{2.4}{8}{Concept d'un algorithme de chiffrement.\relax }{figure.caption.11}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}\textit  {Device} cryptographique}{8}{subsection.2.2.2}}
 \newlabel{sec:Introduction}{{2.2.2}{8}{\textit {Device} cryptographique}{subsection.2.2.2}{}}
+\newlabel{def:device}{{2.2.2}{8}{\textit {Device} cryptographique}{definition.2.2.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Algorithme \textit  {AES} (\textit  {Advanced Encryption Standard})}{9}{subsection.2.2.3}}
 \newlabel{subsec:AES}{{2.2.3}{9}{Algorithme \textit {AES} (\textit {Advanced Encryption Standard})}{subsection.2.2.3}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {2.1}{\ignorespaces Les trois variantes de l'algorithmes AES.\relax }}{9}{table.caption.12}}
@@ -262,34 +263,40 @@
 \newlabel{fig:real_result_corr_vs_nb_traces_CPA}{{7.11}{54}{Attaque CPA sur le quatorzième byte de la clé de chiffrement. Ce graphe indique qu'il faut un minimum de 1400 traces à l'attaquant pour que l'attaque CPA fonctionne tout le temps.\relax }{figure.caption.57}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Traces réelles filtrées}{55}{subsection.7.3.2}}
 \newlabel{sec:filter}{{7.3.2}{55}{Traces réelles filtrées}{subsection.7.3.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.12}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{55}{figure.caption.58}}
-\newlabel{fig:trace_brute}{{7.12}{55}{Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }{figure.caption.58}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Taux de succès de l'attaque}{55}{subsection.7.3.3}}
-\newlabel{sec:success_rate}{{7.3.3}{55}{Taux de succès de l'attaque}{subsection.7.3.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.13}{\ignorespaces \relax }}{56}{figure.caption.59}}
-\newlabel{fig:success_rate_real}{{7.13}{56}{\relax }{figure.caption.59}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit  {faking}}{57}{chapter.8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.12}{\ignorespaces Comparaison dans le domaine temporel entre une trace brute et une trace filtrée. Le filtre FIR de type passe-bas a pour effet de \textit  {lisser} le signal.\relax }}{55}{figure.caption.58}}
+\newlabel{fig:traces_comparaison_bruit}{{7.12}{55}{Comparaison dans le domaine temporel entre une trace brute et une trace filtrée. Le filtre FIR de type passe-bas a pour effet de \textit {lisser} le signal.\relax }{figure.caption.58}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.13}{\ignorespaces Transformée de Fourier discrète pour une trace brute.\relax }}{56}{figure.caption.59}}
+\newlabel{fig:trace_no_filtered}{{7.13}{56}{Transformée de Fourier discrète pour une trace brute.\relax }{figure.caption.59}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.14}{\ignorespaces Transformée de Fourier discrète pour une trace filtrée.\relax }}{56}{figure.caption.59}}
+\newlabel{fig:filtered_trace}{{7.14}{56}{Transformée de Fourier discrète pour une trace filtrée.\relax }{figure.caption.59}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.15}{\ignorespaces Attaque CPA sur le quatorzième byte de la clé de chiffrement. Ce graphe indique qu'il faut un minimum de 1400 traces à l'attaquant pour que l'attaque CPA fonctionne tout le temps.\relax }}{57}{figure.caption.60}}
+\newlabel{fig:corr_vs_nb_traces_filtering}{{7.15}{57}{Attaque CPA sur le quatorzième byte de la clé de chiffrement. Ce graphe indique qu'il faut un minimum de 1400 traces à l'attaquant pour que l'attaque CPA fonctionne tout le temps.\relax }{figure.caption.60}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Taux de succès de l'attaque}{58}{subsection.7.3.3}}
+\newlabel{sec:success_rate}{{7.3.3}{58}{Taux de succès de l'attaque}{subsection.7.3.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.16}{\ignorespaces \relax }}{58}{figure.caption.61}}
+\newlabel{fig:success_rate_real}{{7.16}{58}{\relax }{figure.caption.61}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit  {faking}}{59}{chapter.8}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{chap:faking}{{8}{57}{Implémentation de la contre-mesure de type \textit {faking}}{chapter.8}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.1}Résultats de simulations}{57}{section.8.1}}
-\newlabel{sec:Sim_results_Faking}{{8.1}{57}{Résultats de simulations}{section.8.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {8.2}Résultats expérimentaux}{57}{section.8.2}}
-\newlabel{sec:Exp_Results_Faking}{{8.2}{57}{Résultats expérimentaux}{section.8.2}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{58}{chapter.9}}
+\newlabel{chap:faking}{{8}{59}{Implémentation de la contre-mesure de type \textit {faking}}{chapter.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Résultats de simulations}{59}{section.8.1}}
+\newlabel{sec:Sim_results_Faking}{{8.1}{59}{Résultats de simulations}{section.8.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Résultats expérimentaux}{59}{section.8.2}}
+\newlabel{sec:Exp_Results_Faking}{{8.2}{59}{Résultats expérimentaux}{section.8.2}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{60}{chapter.9}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {9.1}Simulations (\textit  {testbench})}{58}{section.9.1}}
-\newlabel{sec:EvalSim}{{9.1}{58}{Simulations (\textit {testbench})}{section.9.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{58}{section.9.2}}
-\newlabel{sec:EvalPerf}{{9.2}{58}{Évaluation par critères de performances}{section.9.2}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {10}Conclusion}{59}{chapter.10}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.1}Simulations (\textit  {testbench})}{60}{section.9.1}}
+\newlabel{sec:EvalSim}{{9.1}{60}{Simulations (\textit {testbench})}{section.9.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{60}{section.9.2}}
+\newlabel{sec:EvalPerf}{{9.2}{60}{Évaluation par critères de performances}{section.9.2}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}Conclusion}{61}{chapter.10}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \citation{*}
 \bibdata{Stage}
-\@writefile{toc}{\contentsline {chapter}{Crédits}{60}{section*.61}}
-\@writefile{toc}{\contentsline {chapter}{Références}{60}{section*.62}}
+\@writefile{toc}{\contentsline {chapter}{Crédits}{62}{section*.63}}
+\@writefile{toc}{\contentsline {chapter}{Références}{62}{section*.64}}
 \bibcite{Complete}{1}
 \bibcite{SCA}{2}
 \bibcite{advanced}{3}
@@ -310,26 +317,27 @@
 \bibcite{test}{18}
 \bibcite{wiki}{19}
 \bibstyle{unsrt}
-\@writefile{toc}{\contentsline {chapter}{Annexes}{63}{section*.62}}
+\@writefile{toc}{\contentsline {chapter}{Annexes}{65}{section*.64}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ann:CESAR}{{A.1}{64}{Chiffre de César}{section.a.A.1}{}}
-\newlabel{tab:CESAR}{{A.1}{64}{Chiffre de César.\relax }{table.caption.64}{}}
-\newlabel{tab:CesarEx}{{A.2}{64}{Exemple de chiffre de César.\relax }{table.caption.65}{}}
-\newlabel{ann:AES128}{{A.2}{65}{Code algorithme AES-128 - Ordre d'exécution des opérations}{section.a.A.2}{}}
-\newlabel{ann:AES256}{{A.3}{66}{Code algorithme AES-256 - Ordre d'exécution des opérations}{section.a.A.3}{}}
-\newlabel{ann:Sbox}{{A.4}{67}{Sbox - Table de substitution}{section.a.A.4}{}}
-\newlabel{fig:Sbox}{{A.3}{67}{La Sbox représente une table de substitution utilisée pour l'opération non-linéaire SubBytes de l'algorithme AES. À chaque donnée hexadécimale d'entrée correspond une donnée hexadécimale de sortie.\relax }{table.caption.68}{}}
-\newlabel{ann:KeySchedule}{{A.5}{68}{Opération \textit {KeySchedule}}{section.a.A.5}{}}
-\newlabel{fig:KeySchedule1}{{A.1}{68}{Principe de fonctionnement de l'opération \textit {KeySchedule}.\relax }{figure.caption.69}{}}
+\newlabel{ann:CESAR}{{A.1}{66}{Chiffre de César}{section.a.A.1}{}}
+\newlabel{tab:CESAR}{{A.1}{66}{Chiffre de César.\relax }{table.caption.66}{}}
+\newlabel{tab:CesarEx}{{A.2}{66}{Exemple de chiffre de César.\relax }{table.caption.67}{}}
+\newlabel{ann:AES128}{{A.2}{67}{Code algorithme AES-128 - Ordre d'exécution des opérations}{section.a.A.2}{}}
+\newlabel{ann:AES256}{{A.3}{68}{Code algorithme AES-256 - Ordre d'exécution des opérations}{section.a.A.3}{}}
+\newlabel{ann:Sbox}{{A.4}{69}{Sbox - Table de substitution}{section.a.A.4}{}}
+\newlabel{fig:Sbox}{{A.3}{69}{La Sbox représente une table de substitution utilisée pour l'opération non-linéaire SubBytes de l'algorithme AES. À chaque donnée hexadécimale d'entrée correspond une donnée hexadécimale de sortie.\relax }{table.caption.70}{}}
+\newlabel{ann:KeySchedule}{{A.5}{70}{Opération \textit {KeySchedule}}{section.a.A.5}{}}
+\newlabel{fig:KeySchedule1}{{A.1}{70}{Principe de fonctionnement de l'opération \textit {KeySchedule}.\relax }{figure.caption.71}{}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ann:traceExplain}{{B.1}{70}{Représentation des traces de puissance prises à l'oscilloscope}{section.a.B.1}{}}
-\newlabel{fig:traceExplain}{{B.1}{71}{La figure du haut représente une trace de puissance (i.e 1 plaintext utilisé) dans laquelle on retrouve 9 échantillons. La figure du bas représente N traces de puissance dans lesquelles on retrouve également 9 échantillons. En pratique, le nombre d'échantillons dans une trace de puissance est beaucoup plus élevé (de l'ordre de 10000) et sera noté par la lettre S (pour \textit {Sampling}).\relax }{figure.caption.70}{}}
+\newlabel{ann:resume_hiding}{{B.1}{72}{Contre-mesures \textit {Hiding}}{section.a.B.1}{}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ann:resume_hiding}{{C.1}{73}{Contre-mesures \textit {Hiding}}{section.a.C.1}{}}
+\newlabel{ann:hamming}{{C.1}{74}{Caractéristiques du filtre FIR (Hamming)}{section.a.C.1}{}}
+\newlabel{fig:hamming}{{C.1}{74}{Réponse en amplitude et en phase du filtre FIR passe-bas utilisé pour le projet.\relax }{figure.caption.72}{}}
+\newlabel{fig:impulse_response}{{C.2}{74}{Réponse impusionnelle du filtre FIR passe-bas utilisé pour le projet.\relax }{figure.caption.72}{}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ann:lettre}{{D.1}{75}{Lettre de motivation}{section.a.D.1}{}}
-\newlabel{ann:certificat}{{D.2}{76}{Certificat de stage}{section.a.D.2}{}}
+\newlabel{ann:lettre}{{D.1}{76}{Lettre de motivation}{section.a.D.1}{}}
+\newlabel{ann:certificat}{{D.2}{77}{Certificat de stage}{section.a.D.2}{}}

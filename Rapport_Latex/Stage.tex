@@ -131,7 +131,7 @@
 \section*{\centering Abstract}
 
 Imaginez que de simples analyses de paramètres physiques (température, consommation de puissance, rayonnement électromagnétique) permettent de révéler les secrets de votre carte d'identité ou de votre carte bancaire ?  
-Ceci est aujourd'hui possible depuis la découverte fin des années 1990 d'un nouveau type d'attaque ciblant les algorithmes de chiffrement : les attaques par canaux auxiliaires. À ce jour, il existe une multitude d’algorithmes de chiffrement. L’algorithme \textit{AES} (\textit{Advanced Ecryption Standard}) est sans nul doute le plus réputé et le plus répandu, de nos jours, dans la majeure partie des systèmes embarqués comportant des applications en sécurité. L'attaque par \textit{l'analyse de la consommation de puissance} est un exemple parmi d'autres d'attaques par canaux auxiliaires d'un système implémentant l'algorithme AES. Cette attaque analyse la consommation de puissance du device cryptographique lorsque celui-ci chiffre les données. En effet, la puissance consommée par le circuit intégré reflète directement ses activités internes (instructions exécutées et données manipulées). Depuis ces découvertes, la sécurité matérielle a pris une tournure particulière. C’est désormais sur un nouvel axe de recherche, s’écartant des sentiers traditionnels, que se porte la problématique de protection des données sensibles.
+Ceci est aujourd'hui possible depuis la découverte fin des années 1990 d'un nouveau type d'attaque ciblant les algorithmes de chiffrement : les attaques par canaux auxiliaires. À ce jour, il existe une multitude d’algorithmes de chiffrement. L’algorithme \textit{AES} (\textit{Advanced Ecryption Standard}) est sans nul doute le plus réputé et le plus répandu, de nos jours, dans la majeure partie des systèmes embarqués comportant des applications en sécurité. L'attaque par \textit{l'analyse de la consommation de puissance} est un exemple parmi d'autres d'attaques par canaux auxiliaires d'un système implémentant l'algorithme AES. Cette attaque analyse la consommation de puissance du circuit cryptographique lorsque celui-ci chiffre les données. En effet, la puissance consommée par le circuit intégré reflète directement ses activités internes (instructions exécutées et données manipulées). Depuis ces découvertes, la sécurité matérielle a pris une tournure particulière. C’est désormais sur un nouvel axe de recherche, s’écartant des sentiers traditionnels, que se porte la problématique de protection des données sensibles.
 
 Étant un acteur majeur dans le domaine de la Défense, Thales collabore étroitement avec de nombreux gouvernements. La cybersécurité est au centre des préoccupations actuelles. Le besoin en implémentations sécurisées se fait de plus en plus ressentir. Il est nécessaire de se prémunir contre les attaques classiques mais également contre les attaques de plus bas niveau exploitant des caractéristiques physiques. L'attaque ciblée dans ce \textit{Travail de Fin d'Étude} (TFE) concerne l'analyse de la consommation de puissance. Mon objectif est le suivant : dans un premier temps, réaliser une série de démonstrateurs permettant de mettre en évidence l'impact des failles non traitées. Dans un second temps, développer une contre-mesure et justifier son gain en sécurité.
 
@@ -259,25 +259,25 @@ Je remercie également mademoiselle Clémence Flémal, ma tutrice, qui m’a acc
 
 \section{Présentation du problème}
 
-Le monde dans lequel nous vivons aujourd’hui est un monde où tout doit être connecté. Notre smartphone, notre montre, notre TV, notre frigo, notre tondeuse, … Tout système d’électronique embarquée est potentiellement connectable ! Les transferts d’informations sont par conséquent de plus en plus gourmands. Les technologies ne cessent d’évoluer. Le meilleur exemple est le développement de l'IoT (\textit{Internet of Things}) ou encore le développement du réseau 5G, prévu entre-autres pour augmenter les débits de données. Cependant, nous sommes en droit de nous poser plusieurs questions : toutes ces données qui voyagent de système en système sont-elles protégées ? Toutes ces données qui transitent entre les différents appareils connectés de ma maison peuvent-ils être captées par des pirates informatiques ? La réponse à ces deux questions reste bien souvent assez vague. Tentons de cerner le sujet.
+Le monde dans lequel nous vivons aujourd’hui est un monde où tout doit être connecté. Notre smartphone, notre montre, notre TV, notre frigo, notre tondeuse, … Tout système d’électronique embarquée est potentiellement connectable ! Les transferts d’informations sont par conséquent de plus en plus gourmands. Les technologies ne cessent d’évoluer. Le meilleur exemple est le développement de l'IoT (\textit{Internet of Things}) ou encore le développement du réseau 5G, prévu entre-autres pour augmenter les débits de données. Cependant, nous sommes en droit de nous poser plusieurs questions : toutes ces données qui voyagent de système en système sont-elles protégées ? Toutes ces données qui transitent entre les différents appareils connectés de ma maison peuvent-ils être captées par des pirates informatiques ? La réponse à ces deux questions reste bien souvent assez vague.
 
 Depuis toujours, l’homme cherche à dissimuler des informations à ses tiers mais depuis toujours, l’homme cherche également à accéder à des informations auxquelles il n’a pas droit. Cette lutte symbolise le combat entre la \textbf{cryptographie} et la \textbf{cryptanalyse}. Rappelons brièvement que la cryptographie a pour objectif de crypter de l’information, c’est-à-dire qu’elle vise à élaborer des procédés assurant la confidentialité de données sensibles. La cryptanalyse quant à elle vise à décrypter des informations sensibles auxquelles elle n'a normalement pas accès. Ainsi, lorsqu'il s'agit de manipuler des informations secrètes, la question d'intégrité et de confidentialité des informations manipulées se pose inévitablement. C'est pour cette raison que des \textbf{algorithmes de chiffrement} sont développés et par la suite, la cryptanalyse tente d'y déceler des failles. À ce jour, il existe une multitude d'algorithmes de chiffrement, chacun possédant ses avantages et ses inconvénients. Celui étudié dans ce travail est \textbf{l'algorithme \textit{AES}} (\textit{Advanced Ecryption Standard}).
 
 Initialement, la cryptanalyse se basait essentiellement sur la compréhension des procédés mathématiques utilisés dans les algorithmes en vue d'y déceler des failles. Devant ces attaques, les ingénieurs renforcèrent la complexité des algorithmes. Par ailleurs, fin du millénaire précédent, le \textit{NIST} (\textit{National Institute of Standards and Technology}) a encouragé le développement d’un nouveau standard d’algorithme de chiffrement difficilement envisageable à casser : l’algorithme \textit{AES}. Sa robustesse aux attaques classiques lui permet d'être considéré aujourd’hui comme l'algorithme le plus connu au monde et implémenté dans la majeure partie des systèmes embarqués comportant des applications en sécurité. Cependant, fin des années 1990, de nouvelles recherches dans le domaine de la cryptanalyse ont été réalisées. Ces recherches ont abouti sur un nouveau type d'attaque : les \textbf{attaques par canaux auxiliaires}. Une attaque par canal auxiliaire désigne une attaque informatique qui, sans remettre en cause la robustesse théorique des méthodes et procédures de sécurité, recherche et exploite des failles dans leur implémentation logicielle ou matérielle. 
 
 \newpage
-Il existe différents types d'attaques par canaux auxiliaires cependant ce travail se concentre sur un type d'attaque en particulier : les \textbf{attaques par analyse de la consommation de puissance}. Comme son nom l'indique, cette attaque analyse la consommation de puissance d'un \textbf{\textit{système cryptographique}} en cours de chiffrement. En effet, la puissance consommée par le circuit intégré reflète directement ses activités internes (instructions exécutées et données manipulées). Cette puissance consommée peut être capturée à l'aide d'un instrument de mesure tel que l'oscilloscope. Les mesures prélevées à l'oscilloscope portent le nom de \textit{traces de puissance}. Lorsque la clé d'un algorithme de chiffrement est révélée, le contenu censé rester confidentiel devient accessible à quiconque le souhaite. Ainsi, comme nous le verrons au chapitre X, dès que des traces de puissance sont acquises, il est possible pour un attaquant, via divers calculs, de retrouver la clé utilisée pour le chiffrement des données. Attirons l'attention sur le fait que l'attaque exploite les faiblesses du système cryptographique, c'est-à-dire du système implémentant l'algorithme de chiffrement (l'AES en l'occurence). En aucun cas, l'attaque exploite les failles des principes mathématiques mis en place.
+Il existe différents types d'attaques par canaux auxiliaires cependant ce travail se concentre sur un type d'attaque en particulier : les \textbf{attaques par analyse de la consommation de puissance}. Comme son nom l'indique, cette attaque analyse la consommation de puissance d'un \textbf{\textit{système cryptographique}} en cours de chiffrement. En effet, la puissance consommée par le circuit intégré reflète directement ses activités internes (instructions exécutées et données manipulées). Par la suite, on appellera \textit{device cryptographique} tout système cryptographique implémentant un bloc de chiffrement tel que l'AES (définition \ref{def:device}). Cette puissance consommée peut être capturée à l'aide d'un instrument de mesure tel que l'oscilloscope. Les mesures prélevées à l'oscilloscope portent le nom de \textit{traces de puissance}. Lorsque la clé d'un algorithme de chiffrement est révélée, le contenu censé rester confidentiel devient accessible à quiconque le souhaite. Ainsi, dès que des traces de puissance sont acquises, il est possible pour un attaquant, via divers calculs, de retrouver la clé utilisée pour le chiffrement des données. Attirons l'attention sur le fait que l'attaque exploite les faiblesses du système cryptographique, c'est-à-dire du système implémentant l'algorithme de chiffrement (l'AES en l'occurence). En aucun cas, l'attaque exploite les failles des principes mathématiques mis en place. La figure \ref{fig:intro} présente les liens entre les différents systèmes nécessaires pour réaliser l'attaque.
 
 \begin{figure}[h]
     \hspace{-1.55cm}
-    \includegraphics[scale=0.72]{image/intro.png}
+    \includegraphics[scale=0.71]{image/intro.png}
     \caption{Matériel nécessaire pour réaliser une attaque par analyse de la consommation de puissance.}
     \label{fig:intro}
 \end{figure}
 
 Dès que ces attaques se sont manifestées, une série de contre-mesures a été développée. Pour obtenir une contre-mesure efficace contre ces attaques par analyse de la consommation de puissance, il est nécessaire de bien appréhender le fonctionnement de l'attaque. Ainsi, retenons que lors de l’exécution d’un algorithme de chiffrement, différentes opérations sont exécutées conduisant à différentes \textbf{valeurs intermédiaires calculées}. Si aucune protection n’est mise en place, la consommation de puissance du device cryptographique dépend des données intermédiaires manipulées par ce dernier (par l’algorithme précisément). Par conséquent, l’attaquant peut potentiellement retrouver la clé secrète en analysant la consommation de puissance du système. Dès lors, l'objectif général d'une contre-mesure est de rendre la consommation de puissance du device cryptographique indépendante des valeurs intermédiaires calculées par l'algorithme de chiffrement. 
 
-Deux grands types de contre-mesures sont à distinguer : les contre-mesures de type \textbf{\textit{Masking}} et les contre-mesures de type \textbf{\textit{Hiding}}. Brièvement, le principe d'une contre-mesure de type \textit{Masking} est de modifier les caractéristiques de l'algorithme de chiffrement alors que le principe d'une contre-mesure de type \textit{Hiding} est de modifier les caractéristiques physiques du système cryptographique. La contre-mesure développée dans ce travail est une contre-mesure apparue assez récemment : la contre-mesure de type \textit{Faking}. Le principe de fonctionnement de cette contre-mesure se rapproche de celui de contre-mesure de type \textit{Masking}. Cependant, comme nous le verrons au chapitre X, il existe quelques subtilités. Le tableau \ref{fig:intro2} résume les constats qui peuvent être tirés selon qu'une contre-mesure soit implémentée ou non. Ces contre-mesures seront détaillées plus en profondeur au chapitre y faisant référence (chapitre X).
+Deux grands types de contre-mesures sont à distinguer : les contre-mesures de type \textbf{\textit{Masking}} et les contre-mesures de type \textbf{\textit{Hiding}}. Brièvement, une contre-mesure de type \textit{Masking} modifie les caractéristiques de l'algorithme de chiffrement alors qu'une contre-mesure de type \textit{Hiding} modifie les caractéristiques physiques du système cryptographique. La contre-mesure développée dans ce travail est une contre-mesure moderne : la contre-mesure de type \textit{Faking}. Le principe de fonctionnement de cette contre-mesure se rapproche de celui de contre-mesure de type \textit{Masking}. Cependant, il existe quelques subtilités qui seront expliquées au chapitre \ref{chap:contremesure}. Le tableau \ref{fig:intro2} résume les constats qui peuvent être tirés selon qu'une contre-mesure soit implémentée ou non. Ces contre-mesures seront détaillées plus en profondeur au chapitre y faisant référence (chapitre \ref{chap:contremesure}).
 
 \begin{table}
 	\centering
@@ -294,14 +294,14 @@ Deux grands types de contre-mesures sont à distinguer : les contre-mesures de t
 \end{table}
 
 \newpage
-Enfin, pour juger de \textbf{l'efficacité de la contre-mesure implémentée}, différentes analyses peuvent être réalisées. Ainsi, des métriques telles que le \textit{SNR} (\textit{Signal-Noise to Ratio}) peuvent être utilisées afin de savoir si les traces capturées à l'oscilloscope laissent fuiter de l'information ou non. Outre les métriques, une analyse des performances du système sera également établie. Les principales performances étudiées sont : le temps d'exécution de l'algorithme, la consommation de puissance du device cryptographique, la place mémoire de l'implémentation protégée de l'algorithme sur le device crytpographique, ...
+Enfin, pour juger de \textbf{l'efficacité de la contre-mesure implémentée}, différentes analyses peuvent être réalisées. Ainsi, des métriques telles que le \textit{taux de succès} peuvent être utilisées afin de connaitre le taux de succès de l'attaque selon un nombre de traces donné. La mise en place d'un système de tests automatisé est également réalisée afin de démontrer que l'implémentation de la contre-mesure n'entache pas le chiffrement des messages clairs. Enfin, une analyse des performances du système sera également établie. Les principales performances étudiées sont : le temps d'exécution de l'algorithme, la consommation de puissance du device cryptographique, la place mémoire de l'implémentation protégée de l'algorithme sur le device crytpographique, ...
 
 \section{Structure du travail}
 
 \hspace{-0.5cm}Ce travail est scindé en deux parties : 
 \begin{enumerate}
 \item La première partie aborde tous les concepts théoriques nécessaires afin de comprendre le fondement des attaques par canaux auxiliaires. Un premier chapitre expose les concepts et définitions de la cryptologie et définit en particulier le fonctionnement de l'algorithme AES. Le second chapitre est consacré à la consommation de puissance des circuits en technologie CMOS. Cette analyse de la consommation de puissance pour ce type de circuit en particulier permet de comprendre le principe de fonctionnement des attaques par analyse de la consommation de puissance. Le troisième chapitre définit le sujet principal de ce travail, à savoir les attaques par canaux auxiliaires. Enfin, le dernier chapitre étudie les différentes contre-mesures existantes afin d'assurer une meilleure protection des données sensibles. 
-\item La seconde partie aborde les notions et compétences acquises durant la période de TFE. Un premier chapitre définit la configuration du matériel nécessaire pour implémenter l'attaque par analyse de la consommation de puissance. Un descriptif succinct des langages et matériels utilisés est ainsi détaillé. Le second chapitre reprend les résultats obtenus et leurs conclusions pour la mise en application d'une attaque CPA (\textit{Correlation Power Analysis}). Le troisième chapitre détaille l'implémentation de la contre-mesure de type \textit{faking}. Le quatrième chapitre discute de l'efficacité de la contre-mesure implémentée. Enfin, un cinquième chapitre est consacré à la conclusion de ce rapport.
+\item La seconde partie aborde l'application de l'attaque CPA et l'étude de la solution \textit{faking}. Un premier chapitre définit la configuration du matériel nécessaire pour implémenter l'attaque par analyse de la consommation de puissance. Un descriptif succinct des langages et matériels utilisés est ainsi détaillé. Le second chapitre reprend les résultats obtenus et leurs conclusions pour la mise en application d'une attaque CPA (\textit{Correlation Power Analysis}). Le troisième chapitre détaille l'implémentation de la contre-mesure de type \textit{faking}. Le quatrième chapitre discute de l'efficacité de la contre-mesure implémentée. Enfin, un cinquième chapitre est consacré à la conclusion de ce rapport.
 \end{enumerate}
 
 
@@ -318,7 +318,7 @@ Enfin, pour juger de \textbf{l'efficacité de la contre-mesure implémentée}, d
 \chapter{Cryptologie}
 \label{chap:crypto}
 
-Ce chapitre introduit au lecteur les fondamentaux en matière de cryptologie. Les différents concepts et définitions abordés ont pour but d'apporter au lecteur les connaissances nécessaires et suffisantes pour la bonne compréhension des chapitres suivants. Ce chapitre est scindé en deux parties. Dans un premier temps, il abordera les définitions importantes en matière de cryptologie et plus spécifiquement en matière de cryptographie. La cryptographie symétrique sera ainsi distinguée de la cryptographie asymétrique. Dans un second temps, ce chapitre détaillera le principe de fonctionnement général d'un algorithme de chiffrement. Une attention particulière sera finalement consacrée à la compréhension de l'algorithme AES.
+Ce chapitre introduit les fondamentaux en matière de cryptologie. Les différents concepts et définitions abordés définissent les bases théoriques. Ce chapitre est scindé en deux parties. Dans un premier temps, il abordera les définitions importantes en matière de cryptologie et plus spécifiquement en matière de cryptographie. La cryptographie symétrique sera ainsi distinguée de la cryptographie asymétrique. Dans un second temps, ce chapitre détaillera le principe de fonctionnement général d'un algorithme de chiffrement. Une attention particulière sera finalement consacrée à la compréhension de l'algorithme AES.
 
 \section{Concepts et définitions}
 \label{sec:Concepts}
@@ -379,7 +379,7 @@ Le chiffrement est dit symétrique lorsque la clé utilisée pour le chiffrement
 \hspace{-0.5cm}\textit{Exemple} : L'algorithme AES. Une explication plus détaillée de cet algorithme est reprise à la section \ref{subsec:AES}.
 
 
-\hspace{-0.5cm}La figure \ref{fig:symétrique} (page suivante) présente le principe de fonctionnement du chiffrement symétrique. Comme le présente la figure, si un attaquant intercepte un message, ce dernier sera chiffré. Il doit donc être en possession de la clé secrète s'il souhaite comprendre le message envoyé par l'expéditeur.
+\hspace{-0.5cm}La figure \ref{fig:symétrique} présente le principe de fonctionnement du chiffrement symétrique. Si un attaquant intercepte un message, ce dernier sera chiffré. Il doit donc être en possession de la clé secrète s'il souhaite comprendre le message envoyé par l'expéditeur.
 
 \begin{figure}[htbp]
     \centering
@@ -428,7 +428,7 @@ Un algorithme de chiffrement est un ensemble de fonctions mathématiques utilis
 \item  2 paramètres en entrée : un \textbf{\textit{message clair}} et une \textbf{\textit{clé de chiffrement}}.
 \item 1 paramètre en sortie : le \textbf{\textit{message chiffré}}. \\
 \end{itemize}
-Comme décrit précédemment, le procédé transformant les données claires en entrée en données chiffrées en sortie est appelé \textit{chiffrement}. Ce procédé est réalisé grâce à un algorithme de chiffrement manipulant une clé de chiffrement, un message clair et diverses opérations mathématiques. Avec des clés différentes, le résultat du cryptage variera également. La figure \ref{fig:chiffrement} ci-dessous présente le principe de fonctionnement d'un algorithme de chiffrement.
+Comme décrit précédemment, le procédé transformant les données claires en entrée en données chiffrées en sortie est appelé \textit{chiffrement}. Ce procédé est réalisé grâce à un algorithme de chiffrement manipulant une clé de chiffrement, un message clair et diverses opérations mathématiques. Avec des clés différentes, le résultat du cryptage variera également. La figure \ref{fig:chiffrement} ci-dessous conceptualise le principe de fonctionnement d'un algorithme de chiffrement.
 
 \begin{figure}[htbp]
     \centering
@@ -446,8 +446,9 @@ Que ce soit pour un algorithme de chiffrement symétrique ou asymétrique, la cl
 
 \theoremstyle{definition}
 \begin{definition}{\textbf{Device cryptographique :}}
-Un device cryptographique est un device qui implémente des algorithmes de chiffrement et qui stocke des clés de chiffrement.
+Un device cryptographique est un système cryptographique qui implémente des algorithmes de chiffrement et qui stocke des clés de chiffrement.
 \end{definition}
+\label{def:device}
 
 \newpage
 
@@ -557,9 +558,9 @@ La figure \ref{fig:colonne} ci-dessous présente le principe de fonctionnement d
 \newpage
 \underline{\textbf{L'opération \textit{KeySchedule} :}}
 
-\vspace{0.1cm}Il persiste une opération qui n'a pas encore été expliquée : l'opération \textit{KeySchedule}. Cette opération s'exécute uniquement sur la matrice clé. Par conséquent, la gestion des clés se fait au travers des deux fonctions qui sont les fonctions \textit{AddRoundKey} et \textit{KeySchedule}. Nous connaissons le principe de fonctionnement de l'opération \textit{AddRoundKey}, reste à comprendre l'utilité de l'opération \textit{KeySchedule}.
+\vspace{0.1cm}Les quatre opérations principales ont été expliquées. Il reste l'opération \textit{KeySchedule} qui s'exécute uniquement sur la matrice clé. La gestion des clés se fait donc au travers des deux fonctions qui sont les fonctions \textit{AddRoundKey} et \textit{KeySchedule}.
 
-\hspace{-0.5cm}Jusqu'à présent, nous avons vu que la matrice STATE était modifiée après chaque opération exécutée. Ce qu'on ne sait pas encore, c'est que la matrice clé est également modifiée à chaque round afin d'éviter d'utiliser toujours la même valeur de clé. Cela permet ainsi de complexifier le chiffrement des données. On l'aura deviné, l'opération qui modifie la matrice clé initiale en une nouvelle matrice clé est appelée \textbf{\textit{KeySchedule}}. Cette opération génère une nouvelle clé sur base de la clé précédemment employée. Ainsi, pour générer la première nouvelle clé, l'opération \textit{KeySchedule} emploiera la clé initialement donnée. Étant donné que pour l'AES-128, nous avons un total de dix rounds à exécuter, cela signifie que l'opération \textit{KeySchedule} s'exécute dix fois afin de générer dix nouvelles clés de 128 bits. En rajoutant la clé initiale, nous avons alors onze clés de chiffrement différentes permettant d'exécuter les onze opérations \textit{AddRoundKey} présentes dans l'algorithme AES-128. Ainsi, comme présenté à l'annexe \ref{ann:AES128}, l'opération \textit{KeySchedule} s'exécute en premier lieu dans le code afin de générer dix nouvelles clés. En comptant la clé initialement donnée, il y a donc onze clés. Chacune de ces onze clés sera utilisée lors de l'appel de la fonction \textit{AddRoundKey}. 
+\hspace{-0.5cm}Jusqu'à présent, la matrice STATE était modifiée après chaque opération exécutée. Il en est de même pour la matrice clé, qui est également modifiée à chaque round afin d'éviter d'utiliser toujours la même valeur de clé. Cela permet ainsi de complexifier le chiffrement des données. C'est l'opération \textbf{\textit{KeySchedule}} qui modifie la matrice clé initiale en une nouvelle matrice clé. Cette opération génère une nouvelle clé sur base de la clé précédemment employée. Ainsi, pour générer la première nouvelle clé, l'opération \textit{KeySchedule} emploiera la clé initialement donnée. Étant donné que pour l'AES-128, nous avons un total de dix rounds à exécuter, cela signifie que l'opération \textit{KeySchedule} s'exécute dix fois afin de générer dix nouvelles clés de 128 bits. En rajoutant la clé initiale, nous avons alors onze clés de chiffrement différentes permettant d'exécuter les onze opérations \textit{AddRoundKey} présentes dans l'algorithme AES-128. Ainsi, comme présenté à l'annexe \ref{ann:AES128}, l'opération \textit{KeySchedule} s'exécute en premier lieu dans le code afin de générer dix nouvelles clés. En comptant la clé initialement donnée, il y a donc onze clés. Chacune de ces onze clés sera utilisée lors de l'appel de la fonction \textit{AddRoundKey}. 
 
 \hspace{-0.5cm}L'annexe \ref{ann:KeySchedule} permet de comprendre le principe de fonctionnement de l'opération \textit{KeySchedule}, utilisée afin de générer les nouvelles clés. Plus précisément, cette annexe présente un exemple pour générer la première nouvelle clé (taille de 128 bits). Le fonctionnement est le suivant : l'opération \textit{KeySchedule} s'exécute colonne par colonne sur la matrice clé de taille 4x4. On va d'abord générer la première colonne de la nouvelle clé, ensuite on générera les colonnes 2, 3 et 4. C'est la première colonne qui est la plus compliquée à générer. Les 3 autres colonnes réalisent simplement un XOR pour générer la nouvelle colonne.
 Ainsi, pour obtenir la 1ère colonne de la nouvelle clé (soit les quatre premiers bytes), on va prendre trois vecteurs colonnes (taille 4x1), à savoir : 
@@ -576,7 +577,7 @@ Une fois ces trois vecteurs colonnes obtenus, on réalise un XOR entre eux. Le r
 
 \underline{\textbf{Adaptation pour l'AES-256 :}} 
 
-\vspace{0.1cm}En se basant sur le tableau \ref{tab:AES} et la figure \ref{fig:AES_General}, nous constatons que les deux différences majeures entre l'algorithme AES-128 et l'algorithme AES-256 sont :
+\vspace{0.1cm}En se basant sur le tableau \ref{tab:AES} et la figure \ref{fig:AES_General}, les deux différences majeures entre l'algorithme AES-128 et l'algorithme AES-256 sont :
 \begin{itemize}
 \item La taille de la clé : on passe de 128 bits à 256 bits.
 \item Le nombre de rounds : on passe de 10 rounds à 14 rounds. \\
@@ -592,7 +593,7 @@ Ainsi, l'opération \textit{KeySchedule} s'exécute 14 fois. Cependant, cette op
 \chapter{Consommation de puissance}
 \label{chap:puissance}
 
-Ce chapitre introduit au lecteur une technologie bien répandue dans les systèmes informatiques modernes : la technologie CMOS. C'est en étudiant le fonctionnement de cette technologie que les attaques par analyse de la consommation de puissance sont rendues praticables. Le principe de fonctionnement de cette technologie constitue donc une étape nécessaire dans l'apprentissage du lecteur. En effet, ce dernier sera ainsi en mesure de comprendre pourquoi une analyse de la consommation de puissance d'un circuit en technologie CMOS permettra plus tard (chapitre \ref{chap:attaques}) de retrouver la clé d'un algorithme de chiffrement. De cette façon, ce chapitre se scinde en deux parties. Dans un premier temps, l'objectif est de comprendre le fonctionnement de la technologie CMOS ainsi que ses répercussions sur les différentes puissances intervenant. Dans un second temps, l'objectif est d'assimiler le concept de \textit{modèle de puissance}. Pour ce faire, deux modèles seront judicieusement développés.
+Ce chapitre introduit une technologie bien répandue dans les systèmes informatiques modernes : la technologie CMOS. C'est en étudiant le fonctionnement de cette technologie que les attaques par analyse de la consommation de puissance sont rendues praticables. Ce chapitre se scinde en deux parties. Dans un premier temps, l'objectif est de comprendre le fonctionnement de la technologie CMOS ainsi que ses répercussions sur les différentes puissances intervenant. Dans un second temps, l'objectif est d'assimiler le concept de \textit{modèle de puissance}. Pour ce faire, deux modèles seront judicieusement développés.
 
 \section{Technologie CMOS}
 \label{sec:CMOS}
@@ -628,7 +629,7 @@ Si on applique à l'entrée (E) un état bas, le transistor N est bloqué et le 
 \subsection{Consommation de puissance des circuits en technologie CMOS}
 \label{sec:puissance}
 
-Il est évident que les circuits digitaux modernes consomment de la puissance lorsqu'ils exécutent des instructions. Dans notre cas, c'est un FPGA sur lequel est implémenté l'algorithme AES qui consomme de la puissance. Dans le domaine de la cryptanalyse, cette puissance va être mesurée et analysée afin de déterminer si le device cryptographique laisse fuiter des informations. Si tel est le cas, nous verrons comment ces informations peuvent être utilisées afin de retrouver la clé de chiffrement de l'algorithme AES (chapitre \ref{chap:attaques}). Pour ce faire, nous devons tout t'abord étudier les différentes puissances intervenant dans les circuits réalisés en technologie CMOS. Pour rappel, cette technologie est très répandue et couvre la plupart des circuits digitaux modernes. 
+Il est évident que les circuits digitaux modernes consomment de la puissance lorsqu'ils exécutent des instructions. Dans notre cas, c'est un FPGA sur lequel est implémenté l'algorithme AES qui consomme de la puissance. Dans le domaine de la cryptanalyse, cette puissance va être mesurée et analysée afin de déterminer si le device cryptographique laisse fuiter des informations. Si tel est le cas, nous verrons comment ces informations peuvent être utilisées afin de retrouver la clé de chiffrement de l'algorithme AES (chapitre \ref{chap:attaques}). Pour ce faire, nous devons tout t'abord étudier les différentes puissances intervenant dans les circuits réalisés en technologie CMOS.
 
 La consommation totale de puissance d'un circuit CMOS peut être obtenue en sommant les consommations de puissance respectives de chaque cellule logique (cellule conçue pour remplir une certaine fonction logique) du circuit CMOS. De cette façon, la consommation de puissance totale dépend essentiellement du nombre de cellules logiques dans le circuit CMOS. \\
 En prenant comme exemple de cellule logique CMOS, l'inverseur CMOS (expliqué à la section \ref{sec:CMOS}), nous allons tenter de comprendre quand et pour quelles raisons ces cellules CMOS dissipent de la puissance. Pour ce faire, il faut savoir que la consommation de puissance est essentiellement divisée en deux parties : 
@@ -640,8 +641,6 @@ Ainsi, la puissance totale consommée par une cellule vaut la somme de ces deux 
 \begin{gather}
 	P_{total} = P_{stat} + P_{dyn}
 \end{gather}
-
-Mais de façon plus précise, que vaut la puissance statique ? De même, comment peut-on exprimer la puissance dynamique ? 
 
 \hspace{-0.5 cm}\underline{\textbf{\textit{Puissance statique :}}} \vspace{0.2 cm} \\
 Les cellules CMOS sont toujours construites de façon à ce que les deux transistors complémentaires ne soient jamais passants au même moment. En effet, si on reprend l'exemple de l'inverseur CMOS (\ref{sec:CMOS}), lorsqu'on met le signal d'entrée à \textit{GND} alors le transistor P1 est passant et N1 est bloqué. Par contre, lorsqu'on met le signal d'entrée à \textit{$V_{DD}$}, le transistor P1 devient bloqué tandis que le transistor N1 devient passant. Ainsi, en théorie, un seul transistor fonctionne et laisse passer du courant. Cependant, en pratique, lorsqu'un transistor MOS est bloqué, le courant qui le traverse n'est jamais entièrement nul. En effet, une très petite valeur de courant circule dans le canal du transistor. Ce courant, que l'on appelle \textit{courant de fuite} et que l'on note \textit{$I_{fuite}$}, produit une consommation de puissance \textbf{statique} pouvant être calculée de la façon suivante :
@@ -733,7 +732,7 @@ Ceci nous conduit donc à l'équation suivante (\ref{eqn:puissance}) :
 \end{minipage}
 }
 
-La figure \ref{fig:static_dynamic} ci-dessous présente deux mesures différentes de consommation de puissance prises à l'oscilloscope. Ces mesures ont été réalisées sur un FPGA implémentant l'algorithme AES-256. On y distingue la puissance statique seule (en bleu) de la puissance statique et dynamique (en orange). La courbe bleue a été enregistrée lorsque le FPGA était en attente de textes clairs, autrement dit il ne chiffrait rien (\Rightarrow puissance statique). La courbe orange a été enregistrée lorsque le FPGA chiffrait des données (\Rightarrow puissance statique et dynamique). On constate donc bien que la puissance statique est de très faible valeur comparativement à la puissance dynamique.
+La figure \ref{fig:static_dynamic} ci-dessous présente deux mesures différentes de consommation de puissance prises à l'oscilloscope. Attention, comme il sera précisé au chapitre \ref{chap:attaques} (section \ref{sec:CPA}), la tension est proportionnelle à la puissance mesurée. Dès lors, ce graphe ne représente pas à proprement parler la puissance consommée mais plutôt la tension. Ces mesures ont été réalisées sur un FPGA implémentant l'algorithme AES-256. On y distingue la puissance statique seule (en bleu) de la puissance statique et dynamique (en orange). La courbe bleue a été enregistrée lorsque le FPGA était en attente de textes clairs, autrement dit il ne chiffrait rien (\Rightarrow puissance statique). La courbe orange a été enregistrée lorsque le FPGA chiffrait des données (\Rightarrow puissance statique et dynamique). On constate donc bien que la puissance statique est de très faible valeur comparativement à la puissance dynamique.
 \begin{figure}[htbp]
     \hspace{-1cm}
     \includegraphics[scale=0.34]{image/static_dynamic}
@@ -793,7 +792,7 @@ La distance de Hamming est un modèle de consommation de puissance proposé par 
 \chapter{Attaques par canaux auxiliaires}
 \label{chap:attaques}
 
-Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. Tout d'abord, une introduction générale est donnée au lecteur afin que ce dernier ait un aperçu des différentes possibilités d'attaques par canaux auxiliaires existantes. Ensuite, l'attention est plus particulièrement portée sur trois types d'attaques par analyse de la consommation de puissance, à savoir : les attaques par analyse simple de la consommation, les attaques par analyse différentielle de la consommation et les attaques par analyse de la consommation par corrélation. Nous noterons que l'attaque mise en oeuvre dans ce travail est celle d'analyse de la consommation par corrélation. Ultérieurement, le but sera ainsi d'attaquer l'implémentation de l'algorithme AES sur un FPGA. Les résultats de cette attaque seront présentés au chapitre X (Partie 2). 
+Ce quatrième chapitre est sans conteste celui le plus attendu. Tout d'abord, une introduction générale est donnée afin d'avoir un aperçu des différentes possibilités d'attaques par canaux auxiliaires existantes. Ensuite, l'attention est plus particulièrement portée sur trois types d'attaques par analyse de la consommation de puissance, à savoir : les attaques par analyse simple de la consommation, les attaques par analyse différentielle de la consommation et les attaques par analyse de la consommation par corrélation. L'attaque mise en oeuvre dans ce travail est celle d'analyse de la consommation par corrélation. Ultérieurement, le but sera ainsi d'attaquer l'implémentation de l'algorithme AES sur un FPGA. Les résultats de cette attaque seront présentés au chapitre \ref{chap:CPA_Result} (Partie 2). 
 
 \section{Introduction}
 \label{sec:att}
@@ -819,7 +818,7 @@ Ce quatrième chapitre est sans conteste celui le plus attendu par le lecteur. T
 \vspace{0.25 cm}Les attaques non invasives sont globalement beaucoup plus simples à mettre en oeuvre que les attaques invasives. En effet, du fait qu'il faille ouvrir le device cryptographique, les attaques invasives requièrent une méthodologie et une infrastructure relativement plus compliquée et plus chère que les attaques non invasives qui ne nécessitent pas de connaissances préalables du système interne et qui sont donc plus facilement déployées. 
 
 \hspace{-0.5 cm}Les attaques non invasives consistent donc à analyser des données issues de canaux auxiliaires au device cryptographique lorsque ce dernier est en cours de chiffrement. Ces canaux auxiliaires sont des canaux présents physiquement sur le circuit attaqué et le long desquels de l’information s’échappe. Cette information peut se présenter sous différentes formes : rayonnement électromagnétique, rayonnement photonique, consommation de puissance, etc. C'est donc pour cette raison qu'on parle de \textit{side-channel attacks} ou en français \textit{l'attaque par canal auxiliaire}. 
-En effet, les fonctions cryptographiques, bien que pouvant être extrêmement robustes théoriquement (c'est-à-dire mathématiquement) sont très sensibles aux fuites d’informations. C'est-à-dire qu'une quantité très faible d’informations peut être exploitée pour retrouver la clé d'un algorithme cryptographique très fort. On insistera à nouveau sur le fait que l'attaque exploite les faiblesses du système cryptographique, c'est-à-dire du système implémentant l'algorithme de chiffrement (l'AES en l'occurence). En aucun cas, l'attaque exploite les failles des principes mathématiques mis en place.
+En effet, les fonctions cryptographiques, bien que pouvant être extrêmement robustes théoriquement (c'est-à-dire mathématiquement) sont très sensibles aux fuites d’informations. C'est-à-dire qu'une quantité très faible d’informations peut être exploitée pour retrouver la clé d'un algorithme cryptographique très fort. On insistera à nouveau sur le fait que l'attaque exploite les faiblesses physiques du système cryptographique, c'est-à-dire du système implémentant l'algorithme de chiffrement (l'AES en l'occurence). En aucun cas, l'attaque exploite les failles des principes mathématiques mis en place.
 
 \newpage
 
@@ -831,14 +830,14 @@ En effet, les fonctions cryptographiques, bien que pouvant être extrêmement 
     \label{fig:attackpassive}
 \end{figure}
 
-Dans la suite de ce travail, on se concentrera sur un type précis d'attaque non invasive : l'attaque par \textbf{l'analyse de la consommation de puissance}. Les trois sous-sections de la section suivante (\ref{sec:PowerGeneral}) décrivent ainsi chacune un principe de fonctionnement différent d'attaque pour ce type d'analyse (consommation de puissance). L'attaque qu'il m'a été demandé de réaliser pour ce travail porte sur \textbf{l'analyse de la consommation par corrélation}. Pour cette raison, nous ne ferons que parcourir les deux autres possibilités que sont l'analyse simple de la consommation et l'analyse différentielle de la consommation. En effet, ces deux attaques sont apparues avant celle par corrélation et il convient donc de les citer pour que le lecteur comprenne l'ordre chronologique d'apparition et d'amélioration des attaques par analyse de la consommation.
+Dans la suite de ce travail, on se concentrera sur un type précis d'attaque non invasive : l'attaque par \textbf{l'analyse de la consommation de puissance}. Les trois sous-sections de la section suivante (\ref{sec:PowerGeneral}) décrivent chacune un principe de fonctionnement différent d'attaque pour ce type d'analyse (consommation de puissance). L'attaque qu'il m'a été demandé de réaliser pour ce travail porte sur \textbf{l'analyse de la consommation par corrélation}. Pour cette raison, les deux autres possibilités que sont l'analyse simple de la consommation et l'analyse différentielle de la consommation ne seront que brièvement parcourues. Toutefois, ces deux attaques sont apparues avant celle par corrélation et il convient donc de les citer afin de comprendre l'ordre chronologique d'apparition et d'amélioration des attaques par analyse de la consommation.
 
 \newpage
 
 \section{Analyse de la consommation de puissance}
 \label{sec:PowerGeneral}
 
-La dénomination de l'attaque ne trompe pas : une attaque par analyse de la consommation de puissance a pour objectif d'analyser la consommation de puissance d'un device cryptographique en cours de chiffrement afin de retrouver la clé de l'algorithme implémenté sur ce device.
+Une attaque par analyse de la consommation de puissance a pour objectif d'analyser la consommation de puissance d'un device cryptographique en cours de chiffrement afin de retrouver la clé de l'algorithme implémenté sur ce device.
 
 \subsection{Analyse simple de la consommation}
 \label{sec:SPA}
@@ -893,10 +892,10 @@ Où
 \hspace{-0.5 cm}Pour réaliser une attaque CPA, l'attaquant a principalement besoin de deux outils :
 \begin{itemize}
 \item \textbf{Un oscilloscope} : L'oscilloscope est utilisé pour enregistrer des traces de puissance sur le device attaqué. C'est-à-dire des mesures de tension en fonction du temps représentant la consommation de puissance du device cryptographique lorsque celui-ci chiffre un texte clair. $N$ textes clairs mènent à $N$ traces.
-\item \textbf{Un ordinateur} : L'ordinateur est utilisé pour réaliser toute une série de calculs. Plus précisément, il réalise trois grands types de calculs : calculs d'opérations de l'algorithme de chiffrement (l'AES en l'occurence), calculs de prédiction de puissance (selon le modèle de puissance établi) et calculs des coefficients de corrélation. \\
+\item \textbf{Un ordinateur} : L'ordinateur fournit la puissance de calculs nécessaire à la réalisation de l'attaque. Plus précisément, il réalise trois grands types de calculs : calculs d'opérations de l'algorithme de chiffrement (l'AES en l'occurence), calculs de prédiction de puissance (selon le modèle de puissance établi) et calculs des coefficients de corrélation (sur base des traces de puissance). \\
 \end{itemize}
 
-Comme précisé ci-avant, l'oscilloscope est utilisé afin de capturer et d'enregistrer des données, appelées \textit{traces}, mesurées à partir des canaux auxiliaires du circuit électronique (dans notre cas, un FPGA). Pour réaliser la mesure à l'oscilloscope, une résistance est placée en série avec le canal (la PIN) connecté à la tension d'alimentation $V_{DD}$ du device cryptographique. L'oscilloscope est alors en mesure d'enregistrer une différence de potentielle $V(t)$ aux bornes de la résistance. Étant donné que le courant $I_{DD}(t)$ circulant dans le device cryptographique est de très faible valeur (\si{\micro}A), la tension $V(t)$ est également très faible. Ainsi, un amplificateur est généralement utilisé afin d'amplifier cette différence de potentielle. Comme nous le verrons au chapitre \ref{chap:config}, la \textit{board} de test employée (\textit{SAKURA-G}) utilise également un amplificateur pour mesurer une tension raisonnable. La figure \ref{fig:oscillo} ci-dessous présente le principe de mesure à l'oscilloscope.
+Comme précisé ci-avant, l'oscilloscope est utilisé afin de capturer et d'enregistrer des données, appelées \textit{traces}, mesurées à partir des canaux auxiliaires du circuit électronique (dans notre cas, un FPGA). Pour réaliser la mesure à l'oscilloscope, une résistance est placée en série avec le canal (la PIN) connecté à la tension d'alimentation $V_{DD}$ du device cryptographique. L'oscilloscope est alors en mesure d'enregistrer une différence de potentielle $V(t)$ aux bornes de la résistance. Étant donné que le courant $I_{DD}(t)$ circulant dans le device cryptographique est de très faible valeur (\si{\micro}A), la tension $V(t)$ est également très faible. Un amplificateur est généralement utilisé afin d'amplifier cette différence de potentielle. Comme il sera précisé au chapitre \ref{chap:config}, le circuit de test employé (\textit{SAKURA-G}) utilise également un amplificateur pour mesurer une tension raisonnable. La figure \ref{fig:oscillo} ci-dessous présente le principe de mesure à l'oscilloscope.
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.5]{image/oscillo}
@@ -919,12 +918,12 @@ On parle d'attaque par analyse de la consommation de puissance or avec un oscill
 \hspace{-0.5 cm}Quatre étapes (similaires à l'attaque DPA) sont nécessaires à l'attaquant pour mettre en place une attaque CPA : 
 \begin{enumerate}
 \item \textbf{Mesurer la consommation de puissance} : l'attaquant doit mesurer et enregistrer des traces de puissance capturées sur le device cryptographique lorsque celui-ci est en cours de chiffrement. Une trace représente l'ensemble des opérations exécutées par un algorithme pour un texte clair envoyé. Étant donné qu'il faut un grand nombre ($N$) de traces pour que l'attaque CPA réussisse, il faudra par conséquent envoyer un grand nombre ($N$) de textes clairs.
-\item \textbf{Calculer les valeurs intermédiaires hypothétiques} : comme nous l'avons vu au chapitre \ref{chap:crypto} section \ref{sec:algo}, lorsque l'algorithme AES chiffre des données, des valeurs intermédiaires sont calculées en fonction des opérations exécutées et des données manipulées. Prenons l'exemple de l'algorithme AES-128 pour bien comprendre. La clé utilisée a une taille de 128 bits. Si on tente de retrouver un seul octet de la clé, c'est-à-dire 8 bits, il existe au total $2^{8}$ soit 256 valeurs de clé possibles. L'objectif de l'attaquant va alors être de simuler l'algorithme AES-128 en testant les 256 clés possibles. Comme pour l'attaque DPA, l'attaque CPA fonctionne plus rapidement (moins de traces nécessaires) à la sortie de l'opération \textit{SubBytes} (par rapport aux trois autres opérations). Pour cette raison, la simulation sur ordinateur reproduit les deux premières étapes de l’AES et donne un résultat sur 8 bits pour chacune des 256 sous-clés possibles. Nous noterons qu'il est envisageable de réaliser l'attaque en sortie d'une des trois autres opérations de l'AES (\textit{AddRoundKey}, \textit{ShiftRows} ou \textit{MixColumns}). Cependant cela nécessiterait d'envoyer plus de messages clairs, d'enregistrer plus de traces et par conséquent, cela prendrait plus de temps. Il s'agirait donc d'une attaque non optimisée.
+\item \textbf{Calculer les valeurs intermédiaires hypothétiques} : comme nous l'avons vu au chapitre \ref{chap:crypto} section \ref{sec:algo}, lorsque l'algorithme AES chiffre des données, des valeurs intermédiaires sont calculées en fonction des opérations exécutées et des données manipulées. Prenons l'exemple de l'algorithme AES-128. La clé utilisée a une taille de 128 bits. Si on tente de retrouver un seul byte de la clé, c'est-à-dire 8 bits, il existe au total $2^{8}$ soit 256 valeurs de clé possibles. L'objectif de l'attaquant va alors être de simuler l'algorithme AES-128 en testant les 256 clés possibles. Comme pour l'attaque DPA, l'attaque CPA fonctionne plus rapidement (moins de traces nécessaires) à la sortie de l'opération \textit{SubBytes} (par rapport aux trois autres opérations). Pour cette raison, la simulation sur ordinateur reproduit les deux premières étapes de l’AES et donne un résultat sur 8 bits pour chacune des 256 sous-clés possibles. Nous noterons qu'il est envisageable de réaliser l'attaque en sortie d'une des trois autres opérations de l'AES (\textit{AddRoundKey}, \textit{ShiftRows} ou \textit{MixColumns}). Cependant cela nécessiterait d'envoyer plus de messages clairs, d'enregistrer plus de traces et par conséquent, cela prendrait plus de temps. Il s'agirait donc d'une attaque non optimisée.
 \item \textbf{Utiliser un modèle de puissance} : Une fois que les valeurs intermédiaires hypothétiques sont calculées, l'attaquant doit utiliser un modèle de puissance pour faire correspondre à ces valeurs intermédiaires hypothétiques des valeurs de consommation de puissance simulées. Les modèles de puissance généralement utilisés sont le poids de Hamming ou la distance de Hamming.
 \item \textbf{Mesurer la similarité} : Enfin, la dernière étape consiste à mesurer la similarité entre les vraies traces de puissance et les traces de puissance simulées. Pour ce faire, l'attaquant utilise le coefficient de corrélation. En effet, pour chaque texte clair envoyé, 256 valeurs de clés sont testées (si on ne s'intéresse qu'à un octet de la clé) conduisant ainsi à 256 valeurs simulées de consommation de puissance. Dans ce cas, si $N$ textes clairs sont envoyés, $N*256$ valeurs simulées de puissance sont calculées. Ces $N*256$ valeurs simulées de puissance sont alors corrélées selon l'équation \ref{eqn:formcorrelation} avec les $N$ traces de puissance capturées à l'oscilloscope. Le résultat le plus élevé (en valeur absolue) de cette corrélation permettra de retrouver la valeur du byte de la clé (voir figures \ref{fig:4KeysEx} et \ref{fig:TrueKey} plus loin). En effet, comme décrit précédemment, le coefficient de corrélation met en évidence une liaison entre deux types de séries de données. Dans ce cas-ci, les deux types de séries de données sont d'une part les traces de puissance et d'autre part les valeurs simulées de puissance. Ainsi, si une forte valeur de corrélation est obtenue pour une clé testée, cela signifie qu'il y a une forte liaison entre les deux séries. À l'inverse, si une valeur de corrélation est faible alors cela signifie qu'il n'y a pas de liaison entre les deux séries de données. \\ \\
 \end{enumerate}
 
-\hspace{-0.5 cm}\textbf{\textit{Remarque}} : Pour la réalisation de l'attaque CPA, nous avons posé l'hypothèse suivante, à savoir que l'attaquant connait les textes clairs envoyés au device cryptographique. Ceci est envisageable à condition, bien-sûr, que ce dernier soit en possession du device cryptographique. Nous noterons qu'il est aussi possible de réaliser une attaque CPA à partir des textes chiffrés cependant, cette méthode ne sera pas abordée dans ce travail.
+\hspace{-0.5 cm}\textbf{\textit{Remarque}} : Pour la réalisation de l'attaque CPA, nous avons posé l'hypothèse que l'attaquant connait les textes clairs envoyés au device cryptographique. Ceci est envisageable à condition que ce dernier soit en possession du device cryptographique. Il est aussi possible de réaliser une attaque CPA à partir des textes chiffrés cependant, cette méthode ne sera pas abordée dans ce travail.
 
 \newpage
 
@@ -962,7 +961,7 @@ On parle d'attaque par analyse de la consommation de puissance or avec un oscill
 \chapter{Contre-mesures}
 \label{chap:contremesure}
 
-Ce cinquième et dernier chapitre de la partie \textit{théorie} introduit au lecteur les différents types de contre-mesures existantes permettant de neutraliser les attaques par analyse de la consommation de puissance. Tout d'abord, une introduction servant de préliminaires est présentée au lecteur. Ensuite, deux grands types de contre-mesures sont détaillés. Il s'agit des contre-mesures de type \textit{masking} et de type \textit{hiding}. Enfin, une contre-mesure particulière est définie. Il s'agit de la contre-mesure de type \textit{faking}, développée pour la réalisation de ce travail.
+Ce cinquième et dernier chapitre de la partie \textit{théorie} introduit les différents types de contre-mesures existantes permettant de neutraliser les attaques par analyse de la consommation de puissance. Tout d'abord, une introduction servant de préliminaires est présentée. Ensuite, deux grands types de contre-mesures sont détaillés. Il s'agit des contre-mesures de type \textit{masking} et de type \textit{hiding}. Enfin, une contre-mesure particulière est définie. Il s'agit de la contre-mesure de type \textit{faking}, développée pour la réalisation de ce travail.
 
 \section{Introduction}
 \label{sec:intro_contremesure}
@@ -981,7 +980,7 @@ Dès que les attaques par analyse de la consommation de puissance ont été reco
 
 \newpage
 
-Les figures \ref{fig:trace_Amplitude} et \ref{fig:trace_Time} respectivement montrent comme modifier des traces de puissances en agissant d'une part sur l'amplitude (figure \ref{fig:trace_Amplitude}) et d'autre part sur la position dans le temps (\ref{fig:trace_Time}). Pour ces deux figures, nous affichons la consommation de puissance d'un FPGA en cours de chiffrement sur lequel est implémenté l'algorithme AES-256. Concernant la figure \ref{fig:trace_Amplitude}, le graphe de gauche affiche la consommation normale tandis que le graphe de droite affiche la consommation modifiée en amplitude. En effet, nous avons fait en sorte que la consommation de puissance soit plus uniforme en amplitude. Nous sommes passés d'une consommation qui variait entre [$\SI{-18.1}{\volt} ; \SI{9.7}{\volt} $] à une consommation qui varie entre [$\SI{-13.1}{\volt} ; \SI{4.9}{\volt} $]. Concernant la figure \ref{fig:trace_Time}, nous avons inversé l'ordre d'exécution des opérations. Dans cet exemple, nous avons imaginés deux opérations (ce n'est pas le cas en réalité), représentées par les cercles rouge et vert. Le graphe de gauche affiche la consommation normale tandis que le graphe de droite affiche la consommation \textit{retournée} dans le temps. En effet, certaines opérations sont parfois mélangées dans un algorithme cryptographique afin de nuire à l'attaque. Pour conclure, on se rend bien compte que la modification de ces traces de puissance, que ce soit en amplitude ou dans le temps, complexifie la tâche de l'attaquant étant donné qu'il ne possède plus les mêmes repères.
+Les figures \ref{fig:trace_Amplitude} et \ref{fig:trace_Time} respectivement montrent comment modifier des traces de puissances en agissant d'une part sur l'amplitude (figure \ref{fig:trace_Amplitude}) et d'autre part sur la position dans le temps (figure \ref{fig:trace_Time}). Pour ces deux figures, nous affichons la consommation de puissance d'un FPGA en cours de chiffrement sur lequel est implémenté l'algorithme AES-256. Concernant la figure \ref{fig:trace_Amplitude}, le graphe de gauche affiche la consommation normale tandis que le graphe de droite affiche la consommation modifiée en amplitude. En effet, nous avons fait en sorte que la consommation de puissance soit plus uniforme en amplitude. Nous sommes passés d'une consommation qui variait entre [$\SI{-18.1}{\volt} ; \SI{9.7}{\volt} $] à une consommation qui varie entre [$\SI{-13.1}{\volt} ; \SI{4.9}{\volt} $]. Concernant la figure \ref{fig:trace_Time}, nous avons inversé l'ordre d'exécution des opérations. Dans cet exemple, nous avons imaginés deux opérations (ce n'est pas le cas en réalité), représentées par les cercles rouge et vert. Le graphe de gauche affiche la consommation normale tandis que le graphe de droite affiche la consommation \textit{retournée} dans le temps. En effet, certaines opérations sont parfois mélangées dans un algorithme cryptographique afin de nuire à l'attaque. Pour conclure, on se rend bien compte que la modification de ces traces de puissance, que ce soit en amplitude ou dans le temps, complexifie la tâche de l'attaquant étant donné qu'il ne possède plus les mêmes repères.
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.3]{image/trace_Amplitude}
@@ -1133,7 +1132,7 @@ En conclusion, le développement d'une contre-mesure de type masking est plus fa
 \section{Contre-mesures Faking}
 \label{sec:faking}
 
-Le choix de la contre-mesure à développer dans le cadre de mon travail ne m'ayant pas été imposé, après diverses recherches dans les livres de références et dans les articles sur \textit{Internet}, j'ai trouvé un nouveau principe de contre-mesure. Ce type de contre-mesure se dénomme \textbf{\textit{Faking}}. Cette contre-mesure s'appuie sur une partie du concept de contre-mesure par \textit{Masking} mais avec quelques subtilités. C'est donc ce type de contre-mesure que j'ai décidé de développer dans le cadre de mon travail. Les résultats seront présentés au chapitre \ref{chap:faking} (Partie 2).
+Le choix de la contre-mesure à développer dans le cadre de mon travail ne m'ayant pas été imposé, après diverses recherches dans les livres de références et la littérature, j'ai trouvé un nouveau principe de contre-mesure. Ce type de contre-mesure se dénomme \textbf{\textit{Faking}}. Cette contre-mesure s'appuie sur une partie du concept de contre-mesure par \textit{Masking} mais avec quelques subtilités. C'est donc ce type de contre-mesure que j'ai décidé de développer dans le cadre de mon travail. Les résultats seront présentés au chapitre \ref{chap:faking} (Partie 2).
 
 \subsection{Définition}
 \label{subsec:def}
@@ -1570,16 +1569,34 @@ La figure \ref{fig:real_result_corr_vs_nb_traces_CPA} indique le nombre de trace
 \subsection{Traces réelles filtrées}
 \label{sec:filter}
 
-À la section \ref{sec:Sim_results_CPA}, l'influence du bruit dans les traces analysées a été mise en évidence. De ce fait, un pré-traitement des traces peut être réalisé afin de retirer ce bruit parasite inutile. Une façon efficace d'enlever ce bruit parasite est d'utiliser un filtre. L'utilisation de ce filtre ayant pour objectif d'augmenter le taux de succès de l'attaque. Sachant que le Picoscope possède une bande passante de 200 MHz et qu'il échantillonne à 1 Gé/s et sachant que le fréquence d'horloge utilisée par le FPGA est de 48 Mhz (voir section \ref{sec:config_chiff} pour description du matériel utilisé), l'idée est d'utiliser un filtre numérique de type passe-bas. Plus précisément, le filtre employé est un filtre à réponse impulsionnelle finie (\textit{FIR}) d'ordre 100 et dont la fréquence de coupure est définie à 48 MHz. La fenêtre employée est une fenêtre de \textit{Hamming} [\ref{}]. La figure \ref{fig:trace_brute} compare une trace brute (non-filtrée) à une trace filtrée. La figure \ref{fig:} présente la réponse en fréquence du filtre utilisé. Enfin, la figure \ref{} présente la transformée de Fourier inverse pour la trace brute et pour la trace filtrée. On remarque ainsi que le bruit parasite au-dessus de la fréquence de 48 MHz a bien été enlevé.
+À la section \ref{sec:Sim_results_CPA}, l'influence du bruit dans les traces analysées a été mise en évidence. De ce fait, un pré-traitement des traces peut être opéré afin de retirer ce bruit parasite inutile. Une façon efficace d'enlever ce bruit parasite est d'utiliser un filtre. L'utilisation de ce filtre a pour objectif d'augmenter le taux de succès de l'attaque. Sachant que le Picoscope possède une bande passante de 200 MHz et qu'il échantillonne à 500 Mé/s (pour une résolution sur 12 bits) et sachant que le fréquence d'horloge utilisée par le FPGA est de 48 MHz (voir section \ref{sec:config_chiff} pour description du matériel utilisé), l'idée est d'utiliser un filtre numérique de type passe-bas. Plus précisément, le filtre employé est un filtre à réponse impulsionnelle finie (\textit{FIR}) d'ordre 100 et dont la fréquence de coupure est définie à 48 MHz. La fenêtre employée est une fenêtre de \textit{Hamming} [\ref{}] dont les caractéristiques sont reprises à l'annexe \ref{ann:hamming}. La figure \ref{fig:traces_comparaison_bruit} compare une trace brute à une trace filtrée. L'application du filtre a pour effet de \textit{lisser} la trace. Cependant, quand il s'agit d'analyser le traitement d'un signal, il est plus commode (plus facile) d'observer ce signal dans le domaine fréquentiel. Ainsi, les figures \ref{fig:trace_no_filtered} et \ref{fig:filtered_trace} présentent respectivement le résultat de la transformée de Fourier discrète sur une trace brute et sur une trace filtrée. L'algorithme \textit{FFT} (\textit{Fast Fourier Transform}) a été utilisé pour calculer cette transformée de Fourier discrète. La figure \ref{fig:filtered_trace} permet de conclure que le bruit parasite au-dessus de la fréquence de 48 MHz a bien été enlevé suite à l'application du filtre passe-bas.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
-    \includegraphics[scale=0.6]{image/trace_brute}
-    \caption{Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.}
-    \label{fig:trace_brute} 
+    \includegraphics[scale=0.6]{image/traces_comparaison_bruit}
+    \caption{Comparaison dans le domaine temporel entre une trace brute et une trace filtrée. Le filtre FIR de type passe-bas a pour effet de \textit{lisser} le signal.}
+    \label{fig:traces_comparaison_bruit} 
 \end{figure}
 
-La figure \ref{fig:} indique le nombre de traces filtrées qu'un attaquant doit utiliser pour que l'attaque CPA révèle la valeur du quatorzième byte de la clé de chiffrement. On constate qu'au-dessus de X traces, l'attaque révèle toujours la valeur de la clé secrète. Ainsi, comparativement aux résultats obtenus sans pré-traitement (voir section \ref{sec:real_trace}), le filtrage a permis d'améliorer l'attaque. La section \ref{sec:success_rate} suivante présente le taux de succès de l'attaque selon que le pré-traitement a été appliqué ou non.
+\begin{figure}[htbp]
+    \hspace{-2cm}
+    \includegraphics[scale=0.6]{image/trace_no_filtered}
+    \caption{Transformée de Fourier discrète pour une trace brute.}
+    \label{fig:trace_no_filtered} 
+    \hspace{-2cm}
+    \includegraphics[scale=0.6]{image/filtered_trace}
+    \caption{Transformée de Fourier discrète pour une trace filtrée.}
+    \label{fig:filtered_trace} 
+\end{figure}
+
+La figure \ref{fig:corr_vs_nb_traces_filtering} indique le nombre de traces filtrées qu'un attaquant doit utiliser pour que l'attaque CPA révèle la valeur du quatorzième byte de la clé de chiffrement. On constate qu'au-dessus de 1300 traces, l'attaque révèle toujours la valeur de la clé secrète. On remarque également que la corrélation pour la clé secrète est plus élevée lorsque le filtrage est appliqué (valeur de 0,169 pour 10000 traces) que lorsqu'il ne l'est pas (valeur de 0,118 pour 10000 traces). Ainsi, comparativement aux résultats obtenus sans pré-traitement (voir figure \ref{fig:real_result_corr_vs_nb_traces_CPA}), le filtrage a permis d'améliorer l'attaque. La section \ref{sec:success_rate} suivante présente le taux de succès de l'attaque selon que le pré-traitement a été appliqué ou non.
+
+\begin{figure}[htbp]
+    \hspace{-2cm}
+    \includegraphics[scale=0.6]{image/corr_vs_nb_traces_filtering}
+    \caption{Attaque CPA sur le quatorzième byte de la clé de chiffrement. Ce graphe indique qu'il faut un minimum de 1400 traces à l'attaquant pour que l'attaque CPA fonctionne tout le temps.}
+    \label{fig:corr_vs_nb_traces_filtering} 
+\end{figure}
 
 \subsection{Taux de succès de l'attaque}
 \label{sec:success_rate}
@@ -1846,24 +1863,6 @@ AddRoundKey(STATE, ExpandedKey[10])
 %%%%% Annexe chapitre 3
 
 %%%%% Annexe chapitre 4
-\chapter{Liste des annexes du chapitre \ref{chap:attaques}}
-\begin{itemize}
-\item Annexe \ref{ann:traceExplain} : Représentation des traces de puissance prises à l'oscilloscope.
-\end{itemize}
-
-\newpage
-
-\rhead{ANNEXE \ref{ann:traceExplain}}
-\section{Représentation des traces de puissance prises à l'oscilloscope.}
-\label{ann:traceExplain}
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.65]{image/Sampling}
-    \caption{La figure du haut représente une trace de puissance (i.e 1 plaintext utilisé) dans laquelle on retrouve 9 échantillons. La figure du bas représente N traces de puissance dans lesquelles on retrouve également 9 échantillons. En pratique, le nombre d'échantillons dans une trace de puissance est beaucoup plus élevé (de l'ordre de 10000) et sera noté par la lettre S (pour \textit{Sampling}).}
-    \label{fig:traceExplain}
-\end{figure}
-
-\newpage
 
 %%%%% Annexe chapitre 5
 \chapter{Liste des annexes du chapitre \ref{chap:contremesure}}
@@ -1876,15 +1875,43 @@ AddRoundKey(STATE, ExpandedKey[10])
 \rhead{ANNEXE \ref{ann:resume_hiding}}
 \includepdf[pagecommand=\section{Contre-mesures \textit{Hiding}}\label{ann:resume_hiding}]{image/resume_hiding.pdf}
 
-%\rhead{ANNEXE \ref{ann:resume_hiding}}
-%\section{Contre-mesures \textit{Hiding}}
-%\label{ann:resume_hiding}
-%\begin{figure}[htb]
-%    \centering
-%    \includegraphics[width=1\linewidth, angle=90]{image/resume_hiding}
-%    \caption{Ce schéma présente les différentes sortes de contre-mesures de type hiding.}
-%    \label{fig:resume_hiding} 
-%\end{figure}
+
+%%%%% Annexe chapitre 6
+
+%%%%% Annexe chapitre 7
+
+\chapter{Liste des annexes du chapitre \ref{chap:CPA_Result}}
+\begin{itemize}
+\item Annexe \ref{ann:hamming} : Présentation des caractéristiques fréquentielles (amplitude, phase et réponse impulsionnelle) du filtre FIR de type passe-bas utilisé.
+\end{itemize}
+
+\newpage
+
+\rhead{ANNEXE \ref{ann:hamming}}
+\section{Caractéristiques du filtre FIR (Hamming)}
+\label{ann:hamming}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.48]{image/hamming}
+    \caption{Réponse en amplitude et en phase du filtre FIR passe-bas utilisé pour le projet.}
+    \label{fig:hamming}
+    \vspace{0.4cm}
+     \centering
+    \includegraphics[scale=0.48]{image/impulse_response}
+    \caption{Réponse impusionnelle du filtre FIR passe-bas utilisé pour le projet.}
+    \label{fig:impulse_response}
+\end{figure}
+
+
+
+
+%%%%% Annexe chapitre 8
+
+%%%%% Annexe chapitre 9
+
+
+
+
 
 \newpage
 

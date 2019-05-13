@@ -52,8 +52,11 @@
 \contentsline {figure}{\numberline {7.9}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{52}{figure.caption.55}
 \contentsline {figure}{\numberline {7.10}{\ignorespaces Résultat de l'attaque CPA sur le quatorzième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut -0,085 et révèle la valeur décimale 13 pour le quatorzième byte de la clé.\relax }}{53}{figure.caption.56}
 \contentsline {figure}{\numberline {7.11}{\ignorespaces Attaque CPA sur le quatorzième byte de la clé de chiffrement. Ce graphe indique qu'il faut un minimum de 1400 traces à l'attaquant pour que l'attaque CPA fonctionne tout le temps.\relax }}{54}{figure.caption.57}
-\contentsline {figure}{\numberline {7.12}{\ignorespaces Trace brute capturée à l'oscilloscope. Cette trace présente la tension consommée par le FPGA lorsque celui-ci est en cours de chiffrement.\relax }}{55}{figure.caption.58}
-\contentsline {figure}{\numberline {7.13}{\ignorespaces \relax }}{56}{figure.caption.59}
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Comparaison dans le domaine temporel entre une trace brute et une trace filtrée. Le filtre FIR de type passe-bas a pour effet de \textit {lisser} le signal.\relax }}{55}{figure.caption.58}
+\contentsline {figure}{\numberline {7.13}{\ignorespaces Transformée de Fourier discrète pour une trace brute.\relax }}{56}{figure.caption.59}
+\contentsline {figure}{\numberline {7.14}{\ignorespaces Transformée de Fourier discrète pour une trace filtrée.\relax }}{56}{figure.caption.59}
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Attaque CPA sur le quatorzième byte de la clé de chiffrement. Ce graphe indique qu'il faut un minimum de 1400 traces à l'attaquant pour que l'attaque CPA fonctionne tout le temps.\relax }}{57}{figure.caption.60}
+\contentsline {figure}{\numberline {7.16}{\ignorespaces \relax }}{58}{figure.caption.61}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
