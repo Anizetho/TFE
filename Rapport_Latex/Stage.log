@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.3.15)  13 MAY 2019 15:15
+This is LuaTeX, Version 1.0.4 (TeX Live 2017)  (format=lualatex 2018.3.15)  13 MAY 2019 15:24
  restricted system commands enabled.
  file:line:error style messages enabled.
 **Stage.tex
@@ -3280,8 +3280,8 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of LuaTeX's memory you used:
  48303 strings out of 494480
  932742,1373583 words of node,token memory allocated
- 836917 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 658 glue, 1 kern, 1 penalty, 133211 glyph, 13838 at
+ 837043 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 658 glue, 1 kern, 1 penalty, 133232 glyph, 13838 at
 tribute, 79 glue_spec, 2308 attribute_list, 1 write, 31 pdf_action nodes
    avail lists: 1:6,2:2289,3:315,4:175,5:369,6:156,7:1588,8:374,9:521,10:33,11:4
 68
@@ -3312,7 +3312,7 @@ ts/type1/public/lm/lmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
 ic/lm/lmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmsy7
 .pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></u
 sr/local/texlive/2017/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Stage.pdf (91 pages, 28745826 bytes).
+Output written on Stage.pdf (91 pages, 28745829 bytes).
 
 PDF statistics: 1729 PDF objects out of 2073 (max. 8388607)
  1423 compressed objects within 15 object streams
