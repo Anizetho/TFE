@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2019.4.10)  14 MAY 2019 01:43
+This is LuaTeX, Version 1.07.0 (TeX Live 2018)  (format=lualatex 2019.4.10)  14 MAY 2019 10:22
  restricted system commands enabled.
  file:line:error style messages enabled.
 **Stage.tex
@@ -35,7 +35,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.159 seconds
+luaotfload | main : initialization completed in 0.180 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
@@ -3103,16 +3103,19 @@ Overfull \hbox (62.75774pt too wide) in paragraph at lines 1586--1588
  []
 
 Package epstopdf Info: Source file: <image/corr_vs_nb_traces_filtering.eps>
-(epstopdf)                    date: 2019-05-13 21:20:08
-(epstopdf)                    size: 148093 bytes
+(epstopdf)                    date: 2019-05-14 10:20:52
+(epstopdf)                    size: 158138 bytes
 (epstopdf)             Output file: <image/corr_vs_nb_traces_filtering-eps-conve
 rted-to.pdf>
-(epstopdf)                    date: 2019-05-13 22:38:09
-(epstopdf)                    size: 441232 bytes
 (epstopdf)             Command: <repstopdf --outfile=image/corr_vs_nb_traces_fil
 tering-eps-converted-to.pdf image/corr_vs_nb_traces_filtering.eps>
 (epstopdf)             \includegraphics on input line 1596.
-Package epstopdf Info: Output file is already uptodate.
+system(repstopdf --outfile=image/corr_vs_nb_traces_filtering-eps-converted-to.pd
+f image/corr_vs_nb_traces_filtering.eps) executed.
+Package epstopdf Info: Result file: <image/corr_vs_nb_traces_filtering-eps-conve
+rted-to.pdf>
+(epstopdf)                    date: 2019-05-14 10:22:34
+(epstopdf)                    size: 156000 bytes.
 <image/corr_vs_nb_traces_filtering-eps-converted-to.pdf, id=1325, 963.6pt x 519.
 9425pt>
 File: image/corr_vs_nb_traces_filtering-eps-converted-to.pdf Graphic file (type 
@@ -3431,7 +3434,7 @@ ublic/lm/lmr7.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy
 10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr
 /local/texlive/2018/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Stage.pdf (92 pages, 29189393 bytes).
+Output written on Stage.pdf (92 pages, 28904168 bytes).
 
 PDF statistics: 1809 PDF objects out of 2073 (max. 8388607)
  1487 compressed objects within 15 object streams
