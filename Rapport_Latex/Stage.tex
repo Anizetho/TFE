@@ -1141,7 +1141,7 @@ Le choix de la contre-mesure à développer dans le cadre de mon travail ne m'ay
 \begin{gather}
 	Key_{Fake} = Key_{Real} \oplus Key_{Mask}\label{eqn:faking}
 \end{gather}
-À partir de cette fausse clé, on va exécuter l'algorithme AES de façon ordinaire (tel que décrit à la section \ref{subsec:AES}): c'est-à-dire qu'on va tout d'abord appliquer l'opération \textit{KeySchedule} sur la fausse clé générant ainsi d'autres fausses clés et ensuite on va exécuter les quatre opérations élémentaires (\textit{AddRoundKey, SubBytes, ShiftRows, MixColumns}) afin de chiffrer les données. L'implémentation de cette contre-mesure est présentée à la figure \ref{fig:ConceptFaking}. On constate ainsi que c'est la fausse clé qui est utilisée pour chiffrer les données et non la vraie clé. De cette manière, en supposant que l'attaquant ne connaisse pas la valeur du masque ($Key_{Mask}$) appliqué sur la vraie clé, si ce dernier décide d'opérer une attaque de type CPA (ou autre) sur le device, il sera capable de retrouver une valeur de clé. Cependant, il s'agira de la fausse clé générée dès le départ. Par conséquent, l'attaquant sera incapable de déchiffrer les données étant donné qu'il possède une fausse clé. \\
+À partir de cette fausse clé, on va exécuter l'algorithme AES de façon ordinaire (tel que décrit à la section \ref{subsec:AES}): c'est-à-dire qu'on va tout d'abord appliquer l'opération \textit{KeySchedule} sur la fausse clé générant ainsi d'autres fausses clés et ensuite on va exécuter les quatre opérations élémentaires (\textit{AddRoundKey, SubBytes, ShiftRows, MixColumns}) afin de chiffrer les données. L'implémentation de cette contre-mesure est présentée à la figure \ref{fig:ConceptFaking}. On constate ainsi que c'est la fausse clé qui est utilisée pour chiffrer les données et non la vraie clé. De cette manière, en supposant que l'attaquant ne connaisse pas la valeur du masque ($Key_{Mask}$) appliquée sur la vraie clé, si ce dernier décide d'opérer une attaque de type CPA (ou autre) sur le device, il sera capable de retrouver une valeur de clé. Cependant, il s'agira de la fausse clé générée dès le départ. Par conséquent, l'attaquant sera incapable de déchiffrer les données étant donné qu'il possède une fausse clé. \\
 
 \begin{figure}[htbp]
     \hspace{-1.4cm}
@@ -1150,30 +1150,30 @@ Le choix de la contre-mesure à développer dans le cadre de mon travail ne m'ay
     \label{fig:ConceptFaking} 
 \end{figure}
 
-Dans les contre-mesures de type \textit{Masking}, lorsqu'on applique un masque sur les données intermédiaires, il faut ensuite le retirer de façon à obtenir \textit{in fine} le \textit{vrai} texte chiffré. Pour le cas des contre-mesures de type \textit{Faking}, le principe est identique. En effet, si aucune action supplémentaire n'est entreprise, le texte chiffré serait crypté avec la fausse clé plutôt qu'avec la vraie clé. Pour ce faire, on va ajouter deux nouvelles opérations dont le rôle est d'annuler l'emploi du masque sur la clé. Ces deux opérations sont \textit{SubBytesTrans} et \textit{MixCol}. Enfin, afin de définitivement couper tout lien des résultats intermédiaires avec la fausse clé, un XOR (opération \textit{remasking}) est opéré entre les résultats intermédiaires obtenus après \textit{MixColumns} et ceux obtenus après \textit{MixCol}. Le résultat de ce XOR permet de retirer l'emploi du masque, on retrouve alors le résultat que l'on aurait obtenu en sortie de l'opération \textit{MixColumns} si on avait utilisé la vraie clé initialement (voir équation \ref{eqn:faking_7}). Ceci est visible sur la figure \ref{fig:ConceptFaking}. Ensuite, l'opération \textit{AddRoundKey} emploie à nouveau une fausse clé, dérivant de l'opération \textit{KeySchedule}.
+Dans les contre-mesures de type \textit{Masking}, lorsqu'on applique un masque sur les données intermédiaires, il faut ensuite le retirer de façon à obtenir \textit{in fine} le \textit{vrai} texte chiffré. Pour le cas des contre-mesures de type \textit{Faking}, le principe est identique. En effet, si aucune action supplémentaire n'est entreprise, le texte chiffré serait crypté avec la fausse clé plutôt qu'avec la vraie clé. Pour ce faire, on va ajouter trois nouvelles opérations dont le rôle est d'annuler l'emploi du masque sur la clé. Ces trois opérations sont \textit{SubBytesTrans}, \textit{ShiftRows} et \textit{MixCol}. Enfin, afin de définitivement couper tout lien des résultats intermédiaires avec la fausse clé, un XOR (opération \textit{remasking}) est opéré entre les résultats intermédiaires obtenus après \textit{MixColumns} et ceux obtenus après \textit{MixCol}. Le résultat de ce XOR permet de retirer l'emploi du masque, on retrouve alors le résultat que l'on aurait obtenu en sortie de l'opération \textit{MixColumns} si on avait utilisé la vraie clé initialement (voir équation \ref{eqn:faking_7}). Ceci est visible sur la figure \ref{fig:ConceptFaking}. Ensuite, l'opération \textit{AddRoundKey} emploie à nouveau une fausse clé, dérivant de l'opération \textit{KeySchedule}.
 
-Définissons la nouvelle opération \textit{SubBytesTrans}. Pour ce faire, notons $Key_{Fake}(i,j)$ (avec $i \ \epsilon \ [0:3]$ et $j \ \epsilon \ [0:3]$) la fausse clé utilisée, $Key_{Real}(i,j)$ la vraie clé utilisée et $P(i,j)$ l'ensemble de textes clairs (\textit{plaintext} en anglais) envoyés au device crytpographique. Notons également $a_{F}(i,j)$ un byte particulier à la sortie de l'opération \textit{ShiftRows} chiffré avec la fausse clé $Key_{Fake}$ (voir figure \ref{fig:ConceptFaking}) et notons $a_{R}(i,j)$ un byte particulier à la sortie de l'opération \textit{ShiftRows} mais cette fois-ci chiffré avec la vraie clé $Key_{Real}$. Ces deux notations sont reprises à l'équation \ref{eqn:faking_2}.
+Définissons la nouvelle opération \textit{SubBytesTrans}. Pour ce faire, notons $Key_{Fake}(i,j)$ (avec $i \ \epsilon \ [0:3]$ et $j \ \epsilon \ [0:3]$) la fausse clé utilisée, $Key_{Real}(i,j)$ la vraie clé utilisée et $P(i,j)$ l'ensemble de textes clairs (\textit{plaintext} en anglais) envoyés au device crytpographique. Notons également $a_{F}(i,j)$ un byte particulier à la sortie de l'opération \textit{AddRoundKey} chiffré avec la fausse clé $Key_{Fake}$ (voir figure \ref{fig:ConceptFaking}) et notons $a_{R}(i,j)$ un byte particulier à la sortie de l'opération \textit{AddRoundKey} mais cette fois-ci chiffré avec la vraie clé $Key_{Real}$. Ces deux notations sont reprises à l'équation \ref{eqn:faking_2}.
 
 \begin{gather}
 	\left\{\begin{matrix}
-	a_{F}(i,j) = ShiftRows(Key_{Fake}(i,j) \oplus P(i,j)) \\ 
-	a_{R}(i,j) = ShiftRows(Key_{Real}(i,j) \oplus P(i,j))
+	a_{F}(i,j) = Key_{Fake}(i,j) \oplus P(i,j) \\ 
+	a_{R}(i,j) = Key_{Real}(i,j) \oplus P(i,j)
 	\end{matrix}\right.\label{eqn:faking_2}
 \end{gather}
 
 \hspace{-0.5cm}Étant donné que c'est la fausse clé qui est utilisée pour l'implémentation de la contre-mesure, si nous souhaitons obtenir le résultat intermédiaire à la sortie de l'opération \textit{SubBytes}, nous avons la relation \ref{eqn:faking_3} :
 \begin{gather}
-	Sbox(a_{F}(i,j)) = Sbox(ShiftRows(Key_{Fake}(i,j) \oplus P(i,j)))\label{eqn:faking_3}
+	Sbox(a_{F}(i,j)) = Sbox(Key_{Fake}(i,j) \oplus P(i,j))\label{eqn:faking_3}
 \end{gather}
 
 \hspace{-0.5cm}Connaissant la relation \ref{eqn:faking}, nous pouvons ré-écrire l'équation \ref{eqn:faking_3} sous la forme suivante : 
 \begin{gather}
-	Sbox(a_{F}(i,j)) = Sbox(ShiftRows(Key_{Real}(i,j) \oplus Key_{Mask}(i,j) \oplus P(i,j)))\label{eqn:faking_4}
+	Sbox(a_{F}(i,j)) = Sbox(Key_{Real}(i,j) \oplus Key_{Mask}(i,j) \oplus P(i,j))\label{eqn:faking_4}
 \end{gather}
 
 \hspace{-0.5cm}Ainsi, une façon simple de retrouver le byte original $a_{R}(i,j)$ utilisé avec la clé réelle à la sortie de l'opération \textit{SubBytes} est de définir une nouvelle fonction, appelée \textit{SubBytesTrans}. Cette fonction est donc définie sur base de l'équation \ref{eqn:faking_4} de la manière suivante : 
 \begin{gather}
-	Sbox(a_{F}(i,j)) = Sbox(ShiftRows(Key_{Real}(i,j) \oplus P(i,j))) \oplus SubBytesTrans(i,j)\label{eqn:faking_5}
+	Sbox(a_{F}(i,j)) = Sbox(Key_{Real}(i,j) \oplus P(i,j)) \oplus SubBytesTrans(a_{F}i,j)\label{eqn:faking_5}
 \end{gather}
 
 \hspace{-0.5cm}En effet, selon l'équation \ref{eqn:faking_2}, on peut simplifier l'équation précédente \ref{eqn:faking_5} par l'équation suivante \ref{eqn:faking_6} où l'on retrouve bien le byte original $a_{R}(i,j)$.
@@ -1186,7 +1186,7 @@ Définissons la nouvelle opération \textit{SubBytesTrans}. Pour ce faire, noton
 	SubBytesTrans(a_{F}(i,j)) = Sbox(a_{R}(i,j))  \oplus Sbox(a_{F}(i,j)) \label{eqn:faking_7}
 \end{gather}
 
-\hspace{-0.5cm}Concernant la nouvelle opération \textit{MixCol}, il ne s'agit en réalité pas d'une nouvelle opération étant donné que cette opérations réalise la même fonction que l'opération \textit{MixColumns} (tel que décrit à la section \ref{subsec:AES}). Cependant, nous précisons à la section suivante (\ref{subsec:points}) que \textit{MixCol} permet d'éviter une faille dans la contre-mesure. C'est donc la raison pour laquelle, le \textit{remarsking} (opération XOR) ne se fait pas avant cette opération.
+\hspace{-0.5cm}Concernant les opérations \textit{ShiftRows} et \textit{MixCol}, il ne s'agit en réalité pas de nouvelles opérations étant donné que ces deux opérations réalisent respectivement la même fonction que les opérations \textit{ShiftRows} et \textit{MixColumns} (tel que décrit à la section \ref{subsec:AES}). Cependant, nous précisons à la section suivante (\ref{subsec:points}) que \textit{MixCol} permet d'éviter une faille dans la contre-mesure. C'est donc la raison pour laquelle, le \textit{remarsking} (opération XOR) ne se fait pas avant cette opération.
 
 \subsection{Points faibles et améliorations}
 \label{subsec:points}
@@ -1194,20 +1194,20 @@ Définissons la nouvelle opération \textit{SubBytesTrans}. Pour ce faire, noton
 Deux points faibles de l'implémentation de la contre-mesure faking proposés à la figure \ref{fig:ConceptFaking} sont repris ci-dessous et améliorés afin de diminuer grandement les chances de réussite de l'attaquant.
 \begin{enumerate}
 \item Le but de la contre-mesure faking est d'autoriser l'attaquant à trouver une fausse valeur de clé. Cependant, connaissant la valeur de cette faussé clé, si l'attaquant trouve la valeur du masque, il peut retrouver la valeur de la vraie clé selon l'équation \ref{eqn:faking}. Ainsi, pour améliorer ce problème, il faut que chaque byte du masque utilisé ($Key_{mask}$) soit différent. Ceci complique la tâche de l'attaquant.
-\item Il existe une attaque utilisant les résultats intermédiaires à la sortie des opérations \textit{SubBytes} et \textit{SubBytesTrans} et qui permet de retrouver la clé réelle. En effet, si l'attaquant récupère ces deux valeurs intermédiaires et qu'il réalise un XOR entre eux, il obtient la simplification suivante : 
+\item Il existe une attaque utilisant les résultats intermédiaires à la sortie des opérations \textit{SubBytes} et \textit{SubBytesTrans} et qui permet de retrouver la clé réelle. En effet, si l'attaquant récupère ces deux valeurs intermédiaires et qu'il réalise un XOR entre elles, il obtient la simplification suivante : 
 \begin{gather}
 \begin{align*}
         Sbox(a_{F}(i,j)) \oplus SubBytesTrans(a_{F}(i,j)) &= Sbox(a_{R}(i,j))  \\
-            &=Sbox(ShiftRows(Key_{Real}(i,j) \oplus State(i,j)))  
+            &=Sbox(Key_{Real}(i,j) \oplus State(i,j))  
 \end{align*}
 \label{eqn:faille1}
 \end{gather}
 
-En considérant le premier round de l'AES-256, l'élément $State(i,j)$ représente un texte clair ($P(i,j)$). Dans ce cas, connaissant le fonctionnement des opérations \textit{ShiftRows} et \textit{SubBytes}, l'attaquant peut retrouver la valeur de la vraie clé $Key_{Real}$. Pour se prémunir de ce problème, une amélioration de la contre-mesure faking consiste à masquer les valeurs en sortie de l'opération \textit{SubBytesTrans}. En effet, à chaque round, un masque aléatoire $M_{h}(i,j)$ est appliqué sur les résultats intermédiaires en sortie de l'opération \textit{SubBytesTrans} de sorte à obtenir l'équation suivante \ref{eqn:faille1_solution} : 
+En considérant le premier round de l'AES-256, l'élément $State(i,j)$ représente un texte clair ($P(i,j)$). Dans ce cas, connaissant le fonctionnement de l'opérations \textit{SubBytes}, l'attaquant peut retrouver la valeur de la vraie clé $Key_{Real}$. Pour se prémunir de ce problème, une amélioration de la contre-mesure faking consiste à masquer les valeurs en sortie de l'opération \textit{SubBytesTrans}. En effet, à chaque round, un masque aléatoire $M_{h}(i,j)$ est appliqué sur les résultats intermédiaires en sortie de l'opération \textit{SubBytesTrans} de sorte à obtenir l'équation suivante \ref{eqn:faille1_solution} : 
 \begin{gather}
 	SubBytesTrans(a_{F}(i,j)) = Sbox(a_{R}(i,j))  \oplus Sbox(a_{F}(i,j)) \oplus M_{h}(i,j) \label{eqn:faille1_solution}
 \end{gather}
-Notons que le masque $M_{h}(i,j)$ est renouvelé de façon aléatoire à chaque round pour complexifier le chiffrement. Ce masque $M_{h}(i,j)$ devient le masque $M_{k}(i,j)$ après l'exécution de l'opération \textit{MixColumns}. 
+Notons que le masque $M_{h}(i,j)$ est renouvelé de façon aléatoire à chaque round pour complexifier le chiffrement. Ce masque $M_{h}(i,j)$ devient le masque $M_{s}(i,j)$ après l'exécution de l'opération \textit{ShiftRows} et devient ensuite le masque $M_{k}(i,j)$ après l'exécution de l'opération \textit{MixColumns}.
 \end{enumerate}
 
 \newpage
@@ -1477,13 +1477,13 @@ Dans ce premier exemple, nous considérons le cas idéal où les traces ne sont 
 \begin{figure}[htbp]
     \hspace{-2cm}
     \includegraphics[scale=0.4]{image/sim_10000_traces}
-    \caption{Résultat de l'attaque CPA sur le dixième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 1 et correspond à la clé 200.}
+    \caption{Résultat de l'attaque CPA sur le dixième byte de la clé. Ce graphe présente la valeur du coefficient de corrélation pour chacune des 256 valeurs de clé testées. La valeur de corrélation maximum vaut 1 et correspond à la clé 200. 1000 traces sont utilisées pour obtenir ce résultat.}
     \label{fig:sim_10000_traces} 
 \end{figure}
 
 \newpage
 
-Nous avons vu à la section \ref{sec:CPA} que le nombre de traces employées pour réaliser l'attaque CPA influence le résultat obtenu. Pour rappel, lorsqu'un message clair est envoyé au bloc de chiffrement, une trace est enregistrée grâce à l'oscilloscope. Par conséquent, lorsqu'on augmente le nombre de messages clairs envoyés au bloc de chiffrement, le nombre de traces augmente proportionnellement. En théorie, plus le nombre de traces employées est grand, plus la corrélation entre cet ensemble de traces et l'ensemble des valeurs prédites de consommation doit être :
+Comme indiqué à la section \ref{sec:CPA}, le nombre de traces employées pour réaliser l'attaque CPA influence le résultat obtenu. Pour rappel, lorsqu'un message clair est envoyé au bloc de chiffrement, une trace est enregistrée grâce à l'oscilloscope. Par conséquent, lorsqu'on augmente le nombre de messages clairs envoyés au bloc de chiffrement, le nombre de traces augmente proportionnellement. En théorie, plus le nombre de traces employées est grand, plus la corrélation entre cet ensemble de traces et l'ensemble des valeurs prédites de consommation doit être :
 \begin{itemize}
 \item Élevée lorsque la bonne clé est testée ;
 \item Faible lorsqu'une mauvaise clé est testée ;
@@ -1497,7 +1497,7 @@ Nous avons vu à la section \ref{sec:CPA} que le nombre de traces employées pou
     \label{fig:sim_nb_traces} 
 \end{figure}
 
-Pour montrer que l’augmentation du nombre de traces permet de révéler plus facilement la valeur de la clé secrète, on utilise un graphe comme celui présenté à la figure \ref{fig:sim_corr_fonction_nb_traces}. Pour une attaque sur le dixième byte de la clé, ce graphe présente la corrélation obtenue en fonction du nombre de traces utilisées. Plus le nombre de traces employées augmente, plus la bonne clé testée (200) se distingue des 255 autres clés testées. Sur ce graphe, on remarque que la bonne clé est révélée à partir d'une seule trace. Ceci est impossible en réalité à cause du bruit. Le section suivante ajoute ainsi dans les traces un bruit \textit{gaussien} de moyenne \mu \ et d'écart-type \sigma \ afin que les résultats obtenus par simulations représentent un peu plus la réalité.
+Pour montrer que l’augmentation du nombre de traces permet de révéler plus facilement la valeur de la clé secrète, on utilise un graphe comme celui présenté à la figure \ref{fig:sim_corr_fonction_nb_traces}. Pour une attaque sur le dixième byte de la clé, ce graphe présente la corrélation obtenue en fonction du nombre de traces utilisées. Plus le nombre de traces employées augmente, plus la bonne clé testée (200) se distingue des 255 autres clés testées. Sur ce graphe, on remarque que la bonne clé est révélée à partir d'une seule trace. Ceci est impossible en réalité à cause du bruit. Le section suivante ajoute ainsi dans les traces un bruit \textit{gaussien} de moyenne \mu \ et d'écart-type \sigma \ afin que les résultats obtenus par simulations soient plus réalistes.
 
 \begin{figure}[htbp]
     \hspace{-2.5cm}
@@ -1511,9 +1511,9 @@ Pour montrer que l’augmentation du nombre de traces permet de révéler plus f
 
 Le bruit étant systématiquement présent dans les circuits électroniques, cette section met en évidence l'impact du bruit dans le résultat de l'attaque CPA. En théorie, plus le bruit est présent, plus il est difficile de retrouver la valeur exacte de la clé secrète. Ceci est dû au fait que la trace capturée à l'oscilloscope ne représente plus uniquement la consommation de puissance du FPGA mais elle représente cette consommation de puissance additionnée d'un bruit parasite. Ainsi, plus le bruit devient important, moins les traces représentent la puissance consommée par le FPGA et donc plus il est difficile de retrouver la clé secrète. Le bruit ajouté sur les traces simulées est un bruit \textit{gaussien}. Un bruit \textit{gaussien} suit une loi normale de moyenne \mu \ et d'écart-type \sigma.
 
-\hspace{-0.5cm}La figure \ref{fig:sim_corr_fonction_nb_traces_noise} présente le résultat d'une attaque CPA sur le dixième byte de la clé de chiffrement. Les mêmes ensembles de messages clairs et de traces simulées ont été repris de l'exemple précédent (voir section \ref{sec:sim_trace}) afin de comparer efficacement l'impact du bruit sur les résultats. Le bruit additionné pour cet exemple possède une moyenne égale à 0 et une écart-type égal à 15. Nous pouvons remarquer que la valeur de corrélation pour la clé secrète est désormais nettement inférieure à 1 alors qu'elle était égal à 1 sans bruit (voir figure \ref{fig:sim_corr_fonction_nb_traces}). Nous remarquons également que pour cet exemple, la clé secrète est toujours retrouvée à partir d'approximativement 800 traces.
+\hspace{-0.5cm}La figure \ref{fig:sim_corr_fonction_nb_traces_noise} présente le résultat d'une attaque CPA sur le dixième byte de la clé de chiffrement. Les mêmes ensembles de messages clairs ont été repris de l'exemple précédent (voir section \ref{sec:sim_trace}) afin de comparer efficacement l'impact du bruit sur les résultats. Le bruit additionné pour cet exemple possède une moyenne égale à 0 et une écart-type égal à 15. Nous pouvons remarquer que la valeur de corrélation pour la clé secrète est désormais nettement inférieure à 1 alors qu'elle était égal à 1 sans bruit (voir figure \ref{fig:sim_corr_fonction_nb_traces}). Nous remarquons également que pour cet exemple, la clé secrète est toujours retrouvée à partir d'approximativement 800 traces.
 
-\hspace{-0.5cm}Pour mieux montrer l'impact du bruit, une métrique est utilisée afin de mesurer le taux de succès de l'attaque en fonction du nombre de traces utilisées. Ce taux de succès est également fonction de la quantité de bruit ajoutée dans les traces simulées (et qui dépend du paramètre \sigma). La figure \ref{fig:success_rate_sim} présente le taux de succès de l'attaque CPA sur le dixième byte de la clé secrète. Trois bruits différents sont ajoutés dans les traces. Ces trois bruits ont chacun une moyenne nulle mais un écart-type différent : \sigma \ $= 10$, \sigma \ $= 15$ et \sigma \ $= 20$. Nous remarquons que la clé secrète peut, en moyenne, être révélée à partir de 1000 traces lorsque les traces sont bruitées avec un \sigma \ égal à 15, ce qui correspond avec le graphe à la figure \ref{fig:sim_corr_fonction_nb_traces_noise}. On se rend ainsi mieux compte de l'impact du bruit dans le résultat de l'attaque CPA. 
+\hspace{-0.5cm}Pour mieux montrer l'impact du bruit, une métrique est utilisée afin de mesurer le taux de succès de l'attaque en fonction du nombre de traces utilisées. Ce taux de succès est également fonction de la quantité de bruit ajoutée dans les traces simulées (et qui dépend du paramètre \sigma). La figure \ref{fig:success_rate_sim} présente le taux de succès de l'attaque CPA sur le dixième byte de la clé secrète. Trois bruits différents sont ajoutés dans les traces. Ces trois bruits ont chacun une moyenne nulle mais un écart-type différent : \sigma \ $= 10$, \sigma \ $= 15$ et \sigma \ $= 20$. Nous remarquons que la clé secrète peut, en moyenne, être révélée à partir de 1000 traces lorsque les traces sont bruitées avec un \sigma \ égal à 15, ce qui correspond avec le graphe présenté à la figure \ref{fig:sim_corr_fonction_nb_traces_noise}. On se rend ainsi mieux compte de l'impact du bruit dans le résultat de l'attaque CPA. 
 
 \begin{figure}[htbp]
     \hspace{-2.3cm}
@@ -1522,7 +1522,7 @@ Le bruit étant systématiquement présent dans les circuits électroniques, cet
     \label{fig:sim_corr_fonction_nb_traces_noise} 
     \hspace{-2.2cm}
     \includegraphics[scale=0.4]{image/success_rate_sim}
-    \caption{Taux de succès de l'attaque CPA en fonction du nombre de traces utilisées. Les 3 courbes présentées sur le graphe correspondent à des valeurs différentes de \sigma \ (pour le bruit ajouté). La courbe orange présente le résultat pour \sigma \ $= 15$, qui correspond à l'exemple présenté précédemment (voir figure \ref{fig:sim_corr_fonction_nb_traces_noise}).}
+    \caption{Taux de succès de l'attaque CPA en fonction du nombre de traces utilisées. Les 3 courbes présentées sur le graphe correspondent à des valeurs différentes de \sigma \ (pour le bruit ajouté). La courbe orange présente le résultat pour \sigma \ $= 15$, qui correspond à l'exemple présenté à la figure \ref{fig:sim_corr_fonction_nb_traces_noise}.}
     \label{fig:success_rate_sim} 
 \end{figure}
 
@@ -1545,7 +1545,7 @@ La figure \ref{fig:trace_brute} présente une trace brute capturée à l'oscillo
     \label{fig:trace_brute} 
 \end{figure}
 
-La figure \ref{fig:real_result_CPA} présente le résultat de l'attaque CPA sur un byte de l'algorithme AES-256. Plus précisément, l'attaque cible le quatorzième byte de la clé secrète. Pour réaliser cette attaque, 5000 messages clairs ont été envoyés au FPGA, ce qui correspond donc à 5000 traces de puissance enregistrées à l'oscilloscope. Le résultat de cette attaque montre que les 256 valeurs du coefficient de corrélation sont extrêmement faibles. La valeur maximale de corrélation vaut -0,085 et révèle la valeur décimale 13 pour le quatorzième byte de la clé secrète (ce qui est correct). Les 255 autres valeurs de corrélation sont comprises dans l'intervalle [-0,5 : 0,4]. Cela montre que la différence entre la valeur maximale de corrélation et les autres valeurs de corrélation reste faible (0,035 de différence) et qu'il est donc nécessaire d'utiliser un grand nombre de traces pour retrouver la bonne clé de chiffrement. Le nombre de traces minimum nécessaire à l'attaquant pour réussir une attaque CPA est présenté ci-après.
+La figure \ref{fig:real_result_CPA} présente le résultat de l'attaque CPA sur un byte de l'algorithme AES-256. Plus précisément, l'attaque cible le quatorzième byte de la clé secrète. Pour réaliser cette attaque, 5000 messages clairs ont été envoyés au FPGA, ce qui correspond donc à 5000 traces de puissance enregistrées à l'oscilloscope. Le résultat de cette attaque montre que les 256 valeurs du coefficient de corrélation sont extrêmement faibles. La valeur maximale de corrélation vaut -0,085 et révèle la valeur décimale 13 pour le quatorzième byte de la clé secrète (ce qui est correct). Les 255 autres valeurs de corrélation sont comprises dans l'intervalle [-0,5 : 0,4]. Cela montre que la différence entre la valeur maximale de corrélation et les autres valeurs de corrélation reste faible (0,035 de différence). Il est donc nécessaire d'utiliser un grand nombre de traces pour retrouver la bonne clé de chiffrement. Le nombre de traces minimum nécessaire à l'attaquant pour réussir une attaque CPA est présenté ci-après.
 
 \begin{figure}[ht!]
     \hspace{-1.8cm}
@@ -1569,7 +1569,7 @@ La figure \ref{fig:real_result_corr_vs_nb_traces_CPA} indique le nombre de trace
 \subsection{Traces réelles filtrées}
 \label{sec:filter}
 
-À la section \ref{sec:Sim_results_CPA}, l'influence du bruit dans les traces analysées a été mise en évidence. De ce fait, un pré-traitement des traces peut être opéré afin de retirer ce bruit parasite inutile. Une façon efficace d'enlever ce bruit parasite est d'utiliser un filtre. L'utilisation de ce filtre a pour objectif d'augmenter le taux de succès de l'attaque. Sachant que le Picoscope possède une bande passante de 200 MHz et qu'il échantillonne à 500 Mé/s (pour une résolution sur 12 bits) et sachant que le fréquence d'horloge utilisée par le FPGA est de 48 MHz (voir section \ref{sec:config_chiff} pour la description du matériel utilisé), l'idée consiste à utiliser un filtre numérique de type passe-bas. Plus précisément, le filtre employé est un filtre à réponse impulsionnelle finie (\textit{FIR}) d'ordre 100 et dont la fréquence de coupure est définie à 48 MHz. La fenêtre employée est une fenêtre de \textit{Hamming} [\ref{}] dont les caractéristiques sont reprises à l'annexe \ref{ann:hamming}. La figure \ref{fig:traces_comparaison_bruit} compare une trace brute à une trace filtrée. L'application du filtre a pour effet de \textit{lisser} la trace. Cependant, quand il s'agit d'analyser le traitement d'un signal, il est plus commode (plus facile) d'observer ce signal dans le domaine fréquentiel. Ainsi, les figures \ref{fig:trace_no_filtered} et \ref{fig:filtered_trace} présentent respectivement le résultat de la transformée de Fourier discrète sur une trace brute et sur une trace filtrée. L'algorithme \textit{FFT} (\textit{Fast Fourier Transform}) a été utilisé pour calculer cette transformée de Fourier discrète. La figure \ref{fig:filtered_trace} permet de conclure que le bruit parasite au-dessus de la fréquence de 48 MHz a bien été enlevé suite à l'application du filtre passe-bas.
+À la section \ref{sec:Sim_results_CPA}, l'influence du bruit dans les traces analysées a été mise en évidence. De ce fait, un pré-traitement des traces peut être opéré afin de retirer le bruit parasite inutile. Une façon efficace d'enlever ce bruit parasite est d'utiliser un filtre. L'utilisation de ce filtre a pour objectif d'augmenter le taux de succès de l'attaque. Sachant que le Picoscope possède une bande passante de 200 MHz et qu'il échantillonne à 500 Mé/s (pour une résolution sur 12 bits) et sachant que le fréquence d'horloge utilisée par le FPGA est de 48 MHz (voir section \ref{sec:config_chiff} pour la description du matériel utilisé), l'idée consiste à utiliser un filtre numérique de type passe-bas. Plus précisément, le filtre employé est un filtre à réponse impulsionnelle finie (\textit{FIR}) d'ordre 100 et dont la fréquence de coupure est définie à 48 MHz. La fenêtre employée est une fenêtre de \textit{Hamming} [\ref{}] dont les caractéristiques sont reprises à l'annexe \ref{ann:hamming}. La figure \ref{fig:traces_comparaison_bruit} compare une trace brute à une trace filtrée. L'application du filtre a pour effet de \textit{lisser} la trace. Cependant, quand il s'agit d'analyser le traitement d'un signal, il est plus commode (plus facile) d'observer ce signal dans le domaine fréquentiel. Ainsi, les figures \ref{fig:trace_no_filtered} et \ref{fig:filtered_trace} présentent respectivement le résultat de la transformée de Fourier discrète sur une trace brute et sur une trace filtrée. L'algorithme \textit{FFT} (\textit{Fast Fourier Transform}) a été utilisé pour calculer cette transformée de Fourier discrète. La figure \ref{fig:filtered_trace} permet de conclure que le bruit parasite au-dessus de la fréquence de 48 MHz a bien été enlevé suite à l'application du filtre passe-bas.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1589,7 +1589,7 @@ La figure \ref{fig:real_result_corr_vs_nb_traces_CPA} indique le nombre de trace
     \label{fig:filtered_trace} 
 \end{figure}
 
-La figure \ref{fig:corr_vs_nb_traces_filtering} indique le nombre de traces filtrées qu'un attaquant doit utiliser pour que l'attaque CPA révèle la valeur du quatorzième byte de la clé de chiffrement. On constate qu'au-dessus de 1300 traces, l'attaque révèle toujours la valeur de la clé secrète. On remarque également que la corrélation pour la clé secrète est plus élevée lorsque le filtrage est appliqué (valeur de 0,169 pour 10000 traces) que lorsqu'il ne l'est pas (valeur de 0,118 pour 10000 traces). Ainsi, comparativement aux résultats obtenus sans pré-traitement (voir figure \ref{fig:real_result_corr_vs_nb_traces_CPA}), le filtrage a permis d'améliorer l'attaque. La section \ref{sec:success_rate} suivante présente le taux de succès de l'attaque selon que le pré-traitement a été appliqué ou non.
+La figure \ref{fig:corr_vs_nb_traces_filtering} indique le nombre de traces filtrées qu'un attaquant doit utiliser pour que l'attaque CPA révèle la valeur du quatorzième byte de la clé de chiffrement. On constate qu'au-dessus de 1300 traces, l'attaque révèle toujours la valeur de la clé secrète. On remarque également que la corrélation pour la clé secrète est plus élevée lorsque le filtrage est appliqué (valeur de 0,169 pour 10000 traces) que lorsqu'il ne l'est pas (valeur de 0,118 pour 10000 traces). Ainsi, comparativement aux résultats obtenus sans pré-traitement (voir figure \ref{fig:real_result_corr_vs_nb_traces_CPA}), le filtrage a permis d'améliorer l'attaque. La section \ref{sec:success_rate} présente le taux de succès de l'attaque selon que le pré-traitement a été appliqué ou non.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
