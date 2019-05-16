@@ -53,12 +53,13 @@
 \contentsline {subsection}{\numberline {7.3.2}Traces réelles filtrées}{55}{subsection.7.3.2}
 \contentsline {subsection}{\numberline {7.3.3}Taux de succès de l'attaque}{58}{subsection.7.3.3}
 \contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit {faking}}{59}{chapter.8}
-\contentsline {section}{\numberline {8.1}Résultats de simulations}{59}{section.8.1}
-\contentsline {section}{\numberline {8.2}Résultats expérimentaux}{59}{section.8.2}
-\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{60}{chapter.9}
-\contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{60}{section.9.1}
-\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{60}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusion}{61}{chapter.10}
-\contentsline {chapter}{Crédits}{62}{section*.63}
-\contentsline {chapter}{Références}{62}{section*.64}
-\contentsline {chapter}{Annexes}{65}{section*.64}
+\contentsline {section}{\numberline {8.1}Implémentation de la contre-mesure}{59}{section.8.1}
+\contentsline {section}{\numberline {8.2}Résultats de simulations}{59}{section.8.2}
+\contentsline {section}{\numberline {8.3}Résultats expérimentaux}{61}{section.8.3}
+\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{62}{chapter.9}
+\contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{62}{section.9.1}
+\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{62}{section.9.2}
+\contentsline {chapter}{\numberline {10}Conclusion}{63}{chapter.10}
+\contentsline {chapter}{Crédits}{64}{section*.64}
+\contentsline {chapter}{Références}{64}{section*.65}
+\contentsline {chapter}{Annexes}{67}{section*.65}
