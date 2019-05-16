@@ -58,10 +58,17 @@
 \contentsline {figure}{\numberline {7.15}{\ignorespaces Attaque CPA sur le quatorzième byte de la clé de chiffrement. Ce graphe indique qu'il faut un minimum de 1300 traces à l'attaquant pour que l'attaque CPA fonctionne tout le temps.\relax }}{57}{figure.caption.60}
 \contentsline {figure}{\numberline {7.16}{\ignorespaces Taux de succès de l'attaque CPA selon que les traces soient préalablement filtrées (courbe bleue) ou non (courbe orange). L'attaque CPA fonctionne mieux avec filtrage.\relax }}{58}{figure.caption.61}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Valeur de corrélation pour chacune des 256 valeurs de clé testées (attaque CPA sur un un byte de la clé). La fausse clé (125) est retrouvée tandis que le vraie clé (25) ne laisse fuiter aucune information.\relax }}{61}{figure.caption.62}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Valeurs de corrélation pour les 256 clés (attaque CPA sur un byte) testées en fonction du nombre de traces mesurées. La fausse clé (courbe rouge) est retrouvée à partir de 600 traces alors que le vraie clé ne laisse fuiter aucune information.\relax }}{61}{figure.caption.62}
-\contentsline {figure}{\numberline {8.3}{\ignorespaces Taux de succès de l'attaque CPA selon que les traces soient préalablement filtrées (courbe bleue) ou non (courbe orange). L'attaque CPA fonctionne mieux avec filtrage.\relax }}{62}{figure.caption.63}
-\contentsline {figure}{\numberline {8.4}{\ignorespaces Taux de succès de l'attaque CPA selon que les traces soient préalablement filtrées (courbe bleue) ou non (courbe orange). L'attaque CPA fonctionne mieux avec filtrage.\relax }}{62}{figure.caption.64}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces \relax }}{60}{figure.caption.62}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces \relax }}{60}{figure.caption.63}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces \relax }}{61}{figure.caption.64}
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Valeurs de corrélation pour chacune des 256 valeurs de clé testées (attaque CPA sur un byte de la clé). La fausse clé (125) est retrouvée tandis que le vraie clé (25) ne laisse fuiter aucune information.\relax }}{62}{figure.caption.65}
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Valeurs de corrélation pour les 256 clés (attaque CPA sur un byte) testées en fonction du nombre de traces mesurées. La fausse clé (courbe rouge) est retrouvée à partir de 600 traces alors que le vraie clé ne laisse fuiter aucune information.\relax }}{62}{figure.caption.65}
+\contentsline {figure}{\numberline {8.6}{\ignorespaces Trace obtenue lorsque la contre-mesure \textit {faking} est implémentée de façon parallèle.\relax }}{63}{figure.caption.66}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Trace obtenue lorsque la contre-mesure \textit {faking} est implémentée de façon séquentielle.\relax }}{64}{figure.caption.67}
+\contentsline {figure}{\numberline {8.8}{\ignorespaces Valeurs de corrélation pour chacune des 256 valeurs de clé testées (attaque CPA sur un byte de la clé). La clé révélée (201) ne correspond ni à la vraie clé (20) ni à la fausse clé (125).\relax }}{65}{figure.caption.68}
+\contentsline {figure}{\numberline {8.9}{\ignorespaces Valeurs de corrélation pour les 256 clés testées en fonction du nombre de traces mesurées. La vraie clé (courbe verte) n'est pas révélée. La fausse clé (courbe rouge) n'est pas non plus révélée. La clé révélée (courbe magenta) est un résultat inattendu.\relax }}{65}{figure.caption.68}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Schéma-bloc du principe de fonctionnement du test automatisé mis en place.\relax }}{67}{figure.caption.69}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
