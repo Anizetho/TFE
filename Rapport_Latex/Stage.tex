@@ -1617,23 +1617,23 @@ Comme pour les simulations, nous mesurons le taux de succès de l'attaque CPA av
 \chapter{Implémentation de la contre-mesure de type \textit{faking}}
 \label{chap:faking}
 
-Ce chapitre se scinde en trois parties. Premièrement, il décrit l'implémentation de la contre-mesure \textit{faking}. Deuxièmement, il présente les résultats de l'attaque CPA obtenus par simulation. Enfin, troisièmement, il présente les résultats de l'attaque CPA sur l'implémentation de la contre-mesure \textit{faking}. 
+Ce chapitre se scinde en trois parties. Premièrement, il décrit l'implémentation de la contre-mesure \textit{faking}. Deuxièmement, il présente les résultats de l'attaque CPA obtenus par simulation. Enfin, il présente les résultats de l'attaque CPA sur l'implémentation de la contre-mesure \textit{faking}. 
 
 \section{Implémentation de la contre-mesure}
 \label{sec:implementation_faking}
 
-L'implémentation du protocole de communication entre l'ordinateur et le bloc de chiffrement reste inchangé (voir section \ref{sec:Imp_contrôleur}). Seul le bloc de chiffrement a été adapté afin d'ajouter la contre-mesure \textit{faking}. La figure \ref{} donne une représention haut niveau du bloc de chiffrement avec implémentation de la contre-mesure. Seul un port a été ajouté au bloc de chiffrement définit à la section \ref{fig:}. Il s'agit du port d'entrée \textit{Mask}, sur 256 bits. La figure \ref{fig:} présente l’architecture implémentée pour la contre-mesure faking. Cette architecture est fort semblable à celle décrite à la section \ref{sec:Imp_AES_256}.
+L'implémentation du protocole de communication entre l'ordinateur et le bloc de chiffrement reste inchangé (voir section \ref{sec:Imp_contrôleur}). Seul le bloc de chiffrement est adapté afin d'ajouter l'implémentation de la contre-mesure \textit{faking}. La figure \ref{fig:} donne une représention haut niveau du bloc de chiffrement avec implémentation de la contre-mesure. Seul un port est ajouté au bloc de chiffrement définit à la section \ref{fig:}. Il s'agit du port d'entrée \textit{Mask}, sur 256 bits, représentant la valeur du masque utilisé pour masquer la vraie clé (voir section \ref{subsec:def}). Deux architectures différentes ont été mises en oeuvre pour la contre-mesure \textit{faking}. Dans la première architecture visible à la figure \ref{fig:}, les opérations principales sont exécutées en parallèle. Dans la seconde architecture visible à la figure \ref{fig:}, les opérations principales sont exécutées de manière séquentielle.
 
-l’opération KeySchedule est exécutée en premier lieu afin de fournir les nouvelles clés qui seront utilisées pour les rounds suivants. Les quatre autres opérations principales de l’AES (AddRoundKey, SubBytes, ShiftRows et MixColumns) sont chacune exécutées en un seul coup d’horloge. L’opération Key Schedule compte quant à elle X coups d’horloge. Sachant que l’AES-256 comprend 14 rounds (voir section 2.2.3), cette implémentation requiert donc un total de 56+X, soit X coups d’horloge pour chiffrer un bloc de 128 bits.
+Pour l'architecture en parallèle, les opérations \textit{AddRoundKey, SubBytes, ShiftRows} et \textit{MixColumns} s'exécutent en un seul coup de clock comme décrit à la section \ref{sec:Imp_AES_256}. Lorsque la contre-mesure est implémentée, quatre nouvelles opérations sont ajoutées : \textit{SubBytesTrans, ShiftRowsTrans, MixColumnsTrans} et \textit{Remasking} (voir section \ref{sec:faking}). En réalité, les opérations \textit{ShiftRowsTrans} et \textit{MixColumnsTrans} opèrent exactement les mêmes fonctions que les opérations \textit{ShiftRows} et \textit{MixColumns} respectivement. Ainsi, seules les opérations \textit{SubBytesTrans} et \textit{Remasking} doivent être définies (voir section \ref{sec:faking}). L'opération \textit{SubBytesTrans} s'exécute en deux coups d'horloge tandis que l'opération \textit{Remasking} s'exécute en un seul coup d'horloge. Par conséquent, cette implémentation requiert un total de X coups d'horloge.
+
+Pour l'architecture en séquentiel, le nombre de coups d'horloge pour chaque opération définie est identique à celui pour l'architecture en parallèle. Ainsi, après l'opération \textit{Keyschedule}, les 4 opérations principales de l'AES sont exécutées (\textit{AddRoundKey, SubBytes, ShiftRows} et \textit{MixColumns}). Ensuite, ce sont les cinq opérations définies pour la contre-mesure \textit{faking} qui sont exécutées (\textit{SubBytesTrans, ShiftRowsTrans, MixColumnsTrans} et \textit{Remasking}). Cette implémentation requiert un total de X coups d'horloge.
+
 
 
 \section{Résultats de simulations}
 \label{sec:Sim_results_Faking}
 
 Le bruit ayant été mis en évidence au chapitre précédent (chapitre \ref{chap:CPA_Result} section \ref{sec:Sim_results_CPA}), les traces simulées pour cet exemple sont directement additionnées d'un bruit \textit{gaussien} (de moyenne \mu \ égale à 0 et d'écart-type \sigma \ égal à 10). La figure \ref{fig:sim_faking_corr_vs_clés} présente le résultat de l'attaque CPA pour le cinquième byte de la clé de chiffrement. 2000 traces ont été utilisées pour réaliser l'attaque. La vraie clé employée pour chiffrer les données vaut 25. Sachant que le masque vaut 100, la fausse clé vaut 125 (voir section \ref{subsec:def}, équation \ref{eqn:faking}). La figure \ref{fig:sim_faking_corr_vs_nb_traces} présente, pour le même exemple, le résultat obtenu selon le nombre de traces utilisées. La clé secrète ne laisse fuiter aucune information, sa corrélation est semblable à celle des 254 autres mauvaises clés. Par contre, la fausse clé est directement retrouvée à partir de 600 traces.
-
-
-
 
 \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1646,9 +1646,20 @@ Le bruit ayant été mis en évidence au chapitre précédent (chapitre \ref{cha
     \label{fig:sim_faking_corr_vs_nb_traces} 
 \end{figure}
 
+
+
 \section{Résultats expérimentaux}
 \label{sec:Exp_Results_Faking}
 
+Cette section présente les résultats de l'attaque CPA obtenus sur l'implémentation de la contre-mesure \textit{faking}. Plus précisément, les résultats sont scindés en deux sous-sections. La sous-section \ref{subsec:parallèle} présente les résultats obtenus l'architecture parallèle alors que le sous-section \ref{subsec:séquentielle} présente les résultats obtenus pour l'architecture séquentielle.
+
+\subsection{Architecture parallèle}
+\label{subsec:parallèle}
+
+
+
+\subsection{Architecture séquentielle}
+\label{subsec:séquentielle}
 
 \newpage
 

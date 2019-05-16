@@ -54,8 +54,10 @@
 \contentsline {subsection}{\numberline {7.3.3}Taux de succès de l'attaque}{58}{subsection.7.3.3}
 \contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit {faking}}{59}{chapter.8}
 \contentsline {section}{\numberline {8.1}Implémentation de la contre-mesure}{59}{section.8.1}
-\contentsline {section}{\numberline {8.2}Résultats de simulations}{59}{section.8.2}
-\contentsline {section}{\numberline {8.3}Résultats expérimentaux}{61}{section.8.3}
+\contentsline {section}{\numberline {8.2}Résultats de simulations}{60}{section.8.2}
+\contentsline {section}{\numberline {8.3}Résultats expérimentaux}{60}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}Architecture parallèle}{60}{subsection.8.3.1}
+\contentsline {subsection}{\numberline {8.3.2}Architecture séquentielle}{60}{subsection.8.3.2}
 \contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{62}{chapter.9}
 \contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{62}{section.9.1}
 \contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{62}{section.9.2}
