@@ -58,10 +58,10 @@
 \contentsline {section}{\numberline {8.3}Résultats expérimentaux}{60}{section.8.3}
 \contentsline {subsection}{\numberline {8.3.1}Architecture parallèle}{60}{subsection.8.3.1}
 \contentsline {subsection}{\numberline {8.3.2}Architecture séquentielle}{60}{subsection.8.3.2}
-\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{62}{chapter.9}
-\contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{62}{section.9.1}
-\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{62}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusion}{63}{chapter.10}
-\contentsline {chapter}{Crédits}{64}{section*.64}
-\contentsline {chapter}{Références}{64}{section*.65}
-\contentsline {chapter}{Annexes}{67}{section*.65}
+\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{64}{chapter.9}
+\contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{64}{section.9.1}
+\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{64}{section.9.2}
+\contentsline {chapter}{\numberline {10}Conclusion}{65}{chapter.10}
+\contentsline {chapter}{Crédits}{66}{section*.66}
+\contentsline {chapter}{Références}{66}{section*.67}
+\contentsline {chapter}{Annexes}{69}{section*.67}

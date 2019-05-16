@@ -1651,15 +1651,43 @@ Le bruit ayant été mis en évidence au chapitre précédent (chapitre \ref{cha
 \section{Résultats expérimentaux}
 \label{sec:Exp_Results_Faking}
 
-Cette section présente les résultats de l'attaque CPA obtenus sur l'implémentation de la contre-mesure \textit{faking}. Plus précisément, les résultats sont scindés en deux sous-sections. La sous-section \ref{subsec:parallèle} présente les résultats obtenus l'architecture parallèle alors que le sous-section \ref{subsec:séquentielle} présente les résultats obtenus pour l'architecture séquentielle.
+Cette section présente les résultats de l'attaque CPA obtenus sur l'implémentation de la contre-mesure \textit{faking}. Plus précisément, les résultats sont scindés en deux sous-sections. La sous-section \ref{subsec:parallèle} présente les résultats obtenus pour l'architecture parallèle alors que le sous-section \ref{subsec:séquentielle} présente les résultats obtenus pour l'architecture séquentielle.
 
 \subsection{Architecture parallèle}
 \label{subsec:parallèle}
 
+La figure \ref{fig:real_trace_faking_parallele} présente la trace obtenue lors de l'exécution de l'algorithme AES avec implémentation de la contre-mesure \textit{faking} en mode parallèle. 
+
+\begin{figure}[htbp]
+    \hspace{-2cm}
+    \includegraphics[scale=0.4]{image/success_rate_real}
+    \caption{Taux de succès de l'attaque CPA selon que les traces soient préalablement filtrées (courbe bleue) ou non (courbe orange). L'attaque CPA fonctionne mieux avec filtrage.}
+    \label{fig:real_trace_faking_parallele} 
+\end{figure}
+
+La figure \ref{fig:} présente le résultat de l'attaque CPA sur le cinquième byte de la clé de chiffrement. La clé retrouvée ne correspond pas à la vraie clé, ce qui est normal puisque la vraie clé est masquée. Cela montre bien que la contre-mesure joue correctement son rôle afin d'empêcher l'attaquant de retrouver la valeur de la clé secrète. Cependant, le résultat obtenu est inattendu. La clé retrouvée ne correspond pas non plus à la fausse clé utilisée or en théorie, cette clé devrait être retrouvée par l'attaquant. De nouvelles attaques plus ciblées ont été mises en oeuvre. Cependant, le résultat reste identique, maximum six bytes de la fausse clé (sur les 32 bytes) peuvent être retrouvés. L'une des raisons pouvant justifier le non-fonctionnement de l'attaque concernait la mise en parallèle des opérations. Comme détaillé à la section \ref{sec:hiding}, il existe un type de contre-mesure \textit{hiding}, appelé \textit{noise engines}, dont le but est d'ajouter volontairement du bruit dans les traces afin d'empêcher l'attaquant de retrouver la clé de chiffrement. Pour ce faire, on utilise des composants hardware (les \textit{noise engines}), qui travaillent en parallèle de l'exécution de l'agorithme de chiffrement et dont l'objectif est de générer du bruit. Étant donné l'architecture parallèle mise en place (voir section \ref{sec:implementation_faking}) et le fait que seulement certains bytes de la fausse clé soient révélés, l'idée de modifier l'architecture de la contre-mesure a été établie. Voici la raison pour laquelle une architecture séquentielle de la contre-mesure \textit{faking} a également été mise en place. Les résultats sont présentés à la section \ref{sec:séquentielle}.
 
 
 \subsection{Architecture séquentielle}
 \label{subsec:séquentielle}
+
+La figure \ref{fig:real_trace_faking_sequentiel} présente la trace obtenue lors de l'exécution de l'algorithme AES avec implémentation de la contre-mesure \textit{faking} en mode séquentiel. 
+
+\begin{figure}[htbp]
+    \hspace{-2cm}
+    \includegraphics[scale=0.4]{image/success_rate_real}
+    \caption{Taux de succès de l'attaque CPA selon que les traces soient préalablement filtrées (courbe bleue) ou non (courbe orange). L'attaque CPA fonctionne mieux avec filtrage.}
+    \label{fig:real_trace_faking_sequentiel} 
+\end{figure}
+
+La figure \ref{fig:} présente le résultat de l'attaque CPA sur le cinquième byte de la clé de chiffrement. Comme pour l'architecture parallèle, la clé retrouvée ne correspond pas à la vraie clé, ce qui est normal puisque la vraie clé est masquée. Cela montre à nouveau que la contre-mesure joue correctement son rôle afin d'empêcher l'attaquant de retrouver la valeur de la clé secrète. Cependant, le résultat obtenu n'est pas plus satisfaisant. La clé retrouvée ne correspond pas non plus à la fausse clé utilisée. Plus incompréhensible, après plusieurs attaques, le résultat n'est pas meilleur que celui obtenu lorsque l'architecture est configurée en parallèle : maximum six bytes de la fausse clé (sur les 32 bytes) peuvent être retrouvés. 
+
+Dans un article [] détaillant ce type de contre-mesure, il est précisé que les opérations exécutées spécifiquement pour la contre-mesure \textit{faking} (\textit{SubBytesTrans, ShiftRowsTrans, MixColumnsTrans} et \textit{Remasking}) sont implémentées sur un second FPGA. Par manque de temps, je n'ai pu implémenté cette contre-mesure sur le second FPGA. Cela aurait demandé de modifier l'implémentation du contrôleur et vu le temps imparti, cela n'aurait pas été envisageable. Cependant, il s'agit d'une piste d'amélioration à ne pas négliger. Une question reste cependant en suspens : \textit{pourquoi retrouve-t-on dans 75\% des attaques CPA réalisées, quatre bytes de la fausse clé de chiffrement ?} Sur base de cette remarque, trois pistes peuvent être envisagées : 
+\begin{itemize}
+\item Mieux cibler l'attaque : Lorsque l'attaque CPA est réalisée, elle se concentre sur un certain nombre d'échantillons dans la trace. La mise en oeuvre d'une métrique permettant de déduire dans les traces, les échantillons à cibler pour améliorer le taux de succès de l'attaque semble être une première piste afin de savoir où l'information peut être retrouvée.
+\item Revoir le modèle de prédiction de puissance : deux modèles de prédiction de puissance sont utilisés pour réaliser l'attaque CPA à savoir, le poids de \textit{Hamming} et la distance de \textit{Hamming}. Même si cela semble peu probable, 
+\item 
+\end{itemize}
 
 \newpage
 
