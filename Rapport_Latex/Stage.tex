@@ -1145,12 +1145,12 @@ Le choix de la contre-mesure à développer dans le cadre de mon travail ne m'ay
 
 \begin{figure}[htbp]
     \hspace{-1.4cm}
-    \includegraphics[scale=0.52]{image/ConceptFaking}
+    \includegraphics[scale=0.84]{image/ConceptFaking}
     \caption{Implémentation de la contre-mesure \textit{faking} pour l'algorithme de chiffrement AES.}
     \label{fig:ConceptFaking} 
 \end{figure}
 
-Dans les contre-mesures de type \textit{Masking}, lorsqu'on applique un masque sur les données intermédiaires, il faut ensuite le retirer de façon à obtenir \textit{in fine} le \textit{vrai} texte chiffré. Pour le cas des contre-mesures de type \textit{Faking}, le principe est identique. En effet, si aucune action supplémentaire n'est entreprise, le texte chiffré serait crypté avec la fausse clé plutôt qu'avec la vraie clé. Pour ce faire, on va ajouter trois nouvelles opérations dont le rôle est d'annuler l'emploi du masque sur la clé. Ces trois opérations sont \textit{SubBytesTrans}, \textit{ShiftRows} et \textit{MixCol}. Enfin, afin de définitivement couper tout lien des résultats intermédiaires avec la fausse clé, un XOR (opération \textit{remasking}) est opéré entre les résultats intermédiaires obtenus après \textit{MixColumns} et ceux obtenus après \textit{MixCol}. Le résultat de ce XOR permet de retirer l'emploi du masque, on retrouve alors le résultat que l'on aurait obtenu en sortie de l'opération \textit{MixColumns} si on avait utilisé la vraie clé initialement (voir équation \ref{eqn:faking_7}). Ceci est visible sur la figure \ref{fig:ConceptFaking}. Ensuite, l'opération \textit{AddRoundKey} emploie à nouveau une fausse clé, dérivant de l'opération \textit{KeySchedule}.
+Dans les contre-mesures de type \textit{Masking}, lorsqu'on applique un masque sur les données intermédiaires, il faut ensuite le retirer de façon à obtenir \textit{in fine} le \textit{vrai} texte chiffré. Pour le cas des contre-mesures de type \textit{Faking}, le principe est identique. En effet, si aucune action supplémentaire n'est entreprise, le texte chiffré serait crypté avec la fausse clé plutôt qu'avec la vraie clé. Pour ce faire, on va ajouter trois nouvelles opérations dont le rôle est d'annuler l'emploi du masque sur la clé. Ces trois opérations sont \textit{SubBytesTrans}, \textit{ShiftRowsTrans} et \textit{MixColumnsTrans}. Enfin, afin de définitivement couper tout lien des résultats intermédiaires avec la fausse clé, un XOR (opération \textit{remasking}) est opéré entre les résultats intermédiaires obtenus après \textit{MixColumns} et ceux obtenus après \textit{MixColumnsTrans}. Le résultat de ce XOR permet de retirer l'emploi du masque, on retrouve alors le résultat que l'on aurait obtenu en sortie de l'opération \textit{MixColumns} si on avait utilisé la vraie clé initialement (voir équation \ref{eqn:faking_7}). Ceci est visible sur la figure \ref{fig:ConceptFaking}. Ensuite, l'opération \textit{AddRoundKey} emploie à nouveau une fausse clé, dérivant de l'opération \textit{KeySchedule}.
 
 Définissons la nouvelle opération \textit{SubBytesTrans}. Pour ce faire, notons $Key_{Fake}(i,j)$ (avec $i \ \epsilon \ [0:3]$ et $j \ \epsilon \ [0:3]$) la fausse clé utilisée, $Key_{Real}(i,j)$ la vraie clé utilisée et $P(i,j)$ l'ensemble de textes clairs (\textit{plaintext} en anglais) envoyés au device crytpographique. Notons également $a_{F}(i,j)$ un byte particulier à la sortie de l'opération \textit{AddRoundKey} chiffré avec la fausse clé $Key_{Fake}$ (voir figure \ref{fig:ConceptFaking}) et notons $a_{R}(i,j)$ un byte particulier à la sortie de l'opération \textit{AddRoundKey} mais cette fois-ci chiffré avec la vraie clé $Key_{Real}$. Ces deux notations sont reprises à l'équation \ref{eqn:faking_2}.
 
@@ -1186,7 +1186,7 @@ Définissons la nouvelle opération \textit{SubBytesTrans}. Pour ce faire, noton
 	SubBytesTrans(a_{F}(i,j)) = Sbox(a_{R}(i,j))  \oplus Sbox(a_{F}(i,j)) \label{eqn:faking_7}
 \end{gather}
 
-\hspace{-0.5cm}Concernant les opérations \textit{ShiftRows} et \textit{MixCol}, il ne s'agit en réalité pas de nouvelles opérations étant donné que ces deux opérations réalisent respectivement la même fonction que les opérations \textit{ShiftRows} et \textit{MixColumns} (tel que décrit à la section \ref{subsec:AES}). Cependant, nous précisons à la section suivante (\ref{subsec:points}) que \textit{MixCol} permet d'éviter une faille dans la contre-mesure. C'est donc la raison pour laquelle, le \textit{remarsking} (opération XOR) ne se fait pas avant cette opération.
+\hspace{-0.5cm}Concernant les opérations \textit{ShiftRowsTrans} et \textit{MixColumnsTrans}, il ne s'agit en réalité pas de nouvelles opérations étant donné que ces deux opérations réalisent respectivement la même fonction que les opérations \textit{ShiftRows} et \textit{MixColumns} (tel que décrit à la section \ref{subsec:AES}). Cependant, nous précisons à la section suivante (\ref{subsec:points}) que le fait d'exécuter ces deux opérations permet d'éviter une faille dans la contre-mesure. C'est donc la raison pour laquelle, le \textit{remarsking} (opération XOR) ne se fait pas avant cette opération.
 
 \subsection{Points faibles et améliorations}
 \label{subsec:points}
@@ -1207,7 +1207,7 @@ En considérant le premier round de l'AES-256, l'élément $State(i,j)$ représe
 \begin{gather}
 	SubBytesTrans(a_{F}(i,j)) = Sbox(a_{R}(i,j))  \oplus Sbox(a_{F}(i,j)) \oplus M_{h}(i,j) \label{eqn:faille1_solution}
 \end{gather}
-Notons que le masque $M_{h}(i,j)$ est renouvelé de façon aléatoire à chaque round pour complexifier le chiffrement. Ce masque $M_{h}(i,j)$ devient le masque $M_{s}(i,j)$ après l'exécution de l'opération \textit{ShiftRows} et devient ensuite le masque $M_{k}(i,j)$ après l'exécution de l'opération \textit{MixColumns}.
+Notons que le masque $M_{h}(i,j)$ est renouvelé de façon aléatoire à chaque round pour complexifier le chiffrement. Ce masque $M_{h}(i,j)$ devient le masque $M_{s}(i,j)$ après l'exécution de l'opération \textit{ShiftRowsTrans} et devient ensuite le masque $M_{k}(i,j)$ après l'exécution de l'opération \textit{MixColumnsTrans}.
 \end{enumerate}
 
 \newpage
@@ -1626,7 +1626,7 @@ L'implémentation du protocole de communication entre l'ordinateur et le bloc de
 
 Pour l'architecture en parallèle, les opérations \textit{AddRoundKey, SubBytes, ShiftRows} et \textit{MixColumns} s'exécutent en un seul coup de clock comme décrit à la section \ref{sec:Imp_AES_256}. Lorsque la contre-mesure est implémentée, quatre nouvelles opérations sont ajoutées : \textit{SubBytesTrans, ShiftRowsTrans, MixColumnsTrans} et \textit{Remasking} (voir section \ref{sec:faking}). En réalité, les opérations \textit{ShiftRowsTrans} et \textit{MixColumnsTrans} réalisent exactement les mêmes fonctions que les opérations \textit{ShiftRows} et \textit{MixColumns} respectivement. Ainsi, seules les opérations \textit{SubBytesTrans} et \textit{Remasking} doivent être définies (voir section \ref{sec:faking}). L'opération \textit{SubBytesTrans} s'exécute en deux coups d'horloge tandis que l'opération \textit{Remasking} s'exécute en un seul coup d'horloge. Par conséquent, cette implémentation requiert un total de X coups d'horloge.
 
-Pour l'architecture en séquentiel, le nombre de coups d'horloge pour chaque opération est identique à celui pour l'architecture en parallèle. Ainsi, après l'opération \textit{Keyschedule}, les 4 opérations principales de l'AES sont exécutées (\textit{AddRoundKey, SubBytes, ShiftRows} et \textit{MixColumns}). Ensuite, ce sont les cinq opérations définies pour la contre-mesure \textit{faking} qui sont exécutées (\textit{SubBytesTrans, ShiftRowsTrans, MixColumnsTrans} et \textit{Remasking}). Cette implémentation requiert un total de X coups d'horloge.
+Pour l'architecture en séquentielle, le nombre de coups d'horloge pour chaque opération est identique à celui pour l'architecture en parallèle. Ainsi, après l'opération \textit{Keyschedule}, les 4 opérations principales de l'AES sont exécutées (\textit{AddRoundKey, SubBytes, ShiftRows} et \textit{MixColumns}). Ensuite, ce sont les cinq opérations définies pour la contre-mesure \textit{faking} qui sont exécutées (\textit{SubBytesTrans, ShiftRowsTrans, MixColumnsTrans} et \textit{Remasking}). Cette implémentation requiert un total de X coups d'horloge.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1649,10 +1649,11 @@ Pour l'architecture en séquentiel, le nombre de coups d'horloge pour chaque op�
     \label{fig:Faking_séquentiel} 
 \end{figure}
 
+
 \section{Résultats de simulations}
 \label{sec:Sim_results_Faking}
 
-Le bruit ayant été mis en évidence au chapitre précédent (chapitre \ref{chap:CPA_Result} section \ref{sec:Sim_results_CPA}), les traces simulées pour cet exemple sont directement additionnées d'un bruit \textit{gaussien} (de moyenne \mu \ égale à 0 et d'écart-type \sigma \ égal à 10). La figure \ref{fig:sim_faking_corr_vs_clés} présente le résultat de l'attaque CPA pour le cinquième byte de la clé de chiffrement. 2000 traces ont été utilisées pour réaliser l'attaque. La vraie clé employée pour chiffrer les données vaut 25. Sachant que le masque vaut 100, la fausse clé vaut 125 (voir section \ref{subsec:def}, équation \ref{eqn:faking}). La figure \ref{fig:sim_faking_corr_vs_nb_traces} présente, pour le même exemple, le résultat obtenu selon le nombre de traces utilisées. La clé secrète ne laisse fuiter aucune information, sa corrélation est semblable à celle des 254 autres mauvaises clés testées. Par contre, la fausse clé est directement retrouvée à partir de 600 traces.
+Le bruit ayant été mis en évidence au chapitre précédent (chapitre \ref{chap:CPA_Result} section \ref{sec:Sim_results_CPA}), les traces simulées pour cet exemple sont directement additionnées d'un bruit \textit{gaussien} de moyenne \mu \ égale à 0 et d'écart-type \sigma \ égal à 10. La figure \ref{fig:sim_faking_corr_vs_clés} présente le résultat de l'attaque CPA pour le cinquième byte de la clé de chiffrement. 2000 traces ont été utilisées pour réaliser l'attaque. La vraie clé employée pour chiffrer les données vaut 25. Sachant que le masque vaut 100, la fausse clé vaut 125 (voir section \ref{subsec:def}, équation \ref{eqn:faking}). La figure \ref{fig:sim_faking_corr_vs_nb_traces} présente, pour le même exemple, le résultat obtenu selon le nombre de traces utilisées. La clé secrète ne laisse fuiter aucune information, sa corrélation est semblable à celle des 254 autres mauvaises clés testées. La fausse clé est quant à elle directement révélée à partir de 600 traces.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1666,6 +1667,7 @@ Le bruit ayant été mis en évidence au chapitre précédent (chapitre \ref{cha
 \end{figure}
 
 
+\newpage
 
 \section{Résultats expérimentaux}
 \label{sec:Exp_Results_Faking}
@@ -1675,7 +1677,7 @@ Cette section présente les résultats de l'attaque CPA obtenus sur l'implément
 \subsection{Architecture parallèle}
 \label{subsec:parallèle}
 
-La figure \ref{fig:real_trace_faking_parallele} présente la trace obtenue lors de l'exécution de l'algorithme AES avec implémentation de la contre-mesure \textit{faking} en mode parallèle. 
+La figure \ref{fig:real_trace_faking_parallele} présente la trace obtenue lors de l'exécution de l'algorithme AES avec implémentation de la contre-mesure \textit{faking} en mode parallèle. Comparativement à l'exécution de l'AES sans contre-mesure où la durée de chiffrement d'un texte clair prend 1500 \si{\nano\second} (voir sous-section \ref{sec:real_trace}), la durée de chiffrement lorsque la contre-mesure est implémentée s'élargit à 2400 \si{\nano\second}.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1684,13 +1686,13 @@ La figure \ref{fig:real_trace_faking_parallele} présente la trace obtenue lors 
     \label{fig:real_trace_faking_parallele} 
 \end{figure}
 
-La figure \ref{fig:} présente le résultat de l'attaque CPA sur le cinquième byte de la clé de chiffrement. La clé retrouvée ne correspond pas à la vraie clé, ce qui est normal puisque la vraie clé est masquée. Cela montre bien que la contre-mesure joue correctement son rôle afin d'empêcher l'attaquant de retrouver la valeur de la clé secrète. Cependant, le résultat obtenu est inattendu. La clé retrouvée ne correspond pas non plus à la fausse clé utilisée. Or, en théorie, cette fausse clé devrait être retrouvée par l'attaquant. De nouvelles attaques plus ciblées ont été mises en oeuvre. Cependant, le résultat reste identique, maximum six bytes de la fausse clé (sur les 32 bytes) peuvent être retrouvés. L'une des raisons pouvant justifier le non-fonctionnement de l'attaque concerne l'exécution en parallèle des opérations. Comme détaillé à la section \ref{sec:hiding}, il existe un type de contre-mesure \textit{hiding}, appelé \textit{noise engines}, dont le but est d'ajouter volontairement du bruit dans les traces afin d'empêcher l'attaquant de retrouver la clé de chiffrement. Pour ce faire, on utilise des composants \textit{hardware} qui travaillent en parallèle de l'exécution de l'agorithme de chiffrement et dont l'objectif est de générer du bruit. Étant donné l'architecture parallèle mise en place (voir section \ref{sec:implementation_faking}) et le fait que seulement certains bytes de la fausse clé soient révélés, l'idée de modifier l'architecture de la contre-mesure a été établie. Voici la raison pour laquelle une architecture séquentielle de la contre-mesure \textit{faking} a également été mise en place. Les résultats sont présentés à la sous-section \ref{subsec:séquentielle}.
+Les figures \ref{fig:} et \ref{fig:} présentent le résultat de l'attaque CPA pour le cinquième byte de la clé de chiffrement. La clé révélée ne correspond pas à la vraie clé, ce qui est normal puisque la vraie clé est masquée. Cela montre bien que la contre-mesure joue correctement son rôle afin d'empêcher l'attaquant de retrouver la valeur de la clé secrète. Cependant, le résultat obtenu est inattendu. La clé retrouvée ne correspond pas non plus à la fausse clé utilisée. Or, en théorie, cette fausse clé devrait être retrouvée par l'attaquant. De nouvelles attaques plus ciblées ont été mises en oeuvre. Cependant, le résultat reste identique, maximum six bytes de la fausse clé (sur les 32 bytes) peuvent être retrouvés. L'une des raisons pouvant justifier le non-fonctionnement de l'attaque concerne l'exécution en parallèle des opérations. Comme détaillé à la section \ref{sec:hiding}, il existe un type de contre-mesure \textit{hiding}, appelé \textit{noise engines}, dont le but est d'ajouter volontairement du bruit dans les traces afin d'empêcher l'attaquant de retrouver la clé de chiffrement. Pour ce faire, on utilise des composants \textit{hardware} qui travaillent en parallèle de l'exécution de l'agorithme de chiffrement et dont l'objectif est de générer du bruit. Étant donné l'architecture parallèle mise en place (voir section \ref{sec:implementation_faking}) et le fait que seulement certains bytes de la fausse clé soient révélés, l'idée de modifier l'architecture de la contre-mesure a été établie. Voici la raison pour laquelle une architecture séquentielle de la contre-mesure \textit{faking} a également été mise en place. Les résultats sont présentés à la sous-section \ref{subsec:séquentielle}.
 
 
 \subsection{Architecture séquentielle}
 \label{subsec:séquentielle}
 
-La figure \ref{fig:real_trace_faking_sequentielle} présente la trace obtenue lors de l'exécution de l'algorithme AES avec implémentation de la contre-mesure \textit{faking} en mode séquentiel. 
+La figure \ref{fig:real_trace_faking_sequentielle} présente la trace obtenue lors de l'exécution de l'algorithme AES avec implémentation de la contre-mesure \textit{faking} en mode séquentiel. La durée de chiffrement s'élargit ici à 3250 \si{\nano\second}.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1699,7 +1701,7 @@ La figure \ref{fig:real_trace_faking_sequentielle} présente la trace obtenue lo
     \label{fig:real_trace_faking_sequentielle} 
 \end{figure}
 
-La figure \ref{fig:real_trace_faking_sequentielle_corr_vs_nb_traces} présente le résultat de l'attaque CPA sur le cinquième byte de la clé de chiffrement. Comme pour l'architecture parallèle, la clé retrouvée ne correspond pas à la vraie clé, ce qui est normal puisque la vraie clé est masquée. Cela montre à nouveau que la contre-mesure joue correctement son rôle afin d'empêcher l'attaquant de retrouver la valeur de la clé secrète. Cependant, le résultat obtenu n'est pas plus satisfaisant. La clé retrouvée ne correspond pas non plus à la fausse clé utilisée. Plus incompréhensible, après plusieurs attaques, le résultat n'est pas meilleur que celui obtenu lorsque l'architecture est configurée en parallèle : maximum six bytes de la fausse clé (sur les 32 bytes) peuvent être retrouvés.
+Les figures \ref{fig:real_trace_faking_sequentielle_corr_vs_nb_traces} et \ref{fig:real_trace_faking_sequentielle_corr_vs_nb_traces} présentent le résultat de l'attaque CPA sur le cinquième byte de la clé de chiffrement. Comme pour l'architecture parallèle, la clé retrouvée ne correspond pas à la vraie clé, ce qui est normal puisque la vraie clé est masquée. Cela montre à nouveau que la contre-mesure joue correctement son rôle afin d'empêcher l'attaquant de retrouver la valeur de la clé secrète. Cependant, le résultat obtenu n'est pas plus satisfaisant. La clé retrouvée ne correspond pas non plus à la fausse clé utilisée. Plus incompréhensible, après plusieurs attaques, le résultat n'est pas meilleur que celui obtenu lorsque l'architecture est configurée en parallèle : maximum six bytes de la fausse clé (sur les 32 bytes) peuvent être retrouvés.
 
 \begin{figure}[htbp]
     \hspace{-1.8cm}
@@ -1712,7 +1714,7 @@ La figure \ref{fig:real_trace_faking_sequentielle_corr_vs_nb_traces} présente l
     \label{fig:real_trace_faking_sequentielle_corr_vs_nb_traces} 
 \end{figure}
 
-Dans un article [] détaillant la contre-mesure \textit{faking}, il est précisé que les opérations exécutées spécifiquement pour cette contre-mesure (\textit{SubBytesTrans, ShiftRowsTrans, MixColumnsTrans} et \textit{Remasking}) sont implémentées sur un second FPGA. Par manque de temps, je n'ai pu implémenté cette contre-mesure sur le second FPGA. Cela aurait demandé de modifier l'implémentation du contrôleur et vu le temps imparti, cela n'aurait pas été envisageable. Cependant, il s'agit d'une piste d'amélioration à ne pas négliger. Une question reste cependant en suspens : \textit{pourquoi retrouve-t-on dans 75\% des attaques CPA réalisées, quatre bytes de la fausse clé de chiffrement ?} Sur base de cette question, deux pistes peuvent être envisagées : 
+Dans un article [] détaillant la contre-mesure \textit{faking}, il est précisé que les opérations exécutées spécifiquement pour la contre-mesure \textit{faking} (\textit{SubBytesTrans, ShiftRowsTrans, MixColumnsTrans} et \textit{Remasking}) sont implémentées sur un second FPGA. Par manque de temps, je n'ai pu implémenté cette contre-mesure sur le second FPGA. Cela aurait demandé de modifier l'implémentation du contrôleur et vu le temps imparti, cela n'aurait pas été envisageable. Cependant, il s'agit d'une piste d'amélioration à ne pas négliger. Une question reste cependant en suspens : \textit{pourquoi retrouve-t-on dans 75\% des attaques CPA réalisées, quatre bytes de la fausse clé de chiffrement ?} Sur base de cette question, une piste peut être envisagée : 
 \begin{itemize}
 \item Mieux cibler l'attaque : Lorsque l'attaque CPA est réalisée, elle se concentre sur un certain nombre d'échantillons dans la trace. La mise en oeuvre d'une métrique permettant de déduire dans les traces, les échantillons à cibler pour améliorer le taux de succès de l'attaque semble être une première piste afin de savoir où l'information peut être retrouvée.
 \item Revoir le modèle de prédiction de puissance : deux modèles de prédiction de puissance sont utilisés pour réaliser l'attaque CPA à savoir, le poids de \textit{Hamming} et la distance de \textit{Hamming}. Même si cela semble peu probable...

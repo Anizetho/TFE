@@ -55,13 +55,13 @@
 \contentsline {chapter}{\numberline {8}Implémentation de la contre-mesure de type \textit {faking}}{59}{chapter.8}
 \contentsline {section}{\numberline {8.1}Implémentation de la contre-mesure}{59}{section.8.1}
 \contentsline {section}{\numberline {8.2}Résultats de simulations}{61}{section.8.2}
-\contentsline {section}{\numberline {8.3}Résultats expérimentaux}{61}{section.8.3}
-\contentsline {subsection}{\numberline {8.3.1}Architecture parallèle}{61}{subsection.8.3.1}
-\contentsline {subsection}{\numberline {8.3.2}Architecture séquentielle}{63}{subsection.8.3.2}
-\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{66}{chapter.9}
-\contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{66}{section.9.1}
-\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{67}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusion}{68}{chapter.10}
-\contentsline {chapter}{Crédits}{69}{section*.72}
-\contentsline {chapter}{Références}{69}{section*.73}
-\contentsline {chapter}{Annexes}{72}{section*.73}
+\contentsline {section}{\numberline {8.3}Résultats expérimentaux}{63}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}Architecture parallèle}{63}{subsection.8.3.1}
+\contentsline {subsection}{\numberline {8.3.2}Architecture séquentielle}{64}{subsection.8.3.2}
+\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{67}{chapter.9}
+\contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{67}{section.9.1}
+\contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{68}{section.9.2}
+\contentsline {chapter}{\numberline {10}Conclusion}{69}{chapter.10}
+\contentsline {chapter}{Crédits}{70}{section*.72}
+\contentsline {chapter}{Références}{70}{section*.73}
+\contentsline {chapter}{Annexes}{73}{section*.73}

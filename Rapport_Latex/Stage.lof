@@ -68,7 +68,7 @@
 \contentsline {figure}{\numberline {8.8}{\ignorespaces Valeurs de corrélation pour chacune des 256 valeurs de clé testées (attaque CPA sur un byte de la clé). La clé révélée (201) ne correspond ni à la vraie clé (20) ni à la fausse clé (125).\relax }}{65}{figure.caption.68}
 \contentsline {figure}{\numberline {8.9}{\ignorespaces Valeurs de corrélation pour les 256 clés testées en fonction du nombre de traces mesurées. La vraie clé (courbe verte) n'est pas révélée. La fausse clé (courbe rouge) n'est pas non plus révélée. La clé révélée (courbe magenta) est un résultat inattendu.\relax }}{65}{figure.caption.68}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {9.1}{\ignorespaces Schéma-bloc du principe de fonctionnement du test automatisé mis en place.\relax }}{67}{figure.caption.69}
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Schéma-bloc du principe de fonctionnement du test automatisé mis en place.\relax }}{68}{figure.caption.69}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
