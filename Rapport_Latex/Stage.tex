@@ -1653,16 +1653,16 @@ Pour l'architecture en séquentielle, le nombre de coups d'horloge pour chaque o
 \section{Résultats de simulations}
 \label{sec:Sim_results_Faking}
 
-Le bruit ayant été mis en évidence au chapitre précédent (chapitre \ref{chap:CPA_Result} section \ref{sec:Sim_results_CPA}), les traces simulées pour cet exemple sont directement additionnées d'un bruit \textit{gaussien} de moyenne \mu \ égale à 0 et d'écart-type \sigma \ égal à 10. La figure \ref{fig:sim_faking_corr_vs_clés} présente le résultat de l'attaque CPA pour le cinquième byte de la clé de chiffrement. 2000 traces ont été utilisées pour réaliser l'attaque. La vraie clé employée pour chiffrer les données vaut 25. Sachant que le masque vaut 100, la fausse clé vaut 125 (voir section \ref{subsec:def}, équation \ref{eqn:faking}). La figure \ref{fig:sim_faking_corr_vs_nb_traces} présente, pour le même exemple, le résultat obtenu selon le nombre de traces utilisées. La clé secrète ne laisse fuiter aucune information, sa corrélation est semblable à celle des 254 autres mauvaises clés testées. La fausse clé est quant à elle directement révélée à partir de 600 traces.
+Le bruit ayant été mis en évidence au chapitre précédent (chapitre \ref{chap:CPA_Result} section \ref{sec:Sim_results_CPA}), les traces simulées pour cet exemple sont directement additionnées d'un bruit \textit{gaussien} de moyenne \mu \ égale à 0 et d'écart-type \sigma \ égal à 10. La figure \ref{fig:sim_faking_corr_vs_clés} présente le résultat de l'attaque CPA pour le cinquième byte de la clé de chiffrement. 2000 traces ont été utilisées pour réaliser l'attaque. La vraie clé employée pour chiffrer les données vaut 25. Sachant que le masque vaut 100, la fausse clé vaut 125 (voir sous-section \ref{subsec:def}, équation \ref{eqn:faking}). La figure \ref{fig:sim_faking_corr_vs_nb_traces} présente, pour le même exemple, le résultat obtenu selon le nombre de traces utilisées. La clé secrète ne laisse fuiter aucune information, sa corrélation est semblable à celle des 254 autres mauvaises clés testées. La fausse clé est quant à elle directement révélée à partir de 600 traces.
 
 \begin{figure}[htbp]
     \hspace{-2cm}
     \includegraphics[scale=0.4]{image/sim_faking_corr_vs_clés}
-    \caption{Valeurs de corrélation pour chacune des 256 valeurs de clé testées (attaque CPA sur un byte de la clé). La fausse clé (125) est retrouvée tandis que le vraie clé (25) ne laisse fuiter aucune information.}
+    \caption{Valeurs de corrélation pour chacune des 256 valeurs de clé testées (attaque CPA sur un byte de la clé). La fausse clé (125) est révélée tandis que le vraie clé (25) ne laisse fuiter aucune information.}
     \label{fig:sim_faking_corr_vs_clés} 
     \hspace{-2cm}
     \includegraphics[scale=0.4]{image/sim_faking_corr_vs_nb_traces}
-    \caption{Valeurs de corrélation pour les 256 clés (attaque CPA sur un byte) testées en fonction du nombre de traces mesurées. La fausse clé (courbe rouge) est retrouvée à partir de 600 traces alors que le vraie clé ne laisse fuiter aucune information.}
+    \caption{Valeurs de corrélation pour les 256 clés testées en fonction du nombre de traces mesurées. La fausse clé (courbe rouge) est retrouvée à partir de 600 traces alors que le vraie clé ne laisse fuiter aucune information.}
     \label{fig:sim_faking_corr_vs_nb_traces} 
 \end{figure}
 
@@ -1680,14 +1680,26 @@ Cette section présente les résultats de l'attaque CPA obtenus sur l'implément
 La figure \ref{fig:real_trace_faking_parallele} présente la trace obtenue lors de l'exécution de l'algorithme AES avec implémentation de la contre-mesure \textit{faking} en mode parallèle. Comparativement à l'exécution de l'AES sans contre-mesure où la durée de chiffrement d'un texte clair prend 1500 \si{\nano\second} (voir sous-section \ref{sec:real_trace}), la durée de chiffrement lorsque la contre-mesure est implémentée s'élargit à 2400 \si{\nano\second}.
 
 \begin{figure}[htbp]
-    \hspace{-2cm}
-    \includegraphics[scale=0.6]{image/real_trace_faking_parallele}
+    \hspace{-1cm}
+    \includegraphics[scale=0.54]{image/real_trace_faking_parallele}
     \caption{Trace obtenue lorsque la contre-mesure \textit{faking} est implémentée de façon parallèle.}
     \label{fig:real_trace_faking_parallele} 
 \end{figure}
 
-Les figures \ref{fig:} et \ref{fig:} présentent le résultat de l'attaque CPA pour le cinquième byte de la clé de chiffrement. La clé révélée ne correspond pas à la vraie clé, ce qui est normal puisque la vraie clé est masquée. Cela montre bien que la contre-mesure joue correctement son rôle afin d'empêcher l'attaquant de retrouver la valeur de la clé secrète. Cependant, le résultat obtenu est inattendu. La clé retrouvée ne correspond pas non plus à la fausse clé utilisée. Or, en théorie, cette fausse clé devrait être retrouvée par l'attaquant. De nouvelles attaques plus ciblées ont été mises en oeuvre. Cependant, le résultat reste identique, maximum six bytes de la fausse clé (sur les 32 bytes) peuvent être retrouvés. L'une des raisons pouvant justifier le non-fonctionnement de l'attaque concerne l'exécution en parallèle des opérations. Comme détaillé à la section \ref{sec:hiding}, il existe un type de contre-mesure \textit{hiding}, appelé \textit{noise engines}, dont le but est d'ajouter volontairement du bruit dans les traces afin d'empêcher l'attaquant de retrouver la clé de chiffrement. Pour ce faire, on utilise des composants \textit{hardware} qui travaillent en parallèle de l'exécution de l'agorithme de chiffrement et dont l'objectif est de générer du bruit. Étant donné l'architecture parallèle mise en place (voir section \ref{sec:implementation_faking}) et le fait que seulement certains bytes de la fausse clé soient révélés, l'idée de modifier l'architecture de la contre-mesure a été établie. Voici la raison pour laquelle une architecture séquentielle de la contre-mesure \textit{faking} a également été mise en place. Les résultats sont présentés à la sous-section \ref{subsec:séquentielle}.
+Les figures \ref{fig:real_trace_faking_parallele_corr_vs_cles} et \ref{fig:real_trace_faking_parallele_corr_vs_nb_traces} présentent le résultat de l'attaque CPA pour le cinquième byte de la clé de chiffrement. La clé révélée (138) ne correspond pas à la vraie clé (4), ce qui est normal puisque la vraie clé est masquée. Cela montre bien que la contre-mesure joue correctement son rôle afin d'empêcher l'attaquant de retrouver la valeur de la clé secrète. Cependant, le résultat obtenu est inattendu. La clé retrouvée ne correspond pas non plus à la fausse clé utilisée (84). Or, en théorie, cette fausse clé devrait être retrouvée par l'attaquant. De nouvelles attaques plus ciblées ont été mises en oeuvre. Cependant, le résultat reste identique, maximum six bytes de la fausse clé (sur les 32 bytes) peuvent être retrouvés. L'une des raisons pouvant justifier le non-fonctionnement de l'attaque concerne l'exécution en parallèle des opérations. Comme détaillé à la section \ref{sec:hiding}, il existe un type de contre-mesure \textit{hiding}, appelé \textit{noise engines}, dont le but est d'ajouter volontairement du bruit dans les traces afin d'empêcher l'attaquant de retrouver la clé de chiffrement. Pour ce faire, on utilise des composants \textit{hardware} qui travaillent en parallèle de l'exécution de l'agorithme de chiffrement et dont l'objectif est de générer du bruit. Étant donné l'architecture parallèle mise en place (voir section \ref{sec:implementation_faking}) et le fait que seulement certains bytes de la fausse clé soient révélés, l'idée de modifier l'architecture de la contre-mesure a été établie. Voici la raison pour laquelle une architecture séquentielle de la contre-mesure \textit{faking} a également été mise en place. Les résultats sont présentés à la sous-section \ref{subsec:séquentielle}.
 
+\begin{figure}[htbp]
+    \hspace{-1.8cm}
+    \includegraphics[scale=0.57]{image/real_trace_faking_parallele_corr_vs_cles}
+    \caption{Valeurs de corrélation pour chacune des 256 valeurs de clé testées. La clé révélée (138) ne correspond ni à la vraie clé (4) ni à la fausse clé (84).}
+    \label{fig:real_trace_faking_parallele_corr_vs_cles} 
+    \hspace{-1.8cm}
+    \includegraphics[scale=0.6]{image/real_trace_faking_parallele_corr_vs_nb_traces}
+    \caption{Valeurs de corrélation pour les 256 clés testées en fonction du nombre de traces mesurées. La vraie clé (courbe verte) n'est pas révélée. La fausse clé (courbe rouge) n'est pas non plus révélée. La clé révélée (courbe magenta) est un résultat inattendu.}
+    \label{fig:real_trace_faking_parallele_corr_vs_nb_traces} 
+\end{figure}
+
+\newpage
 
 \subsection{Architecture séquentielle}
 \label{subsec:séquentielle}
@@ -1695,18 +1707,18 @@ Les figures \ref{fig:} et \ref{fig:} présentent le résultat de l'attaque CPA p
 La figure \ref{fig:real_trace_faking_sequentielle} présente la trace obtenue lors de l'exécution de l'algorithme AES avec implémentation de la contre-mesure \textit{faking} en mode séquentiel. La durée de chiffrement s'élargit ici à 3250 \si{\nano\second}.
 
 \begin{figure}[htbp]
-    \hspace{-2cm}
-    \includegraphics[scale=0.6]{image/real_trace_faking_sequentielle}
+    \hspace{-1cm}
+    \includegraphics[scale=0.54]{image/real_trace_faking_sequentielle}
     \caption{Trace obtenue lorsque la contre-mesure \textit{faking} est implémentée de façon séquentielle.}
     \label{fig:real_trace_faking_sequentielle} 
 \end{figure}
 
-Les figures \ref{fig:real_trace_faking_sequentielle_corr_vs_nb_traces} et \ref{fig:real_trace_faking_sequentielle_corr_vs_nb_traces} présentent le résultat de l'attaque CPA sur le cinquième byte de la clé de chiffrement. Comme pour l'architecture parallèle, la clé retrouvée ne correspond pas à la vraie clé, ce qui est normal puisque la vraie clé est masquée. Cela montre à nouveau que la contre-mesure joue correctement son rôle afin d'empêcher l'attaquant de retrouver la valeur de la clé secrète. Cependant, le résultat obtenu n'est pas plus satisfaisant. La clé retrouvée ne correspond pas non plus à la fausse clé utilisée. Plus incompréhensible, après plusieurs attaques, le résultat n'est pas meilleur que celui obtenu lorsque l'architecture est configurée en parallèle : maximum six bytes de la fausse clé (sur les 32 bytes) peuvent être retrouvés.
+Les figures \ref{fig:real_trace_faking_sequentielle_corr_vs_cles} et \ref{fig:real_trace_faking_sequentielle_corr_vs_nb_traces} présentent le résultat de l'attaque CPA sur le cinquième byte de la clé de chiffrement. Comme pour l'architecture parallèle, la clé retrouvée (201) ne correspond pas à la vraie clé (4), ce qui est normal puisque la vraie clé est masquée. Cela montre à nouveau que la contre-mesure joue correctement son rôle afin d'empêcher l'attaquant de retrouver la valeur de la clé secrète. Cependant, le résultat obtenu n'est pas plus satisfaisant. La clé retrouvée ne correspond pas non plus à la fausse clé utilisée (84). Plus incompréhensible, après plusieurs attaques, le résultat n'est pas meilleur que celui obtenu lorsque l'architecture est configurée en parallèle : maximum six bytes de la fausse clé (sur les 32 bytes) peuvent être retrouvés.
 
 \begin{figure}[htbp]
     \hspace{-1.8cm}
     \includegraphics[scale=0.57]{image/real_trace_faking_sequentielle_corr_vs_cles}
-    \caption{Valeurs de corrélation pour chacune des 256 valeurs de clé testées (attaque CPA sur un byte de la clé). La clé révélée (201) ne correspond ni à la vraie clé (20) ni à la fausse clé (125).}
+    \caption{Valeurs de corrélation pour chacune des 256 valeurs de clé testées. La clé révélée (201) ne correspond ni à la vraie clé (4) ni à la fausse clé (84).}
     \label{fig:real_trace_faking_sequentielle_corr_vs_cles} 
     \hspace{-1.8cm}
     \includegraphics[scale=0.6]{image/real_trace_faking_sequentielle_corr_vs_nb_traces}
@@ -1714,17 +1726,17 @@ Les figures \ref{fig:real_trace_faking_sequentielle_corr_vs_nb_traces} et \ref{f
     \label{fig:real_trace_faking_sequentielle_corr_vs_nb_traces} 
 \end{figure}
 
-Dans un article [] détaillant la contre-mesure \textit{faking}, il est précisé que les opérations exécutées spécifiquement pour la contre-mesure \textit{faking} (\textit{SubBytesTrans, ShiftRowsTrans, MixColumnsTrans} et \textit{Remasking}) sont implémentées sur un second FPGA. Par manque de temps, je n'ai pu implémenté cette contre-mesure sur le second FPGA. Cela aurait demandé de modifier l'implémentation du contrôleur et vu le temps imparti, cela n'aurait pas été envisageable. Cependant, il s'agit d'une piste d'amélioration à ne pas négliger. Une question reste cependant en suspens : \textit{pourquoi retrouve-t-on dans 75\% des attaques CPA réalisées, quatre bytes de la fausse clé de chiffrement ?} Sur base de cette question, une piste peut être envisagée : 
+Dans un article [] détaillant la contre-mesure \textit{faking}, il est précisé que les opérations exécutées spécifiquement pour la contre-mesure \textit{faking} (\textit{SubBytesTrans, ShiftRowsTrans, MixColumnsTrans} et \textit{Remasking}) sont implémentées sur un second FPGA. Par manque de temps, je n'ai pu implémenter cette contre-mesure sur le second FPGA. Cela aurait demandé de modifier l'implémentation du contrôleur et vu le temps imparti, cela n'aurait pas été envisageable. Cependant, il s'agit d'une piste d'amélioration à ne pas négliger. Une question reste cependant en suspens : \textit{pourquoi retrouve-t-on dans 75\% des attaques CPA réalisées, quatre bytes de la fausse clé de chiffrement ?} Sur base de cette question, deux pistes peut être envisagées : 
 \begin{itemize}
-\item Mieux cibler l'attaque : Lorsque l'attaque CPA est réalisée, elle se concentre sur un certain nombre d'échantillons dans la trace. La mise en oeuvre d'une métrique permettant de déduire dans les traces, les échantillons à cibler pour améliorer le taux de succès de l'attaque semble être une première piste afin de savoir où l'information peut être retrouvée.
-\item Revoir le modèle de prédiction de puissance : deux modèles de prédiction de puissance sont utilisés pour réaliser l'attaque CPA à savoir, le poids de \textit{Hamming} et la distance de \textit{Hamming}. Même si cela semble peu probable...
+\item Mieux cibler l'attaque : lorsque l'attaque CPA est réalisée, elle se concentre sur un certain nombre d'échantillons dans la trace. La mise en oeuvre d'une métrique permettant de déduire dans les traces, les échantillons à cibler pour améliorer le taux de succès de l'attaque semble être une première piste afin de savoir où l'information peut être retrouvée.
+\item Utilisation d'un filtre performant : certes, un filtre \textit{FIR} passe-bas a été mis en place et permet d'obtenir de meilleurs résultats (voir sous-section \ref{sec:filter}). La bande passant après application de ce filtre s'étend de 1 Hz à 50 MHz. Cette bande passante peut être analysée afin de savoir sur quelles fréquences les informations relatives à la clé secrète peuvent être révélées. En effet, les informations relatives à la clé sont révélées à basse fréquence.
 \end{itemize}
 
 \newpage
 
 %%%%%%%%%%%%% Chapitre 9 %%%%%%%%%%%%%
 
-\chapter{Évaluation des performances de la contre-mesure}
+\chapter{Évaluation de la contre-mesure}
 \label{chap:performances}
 
 Ce dernier chapitre se scinde en deux parties. Dans un premier temps, il décrit les moyens mis en place pour évaluer et valider le fonctionnement de l'algorithme AES lorsque la contre-mesure \textit{faking} est implémentée. Ensuite, il compare les performances de l'AES avec et sans contre-mesure.
@@ -1736,7 +1748,7 @@ Certes, la contre-mesure implémentée ne fonctionne pas comme décrit en théor
 
 \hspace{-0.5cm}Avant d'écrire le code VHDL nécessaire pour implémenter cette contre-mesure, une simulation à l'aide du logiciel MATLAB a été réalisée. Cette simulation a permis de bien comprendre l'utilité de chaque opération dans l'exécution de la contre-mesure. Une fois la simulation maitrisée, la mise en place de la contre-mesure a pu être élaborée. 
 
-\hspace{-0.5cm}En langage de programmation \textit{hardware}, il est de coutume de réaliser plusieurs tests (\textit{testbench} en anglais) sur les nouveaux modules \textit{hardware} définis. Ceci, dans le but de valider leur bon fonctionnement avant leur implémentation sur le FPGA. Dans ce travail, outre la vérification et la validation des modules un à un via de simples \textit{testbench}, un test automatisé général a été mis en place afin de certifier que les données soient correctement chiffrées. Un tel environnement de tests est complexe à mettre en oeuvre et demande des connaissances et du temps pour être complet. Cependant, une fois terminé, ce test automatisé permet de valider rapidement et aisément le bon fonctionnement du module en réalisant une centaine de tests. Ceci a l'avantage d'amener plus de garantie quant au bon fonctionnement du code écrit. En effet, avec un simple \textit{testbench}, la vérification n'est pas toujours aisée : d'une part, il faut aller vérifier les réponses obtenues pour chaque signaux analysés sur un graphe (ce qui prend du temps) et d'autre part, la certitude d'un fonctionnement sans défaut du module n'est pas garantie (étant donné que seul un test est réalisé). Dès lors, la mise en place d'un test automatisé permettant de traiter une centaines d'épreuves différentes s'est révélé être un outil intéressant et très pratique. La figure \ref{fig:test_autom} présente le principe de fonctionnement de ce test automatisé. 
+\hspace{-0.5cm}En langage de programmation \textit{hardware}, il est de coutume de réaliser plusieurs tests (\textit{testbench} en anglais) sur les nouveaux modules \textit{hardware} définis. Ceci, dans le but de valider leur bon fonctionnement avant leur implémentation sur le FPGA. Dans ce travail, outre la vérification et la validation des modules un à un via de simples \textit{testbench}, un test automatisé général a été mis en place afin de certifier que les données soient correctement chiffrées. Un tel environnement de tests est complexe à mettre en oeuvre et demande des connaissances et du temps pour être complet. Cependant, une fois terminé, ce test automatisé permet de valider rapidement et aisément le bon fonctionnement du module en réalisant une centaine de tests. Ceci a l'avantage d'amener plus de garantie quant au bon fonctionnement du code écrit (un test vs une centaine). En effet, avec un simple \textit{testbench}, la vérification n'est pas toujours aisée : d'une part, il faut aller vérifier les réponses obtenues pour chaque signaux analysés sur un graphe (ce qui prend du temps) et d'autre part, la certitude d'un fonctionnement sans défaut du module n'est pas garantie (étant donné que seul un test est réalisé). Dès lors, la mise en place d'un test automatisé permettant de traiter une centaines d'épreuves différentes s'est révélé être un outil intéressant et très pratique. La figure \ref{fig:test_autom} présente le principe de fonctionnement de ce test automatisé. 
 
 \begin{figure}[htbp]
     \hspace{-2cm}
@@ -1751,17 +1763,19 @@ Certes, la contre-mesure implémentée ne fonctionne pas comme décrit en théor
 \section{Évaluation par critères de performances}
 \label{sec:EvalPerf}
 
-Une fois que les tests sont correctement validés, l'élaboration de la synthèse du code VHDL via un logiciel (\textit{ISE Design Suite}) peut être lancée. Une fois cette étape de synthèse terminée, les étapes de placement et de routage peuvent être exécutées. Enfin, la génération d'un fichier \textit{Bitstream} clôturera le flot de conception et permettra de programmer le FPGA selon les spécifications demandées. Dans cette section, une comparaison des performances de l'AES sans et avec contre-mesure est abordée. Le tableau \ref{tab:performances} présente les principales caractéristiques analysées et discutées pour cette section. Les annexes \ref{ann:performances} et \ref{ann:performances} reprennent toutes les informations en ce qui concerne l'implémentation de l'AES tout seul, l'implémentation de la contre-mesure \textit{faking} en mode parallèle et enfin l'implémentation de la contre-mesure \textit{faking} en mode séquentiel.
+Une fois les tests correctement validés, l'élaboration de la synthèse du code VHDL via un logiciel (\textit{ISE Design Suite}) peut être lancée. Cette étape de synthèse terminée, les étapes de placement et de routage peuvent ensuite être exécutées. Enfin, la génération d'un fichier \textit{Bitstream} clôturera le flot de conception et permettra de programmer le FPGA selon les spécifications demandées. Dans cette section, une comparaison des performances de l'AES sans et avec contre-mesure est abordée. Le tableau \ref{tab:performances} présente les principales caractéristiques analysées et discutées pour cette section. Les annexes \ref{ann:performances}, \ref{ann:performances_2} et \ref{ann:performances_3} reprennent toutes les informations en ce qui concerne l'implémentation de l'AES tout seul, l'implémentation de la contre-mesure \textit{faking} en mode parallèle et enfin l'implémentation de la contre-mesure \textit{faking} en mode séquentiel.
+\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
 
 \begin{table}[htbp]
 	\centering
-	\begin{tabular}{|c|c|}
+	\begin{tabular}{|C{3cm}||c|c|c|}
     		\hline
-   		  \textit{Consommation de puissance \textbf{équivalente}} & \textit{Consommation de puissance \textbf{aléatoire}} \\ \hline 
-   		  \textbf{Intensité} du leakage &  \textbf{Instant} du leakage \\ \hline
-   		   &  \textbf{Intensité} du leakage \\ \hline
+   		  & Temps d'exécution & Place mémoire & chichacha \\ \hline \hline
+   		 AES seul &  ... & ... & ... \\ \hline \hline
+   		 AES avec contre-mesure \textit{faking} en mode parallèle &  ... & ... & ... \\ \hline \hline
+		 AES avec contre-mesure \textit{faking} en mode séquentiel &  ... & ... & ... \\ \hline 
 	\end{tabular}
-    	\caption{Les contre-mesures de type hiding sont utilisées pour rendre aléatoire ou égale la consommation de puissance du device cryptographique..}
+    	\caption{Tableau récapitulatif des performances observées pour les implémentations de l'AES seul, de l'AES avec contre-mesure \textit{faking} en mode parallèle et de l'AES avec contre-mesure \textit{faking} en mode séquentiel.}
     	\label{tab:performances} 
 \end{table}
 
@@ -2042,6 +2056,7 @@ AddRoundKey(STATE, ExpandedKey[10])
 \begin{itemize}
 \item Annexe \ref{ann:performances} : Rapport de \textit{design} complet pour l'implémentation de la contre-mesure \textit{faking} en mode parallèle.
 \item Annexe \ref{ann:performances_2} : Rapport de \textit{design} complet pour l'implémentation de la contre-mesure \textit{faking} en mode séquentiel.
+\item Annexe \ref{ann:performances_3} : Rapport de \textit{design} complet pour l'implémentation de la contre-mesure \textit{faking} en mode séquentiel.
 \end{itemize}
 
 \newpage
@@ -2066,6 +2081,18 @@ AddRoundKey(STATE, ExpandedKey[10])
     \includegraphics[scale=0.48]{image/hamming}
     \caption{Réponse en amplitude et en phase du filtre FIR passe-bas utilisé pour le projet.}
     \label{fig:performances_2}
+\end{figure}
+
+\newpage
+
+\rhead{ANNEXE \ref{ann:performances_3}}
+\section{Rapport pour contre-mesure \textit{faking} en mode parallèle}
+\label{ann:performances_3}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.48]{image/hamming}
+    \caption{Réponse en amplitude et en phase du filtre FIR passe-bas utilisé pour le projet.}
+    \label{fig:performances_3}
 \end{figure}
 
 

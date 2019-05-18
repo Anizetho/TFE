@@ -57,11 +57,11 @@
 \contentsline {section}{\numberline {8.2}Résultats de simulations}{61}{section.8.2}
 \contentsline {section}{\numberline {8.3}Résultats expérimentaux}{63}{section.8.3}
 \contentsline {subsection}{\numberline {8.3.1}Architecture parallèle}{63}{subsection.8.3.1}
-\contentsline {subsection}{\numberline {8.3.2}Architecture séquentielle}{64}{subsection.8.3.2}
-\contentsline {chapter}{\numberline {9}Évaluation des performances de la contre-mesure}{67}{chapter.9}
+\contentsline {subsection}{\numberline {8.3.2}Architecture séquentielle}{65}{subsection.8.3.2}
+\contentsline {chapter}{\numberline {9}Évaluation de la contre-mesure}{67}{chapter.9}
 \contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{67}{section.9.1}
 \contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{68}{section.9.2}
 \contentsline {chapter}{\numberline {10}Conclusion}{69}{chapter.10}
-\contentsline {chapter}{Crédits}{70}{section*.72}
-\contentsline {chapter}{Références}{70}{section*.73}
-\contentsline {chapter}{Annexes}{73}{section*.73}
+\contentsline {chapter}{Crédits}{70}{section*.73}
+\contentsline {chapter}{Références}{70}{section*.74}
+\contentsline {chapter}{Annexes}{73}{section*.74}
