@@ -37,7 +37,7 @@
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Le Picoscope est l'instrument de mesure utilisé pour analyser la consommation de puissance (la tension pour être exact) du FPGA.\relax }}{41}{figure.caption.40}
 \contentsline {figure}{\numberline {6.4}{\ignorespaces Interface logicielle utilisée pour le Picoscope. La trace de puissance affichée correspond à l'exécution de l'algorithme AES-256 sur le FPGA.\relax }}{41}{figure.caption.41}
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Formules permettant de déterminer l'intervalle d'échantillonnage (tableaux repris de la \textit {datasheet} du Picoscope).\relax }}{42}{figure.caption.43}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Banc de mesures en laboratoire.\relax }}{43}{figure.caption.44}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Banc de mesures.\relax }}{43}{figure.caption.44}
 \contentsline {figure}{\numberline {6.7}{\ignorespaces Procédure mise en place pour le chiffrement de textes clairs et l'enregistrement des traces de puissance capturées à l'oscilloscope.\relax }}{43}{figure.caption.45}
 \contentsline {figure}{\numberline {6.8}{\ignorespaces Procédure mise en place pour réaliser une attaque par analyse de la consommation de puissance de type CPA.\relax }}{44}{figure.caption.46}
 \addvspace {10\p@ }
@@ -71,6 +71,7 @@
 \contentsline {figure}{\numberline {8.11}{\ignorespaces Valeurs de corrélation pour les 256 clés testées en fonction du nombre de traces mesurées. La vraie clé (courbe verte) n'est pas révélée. La fausse clé (courbe rouge) n'est pas non plus révélée. La clé révélée (courbe magenta) est un résultat inattendu.\relax }}{66}{figure.caption.69}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {9.1}{\ignorespaces Schéma-bloc du principe de fonctionnement du test automatisé mis en place.\relax }}{68}{figure.caption.70}
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Affichage via la logiciel VIVADO des différents ports/signaux utilisés dans l'implémentation de la contre-mesure.\relax }}{69}{figure.caption.71}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
