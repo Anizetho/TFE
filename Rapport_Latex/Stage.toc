@@ -59,7 +59,7 @@
 \contentsline {subsection}{\numberline {8.3.1}Architecture parallèle}{63}{subsection.8.3.1}
 \contentsline {subsection}{\numberline {8.3.2}Architecture séquentielle}{65}{subsection.8.3.2}
 \contentsline {chapter}{\numberline {9}Évaluation de la contre-mesure}{67}{chapter.9}
-\contentsline {section}{\numberline {9.1}Simulations (\textit {testbench})}{67}{section.9.1}
+\contentsline {section}{\numberline {9.1}Simulations (\textit {test benches})}{67}{section.9.1}
 \contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{69}{section.9.2}
 \contentsline {chapter}{\numberline {10}Conclusion}{71}{chapter.10}
 \contentsline {chapter}{Crédits}{72}{section*.74}
