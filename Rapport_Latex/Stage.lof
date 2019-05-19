@@ -73,7 +73,7 @@
 \contentsline {figure}{\numberline {9.1}{\ignorespaces Schéma-bloc du principe de fonctionnement du test automatisé mis en place.\relax }}{68}{figure.caption.70}
 \contentsline {figure}{\numberline {9.2}{\ignorespaces Affichage via la logiciel VIVADO des différents ports/signaux utilisés dans l'implémentation de la contre-mesure en mode parallèle. Le graphe montre bien que les opérations principales sont exécutées en parallèle.\relax }}{69}{figure.caption.71}
 \contentsline {figure}{\numberline {9.3}{\ignorespaces Affichage via la logiciel VIVADO des différents ports/signaux utilisés dans l'implémentation de la contre-mesure en mode séquentiel. Le graphe montre bien que les opérations sont exécutées en séquentiel.\relax }}{69}{figure.caption.71}
-\contentsline {figure}{\numberline {9.4}{\ignorespaces Architecture simpliste d'un FPGA.\relax }}{70}{figure.caption.72}
+\contentsline {figure}{\numberline {9.4}{\ignorespaces Architecture simplifiée d'un FPGA.\relax }}{70}{figure.caption.72}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

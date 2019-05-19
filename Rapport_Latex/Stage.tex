@@ -1741,16 +1741,16 @@ Dans un article [] détaillant la contre-mesure \textit{faking}, il est précis�
 \chapter{Évaluation de la contre-mesure}
 \label{chap:performances}
 
-Ce dernier chapitre se scinde en deux parties. Dans un premier temps, il décrit les moyens mis en place pour évaluer et valider le fonctionnement de l'algorithme AES lorsque la contre-mesure \textit{faking} est implémentée. Ensuite, il compare les performances de l'AES avec et sans contre-mesure.
+Ce dernier chapitre se compose de deux parties. Dans un premier temps, il décrit les moyens mis en place pour évaluer et valider le fonctionnement de l'algorithme AES lorsque la contre-mesure \textit{faking} est implémentée. Ensuite, il compare les performances de l'AES avec et sans contre-mesure.
 
 \section{Simulations (\textit{test benches})}
 \label{sec:EvalSim}
 
-Certes, la contre-mesure implémentée ne fonctionne pas comme décrit en théorie lorsqu'on applique une attaque CPA (voir section \ref{sec:faking}) : l'attaque ne révèle pas la fausse clé utilisée. Cependant, cette contre-mesure constitue tout de même une réussite étant donné qu'elle ne révèle pas le vraie clé de chiffrement. L'attaquant est donc incapable de déchiffrer les données confidentielles à partir de la clé révélée par l'attaque. Par ailleurs, la contre-mesure permet de chiffrer correctement les textes clairs. Pour s'assurer au préalable de son bon fonctionnement, une série de tests ont été mis en place et sont décris ci-après.
+Comme expliqué au chapitre précédent (chapitre \ref{chap:faking}), la contre-mesure implémentée ne fonctionne pas comme décrit en théorie lorsqu'on applique une attaque CPA (voir section \ref{sec:faking}) : l'attaque ne révèle pas la fausse clé utilisée. Cependant, cette contre-mesure constitue tout de même une réussite étant donné qu'elle ne révèle pas la vraie clé de chiffrement. L'attaquant n'est donc pas en mesure de déchiffrer les données confidentielles à partir de la clé révélée par l'attaque. Par ailleurs, la contre-mesure permet de chiffrer correctement les textes clairs. Pour s'assurer au préalable de son bon fonctionnement, une série de tests a été mise en place et ces derniers sont décrits ci-après.
 
 \hspace{-0.5cm}Avant d'écrire le code VHDL nécessaire pour implémenter cette contre-mesure, une simulation à l'aide du logiciel MATLAB a été réalisée. Cette simulation a permis de bien comprendre l'utilité de chaque opération dans l'exécution de la contre-mesure. Une fois la simulation maitrisée, la mise en place de la contre-mesure a pu être élaborée. 
 
-\hspace{-0.5cm}En langage de programmation \textit{hardware}, il est de coutume de réaliser plusieurs tests (\textit{test benches} en anglais) sur les nouveaux modules \textit{hardware} définis. Ceci, dans le but de valider leur bon fonctionnement avant leur synthèse et leur implémentation sur le FPGA. Dans ce travail, outre la vérification et la validation des modules un à un via de simples \textit{test benches}, un test automatisé général a été mis en place afin de certifier que les données soient correctement chiffrées. Un tel environnement de tests est complexe à mettre en oeuvre et demande des connaissances et du temps pour être complet. Cependant, une fois terminé, ce test automatisé permet de valider rapidement et aisément le bon fonctionnement du module en réalisant une centaine de tests. Ceci a l'avantage d'amener plus de garantie quant au bon fonctionnement du code écrit (un test vs une centaine de tests). En effet, avec un simple \textit{test bench}, la vérification n'est pas toujours aisée : d'une part, il faut aller vérifier les réponses obtenues pour chaque signaux analysés sur un graphe (ce qui prend du temps) et d'autre part, la certitude d'un fonctionnement sans défaut du module n'est pas garantie (étant donné que seul un test est réalisé). Dès lors, la mise en place d'un test automatisé permettant de traiter une centaines d'épreuves différentes s'est révélé être un outil intéressant et très pratique. La figure \ref{fig:test_autom} présente le principe de fonctionnement de ce test automatisé.
+\hspace{-0.5cm}En langage de programmation \textit{hardware}, il est de coutume de réaliser plusieurs tests (\textit{test benches} en anglais) sur les nouveaux modules \textit{hardware} définis. Ceci, dans le but de valider leur bon fonctionnement avant leur synthèse et leur implémentation sur le FPGA. Dans ce travail, outre la vérification et la validation des modules un à un via de simples \textit{test benches}, un test automatisé général a été mis en place afin de certifier que les données soient correctement chiffrées. Un tel environnement de tests est complexe à mettre en oeuvre et demande des connaissances et du temps pour être complet. Cependant, une fois terminé, ce test automatisé permet de valider rapidement et aisément le bon fonctionnement du module en réalisant une centaine de tests. Ceci a l'avantage d'amener plus de garantie quant au bon fonctionnement du code écrit (un test vs une centaine de tests). En effet, avec un simple \textit{test bench}, la vérification n'est pas toujours aisée : d'une part, il faut aller vérifier les réponses obtenues pour chaque signal analysé sur un graphe (ce qui prend du temps) et d'autre part, la certitude d'un fonctionnement sans défaut du module n'est pas statistiquement garantie (étant donné que seul un test est réalisé). Dès lors, la mise en place d'un test automatisé permettant de traiter une centaines d'épreuves différentes s'est révélée être un outil intéressant et très pratique. La figure \ref{fig:test_autom} présente le principe de fonctionnement de ce test automatisé.
 
 \newpage
 
@@ -1761,9 +1761,9 @@ Certes, la contre-mesure implémentée ne fonctionne pas comme décrit en théor
     \label{fig:test_autom} 
 \end{figure}
 
-Le test automatisé est généré à partir d'une invite de commande. Plus précisément, c'est un script python qui est en charge de lancer le test automatisé grâce à un paramètre que l'on écrit à la suite du fichier python appelé. Pour lancer le test, il suffit de taper la commande : \textit{"python flow.py sim"}. \textit{"python flow.py"} indique que l'on souhaite lancer un script python, nommé \textit{flow.py}. Le paramètre \textit{"sim"} indique que l'on souhaite lancer le test automatisé. Ce test est évidemment écrit en langage VHDL afin de pouvoir tester les modules du bloc de chiffrement AES et de la contre-mesure \textit{faking}. Plus précisément, ce test se compose de deux top modules (voir figure \ref{fig:test_autom}) : 
+Le test automatisé est généré à partir d'une invite de commande. Plus précisément, il s'agit d'un script python qui est en charge de lancer le test automatisé grâce à un paramètre que l'on écrit à la suite du fichier python appelé. Pour lancer le test, il suffit de taper la commande : \textit{"python flow.py sim"}. \\ \textit{"python flow.py"} indique que l'on souhaite lancer un script python, nommé \textit{flow.py}. Le paramètre \textit{"sim"} indique que l'on souhaite lancer le test automatisé. Ce test est évidemment écrit en langage VHDL afin de pouvoir tester les modules du bloc de chiffrement AES et de la contre-mesure \textit{faking}. Plus précisément, ce test se compose de deux top modules (voir figure \ref{fig:test_autom}) : 
 \begin{itemize}
-\item Module \textit{Stim} : ce module a pour objectif d'une part d'envoyer des stimulus au bloc de chiffrement et d'autre part de réceptionner les sorties de ce bloc de chiffrement, fonction des stimulus envoyés. Ce module \textit{Stim} est lui-même composée de deux sous-modules : 
+\item Module \textit{Stim} : ce module a pour objectif d'une part d'envoyer des stimulus au bloc de chiffrement et d'autre part de réceptionner les sorties de ce bloc de chiffrement, fonction des stimulus envoyés. Ce module \textit{Stim} est lui-même composé de deux sous-modules : 
 \begin{itemize}
 \item Sous-module \textit{Io\_read} : l'objectif de ce sous-module est d'aller chercher dans un fichier texte les informations utiles aux ports d'entrées du bloc de chiffrement. Ces informations utiles sont les textes clairs, la clé et le masque (lorsque la contre-mesure est mise en place).
 \item Sous-module \textit{Io\_write} : l'objectif de ce sous-module est de réceptionner les informations utiles aux ports de sorties du bloc de chiffrement. Ces informations utiles sont les textes chiffrés. Une fois réceptionnées, ces informations sont écrites dans un fichier texte.
@@ -1773,14 +1773,14 @@ Le test automatisé est généré à partir d'une invite de commande. Plus préc
 
 Ainsi, vu de l'extérieur, ce test automatisé contient un port d'entrée et un port de sortie. Le port d'entrée prend un fichier texte contenant toutes les épreuves, c'est-à-dire contenant différents messages clairs, une clé et une masque. Le port de sortie renvoie un fichier texte avec les réponses aux différentes épreuves, c'est-à-dire contenant les messages chiffrés. Enfin, une fois le fichier texte de sortie généré, un script python compare les résultats obtenus dans ce fichier texte avec les vrais résultats attendus (enregistrés préalablement dans un autre fichier texte). Si une erreur est apparue lors du chiffrement d'un message clair, le test automatisé la renseignera directement. De cette façon, une centaine d'épreuves sont utilisées pour valider le bon fonctionnement de l'AES-256 lorsque la contre-mesure \textit{faking} est implémentée.
 
-Par ailleurs, outre lancer le test automatisé, le script python \textit{flow.py} permet également d'afficher sur le logiciel \textit{VIVADO} le graphe des différents signaux générés. Les figures  \ref{fig:signaux_test_autom_parallele} et \ref{fig:signaux_test_autom_sequentiel} présentent respectivement quelques signaux analysés lorsque la contre-mesure est implémentée en mode parallèle et en mode séquentiel. Pour ce faire, il suffit de taper la commande \textit{"python flow.py wave"}. Le paramètre \textit{"wave"} indique que l'on souhaite afficher les signaux sur un graphe. Ceci est utile pour comprendre le fonctionnement du code VHDL ou bien pour trouver la source d'une éventuelle erreur. Durant ce travail, lorsqu'un erreur était détectée par le test automatisé, la génération des signaux était couramment utilisée pour cibler l'erreur. Au final, toutes les erreurs ont été débogées, ce qui a permis d'obtenir une version fonctionnelle de la contre-mesure. De cette façon, la synthèse, le placement, le routage et le \textit{bitstream} ont pu être générés et le programme chargé sur le FPGA. Aucune erreur de chiffrement n'a été détectée lors de l'utilisation du FPGA pour chiffrer des textes clairs. La contre-mesure est donc bien fonctionnelle.
+Par ailleurs, outre lancer le test automatisé, le script python \textit{flow.py} permet également d'afficher sur le logiciel \textit{VIVADO} le graphe des différents signaux générés. Les figures  \ref{fig:signaux_test_autom_parallele} et \ref{fig:signaux_test_autom_sequentiel} présentent respectivement quelques signaux analysés lorsque la contre-mesure est implémentée en mode parallèle et en mode séquentiel. Pour ce faire, il suffit de taper la commande \textit{"python flow.py wave"}. Le paramètre \textit{"wave"} indique que l'on souhaite afficher les signaux sur un graphe. Ceci est utile pour comprendre le fonctionnement du code VHDL ou bien pour trouver la source d'une éventuelle erreur. Durant ce travail, lorsqu'une erreur était détectée par le test automatisé, la génération des signaux était couramment utilisée pour cibler l'erreur. Au final, toutes les erreurs ont été débogées, ce qui a permis d'obtenir une version fonctionnelle de la contre-mesure. De cette façon, la synthèse, le placement, le routage et le \textit{bitstream} ont pu être générés et le programme chargé sur le FPGA. Aucune erreur de chiffrement n'a été détectée lors de l'utilisation du FPGA pour chiffrer des textes clairs. La contre-mesure est donc bien fonctionnelle.
 
 \begin{figure}[h!]
-    \hspace{-1cm}
+    \hspace{-0.5cm}
     \includegraphics[scale=0.53]{image/vivado_parallele}
     \caption{Affichage via la logiciel VIVADO des différents ports/signaux utilisés dans l'implémentation de la contre-mesure en mode parallèle. Le graphe montre bien que les opérations principales sont exécutées en parallèle.}
     \label{fig:signaux_test_autom_parallele} 
-    \hspace{-1cm}
+    \hspace{-0.5cm}
     \includegraphics[scale=0.53]{image/vivado_sequentiel}
     \caption{Affichage via la logiciel VIVADO des différents ports/signaux utilisés dans l'implémentation de la contre-mesure en mode séquentiel. Le graphe montre bien que les opérations sont exécutées en séquentiel.}
     \label{fig:signaux_test_autom_sequentiel} 
@@ -1799,7 +1799,7 @@ Afin de bien comprendre les caractéristiques reprises dans le tableau \ref{tab:
 \begin{figure}[htbp]
     \centering
     \includegraphics[scale=0.5]{image/general_archi_FPGA}
-    \caption{Architecture simpliste d'un FPGA.}
+    \caption{Architecture simplifiée d'un FPGA.}
     \label{fig:general_archi_FPGA} 
 \end{figure}
 
@@ -1811,7 +1811,7 @@ Le bloc logique est constitué de deux éléments principaux : des Look-Up Tab
 	\hspace{-1cm}
 	\begin{tabular}{|C{3cm}||c|c|c|c|c|c|}
     		\hline
-   		  & Slices & LUT's & Flip-Flops & BRAM & IOB & Temps d'exécutions \\
+   		  & Slices & LUT's & Flip-Flops & BRAM & IOB & Temps d'exécution \\
 		&  & (Look Up Table) & (Registre) & (9 Kb) & (In/Out Block) & (\si{\nano\second}) \\ \hline \hline
    		 AES seul &  1473 (12\%) & 2742 (5\%) & 3526 (3\%) & 8 (2\%) & 35 (10\%) & 1586 \\ \hline \hline
    		 AES avec contre-mesure \textit{faking} en mode parallèle &  2822 (24\%) & 5493 (11\%) & 6734 (7\%) & 8 (2\%) & 35 (10\%) & 2392 \\ \hline \hline
@@ -1827,7 +1827,7 @@ Le bloc logique est constitué de deux éléments principaux : des Look-Up Tab
 \item La contre-mesure implémentée en mode parallèle conserve la même taille mémoire (BRAM) que celle utilisée pour l'AES seul.
 \item La contre-mesure implémentée en mode séquentiel double la taille mémoire (BRAM) que celle utilisée pour l'AES seul.
 \item  La contre-mesure implémentée en mode parallèle augmente le temps d'exécution à 2392 \si{\nano\second}.
-\item  La contre-mesure implémentée en mode séquentiel augmente le temps d'exécution à 3192 \si{\nano\second}.
+\item  La contre-mesure implémentée en mode séquentiel augmente le temps d'exécution à 3172 \si{\nano\second}.
 \end{itemize}
 
 
