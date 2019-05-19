@@ -1773,37 +1773,64 @@ Le test automatisé est généré à partir d'une invite de commande. Plus préc
 
 Ainsi, vu de l'extérieur, ce test automatisé contient un port d'entrée et un port de sortie. Le port d'entrée prend un fichier texte contenant toutes les épreuves, c'est-à-dire contenant différents messages clairs, une clé et une masque. Le port de sortie renvoie un fichier texte avec les réponses aux différentes épreuves, c'est-à-dire contenant les messages chiffrés. Enfin, une fois le fichier texte de sortie généré, un script python compare les résultats obtenus dans ce fichier texte avec les vrais résultats attendus (enregistrés préalablement dans un autre fichier texte). Si une erreur est apparue lors du chiffrement d'un message clair, le test automatisé la renseignera directement. De cette façon, une centaine d'épreuves sont utilisées pour valider le bon fonctionnement de l'AES-256 lorsque la contre-mesure \textit{faking} est implémentée.
 
-\newpage
+Par ailleurs, outre lancer le test automatisé, le script python \textit{flow.py} permet également d'afficher sur le logiciel \textit{VIVADO} les graphes des différents signaux générés. Les figures  \ref{fig:signaux_test_autom_parallele} et \ref{fig:signaux_test_autom_sequentiel} présentent respectivement quelques signaux analysés lorsque la contre-mesure est implémentée en mode parallèle et en mode séquentiel. Pour ce faire, il suffit de taper la commande \textit{"python flow.py wave"}. Le paramètre \textit{"wave"} indique simplement que l'on souhaite afficher les signaux sur un graphe. Ceci est utile pour comprendre le fonctionnement du code VHDL ou bien pour trouver la source d'une éventuelle erreur. Durant ce travail, lorsqu'un erreur était détectée par le test automatisé, la génération des signaux était couramment utilisée pour cibler les erreurs. Au final, toutes les erreurs ont été débogées, ce qui a permis d'obtenir une version fonctionnelle de la contre-mesure. De cette façon, le \textit{bitstream} a ainsi pu être généré et le programme chargé sur le FPGA. Aucune erreur de chiffrement n'a été détectée lors de l'utilisation du FPGA pour chiffrer des textes clairs. La contre-mesure est donc bien fonctionnelle.
 
-Par ailleurs, outre lancer le test automatisé, le script python \textit{flow.py} permet également d'afficher sur le logiciel \textit{VIVADO} les graphes des différents signaux générés (voir figure \ref{fig:signaux_test_autom}). Pour ce faire, il suffit de taper la commande \textit{"python flow.py wave"}. Le paramètre \textit{"wave"} indique simplement que l'on souhaite afficher les signaux sur un graphe. Ceci est utile pour comprendre le fonctionnement du code VHDL ou bien pour trouver la source d'une éventuelle erreur. Durant ce travail, lorsqu'un erreur était détectée par le test automatisé, la génération des signaux était couramment utilisée pour cibler les erreurs. Au final, toutes les erreurs ont été débogées, ce qui a permis d'obtenir une version fonctionnelle de la contre-mesure. De cette façon, le \textit{bitstream} a ainsi pu être généré et le programme chargé sur le FPGA. Aucune erreur de chiffrement n'a été détectée lors de l'utilisation du FPGA pour chiffrer des textes clairs. La contre-mesure est donc bien fonctionnelle.
-
-\begin{figure}[htbp]
+\begin{figure}[h!]
     \hspace{-1cm}
-    \includegraphics[scale=0.7]{image/test_autom}
-    \caption{Affichage via la logiciel VIVADO des différents ports/signaux utilisés dans l'implémentation de la contre-mesure.}
-    \label{fig:signaux_test_autom} 
+    \includegraphics[scale=0.53]{image/vivado_parallele}
+    \caption{Affichage via la logiciel VIVADO des différents ports/signaux utilisés dans l'implémentation de la contre-mesure en mode parallèle. Le graphe montre bien que les opérations principales sont exécutées en parallèle.}
+    \label{fig:signaux_test_autom_parallele} 
+    \hspace{-1cm}
+    \includegraphics[scale=0.53]{image/vivado_sequentiel}
+    \caption{Affichage via la logiciel VIVADO des différents ports/signaux utilisés dans l'implémentation de la contre-mesure en mode séquentiel. Le graphe montre bien que les opérations sont exécutées en séquentiel.}
+    \label{fig:signaux_test_autom_sequentiel} 
 \end{figure}
 
+
+\newpage
 
 \section{Évaluation par critères de performances}
 \label{sec:EvalPerf}
 
-Une fois les tests correctement validés, l'élaboration de la synthèse du code VHDL via un logiciel (\textit{ISE Design Suite}) peut être lancée. Cette étape de synthèse terminée, les étapes de placement et de routage peuvent ensuite être exécutées. Enfin, la génération d'un fichier \textit{Bitstream} clôturera le flot de conception et permettra de programmer le FPGA selon les spécifications demandées. Dans cette section, une comparaison des performances de l'AES sans et avec contre-mesure est abordée. Le tableau \ref{tab:performances} présente les principales caractéristiques analysées et discutées pour cette section. Les annexes \ref{ann:performances}, \ref{ann:performances_2} et \ref{ann:performances_3} reprennent toutes les informations en ce qui concerne l'implémentation de l'AES tout seul, l'implémentation de la contre-mesure \textit{faking} en mode parallèle et enfin l'implémentation de la contre-mesure \textit{faking} en mode séquentiel.
-\newcolumntype{C}[1]{>{\centering\arraybackslash }b{#1}}
+Une fois les tests correctement validés, l'élaboration de la synthèse du code VHDL via un logiciel (\textit{ISE Design Suite}) peut être lancée. Cette étape de synthèse terminée, les étapes de placement et de routage peuvent ensuite être exécutées. Enfin, la génération d'un fichier \textit{Bitstream} clôturera le flot de conception et permettra de programmer le FPGA selon les spécifications demandées. Dans cette section, une comparaison des performances de l'AES sans et avec contre-mesure est abordée. Le tableau \ref{tab:performances} présente les principales caractéristiques analysées et discutées pour cette section. Les annexes \ref{ann:performances}, \ref{ann:performances_2} et \ref{ann:performances_3} reprennent respectivement les rapports complets de \textit{design} pour l'implémentation de l'AES tout seul, l'implémentation de la contre-mesure \textit{faking} en mode parallèle et l'implémentation de la contre-mesure \textit{faking} en mode séquentiel.
 
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{|C{3cm}||c|c|c|c|c|}
+Afin de bien comprendre les caractéristiques reprises dans le tableau \ref{tab:performances}, une description des principaux concepts \textit{hardware} est définie ci-dessous. Par définition, un FPGA est un circuit logique programmable. Cela signifie que le circuit intégré peut être reprogrammé après sa fabrication. La figure \ref{fig:general_archi_FPGA} présente un échantillon très simplifié et généraliste de l'architecture d'un FPGA. Plus précisément, cette figure présente la relation entre les blocs d'entrée/sortie (Input/Output Block - IOB), les blocs logiques (Configurable Logic Block - CLB) et les blocs de mémoire (Block RAM - BRAM).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.5]{image/general_archi_FPGA}
+    \caption{Architecture simpliste d'un FPGA.}
+    \label{fig:general_archi_FPGA} 
+\end{figure}
+
+Le bloc logique est constitué de deux éléments principaux : des Look-Up Tables (LUT's) et des Flip-Flops. Les LUT's servent à implémenter des fonctions logiques (OR, AND, XOR, etc.) et les flip-flops représentent des registres d’un bit permettant le stockage d’une information binaire. Ces deux éléments simples sont regroupés dans ce qu'on appelle un \textit{slice}. Pour le FPGA utilisé dans ce travail (famille Xilinx Spartan 6), deux slices forment un bloc logique. À partir d'un bloc logique, un développeur d’application FPGA est capable de générer n’importe quel circuit numérique, moyennant l’utilisation d’une suite d’outils dits « de synthèse ». Afin d’améliorer les capacités des FPGA's, les constructeurs ont toutefois ajouté d’autres éléments en plus des blocs logiques comme par exemple de la mémoire RAM. On retrouve effectivement des blocs contenant de la mémoire à accès direct (BRAM) facilitant le stockage de grandes quantités d’information. Enfin, tout autour de ces CLB et de ces BRAM, on trouve des blocs d'entrées/sorties (IOB) dont le rôle est de gérer les entrées-sorties réalisant l'interface avec les modules extérieurs au FPGA.
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash }m{#1}}
+
+\begin{table}[ht!]
+	\hspace{-1cm}
+	\begin{tabular}{|C{3cm}||c|c|c|c|c|c|}
     		\hline
-   		  & Slices & LUT's & Flip-Flop & BRAM & Temps d'exécutions \\
-		&  & (Look Up Table) & (Registre) & (9 Kb) & (\si{\nano\second}) \\ \hline \hline
-   		 AES seul &  ... & ... & ... & ... & ... \\ \hline \hline
-   		 AES avec contre-mesure \textit{faking} en mode parallèle &  ... & ... & ... & ... & ... \\ \hline \hline
-		 AES avec contre-mesure \textit{faking} en mode séquentiel & 2741 (23\%) & 6609 (7\%) & 4970 (10\%) & 16 (4\%) & ... \\ \hline 
+   		  & Slices & LUT's & Flip-Flops & BRAM & IOB & Temps d'exécutions \\
+		&  & (Look Up Table) & (Registre) & (9 Kb) & (In/Out Block) & (\si{\nano\second}) \\ \hline \hline
+   		 AES seul &  1473 (12\%) & 2742 (5\%) & 3526 (3\%) & 8 (2\%) & ... & 1586 \\ \hline \hline
+   		 AES avec contre-mesure \textit{faking} en mode parallèle &  2822 (24\%) & 5493 (11\%) & 6734 (7\%) & 8 (2\%) & & 2392 \\ \hline \hline
+		 AES avec contre-mesure \textit{faking} en mode séquentiel & 2741 (23\%) & 4970 (10\%) & 6609 (7\%) & 16 (4\%) & & 3192 \\ \hline 
 	\end{tabular}
     	\caption{Tableau récapitulatif des performances observées pour les implémentations de l'AES seul, de l'AES avec contre-mesure \textit{faking} en mode parallèle et de l'AES avec contre-mesure \textit{faking} en mode séquentiel.}
     	\label{tab:performances} 
 \end{table}
+
+\hspace{-0.5cm}Sur base du tableau \ref{tab:performances}, nous constatons que : 
+\begin{itemize}
+\item L'ajout de la contre-mesure (dans les deux modes) double le nombre de LUT's et de flip-flops configurés.
+\item La contre-mesure implémentée en mode parallèle conserve la même taille mémoire (BRAM) que celle utilisée pour l'AES seul.
+\item La contre-mesure implémentée en mode séquentiel double la taille mémoire (BRAM) que celle utilisée pour l'AES seul.
+\item  La contre-mesure implémentée en mode parallèle augmente le temps d'exécution à 2392 \si{\nano\second}.
+\item  La contre-mesure implémentée en mode séquentiel augmente le temps d'exécution à 3192 \si{\nano\second}.
+\end{itemize}
+
+
 
 \newpage
 
@@ -2080,47 +2107,25 @@ AddRoundKey(STATE, ExpandedKey[10])
 
 \chapter{Liste des annexes du chapitre \ref{chap:performances}}
 \begin{itemize}
-\item Annexe \ref{ann:performances} : Rapport de \textit{design} complet pour l'implémentation de la contre-mesure \textit{faking} en mode parallèle.
-\item Annexe \ref{ann:performances_2} : Rapport de \textit{design} complet pour l'implémentation de la contre-mesure \textit{faking} en mode séquentiel.
+\item Annexe \ref{ann:performances} : Rapport de \textit{design} complet pour l'implémentation de l'AES-256.
+\item Annexe \ref{ann:performances_2} : Rapport de \textit{design} complet pour l'implémentation de la contre-mesure \textit{faking} en mode parallèle.
 \item Annexe \ref{ann:performances_3} : Rapport de \textit{design} complet pour l'implémentation de la contre-mesure \textit{faking} en mode séquentiel.
 \end{itemize}
 
 \newpage
 
 \rhead{ANNEXE \ref{ann:performances}}
-\section{Rapport pour contre-mesure \textit{faking} en mode parallèle}
-\label{ann:performances}
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.48]{image/hamming}
-    \caption{Réponse en amplitude et en phase du filtre FIR passe-bas utilisé pour le projet.}
-    \label{fig:performances}
-\end{figure}
+\includepdf[pagecommand=\section{Rapport de l'AES-256}\label{ann:performances}]{image/design_report_AES_normal.pdf}
 
 \newpage
 
 \rhead{ANNEXE \ref{ann:performances_2}}
-\section{Rapport pour contre-mesure \textit{faking} en mode parallèle}
-\label{ann:performances_2}
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.48]{image/hamming}
-    \caption{Réponse en amplitude et en phase du filtre FIR passe-bas utilisé pour le projet.}
-    \label{fig:performances_2}
-\end{figure}
+\includepdf[pagecommand=\section{Rapport de la contre-mesure \textit{faking} en mode parallèle}\label{ann:performances_2}]{image/design_report_parallele.pdf}
 
 \newpage
 
 \rhead{ANNEXE \ref{ann:performances_3}}
-\section{Rapport pour contre-mesure \textit{faking} en mode parallèle}
-\label{ann:performances_3}
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[scale=0.48]{image/hamming}
-    \caption{Réponse en amplitude et en phase du filtre FIR passe-bas utilisé pour le projet.}
-    \label{fig:performances_3}
-\end{figure}
-
+\includepdf[pagecommand=\section{Rapport de la contre-mesure \textit{faking} en mode séquentiel}\label{ann:performances_3}]{image/design_report_sequentiel.pdf}
 
 
 
