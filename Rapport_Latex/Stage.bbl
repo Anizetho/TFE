@@ -63,6 +63,66 @@ R.~Lumbiarres-Lopez, M.~López-García, and E.~Cantó-Navarro, ``Faking
   \url{http://www.bibmath.net/crypto/index.php?action=affiche&quoi=chasseur/kerckhoffs}
 \BIBentrySTDinterwordspacing
 
+\bibitem{mangard_power_2007}
+S.~Mangard, E.~Oswald, and T.~Popp, \emph{Power analysis attacks: revealing the
+  secrets of smart cards}.\hskip 1em plus 0.5em minus 0.4em\relax New York:
+  Springer, 2007, oCLC: ocm71541637.
+
+\bibitem{fernando}
+\BIBentryALTinterwordspacing
+S.~Fernandes~Medeiros, ``Attaques par canaux auxiliaires: nouvelles attaques,
+  contre-mesures et mises en oeuvre,'' Université libre de Bruxelles, 2015.
+  [Online]. Available:
+  \url{http://hdl.handle.net/2013/ULB-DIPOT:oai:dipot.ulb.ac.be:2013/209096}
+\BIBentrySTDinterwordspacing
+
+\bibitem{hutchison_correlation_2004}
+\BIBentryALTinterwordspacing
+E.~Brier, C.~Clavier, and F.~Olivier, ``\BIBforeignlanguage{en}{Correlation
+  {Power} {Analysis} with a {Leakage} {Model}},'' in
+  \emph{\BIBforeignlanguage{en}{Cryptographic {Hardware} and {Embedded}
+  {Systems} - {CHES} 2004}}, D.~Hutchison, T.~Kanade, J.~Kittler, J.~M.
+  Kleinberg, F.~Mattern, J.~C. Mitchell, M.~Naor, O.~Nierstrasz,
+  C.~Pandu~Rangan, B.~Steffen, M.~Sudan, D.~Terzopoulos, D.~Tygar, M.~Y. Vardi,
+  G.~Weikum, M.~Joye, and J.-J. Quisquater, Eds.\hskip 1em plus 0.5em minus
+  0.4em\relax Berlin, Heidelberg: Springer Berlin Heidelberg, 2004, vol. 3156,
+  pp. 16--29. [Online]. Available:
+  \url{http://link.springer.com/10.1007/978-3-540-28632-5_2}
+\BIBentrySTDinterwordspacing
+
+\bibitem{mestiri_comparative_2012}
+\BIBentryALTinterwordspacing
+H.~Mestiri, N.~Benhadjyoussef, M.~Machhout, and R.~Tourki, ``A {Comparative}
+  {Study} of {Power} {Consumption} {Models} for {CPA} {Attack},''
+  \emph{International Journal of Computer Network and Information Security},
+  vol.~5, no.~3, pp. 25--31, Mar. 2012. [Online]. Available:
+  \url{http://www.mecs-press.org/ijcnis/ijcnis-v5-n3/v5n3-3.html}
+\BIBentrySTDinterwordspacing
+
+\bibitem{hutchison_improved_2005}
+\BIBentryALTinterwordspacing
+E.~Peeters, F.-X. Standaert, N.~Donckers, and J.-J. Quisquater,
+  ``\BIBforeignlanguage{en}{Improved {Higher}-{Order} {Side}-{Channel}
+  {Attacks} with {FPGA} {Experiments}},'' in
+  \emph{\BIBforeignlanguage{en}{Cryptographic {Hardware} and {Embedded}
+  {Systems} – {CHES} 2005}}, D.~Hutchison, T.~Kanade, J.~Kittler, J.~M.
+  Kleinberg, F.~Mattern, J.~C. Mitchell, M.~Naor, O.~Nierstrasz,
+  C.~Pandu~Rangan, B.~Steffen, M.~Sudan, D.~Terzopoulos, D.~Tygar, M.~Y. Vardi,
+  G.~Weikum, J.~R. Rao, and B.~Sunar, Eds.\hskip 1em plus 0.5em minus
+  0.4em\relax Berlin, Heidelberg: Springer Berlin Heidelberg, 2005, vol. 3659,
+  pp. 309--323. [Online]. Available:
+  \url{http://link.springer.com/10.1007/11545262_23}
+\BIBentrySTDinterwordspacing
+
+\bibitem{oswald_improving_nodate}
+D.~Oswald and C.~Paar, ``\BIBforeignlanguage{en}{Improving {Side}-{Channel}
+  {Analysis} with {Optimal} {Pre}-{Processing}},'' p.~15.
+
+\bibitem{fay_signal_2013}
+M.~S. Fay, L.~Loder, A.~d.~S. Junior, and R.~Soares, ``Signal
+  {Pre}-{Processing} to {Increase} {DPA} {Success} on {GALS} {Architectures},''
+  2013.
+
 \bibitem{Complete}
 T.~P. Stefan~Mangard, Elisabeth~Oswald, \emph{Power Analysis Attacks},
   Springer, Ed.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2007.

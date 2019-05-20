@@ -8,7 +8,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: Stage.bib
-I was expecting a `,' or a `}'---line 193 of file Stage.bib
+I was expecting a `,' or a `}'---line 291 of file Stage.bib
  :  
  :  Year = {2018}}
 (Error may have been on previous line)
@@ -20,6 +20,9 @@ Warning--empty author in noauthor_fips_nodate
 Warning--empty journal in noauthor_fips_nodate
 Warning--empty year in noauthor_fips_nodate
 Warning--empty booktitle in lumbiarres-lopez_faking_2018
+Warning--empty journal in oswald_improving_nodate
+Warning--empty year in oswald_improving_nodate
+Warning--empty booktitle in fay_signal_2013
 Name 1 in "A. Adam Ding, Liwei Zhang, Francois Durvaux, Francois-Xavier Standaert, and Yunsi Fei" has a comma at the end for entry cryptoeprint
 while executing---line 2403 of file IEEEtran.bst
 Too many commas in name 1 of "A. Adam Ding, Liwei Zhang, Francois Durvaux, Francois-Xavier Standaert, and Yunsi Fei" for entry cryptoeprint
@@ -32,45 +35,45 @@ Warning--empty author and editor in hamming
 Warning--empty year in hamming
 
 Done.
-You've used 26 entries,
+You've used 33 entries,
             4087 wiz_defined-function locations,
-            949 strings with 11530 characters,
-and the built_in function-call counts, 9793 in all, are:
-= -- 711
-> -- 128
-< -- 10
-+ -- 64
-- -- 27
-* -- 388
-:= -- 1711
-add.period$ -- 52
-call.type$ -- 26
-change.case$ -- 28
-chr.to.int$ -- 24
-cite$ -- 34
-duplicate$ -- 815
-empty$ -- 1093
-format.name$ -- 31
-if$ -- 2228
+            994 strings with 13870 characters,
+and the built_in function-call counts, 15700 in all, are:
+= -- 1127
+> -- 376
+< -- 38
++ -- 186
+- -- 82
+* -- 717
+:= -- 2567
+add.period$ -- 68
+call.type$ -- 33
+change.case$ -- 39
+chr.to.int$ -- 84
+cite$ -- 44
+duplicate$ -- 1228
+empty$ -- 1569
+format.name$ -- 94
+if$ -- 3588
 int.to.chr$ -- 0
-int.to.str$ -- 26
-missing$ -- 153
-newline$ -- 111
-num.names$ -- 26
-pop$ -- 462
+int.to.str$ -- 33
+missing$ -- 250
+newline$ -- 140
+num.names$ -- 37
+pop$ -- 726
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 790
+skip$ -- 1211
 stack$ -- 0
-substring$ -- 86
-swap$ -- 443
-text.length$ -- 2
+substring$ -- 238
+swap$ -- 777
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 26
-warning$ -- 8
-while$ -- 27
-width$ -- 28
-write$ -- 227
+type$ -- 33
+warning$ -- 11
+while$ -- 49
+width$ -- 35
+write$ -- 302
 (There were 4 error messages)
