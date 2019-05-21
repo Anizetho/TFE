@@ -53,16 +53,6 @@
   \url{https://fr.wikipedia.org/w/index.php?title=Attaque_par_canal_auxiliaire&oldid=155146479}
 \BIBentrySTDinterwordspacing
 
-\bibitem{lumbiarres-lopez_faking_2018}
-R.~Lumbiarres-Lopez, M.~López-García, and E.~Cantó-Navarro, ``Faking
-  {Countermeasure} {Against} {Side}-{Channel} {Attacks},'' 2018.
-
-\bibitem{noauthor_principe_nodate}
-\BIBentryALTinterwordspacing
-``Le principe de {Kerckhoffs}.'' [Online]. Available:
-  \url{http://www.bibmath.net/crypto/index.php?action=affiche&quoi=chasseur/kerckhoffs}
-\BIBentrySTDinterwordspacing
-
 \bibitem{mangard_power_2007}
 S.~Mangard, E.~Oswald, and T.~Popp, \emph{Power analysis attacks: revealing the
   secrets of smart cards}.\hskip 1em plus 0.5em minus 0.4em\relax New York:
@@ -70,10 +60,45 @@ S.~Mangard, E.~Oswald, and T.~Popp, \emph{Power analysis attacks: revealing the
 
 \bibitem{fernando}
 \BIBentryALTinterwordspacing
-S.~Fernandes~Medeiros, ``Attaques par canaux auxiliaires: nouvelles attaques,
+S.~F. Medeiros, ``Attaques par canaux auxiliaires: nouvelles attaques,
   contre-mesures et mises en oeuvre,'' Université libre de Bruxelles, 2015.
   [Online]. Available:
   \url{http://hdl.handle.net/2013/ULB-DIPOT:oai:dipot.ulb.ac.be:2013/209096}
+\BIBentrySTDinterwordspacing
+
+\bibitem{lumbiarres-lopez_faking_2018}
+R.~Lumbiarres-Lopez, M.~López-García, and E.~Cantó-Navarro, ``Faking
+  {Countermeasure} {Against} {Side}-{Channel} {Attacks},'' 2018.
+
+\bibitem{intro_crypto}
+\BIBentryALTinterwordspacing
+``Introduction à la cryptographie,'' 1999. [Online]. Available:
+  \url{https://www.apprendre-en-ligne.net/crypto/bibliotheque/PDF/IntroToCrypto.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{noauthor_principe_nodate}
+\BIBentryALTinterwordspacing
+``Le principe de {Kerckhoffs}.'' [Online]. Available:
+  \url{http://www.bibmath.net/crypto/index.php?action=affiche&quoi=chasseur/kerckhoffs}
+\BIBentrySTDinterwordspacing
+
+\bibitem{noauthor_corps_2019}
+\BIBentryALTinterwordspacing
+``\BIBforeignlanguage{fr}{Corps fini},'' Apr. 2019, page Version ID: 158860991.
+  [Online]. Available:
+  \url{https://fr.wikipedia.org/w/index.php?title=Corps_fini&oldid=158860991}
+\BIBentrySTDinterwordspacing
+
+\bibitem{CMOS}
+T.~SKOTNICKI, ``Circuits intégrés cmos sur silicium,'' \emph{Techniques de
+  l'ingénieur Technologies des dispositifs actifs}, vol. base documentaire :
+  TIB286DUO., no. ref. article : e2432, 2000.
+
+\bibitem{Luca}
+\BIBentryALTinterwordspacing
+L.~Giancane, ``Side-channel attacks and countermeasure in the design of secure
+  ic's devices for cryptographic applications,'' 2011. [Online]. Available:
+  \url{http://hdl.handle.net/10805/975}
 \BIBentrySTDinterwordspacing
 
 \bibitem{hutchison_correlation_2004}
@@ -89,6 +114,23 @@ E.~Brier, C.~Clavier, and F.~Olivier, ``\BIBforeignlanguage{en}{Correlation
   pp. 16--29. [Online]. Available:
   \url{http://link.springer.com/10.1007/978-3-540-28632-5_2}
 \BIBentrySTDinterwordspacing
+
+\bibitem{didact_approche}
+L.~BOSSUET, \emph{Approche didactique pour l'enseignement de l'attaque DPA
+  ciblant l'algorithme de chiffrement AES}, E.~Sciences, Ed.\hskip 1em plus
+  0.5em minus 0.4em\relax
+  \url{https://hal.archives-ouvertes.fr/hal-00753215/document}, 25 Octobre
+  2012.
+
+\bibitem{peeters_advanced_2013}
+E.~Peeters, \emph{Advanced {DPA} theory and practice: towards the security
+  limits of secure embedded circuits}.\hskip 1em plus 0.5em minus 0.4em\relax
+  New York: Springer, 2013, oCLC: ocn825754583.
+
+\bibitem{bruit}
+J.-P. Muller, \emph{Le bruit dans les syst{\`e}mes {\'e}lectroniques}.\hskip
+  1em plus 0.5em minus 0.4em\relax
+  \url{http://www.ta-formation.com/acrobat-cours/bruit.pdf}, Juillet 2002.
 
 \bibitem{mestiri_comparative_2012}
 \BIBentryALTinterwordspacing
@@ -123,10 +165,6 @@ M.~S. Fay, L.~Loder, A.~d.~S. Junior, and R.~Soares, ``Signal
   {Pre}-{Processing} to {Increase} {DPA} {Success} on {GALS} {Architectures},''
   2013.
 
-\bibitem{Complete}
-T.~P. Stefan~Mangard, Elisabeth~Oswald, \emph{Power Analysis Attacks},
-  Springer, Ed.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2007.
-
 \bibitem{SCA}
 S.~P. Jude~Ambrose, Alexandar~Ignjatovic, \emph{Power Analysis Side Channel
   Attacks}, V.~V.~D. M{\"u}ller, Ed.\hskip 1em plus 0.5em minus 0.4em\relax VDM
@@ -140,19 +178,6 @@ E.~Peeters, \emph{Advanced DPA Theory and Practise}, Springer, Ed.\hskip 1em
 J.~Dutertre, \emph{Synth{\`e}se AES 128}.\hskip 1em plus 0.5em minus
   0.4em\relax \url{https://www.emse.fr/~dutertre/documents/synth_AES128.pdf},
   2011.
-
-\bibitem{gray1998quantization}
-L.~BOSSUET, \emph{Approche didactique pour l'enseignement de l'attaque DPA
-  ciblant l'algorithme de chiffrement AES}, E.~Sciences, Ed.\hskip 1em plus
-  0.5em minus 0.4em\relax
-  \url{https://hal.archives-ouvertes.fr/hal-00753215/document}, 25 Octobre
-  2012.
-
-\bibitem{irf2017mosfet}
-S.~F. Medeiros, \emph{Attaques par canaux auxiliaires : nouvelles attaques,
-  contre-mesures et mises en oeuvre}.\hskip 1em plus 0.5em minus 0.4em\relax
-  \url{https://dipot.ulb.ac.be/dspace/bitstream/.../12a25345-b54f-4169-9c32-e7d2cce5af65.txt},
-  2017.
 
 \bibitem{cryptoeprint:2015:536}
 F.~Durvaux and F.-X. Standaert, ``From improved leakage detection to the
@@ -205,23 +230,50 @@ A.~Elaabid, \emph{Attaques par canaux cach{\'e}s: exp{\'e}rimentations
   0.5em minus 0.4em\relax
   \url{https://icwww.epfl.ch/~chappeli/it/courseFR/I2subsec_Hdist.php}.
 
-\bibitem{bruit}
-J.-P. Muller, \emph{Le bruit dans les syst{\`e}mes {\'e}lectroniques}.\hskip
-  1em plus 0.5em minus 0.4em\relax
-  \url{http://www.ta-formation.com/acrobat-cours/bruit.pdf}, Juillet 2002.
-
 \bibitem{crypto}
 R.~Dumont, \emph{Cryptographie et S{\'e}curit{\'e} informatique
   INFO0045-2}.\hskip 1em plus 0.5em minus 0.4em\relax
   \url{http://www.montefiore.ulg.ac.be/~dumont/pdf/crypto09-10.pdf}, 2010.
 
-\bibitem{test}
-T.~Group, \emph{Historique}.\hskip 1em plus 0.5em minus 0.4em\relax
-  \url{https://www.thalesgroup.com/fr/global/groupe/historique}, 2018.
+\bibitem{sakura_g}
+M.~Tech, ``\BIBforeignlanguage{en}{Sakura-g side-channel attack user reference
+  architecture: Specifications},'' p.~67, 2013.
 
-\bibitem{wiki}
-Thales, \emph{Wikipedia}.\hskip 1em plus 0.5em minus 0.4em\relax
-  \url{http://fr.wikipedia.org/w/index.php?title=Thales&action=history},
-  Octobre 2018.
+\bibitem{spartan_6}
+Xilinx, ``\BIBforeignlanguage{en}{Spartan-6 libraries guide for schematic
+  designs},'' p. 635, 2010.
+
+\bibitem{pico_datasheet}
+P.~Technology, ``\BIBforeignlanguage{fr}{Picoscope série 5000d : Oscilloscopes
+  et mso flexres},'' p.~20, 2018.
+
+\bibitem{bronks_picoscope_nodate}
+J.~Bronks, ``\BIBforeignlanguage{en}{{PicoScope} 5000 {Series} ({A} {API})
+  {Programmer}'s {Guide}},'' p. 118.
+
+\bibitem{noauthor_an_165_2012}
+``\BIBforeignlanguage{en}{{AN}\_165 {Establishing} {Synchronous} 245 {FIFO}
+  {Communications} using a {Morph}-{IC}-{II}},'' p.~25, 2012.
+
+\bibitem{noauthor_fenetrage_2019}
+\BIBentryALTinterwordspacing
+``\BIBforeignlanguage{fr}{Fenêtrage},'' Apr. 2019, page Version ID: 158488611.
+  [Online]. Available:
+  \url{https://fr.wikipedia.org/w/index.php?title=Fen\%C3\%AAtrage&oldid=158488611}
+\BIBentrySTDinterwordspacing
+
+\bibitem{bourge_hardware_2016}
+\BIBentryALTinterwordspacing
+A.~BOURGE, ``Hardware task context switch on {FPGA} between heterogeneous
+  reconfigurable devices in a cloud-{FPGA} environment.'' Theses, Université
+  Grenoble - Alpes, Nov. 2016. [Online]. Available:
+  \url{https://hal.archives-ouvertes.fr/tel-01474177}
+\BIBentrySTDinterwordspacing
+
+\bibitem{noauthor_fpga_nodate}
+\BIBentryALTinterwordspacing
+``{FPGA} {Fundamentals} - {National} {Instruments}.'' [Online]. Available:
+  \url{http://www.ni.com/fr-be/innovations/white-papers/08/fpga-fundamentals.html}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}

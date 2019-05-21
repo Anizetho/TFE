@@ -8,7 +8,11 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: Stage.bib
-I was expecting a `,' or a `}'---line 291 of file Stage.bib
+You're missing a field part---line 158 of file Stage.bib
+ : key = 
+ :       ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 336 of file Stage.bib
  :  
  :  Year = {2018}}
 (Error may have been on previous line)
@@ -33,47 +37,54 @@ Warning--empty author in CPAWiki
 Warning--empty year in CPAWiki
 Warning--empty author and editor in hamming
 Warning--empty year in hamming
+Warning--empty journal in sakura_g
+Warning--empty journal in spartan_6
+Warning--empty journal in pico_datasheet
+Warning--empty journal in bronks_picoscope_nodate
+Warning--empty year in bronks_picoscope_nodate
+Warning--empty author in noauthor_an_165_2012
+Warning--empty journal in noauthor_an_165_2012
 
 Done.
-You've used 33 entries,
+You've used 42 entries,
             4087 wiz_defined-function locations,
-            994 strings with 13870 characters,
-and the built_in function-call counts, 15700 in all, are:
-= -- 1127
-> -- 376
-< -- 38
-+ -- 186
-- -- 82
-* -- 717
-:= -- 2567
-add.period$ -- 68
-call.type$ -- 33
-change.case$ -- 39
+            1034 strings with 15068 characters,
+and the built_in function-call counts, 19195 in all, are:
+= -- 1438
+> -- 393
+< -- 45
++ -- 198
+- -- 85
+* -- 895
+:= -- 3198
+add.period$ -- 86
+call.type$ -- 42
+change.case$ -- 52
 chr.to.int$ -- 84
-cite$ -- 44
-duplicate$ -- 1228
-empty$ -- 1569
-format.name$ -- 94
-if$ -- 3588
+cite$ -- 60
+duplicate$ -- 1557
+empty$ -- 1846
+format.name$ -- 97
+if$ -- 4350
 int.to.chr$ -- 0
-int.to.str$ -- 33
-missing$ -- 250
-newline$ -- 140
-num.names$ -- 37
-pop$ -- 726
+int.to.str$ -- 42
+missing$ -- 311
+newline$ -- 179
+num.names$ -- 39
+pop$ -- 891
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1211
+skip$ -- 1471
 stack$ -- 0
-substring$ -- 238
-swap$ -- 777
-text.length$ -- 10
+substring$ -- 280
+swap$ -- 982
+text.length$ -- 17
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 33
-warning$ -- 11
-while$ -- 49
-width$ -- 35
-write$ -- 302
-(There were 4 error messages)
+type$ -- 42
+warning$ -- 18
+while$ -- 57
+width$ -- 44
+write$ -- 388
+(There were 5 error messages)
