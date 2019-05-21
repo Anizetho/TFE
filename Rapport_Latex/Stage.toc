@@ -63,5 +63,5 @@
 \contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{70}{section.9.2}
 \contentsline {chapter}{\numberline {10}Conclusion}{72}{chapter.10}
 \contentsline {section}{\numberline {10.1}Commentaires additionnels}{73}{section.10.1}
-\contentsline {chapter}{Références}{75}{section*.74}
-\contentsline {chapter}{Annexes}{78}{section*.74}
+\contentsline {chapter}{Références}{74}{section*.74}
+\contentsline {chapter}{Annexes}{77}{section*.74}
