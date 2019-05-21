@@ -61,7 +61,8 @@
 \contentsline {chapter}{\numberline {9}Évaluation de la contre-mesure}{67}{chapter.9}
 \contentsline {section}{\numberline {9.1}Simulations (\textit {test benches})}{67}{section.9.1}
 \contentsline {section}{\numberline {9.2}Évaluation par critères de performances}{70}{section.9.2}
-\contentsline {chapter}{\numberline {10}Conclusion}{72}{chapter.10}
-\contentsline {section}{\numberline {10.1}Commentaires additionnels}{73}{section.10.1}
+\contentsline {chapter}{\numberline {10}Conclusion et commentaires}{72}{chapter.10}
+\contentsline {section}{\numberline {10.1}Conclusion}{72}{section.10.1}
+\contentsline {section}{\numberline {10.2}Commentaires additionnels}{73}{section.10.2}
 \contentsline {chapter}{Références}{74}{section*.74}
 \contentsline {chapter}{Annexes}{77}{section*.74}
